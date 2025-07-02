@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema empresarial - Calory</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    header {
+      width: 100%;
+      padding: 10px 3%;
+      background-color: #ffffff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      max-height: 100px;
+      width: auto;
+    }
+
+    .nav-links a {
+      margin-left: 30px;
+      font-weight: 500;
+      color: #333;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .nav-links a:hover {
+      color: #007bff;
+    }
+
+    .banner {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background: url('sistemaempresa.png') no-repeat center center;
+      background-size: cover;
+      margin-top: 90px;
+    }
+
+    .titulo {
+      position: absolute;
+      top: 27%;
+      left: 5%;
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: #000;
+    }
+
+    .titulo span {
+      color: #29a8ff;
+    }
+
+    .descricao {
+      position: absolute;
+      top: 39%;
+      left: 5%;
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: #333;
+    }
+
+    .botao {
+      position: absolute;
+      top: 60%;
+      left: 5%;
+      padding: 15px 30px;
+      background-color: #ffdf52;
+      color: #000000;
+      font-size: 1.6rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+      transition: background 0.3s ease;
+    }
+
+    .botao:hover {
+      background-color: #cfb340;
+      color: #5f5f5f;
+    }
+
+    .info {
+      position: absolute;
+      top: 80%;
+      left: 5%;
+      font-size: 1rem;
+      color: #222;
+    }
+
+    .sessao-sistema {
+      padding: 80px 5% 40px;
+      background-color: #fff;
+      text-align: center;
+    }
+
+    .sessao-sistema h2 {
+      font-size: 2.4rem;
+      color: #29a8ff;
+      margin-bottom: 40px;
+    }
+
+    .container-bloco {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .bloco {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 280px;
+      text-align: center;
+      text-decoration: none;
+      color: #333;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .bloco:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+    }
+
+    .bloco img {
+      width: 96px;
+      height: 96px;
+      margin-bottom: 15px;
+    }
+
+    .bloco h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: #29a8ff;
+    }
+
+    .bloco p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    /* Texto que indica ser clicável */
+    .bloco::after {
+      content: "Clique para saber mais";
+      font-size: 0.85rem;
+      color: #aaa;
+      display: block;
+      margin-top: 8px;
+    }
+
+    footer {
+      background-color: #ffffff;
+      color: #333;
+      text-align: center;
+      padding: 40px 10px;
+      box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
+      font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .titulo {
+        font-size: 2.2rem;
+      }
+
+      .descricao {
+        font-size: 1.1rem;
+      }
+
+      .botao {
+        font-size: 1rem;
+        padding: 12px 24px;
+      }
+
+      .container-bloco {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .sessao-sistema h2 {
+        font-size: 1.8rem;
+      }
+
+      .bloco {
+        width: 90%;
+      }
+
+      header .logo img {
+        height: 50px;
+      }
+
+      header {
+        padding: 15px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <a href="home.html"><img src="logo-antiga.PNG" alt="Logo Calory"></a>
+    </div>
+    <nav class="nav-links">
+      <a href="servicos.html">Serviços</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <div class="titulo">O <span>Sistema</span> mais completo!</div>
+    <div class="descricao">
+      Um sistema que se adapta a você e sua empresa, <br>
+      tenha controle total com a Calory.
+    </div>
+    <a href="formulario.html" class="botao">Faça uma simulação</a>
+    <div class="info">Role a página para mais informações sobre nosso sistema</div>
+  </div>
+
+  <section class="sessao-sistema" id="sistema">
+    <h2>Funcionalidades do Sistema</h2>
+
+    <div class="container-bloco">
+      <a href="tela-inicial.html" class="bloco">
+        <img src="https://img.icons8.com/color/96/dashboard-layout.png" alt="Tela Inicial">
+        <h3>Tela Inicial</h3>
+        <p>Dashboard com indicadores de desempenho e atalhos rápidos.</p>
+      </a>
+
+      <a href="estoque.html" class="bloco">
+        <img src="https://img.icons8.com/color/96/warehouse.png" alt="Controle de Estoque">
+        <h3>Estoque</h3>
+        <p>Gerencie entradas, saídas e relatórios do seu estoque.</p>
+      </a>
+
+      <a href="tela-cliente.html" class="bloco">
+        <img src="https://img.icons8.com/color/96/conference-call.png" alt="Gestão de Clientes">
+        <h3>Clientes</h3>
+        <p>Cadastro, histórico de vendas e integração com WhatsApp.</p>
+      </a>
+
+      <a href="documentos.html" class="bloco">
+        <img src="https://img.icons8.com/color/96/invoice.png" alt="Documentos Fiscais">
+        <h3>Documentos Fiscais</h3>
+        <p>Emissão de NFe, CTe e MDFe de forma prática e rápida.</p>
+      </a>
+    </div>
+  </section>
+
+  <footer id="contato">
+    © 2025 Calory Sistemas • Todos os direitos reservados • contato@calory.com.br
+  </footer>
+
+</body>
+</html>

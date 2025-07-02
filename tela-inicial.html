@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tela Inicial - Sistema Calory</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      padding-top: 100px;
+    }
+
+    header {
+      width: 100%;
+      padding: 10px 3%;
+      background-color: #ffffff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .logo img {
+      max-height: 100px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links a {
+      margin-left: 30px;
+      font-weight: 500;
+      color: #333;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .nav-links a:hover {
+      color: #007bff;
+    }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #007bff;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #555;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .screenshot {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .screenshot img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .beneficios, .galeria, .comparativo, .faq {
+      margin-top: 60px;
+      text-align: center;
+    }
+
+    .beneficios h2, .galeria h2, .comparativo h2, .faq h2 {
+      font-size: 2rem;
+      color: #007bff;
+      margin-bottom: 30px;
+    }
+
+    .beneficios-lista {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .beneficios-lista .item {
+      width: 200px;
+      text-align: center;
+    }
+
+    .beneficios-lista img {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 10px;
+    }
+
+    .galeria-imagens {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .galeria-imagens a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .bloco-interface {
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 12px;
+      width: 240px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .bloco-interface:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+
+    .bloco-interface img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .bloco-interface h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      color: #007bff;
+    }
+
+    .bloco-interface span {
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    .comparativo table {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      border-collapse: collapse;
+    }
+
+    .comparativo th, .comparativo td {
+      border: 1px solid #ccc;
+      padding: 12px;
+    }
+
+    .comparativo th {
+      background-color: #f0f8ff;
+    }
+
+    .faq {
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .faq .pergunta {
+      margin-bottom: 20px;
+    }
+
+    .faq .pergunta strong {
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    .botao {
+      display: block;
+      margin: 40px auto;
+      padding: 15px 30px;
+      background-color: #007bff;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    footer {
+      background-color: #3f3f3f;
+      color: #ffffff;
+      padding: 40px 40px 50px 40px;
+      font-size: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .social-icons {
+      display: flex;
+      gap: 20px;
+    }
+    .social-icons a img {
+      width: 32px;
+      height: 32px;
+      filter: brightness(0) invert(1);
+      transition: transform 0.2s ease;
+    }
+    .social-icons a img:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <a href="home.html"><img src="logo-antiga.PNG" alt="Logo Calory"></a>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Início</a>
+      <a href="servicos.html">Serviços</a>
+      <a href="sistema-empresarial.html">Sistema</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Tela Inicial do Sistema</h1>
+    <p>
+      A tela inicial do sistema Calory foi desenvolvida para oferecer uma visão clara e rápida do desempenho da sua empresa.
+      Com indicadores em destaque e atalhos intuitivos, o usuário pode acessar rapidamente as funcionalidades principais do sistema.
+    </p>
+
+    <div class="screenshot">
+      <img src="img/tela inicial.png" alt="Print da tela inicial do sistema Calory">
+    </div>
+
+    <section class="beneficios">
+      <h2>Por que a Tela Inicial é importante?</h2>
+      <div class="beneficios-lista">
+        <div class="item">
+          <img src="https://img.icons8.com/fluency/48/combo-chart.png" alt="Indicadores">
+          <p>Indicadores de desempenho em tempo real.</p>
+        </div>
+        <div class="item">
+          <img src="https://img.icons8.com/fluency/48/shortcut.png" alt="Atalhos">
+          <p>Atalhos rápidos para seções essenciais.</p>
+        </div>
+        <div class="item">
+          <img src="https://img.icons8.com/fluency/48/appointment-reminders.png" alt="Alertas">
+          <p>Alertas automáticos e lembretes.</p>
+        </div>
+        <div class="item">
+          <img src="https://img.icons8.com/fluency/48/categorize.png" alt="Organização">
+          <p>Organização centralizada do sistema.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="galeria">
+      <h2>Veja mais da Interface</h2>
+      <div class="galeria-imagens">
+        <a href="tela-cliente.html">
+          <div class="bloco-interface">
+            <img src="img/telacliente.png" alt="Tela de Clientes">
+            <h3>Tela de Clientes</h3>
+            <span>Clique para saber mais</span>
+          </div>
+        </a>
+        <a href="estoque.html">
+          <div class="bloco-interface">
+            <img src="img/estoque.png" alt="Tela de Estoque">
+            <h3>Tela de Estoque</h3>
+            <span>Clique para saber mais</span>
+          </div>
+        </a>
+        <a href="tela-inicial.html">
+          <div class="bloco-interface">
+            <img src="img/documentosfiscais.png" alt="Documentos fiscais">
+            <h3>Documentos fiscais</h3>
+            <span>Clique para saber mais</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div>© 2025 Calory Sistemas • Todos os direitos reservados • contato@calory.com.br</div>
+    <div class="social-icons">
+      <a href="https://facebook/calorysistemas.com" target="_blank" rel="noopener">
+        <img src="img/face.png" alt="Facebook">
+      </a>
+      <a href="https://www.instagram.com/calorysistemas/" target="_blank" rel="noopener">
+        <img src="img/insta.png" alt="Instagram">
+      </a>
+    </div>
+  </footer>
+
+</body>
+</html>

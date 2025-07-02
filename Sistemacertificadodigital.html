@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Certificado Digital - Calory</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    header {
+      width: 100%;
+      padding: 10px 3%;
+      background-color: #ffffff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      max-height: 100px;
+      width: auto;
+    }
+
+    .nav-links a {
+      margin-left: 30px;
+      font-weight: 500;
+      color: #333;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .nav-links a:hover {
+      color: #007bff;
+    }
+
+    .banner {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background: url('Sistemacertificadodigi (10).png') no-repeat center center;
+      background-size: cover;
+      margin-top: 90px;
+    }
+
+    .titulo {
+      position: absolute;
+      top: 14%;
+      left: 6%;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .descricao {
+      position: absolute;
+      top: 37%;
+      left: 5%;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #e7e7e7;
+    }
+
+    .botao {
+      position: absolute;
+      top: 50%;
+      left: 5%;
+      padding: 15px 30px;
+      background-color: #0021c7;
+      color: #ffffff;
+      font-size: 1.8rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+      transition: background 0.3s ease;
+    }
+
+    .botao:hover {
+      background-color: #001ba8;
+    }
+
+    .info {
+      position: absolute;
+      top: 65%;
+      left: 5%;
+      font-size: 1rem;
+      color: #e7e7e7;
+    }
+
+    .conteudo {
+      padding: 60px 7%;
+      background-color: #fff;
+    }
+
+    .conteudo h2 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      color: #0021c7;
+    }
+
+    .conteudo p {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .conteudo ul {
+      margin-bottom: 15px;
+      padding-left: 20px;
+    }
+
+    .conteudo li {
+      font-size: 1.1rem;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .link-lojas {
+      font-weight: 600;
+      color: #0021c7;
+      text-decoration: none;
+    }
+
+    .link-lojas:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background-color: #0021c7;
+      color: #fff;
+      padding: 30px 7%;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      z-index: 1000;
+    }
+
+    .whatsapp-float img {
+      width: 120px;
+      height: 120px;
+      transition: transform 0.3s ease;
+    }
+
+    .whatsapp-float img:hover {
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+      .banner {
+        background: url('imagemcertificadomp.png') no-repeat center center;
+    background-size: cover;
+    min-height: 600px; /* ou 700px conforme o conteúdo */
+    height: auto;
+      }
+      .titulo {
+        left: 4%;
+        top: 20%;
+        font-size: 1.4rem;
+      }
+      .descricao {
+        left: 4%;
+        top: 26%;
+        font-size: 1rem;
+      }
+      .botao {
+        left: 7%;
+        top: 42%;
+        font-size: 0.9rem;
+        padding: 12px 24px;
+      }
+      .info{
+        font-size: 0.7rem;
+        top: 50%;
+        text-align: center;
+        left: 2%;
+      }
+      .conteudo h2 {
+        font-size: 1.6rem;
+      }
+      header .logo img {
+        height: 50px;
+      }
+      header {
+        padding: 15px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <a href="home.html"><img src="logo-antiga.PNG" alt="Logo Calory"></a>
+    </div>
+    <nav class="nav-links">
+      <a href="servicos.html">Serviços</a>
+      <a href="home.html#contato">Contato</a>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <div class="titulo">Precisando de certificado?</div>
+    <div class="descricao">
+      Emitimos e renovamos e-CNPJ e e-CPF <br> nos modelos A3 (Token) e A1 (Arquivo Digital).<br>
+    </div>
+    <a href="formulario.html" class="botao">Entre em contato</a>
+    <div class="info">Role a página para mais informações <br> sobre os certificados.</div>
+  </div>
+
+  <div class="conteudo" id="certificados">
+    <h2>Sobre nossos Certificados</h2>
+    <p>O certificado digital garante autenticidade, integridade e validade jurídica para suas transações eletrônicas.</p>
+    <p>Na Calory, você pode emitir ou renovar seu e-CNPJ ou e-CPF nos formatos:</p>
+    <ul>
+      <li><strong>A1:</strong> Arquivo digital instalado no computador ou celular, com validade de 1 ano.</li>
+      <li><strong>A3:</strong> Token ou cartão criptográfico, com validade de até 3 anos.</li>
+    </ul>
+    <p>Temos atendimento rápido, suporte completo e excelente custo-benefício!</p>
+    <p>Quer saber onde nos encontrar? <a href="home.html#servicos" class="link-lojas">Veja nossas lojas aqui</a>.</p>
+  </div>
+
+  <footer>
+    © 2025 Calory Sistemas - Todos os direitos reservados. | contato@calory.com.br
+  </footer>
+
+</body>
+</html>

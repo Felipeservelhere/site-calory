@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contato - Calory</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f4f4f4;
+      padding-top: 100px;
+    }
+
+    header {
+      width: 100%;
+      padding: 10px 3%;
+      background-color: #ffffff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      max-height: 100px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      font-weight: 500;
+      color: #333;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .nav-links a:hover {
+      color: #007bff;
+    }
+
+    h1 {
+      text-align: center;
+      color: #29a8ff;
+      margin: 40px 0;
+      font-size: 2rem;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 0 10%;
+      gap: 50px;
+      flex-wrap: wrap;
+    }
+
+    .formulario,
+    .contato-info {
+      flex: 1;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .formulario h2 {
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+    .formulario input,
+    .formulario textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .formulario button {
+      background-color: #29a8ff;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .formulario button:hover {
+      background-color: #1c7ccf;
+    }
+
+    .contato-info {
+      text-align: center;
+    }
+
+    .contato-info img {
+      width: 80px;
+      margin-bottom: 20px;
+    }
+
+    .contato-info p {
+      font-size: 1.1rem;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .contato-info a {
+      color: #29a8ff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .contato-info a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #eee;
+      font-size: 0.9rem;
+      margin-top: 50px;
+    }
+
+    .thank-you-modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .thank-you-box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      max-width: 400px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .thank-you-box h2 {
+      color: #29a8ff;
+      margin-bottom: 20px;
+    }
+
+    .thank-you-box button {
+      background-color: #29a8ff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        padding: 0 5%;
+      }
+
+      .nav-links {
+        gap: 15px;
+      }
+
+      .nav-links a {
+        font-size: 14px;
+      }
+
+      .formulario,
+      .contato-info {
+        width: 100%;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+        margin: 30px 0;
+      }
+
+      body {
+        padding-top: 130px;
+      }
+
+      .logo img {
+        max-height: 70px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <a href="home.html"><img src="logo.png" alt="Logo Calory"></a>
+    </div>
+    <nav class="nav-links">
+      <a href="servicos.html">Serviços</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+  </header>
+
+  <h1>Fale Conosco</h1>
+
+  <div class="container">
+    <div class="formulario">
+      <h2>Envie sua mensagem</h2>
+      <form id="contatoForm" action="https://formsubmit.co/felipeservelhere.calory@gmail.com" method="POST">
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="text" name="Nome" placeholder="Seu nome" required />
+        <input type="tel" name="Telefone" placeholder="Telefone" required />
+        <textarea name="Mensagem" rows="5" placeholder="Assunto" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+
+    <div class="contato-info">
+      <img src="https://cdn-icons-png.flaticon.com/512/220/220236.png" alt="WhatsApp" />
+      <p>Você também pode nos chamar no WhatsApp para atendimento direto. Estamos prontos para te ajudar!</p>
+      <p><a href="https://wa.me/5599999999999" target="_blank">Clique aqui para conversar no WhatsApp</a></p>
+    </div>
+  </div>
+
+  <!-- Modal de agradecimento -->
+  <div class="thank-you-modal" id="thankYouModal">
+    <div class="thank-you-box">
+      <h2>Obrigado!</h2>
+      <p>Sua mensagem foi enviada com sucesso. Em breve entraremos em contato com você.</p>
+      <button onclick="closeModalAndRedirect()">OK</button>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 Calory Sistemas • Todos os direitos reservados
+  </footer>
+
+  <script>
+    document.getElementById('contatoForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(this);
+
+      fetch(this.action, {
+        method: this.method,
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => {
+        if (response.ok) {
+          document.getElementById('thankYouModal').style.display = 'flex';
+          this.reset();
+        } else {
+          alert("Erro ao enviar o formulário. Por favor, tente novamente.");
+        }
+      })
+      .catch(() => {
+        alert("Erro na comunicação. Por favor, tente novamente.");
+      });
+    });
+
+    function closeModalAndRedirect() {
+      document.getElementById('thankYouModal').style.display = 'none';
+      window.location.href = 'home.html';
+    }
+  </script>
+
+</body>
+</html>

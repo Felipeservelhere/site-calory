@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lanchonete - Calory Sistemas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" /> 
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff8f0;
+      color: #007bff;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    header {
+      width: 100%;
+      padding: 10px 3%;
+      background-color: #ffffff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .logo img {
+      max-height: 100px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links a {
+      margin-left: 30px;
+      font-weight: 500;
+      color: #333;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .nav-links a:hover {
+      color: #007bff;
+    }
+    /* Banner com fundo imagem + overlay */
+    .banner-full {
+      position: relative;
+      height: 90vh;
+      width: 100%;
+      margin-top: 110px; /* compensar header fixo */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      padding: 0 20px;
+      background: url('img/Lanchonete.png') no-repeat center center/cover;
+    }
+    .banner-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(136, 136, 136, 0.75);
+      z-index: 1;
+    }
+    .banner-content {
+      position: relative;
+      z-index: 2;
+      max-width: 850px;
+    }
+    .banner-content h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+    }
+    .banner-content p {
+      font-size: 1.4rem;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    }
+    .scroll-down {
+      position: relative;
+      left: 48%;
+      margin-top: 35px;
+      width: 38px;
+      height: 55px;
+      border: 2px solid white;
+      border-radius: 25px;
+      box-sizing: border-box;
+      cursor: pointer;
+      z-index: 2;
+      animation: bounce 2s infinite;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 10px;
+    }
+    .scroll-down::after {
+      content: '';
+      display: block;
+      width: 12px;
+      height: 12px;
+      border-bottom: 3px solid white;
+      border-right: 3px solid white;
+      transform: rotate(45deg);
+      margin-top: 6px;
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(10px); }
+      60% { transform: translateY(5px); }
+    }
+    main {
+      max-width: 900px;
+      margin: 60px auto 80px auto;
+      padding: 0 20px;
+    }
+    .intro-text {
+      text-align: center;
+      margin-bottom: 45px;
+      font-size: 1.25rem;
+      color: #6f5640;
+      max-width: 750px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 500;
+    }
+
+    /* Lista vertical de features */
+    .features-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      padding-left: 0;
+    }
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      background: #fff3e0;
+      border-radius: 14px;
+      padding: 20px 25px;
+      box-shadow: 0 6px 20px rgba(67, 186, 255, 0.25);
+      cursor: pointer;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .feature-item:hover {
+      background: #8bc3ff;
+      box-shadow: 0 10px 30px rgba(67, 186, 255, 0.5);
+    }
+    .feature-icon {
+      flex-shrink: 0;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(67, 149, 255, 0.35);
+      transition: box-shadow 0.3s ease;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .feature-item:hover .feature-icon {
+      box-shadow: 0 8px 25px rgba(34, 148, 255, 0.7);
+    }
+    .feature-icon img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      user-select: none;
+      pointer-events: none;
+    }
+    .feature-content {
+      flex-grow: 1;
+      color: #3597ff;
+    }
+    .feature-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .feature-desc {
+      font-size: 1.05rem;
+      line-height: 1.4;
+      color: #5d4037;
+    }
+
+    .link-sistema {
+      margin-top: 55px;
+      text-align: center;
+    }
+    .link-sistema a {
+      background-color: #007bff;
+      color: white;
+      padding: 16px 32px;
+      font-size: 1.3rem;
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow: 0 8px 15px rgba(67, 202, 255, 0.6);
+      transition: background-color 0.3s ease;
+      display: inline-block;
+      font-weight: 600;
+    }
+    .link-sistema a:hover {
+      background-color: #1949e6;
+    }
+
+    footer {
+      background-color: #3f3f3f;
+      color: #ffffff;
+      padding: 40px 40px 50px 40px;
+      font-size: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .social-icons {
+      display: flex;
+      gap: 20px;
+    }
+    .social-icons a img {
+      width: 32px;
+      height: 32px;
+      filter: brightness(0) invert(1);
+      transition: transform 0.2s ease;
+    }
+    .social-icons a img:hover {
+      transform: scale(1.1);
+    }
+
+    /* Responsividade */
+    @media (max-width: 720px) {
+      .feature-item {
+        flex-direction: column;
+        text-align: center;
+      }
+      .feature-icon {
+        margin-bottom: 15px;
+      }
+      .feature-content {
+        color: #6f4e37;
+      }
+    }
+    @media (max-width: 420px) {
+      header {
+        flex-direction: column;
+        padding: 10px 5%;
+        gap: 10px;
+      }
+      .nav-links {
+        flex-direction: column;
+      }
+      .nav-links a {
+        margin-left: 0;
+        margin-bottom: 10px;
+        font-size: 18px;
+      }
+      .banner-content h1 {
+        font-size: 2.2rem;
+      }
+      .banner-content p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <a href="home.html"><img src="logo-antiga.PNG" alt="Logo Calory Lanchonete"></a>
+    </div>
+    <nav class="nav-links">
+      <a href="servicos.html">Serviços</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+  </header>
+
+  <section class="banner-full" role="banner" aria-label="Banner principal da lanchonete com título e descrição">
+    <div class="banner-overlay"></div>
+    <div class="banner-content">
+      <h1>Sistema de Gestão para Lanchonetes</h1>
+      <p>Organize seu atendimento, estoque, vendas e promoções com a plataforma ideal para lanchonetes de todos os tamanhos.</p>
+    </div>
+    <div class="scroll-down" aria-label="Role para baixo" tabindex="0" role="button" title="Role para baixo"></div>
+  </section>
+
+  <main id="conteudo-principal">
+    <p class="intro-text">
+      Nosso sistema foi feito especialmente para lanchonetes, com funcionalidades que facilitam o dia a dia, otimizam o atendimento e aumentam suas vendas.
+    </p>
+
+    <ul class="features-list" role="list">
+      <li class="feature-item" tabindex="0" role="listitem" aria-label="Controle de pedidos em tempo real">
+        <div class="feature-icon">
+          <img src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png" alt="Ícone de pedidos" />
+        </div>
+        <div class="feature-content">
+          <h3 class="feature-title">Controle de Pedidos em Tempo Real</h3>
+          <p class="feature-desc">Acompanhe cada pedido do cliente desde a solicitação até a entrega com atualização instantânea.</p>
+        </div>
+      </li>
+
+      <li class="feature-item" tabindex="0" role="listitem" aria-label="Gerenciamento de Estoque de Ingredientes">
+        <div class="feature-icon">
+          <img src="https://cdn-icons-png.flaticon.com/512/2921/2921822.png" alt="Ícone de estoque" />
+        </div>
+        <div class="feature-content">
+          <h3 class="feature-title">Gerenciamento de Estoque de Ingredientes</h3>
+          <p class="feature-desc">Monitore a quantidade de ingredientes e evite faltar insumos essenciais na cozinha.</p>
+        </div>
+      </li>
+
+      <li class="feature-item" tabindex="0" role="listitem" aria-label="Sistema de Fidelidade e Promoções">
+        <div class="feature-icon">
+          <img src="https://cdn-icons-png.flaticon.com/512/1143/1143662.png" alt="Ícone de fidelidade" />
+        </div>
+        <div class="feature-content">
+          <h3 class="feature-title">Sistema de Fidelidade e Promoções</h3>
+          <p class="feature-desc">Crie campanhas para clientes frequentes e ofereça descontos e brindes especiais.</p>
+        </div>
+      </li>
+
+      <li class="feature-item" tabindex="0" role="listitem" aria-label="Relatórios de Vendas e Desempenho">
+        <div class="feature-icon">
+          <img src="https://cdn-icons-png.flaticon.com/512/1593/1593643.png" alt="Ícone de relatório" />
+        </div>
+        <div class="feature-content">
+          <h3 class="feature-title">Relatórios de Vendas e Desempenho</h3>
+          <p class="feature-desc">Analise dados detalhados para identificar os produtos mais vendidos e otimizar seu negócio.</p>
+        </div>
+      </li>
+
+      <li class="feature-item" tabindex="0" role="listitem" aria-label="Integração com aplicativos de entrega">
+        <div class="feature-icon">
+          <img src="https://cdn-icons-png.flaticon.com/512/3011/3011270.png" alt="Ícone de entrega" />
+        </div>
+        <div class="feature-content">
+          <h3 class="feature-title">Integração com Aplicativos de Entrega</h3>
+          <p class="feature-desc">Gerencie pedidos e entregas diretamente com apps parceiros, agilizando seu atendimento.</p>
+        </div>
+      </li>
+    </ul>
+
+    <div class="link-sistema">
+      <a href="sistema-empresarial.html">Saiba mais sobre nosso Sistema Empresarial</a>
+    </div>
+  </main>
+
+  <footer>
+    <div>© 2025 Calory Sistemas • Todos os direitos reservados • contato@calory.com.br</div>
+    <div class="social-icons">
+      <a href="https://facebook.com" target="_blank" rel="noopener">
+        <img src="img/face.png" alt="Facebook" />
+      </a>
+      <a href="https://instagram.com" target="_blank" rel="noopener">
+        <img src="img/insta.png" alt="Instagram" />
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    // Ao clicar na seta, rola suavemente para o conteúdo principal
+    document.querySelector('.scroll-down').addEventListener('click', () => {
+      document.getElementById('conteudo-principal').scrollIntoView({ behavior: 'smooth' });
+    });
+    // Permitir rolar via teclado (Enter ou Espaço) para acessibilidade
+    document.querySelector('.scroll-down').addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        document.getElementById('conteudo-principal').scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  </script>
+
+</body>
+</html>

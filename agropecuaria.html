@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agropecuária - Calory Sistemas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" /> 
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #ffffff;
+      color: #333333;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    header {
+      width: 100%;
+      padding: 10px 3%;
+      background-color: #ffffff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+    .logo img {
+      max-height: 100px;
+      width: auto;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+    .nav-links a {
+      margin-left: 30px;
+      font-weight: 500;
+      color: #333;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    .nav-links a:hover {
+      color: #007bff;
+    }
+    .banner-full {
+      position: relative;
+      height: 90vh;
+      width: 100%;
+      margin-top: 110px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      padding: 0 20px;
+      background: url('img/agropecuaria.png') no-repeat center center/cover;
+    }
+    .banner-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: 1;
+    }
+    .banner-content {
+      position: relative;
+      z-index: 2;
+      max-width: 850px;
+    }
+    .banner-content h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+    }
+    .banner-content p {
+      font-size: 1.4rem;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    }
+    .scroll-down {
+      position: relative;
+      left: 48%;
+      margin-top: 35px;
+      width: 38px;
+      height: 55px;
+      border: 2px solid #dfdfdf;
+      border-radius: 25px;
+      cursor: pointer;
+      z-index: 2;
+      animation: bounce 2s infinite;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 10px;
+    }
+    .scroll-down::after {
+      content: '';
+      display: block;
+      width: 12px;
+      height: 12px;
+      border-bottom: 3px solid #e0e0e0;
+      border-right: 3px solid #e0e0e0;
+      transform: rotate(45deg);
+      margin-top: 6px;
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(10px); }
+      60% { transform: translateY(5px); }
+    }
+    main {
+      max-width: 960px;
+      margin: 60px auto;
+      padding: 0 20px 40px 20px;
+    }
+    .intro-text {
+      text-align: center;
+      margin-bottom: 45px;
+      font-size: 1.2rem;
+      color: #555;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 500;
+    }
+    .feature-item {
+      display: flex;
+      gap: 25px;
+      margin-bottom: 40px;
+      align-items: center;
+      background: #f9f9f9;
+      padding: 20px 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: box-shadow 0.3s ease;
+    }
+    .feature-item:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    .feature-image {
+      flex-shrink: 0;
+      width: 140px;
+      height: 140px;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0,123,255,0.4);
+    }
+    .feature-text {
+      flex: 1;
+    }
+    .feature-text h3 {
+      color: #007bff;
+      font-size: 1.7rem;
+      margin-bottom: 12px;
+    }
+    .feature-text p {
+      color: #444;
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+    .cta-button {
+      display: block;
+      width: fit-content;
+      margin: 40px auto 0 auto;
+      padding: 15px 30px;
+      background-color: #007bff;
+      color: #ffffff;
+      font-weight: bold;
+      border: none;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: background 0.3s;
+    }
+    .cta-button:hover {
+      background-color: #0056b3;
+    }
+    footer {
+      background-color: #3f3f3f;
+      color: #ffffff;
+      padding: 40px 40px 50px 40px;
+      font-size: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .social-icons {
+      display: flex;
+      gap: 20px;
+    }
+    .social-icons a img {
+      width: 32px;
+      height: 32px;
+      filter: brightness(0) invert(1);
+      transition: transform 0.2s ease;
+    }
+    .social-icons a img:hover {
+      transform: scale(1.1);
+    }
+    @media (max-width: 720px) {
+      .feature-item {
+        flex-direction: column;
+        text-align: center;
+      }
+      .feature-image {
+        width: 100%;
+        height: 200px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+      }
+      .feature-text h3 {
+        font-size: 1.5rem;
+      }
+      .feature-text p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <a href="home.html"><img src="logo-antiga.PNG" alt="Logo Calory Agropecuária"></a>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Início</a>
+      <a href="servicos.html">Serviços</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+  </header>
+
+  <section class="banner-full" role="banner" aria-label="Banner principal da agropecuária com título e descrição">
+    <div class="banner-overlay"></div>
+    <div class="banner-content">
+      <h1>Sistema de Gestão para Lojas Agropecuárias</h1>
+      <p>Gerencie produtos, fornecedores, estoque e vendas com eficiência em uma solução completa para o setor agropecuário.</p>
+    </div>
+    <div class="scroll-down" onclick="document.getElementById('conteudo-principal').scrollIntoView({ behavior: 'smooth' });" tabindex="0" role="button" aria-label="Role para o conteúdo principal"></div>
+  </section>
+
+  <main id="conteudo-principal">
+    <p class="intro-text">
+      O sistema Calory para agropecuárias oferece funcionalidades sob medida para o seu negócio. Organize o estoque, acompanhe compras e vendas, emita relatórios e otimize o atendimento ao cliente.
+    </p>
+
+    <section class="feature-item">
+      <img src="img/fertilizante.png" alt="Controle de Produtos Agrícolas" class="feature-image" />
+      <div class="feature-text">
+        <h3>Controle de Produtos Agrícolas</h3>
+        <p>Registre e acompanhe fertilizantes, sementes, rações, medicamentos e insumos agrícolas com categorias específicas.</p>
+      </div>
+    </section>
+
+    <section class="feature-item">
+      <img src="img/fornecedor3.png" alt="Gestão de Fornecedores" class="feature-image" />
+      <div class="feature-text">
+        <h3>Gestão de Fornecedores</h3>
+        <p>Tenha controle total sobre pedidos, entregas e contatos com fornecedores da área rural e agroindustrial.</p>
+      </div>
+    </section>
+
+    <section class="feature-item">
+      <img src="img/validade.png" alt="Controle de Estoque por Validade" class="feature-image" />
+      <div class="feature-text">
+        <h3>Controle de Estoque por Validade</h3>
+        <p>Acompanhe produtos com prazos de validade e receba alertas de vencimento para evitar perdas.</p>
+      </div>
+    </section>
+
+    <section class="feature-item">
+      <img src="img/lucro.png" alt="Relatórios de Vendas e Lucro" class="feature-image" />
+      <div class="feature-text">
+        <h3>Relatórios de Vendas e Lucro</h3>
+        <p>Obtenha dados completos sobre vendas, margens de lucro e desempenho de produtos por estação ou categoria.</p>
+      </div>
+    </section>
+
+    <a class="cta-button" href="sistema-empresarial.html">Conheça o Sistema Empresarial</a>
+  </main>
+
+  <footer>
+    <div>© 2025 Calory Sistemas • Todos os direitos reservados • contato@calory.com.br</div>
+    <div class="social-icons">
+      <a href="https://facebook.com" target="_blank" rel="noopener">
+        <img src="img/face.png" alt="Facebook" />
+      </a>
+      <a href="https://instagram.com" target="_blank" rel="noopener">
+        <img src="img/insta.png" alt="Instagram" />
+      </a>
+    </div>
+  </footer>
+
+</body>
+</html>

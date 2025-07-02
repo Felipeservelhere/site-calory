@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nota Fiscal - Calory</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    header {
+      width: 100%;
+      padding: 10px 3%;
+      background-color: #ffffff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      max-height: 100px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      font-weight: 500;
+      color: #333;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .nav-links a:hover {
+      color: #007bff;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background-color: #333;
+      margin: 4px 0;
+      transition: 0.4s;
+    }
+
+    .banner {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background: url('Sistemanota (1).png') no-repeat center center;
+      background-size: cover;
+      margin-top: 60px;
+    }
+
+    .titulo {
+      position: absolute;
+      top: 22%;
+      left: 2%;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .descricao {
+      position: absolute;
+      top: 40%;
+      left: 5%;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #d8d8d8;
+    }
+
+    .botao {
+      position: absolute;
+      top: 50%;
+      left: 5%;
+      padding: 15px 30px;
+      background-color: #00c851;
+      color: #ffffff;
+      font-size: 1.2rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 12px;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      transition: background 0.3s ease;
+    }
+
+    .botao:hover {
+      background-color: #009b3e;
+    }
+
+    .info {
+      position: absolute;
+      top: 65%;
+      left: 5%;
+      font-size: 1rem;
+      color: #d8d8d8;
+    }
+
+    footer {
+      background-color: #ffffff;
+      color: #333;
+      text-align: center;
+      padding: 40px 10px;
+      margin-top: 30px;
+      box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
+      font-size: 1rem;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      z-index: 1000;
+    }
+
+    .whatsapp-float img {
+      width: 120px;
+      height: 120px;
+      transition: transform 0.3s ease;
+    }
+
+    .whatsapp-float img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Responsivo */
+    @media (max-width: 768px) {
+      .banner {
+        background: url('imagemfiscalmp.png') no-repeat center center;
+    background-size: cover;
+    min-height: 600px; /* ou 700px conforme o conteúdo */
+    height: auto;
+      }
+
+      .titulo {
+        left: 6%;
+        top: 20%;
+        font-size: 1.4rem;
+      }
+
+      .descricao {
+        left: 6%;
+        top: 26%;
+        font-size: 1rem;
+      }
+
+      .botao {
+        top: 42%;
+        font-size: 0.9rem;
+        padding: 12px 24px;
+      }
+
+      .info{
+        font-size: 0.7rem;
+        top: 50%;
+        text-align: center;
+        left: 7%;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: #fff;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        padding: 20px;
+        display: none;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-links a {
+        padding: 10px 0;
+        width: 100%;
+        border-bottom: 1px solid #eee;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <a href="home.html"><img src="logo-antiga.PNG" alt="Logo Calory"></a>
+    </div>
+
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="servicos.html">Serviços</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <div class="titulo">Quer emitir uma nota<span style="color: white; padding: 2px 8px; border-radius: 5px;">Fiscal?</span></div>
+    <div class="descricao">
+      Com a Calory, você emite suas notas <br> fiscais de forma simples, rápida e sem complicações.
+    </div>
+    <a href="#contato" class="botao">Entre em contato ainda hoje</a>
+    <div class="info">Role a página para mais informações <br> sobre nosso sistema</div>
+  </div>
+
+  <footer id="contato">
+    © 2025 Calory Sistemas • Todos os direitos reservados • contato@calory.com.br
+  </footer>
+
+  <a href="https://wa.me/5599999999999" class="whatsapp-float" target="_blank" aria-label="Fale conosco no WhatsApp">
+    <img src="3049286_410201-PD391H-802-removebg-preview.png" alt="WhatsApp" />
+  </a>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("navLinks");
+      nav.classList.toggle("active");
+    }
+  </script>
+
+</body>
+</html>

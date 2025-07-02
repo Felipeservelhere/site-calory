@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tela de Clientes - Sistema Calory</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      padding-top: 100px;
+    }
+
+    header {
+      width: 100%;
+      padding: 10px 3%;
+      background-color: #ffffff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .logo img {
+      max-height: 100px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links a {
+      margin-left: 30px;
+      font-weight: 500;
+      color: #333;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .nav-links a:hover {
+      color: #007bff;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #007bff;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #555;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .detalhes-container {
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+      margin-top: 60px;
+    }
+
+    .detalhes-linha {
+      display: flex;
+      align-items: flex-start;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .detalhes-linha img {
+      width: 100%;
+      max-width: 520px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      cursor: zoom-in;
+    }
+
+    .detalhes-linha img:hover {
+      transform: scale(1.03);
+    }
+
+    .detalhes-linha .texto {
+      flex: 1;
+      min-width: 280px;
+      text-align: left;
+    }
+
+    .detalhes-linha h2 {
+      font-size: 1.9rem;
+      color: #007bff;
+      margin-bottom: 12px;
+    }
+
+    .detalhes-linha p {
+      font-size: 1rem;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .galeria {
+      margin-top: 80px;
+      text-align: center;
+    }
+
+    .galeria h2 {
+      font-size: 2rem;
+      color: #007bff;
+      margin-bottom: 30px;
+    }
+
+    .galeria-imagens {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .galeria-imagens a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .bloco-interface {
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 12px;
+      width: 240px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .bloco-interface:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+
+    .bloco-interface img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .bloco-interface h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      color: #007bff;
+    }
+
+    .bloco-interface span {
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    .botao-pedido {
+      display: inline-block;
+      padding: 15px 40px;
+      background-color: #007bff;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-top: 50px;
+      transition: background-color 0.3s ease;
+    }
+
+    .botao-pedido:hover {
+      background-color: #0056b3;
+    }
+
+    footer {
+      background-color: #3f3f3f;
+      color: #ffffff;
+      padding: 40px 40px 50px 40px;
+      font-size: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 20px;
+    }
+
+    .social-icons a img {
+      width: 32px;
+      height: 32px;
+      filter: brightness(0) invert(1);
+      transition: transform 0.2s ease;
+    }
+
+    .social-icons a img:hover {
+      transform: scale(1.1);
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      cursor: zoom-in;
+      transition: transform 0.3s ease;
+    }
+
+    .close-lightbox {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 2100;
+      background: rgba(0,0,0,0.3);
+      border-radius: 8px;
+      padding: 0 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <a href="home.html"><img src="logo-antiga.PNG" alt="Logo Calory"></a>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Início</a>
+      <a href="servicos.html">Serviços</a>
+      <a href="sistema-empresarial.html">Sistema</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Tela de Clientes</h1>
+    <p>A tela de clientes do Sistema Calory foi projetada para oferecer controle completo sobre o cadastro e gestão dos seus clientes.</p>
+
+    <div class="detalhes-container">
+      <div class="detalhes-linha">
+        <img src="img/cadastro clientes.PNG" alt="Cadastro de Cliente" class="zoom-img">
+        <div class="texto">
+          <h2>Cadastro Individual do Cliente</h2>
+          <p>Nesta tela, é possível preencher todos os dados pessoais e profissionais de um cliente. Há campos para CPF, endereço, contatos, foto e até informações do cônjuge e local de trabalho.</p>
+        </div>
+      </div>
+
+      <div class="detalhes-linha">
+        <img src="img/clientes cadastrados.PNG" alt="Lista de Clientes Cadastrados" class="zoom-img">
+        <div class="texto">
+          <h2>Lista de Clientes Cadastrados</h2>
+          <p>Oferece uma visão geral de todos os clientes do sistema. É possível ordenar e localizar rapidamente pelo nome, telefone, CPF, endereço, entre outros filtros úteis.</p>
+        </div>
+      </div>
+
+      <div class="detalhes-linha">
+        <img src="img/limitecredito.PNG" alt="Tela de Limite de Crédito" class="zoom-img">
+        <div class="texto">
+          <h2>Gestão de Limite de Crédito</h2>
+          <p>Você pode definir o limite de crédito de cada cliente com base na renda mensal informada. O sistema também permite aplicar regras administrativas para bloqueios automáticos.</p>
+        </div>
+      </div>
+    </div>
+
+    <section class="galeria">
+      <h2>Veja mais da Interface</h2>
+      <div class="galeria-imagens">
+        <a href="tela-inicial.html">
+          <div class="bloco-interface">
+            <img src="img/telainicial.png" alt="Tela Inicial">
+            <h3>Tela Inicial</h3>
+            <span>Clique para saber mais</span>
+          </div>
+        </a>
+        <a href="estoque.html">
+          <div class="bloco-interface">
+            <img src="img/estoque.png" alt="Tela de Estoque">
+            <h3>Tela de Estoque</h3>
+            <span>Clique para saber mais</span>
+          </div>
+        </a>
+        <a href="documentosfiscais.html">
+          <div class="bloco-interface">
+            <img src="img/documentosfiscais.png" alt="Documentos Fiscais">
+            <h3>Documentos Fiscais</h3>
+            <span>Clique para saber mais</span>
+          </div>
+        </a>
+      </div>
+
+      <div style="text-align: center;">
+        <a href="formulario.html" class="botao-pedido">Solicitar meu Sistema Agora</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>© 2025 Calory Sistemas • Todos os direitos reservados • contato@calory.com.br</div>
+    <div class="social-icons">
+      <a href="https://facebook/calorysistemas.com" target="_blank" rel="noopener">
+        <img src="img/face.png" alt="Facebook">
+      </a>
+      <a href="https://www.instagram.com/calorysistemas/" target="_blank" rel="noopener">
+        <img src="img/insta.png" alt="Instagram">
+      </a>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox">
+    <span class="close-lightbox" id="closeBtn">&times;</span>
+    <img src="" alt="Imagem ampliada" id="lightbox-img">
+  </div>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.getElementById('closeBtn');
+    const zoomImgs = document.querySelectorAll('.zoom-img');
+    let isZoomed = false;
+
+    zoomImgs.forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightbox.classList.add('active');
+        lightboxImg.style.transform = 'scale(1)';
+        isZoomed = false;
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+      lightboxImg.src = '';
+      lightboxImg.style.transform = 'scale(1)';
+      isZoomed = false;
+    });
+
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === lightbox) {
+        lightbox.classList.remove('active');
+        lightboxImg.src = '';
+        lightboxImg.style.transform = 'scale(1)';
+        isZoomed = false;
+      }
+    });
+
+    lightboxImg.addEventListener('click', function(e) {
+      const rect = lightboxImg.getBoundingClientRect();
+      const offsetX = e.clientX - rect.left;
+      const offsetY = e.clientY - rect.top;
+      if (!isZoomed) {
+        const originX = (offsetX / rect.width) * 100;
+        const originY = (offsetY / rect.height) * 100;
+        lightboxImg.style.transformOrigin = `${originX}% ${originY}%`;
+        lightboxImg.style.transform = 'scale(2)';
+        isZoomed = true;
+      } else {
+        lightboxImg.style.transform = 'scale(1)';
+        isZoomed = false;
+      }
+    });
+  </script>
+
+</body>
+</html>
