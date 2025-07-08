@@ -16,10 +16,9 @@
     body {
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, #e9f5ff, #ffffff);
-      padding: 120px 20px 60px;
+      padding-top: 120px;
       display: flex;
-      justify-content: center;
-      align-items: flex-start;
+      flex-direction: column;
       min-height: 100vh;
     }
 
@@ -37,27 +36,78 @@
       z-index: 1000;
     }
 
-    .logo {
-      flex-grow: 1;
-      display: flex;
-      align-items: center;
-    }
-
     .logo img {
       max-height: 100px;
       width: auto;
     }
 
+    .nav-links {
+      display: flex;
+      gap: 50px;
+    }
+
     .nav-links a {
-      margin-left: 30px;
       font-weight: 500;
       color: #333;
       text-decoration: none;
-      font-size: 16px;
+      font-size: 25px;
     }
 
     .nav-links a:hover {
       color: #007bff;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background: #333;
+      margin: 4px 0;
+      border-radius: 3px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #fff;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding: 10px 0;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        font-size: 18px;
+        padding: 10px 20px;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      header {
+        flex-wrap: wrap;
+      }
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 20px 60px;
     }
 
     .form-container {
@@ -147,6 +197,35 @@
       background-color: #1c7ccf;
     }
 
+    footer {
+      background-color: #3f3f3f;
+      color: #ffffff;
+      padding: 40px 20px;
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .social-icons a img {
+      width: 32px;
+      height: 32px;
+      filter: brightness(0) invert(1);
+      transition: transform 0.2s ease;
+    }
+
+    .social-icons a img:hover {
+      transform: scale(1.1);
+    }
+
     .thank-you-modal {
       display: none;
       position: fixed;
@@ -182,37 +261,6 @@
       font-size: 1rem;
       cursor: pointer;
     }
-
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .nav-links {
-        margin-top: 10px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 15px;
-      }
-
-      .nav-links a {
-        margin-left: 0;
-        font-size: 14px;
-      }
-
-      .form-container {
-        padding: 25px 20px;
-      }
-
-      h1 {
-        font-size: 1.5rem;
-      }
-
-      button {
-        font-size: 1rem;
-      }
-    }
   </style>
 </head>
 <body>
@@ -223,89 +271,98 @@
         <img src="logo-antiga.PNG" alt="Logo Calory" />
       </a>
     </div>
-    <nav class="nav-links">
-      <a href="home.html#servicos">Serviços</a>
-      <a href="home.html#contato">Contato</a>
+
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="produtos.html" onclick="toggleMenu()">Produtos</a>
+      <a href="contato.html" onclick="toggleMenu()">Contato</a>
     </nav>
   </header>
 
-  <div class="form-container">
-    <h1>Quero meu sistema</h1>
-    <form id="sistemaForm" action="https://formsubmit.co/felipeservelhere.calory@gmail.com" method="POST" novalidate>
-      <input type="hidden" name="_captcha" value="false">
+  <main>
+    <div class="form-container">
+      <h1>Quero meu sistema</h1>
+      <form id="sistemaForm" action="https://formsubmit.co/felipeservelhere.calory@gmail.com" method="POST" novalidate>
+        <input type="hidden" name="_captcha" value="false">
 
-      <section>
-        <h2>Informações da empresa</h2>
-        <label for="empresa">Nome da empresa *</label>
-        <input type="text" id="empresa" name="Empresa" required />
+        <section>
+          <h2>Informações da empresa</h2>
+          <label for="empresa">Nome da empresa *</label>
+          <input type="text" id="empresa" name="Empresa" required />
 
-        <label for="telefone">Telefone *</label>
-        <input type="text" id="telefone" name="Telefone" required />
+          <label for="telefone">Telefone *</label>
+          <input type="text" id="telefone" name="Telefone" required />
 
-        <label for="email">Email <span class="optional">(Opcional)</span></label>
-        <input type="email" id="email" name="Email" />
+          <label for="email">Email <span class="optional">(Opcional)</span></label>
+          <input type="email" id="email" name="Email" />
 
-        <label for="cidade">Cidade *</label>
-        <input type="text" id="cidade" name="Cidade" required />
-      </section>
+          <label for="cidade">Cidade *</label>
+          <input type="text" id="cidade" name="Cidade" required />
+        </section>
 
-      <section>
-        <h2>Sobre a sua necessidade</h2>
-        <label for="experiencia">Você já possui experiência com sistemas? *</label>
-        <select id="experiencia" name="Experiência" required>
-          <option value="" disabled selected>Selecione</option>
-          <option value="Sim">Sim</option>
-          <option value="Não">Não</option>
-        </select>
+        <section>
+          <h2>Sobre a sua necessidade</h2>
+          <label for="experiencia">Você já possui experiência com sistemas? *</label>
+          <select id="experiencia" name="Experiência" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="Sim">Sim</option>
+            <option value="Não">Não</option>
+          </select>
 
-        <label for="setor">Ramo de atividade *</label>
-        <input type="text" id="setor" name="Setor" required />
+          <label for="setor">Ramo de atividade *</label>
+          <input type="text" id="setor" name="Setor" required />
 
-        <label for="funcionarios">Quantidade de funcionários *</label>
-        <select id="funcionarios" name="Funcionários" required>
-          <option value="" disabled selected>Selecione</option>
-          <option value="1-5">1 a 5</option>
-          <option value="6-10">6 a 10</option>
-          <option value="11-20">11 a 20</option>
-          <option value="21-50">21 a 50</option>
-          <option value="51+">Mais de 50</option>
-        </select>
-      </section>
+          <label for="funcionarios">Quantidade de funcionários *</label>
+          <select id="funcionarios" name="Funcionários" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="1-5">1 a 5</option>
+            <option value="6-10">6 a 10</option>
+            <option value="11-20">11 a 20</option>
+            <option value="21-50">21 a 50</option>
+            <option value="51+">Mais de 50</option>
+          </select>
+        </section>
 
-      <section>
-        <h2>Funcionalidades desejadas</h2>
-        <div class="checkbox-group">
-          <label><input type="checkbox" name="Funcionalidades[]" value="Nota Fiscal" /> Emissão de nota fiscal</label>
-          <label><input type="checkbox" name="Funcionalidades[]" value="Estoque" /> Controle de estoque</label>
-          <label><input type="checkbox" name="Funcionalidades[]" value="Financeiro" /> Controle financeiro</label>
-          <label><input type="checkbox" name="Funcionalidades[]" value="Gestão" /> Gestão completa</label>
-          <label><input type="checkbox" name="Funcionalidades[]" value="Relatórios" /> Relatórios</label>
-          <label><input type="checkbox" name="Funcionalidades[]" value="Suporte" /> Suporte técnico</label>
-        </div>
+        <section>
+          <h2>Funcionalidades desejadas</h2>
+          <div class="checkbox-group">
+            <label><input type="checkbox" name="Funcionalidades[]" value="Nota Fiscal" /> Emissão de nota fiscal</label>
+            <label><input type="checkbox" name="Funcionalidades[]" value="Estoque" /> Controle de estoque</label>
+            <label><input type="checkbox" name="Funcionalidades[]" value="Financeiro" /> Controle financeiro</label>
+            <label><input type="checkbox" name="Funcionalidades[]" value="Gestão" /> Gestão completa</label>
+            <label><input type="checkbox" name="Funcionalidades[]" value="Relatórios" /> Relatórios</label>
+            <label><input type="checkbox" name="Funcionalidades[]" value="Suporte" /> Suporte técnico</label>
+          </div>
 
-        <label for="prazo">Prazo para implantação *</label>
-        <select id="prazo" name="Prazo" required>
-          <option value="" disabled selected>Selecione</option>
-          <option value="1 semana">1 semana</option>
-          <option value="1 mês">1 mês</option>
-          <option value="3 meses">3 meses</option>
-          <option value="6 meses">6 meses</option>
-          <option value="Mais de 6 meses">Mais de 6 meses</option>
-        </select>
-      </section>
+          <label for="prazo">Prazo para implantação *</label>
+          <select id="prazo" name="Prazo" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="1 semana">1 semana</option>
+            <option value="1 mês">1 mês</option>
+            <option value="3 meses">3 meses</option>
+            <option value="6 meses">6 meses</option>
+            <option value="Mais de 6 meses">Mais de 6 meses</option>
+          </select>
+        </section>
 
-      <section>
-        <h2>Outros</h2>
-        <label for="sistemaAtual">Já utiliza sistema? <span class="optional">(Opcional)</span></label>
-        <input type="text" id="sistemaAtual" name="Sistema Atual" />
+        <section>
+          <h2>Outros</h2>
+          <label for="sistemaAtual">Já utiliza sistema? <span class="optional">(Opcional)</span></label>
+          <input type="text" id="sistemaAtual" name="Sistema Atual" />
 
-        <label for="comentarios">Comentários <span class="optional">(Opcional)</span></label>
-        <textarea id="comentarios" name="Comentários" rows="4"></textarea>
-      </section>
+          <label for="comentarios">Comentários <span class="optional">(Opcional)</span></label>
+          <textarea id="comentarios" name="Comentários" rows="4"></textarea>
+        </section>
 
-      <button type="submit"><i class="fa fa-paper-plane"></i> Enviar</button>
-    </form>
-  </div>
+        <button type="submit"><i class="fa fa-paper-plane"></i> Enviar</button>
+      </form>
+    </div>
+  </main>
 
   <!-- Modal de agradecimento -->
   <div class="thank-you-modal" id="thankYouModal">
@@ -316,7 +373,20 @@
     </div>
   </div>
 
+  <footer>
+    <div class="texto-footer">© 2025 Calory Sistemas • contato@calory.com.br</div>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/calorysistemas/"><img src="icon/face.png" alt="Facebook" /></a>
+      <a href="https://www.instagram.com/calorysistemas/"><img src="icon/insta.png" alt="Instagram" /></a>
+    </div>
+  </footer>
+
   <script>
+    function toggleMenu() {
+      const nav = document.getElementById('navLinks');
+      nav.classList.toggle('active');
+    }
+
     document.getElementById('sistemaForm').addEventListener('submit', function(e) {
       e.preventDefault();
 
@@ -331,9 +401,7 @@
       fetch(this.action, {
         method: this.method,
         body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
+        headers: { 'Accept': 'application/json' }
       })
       .then(response => {
         if (response.ok) {

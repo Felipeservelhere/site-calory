@@ -1,267 +1,720 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nota Fiscal - Calory</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nota Fiscal - Calory</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Reset e Estilos Gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f9f9f9;
-    }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: #333333;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
 
-    header {
-      width: 100%;
-      padding: 10px 3%;
-      background-color: #ffffff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-    }
+        /* Header Styles (PADRONIZADO) */
+        header {
+            width: 100%;
+            padding: 10px 3%;
+            background-color: #ffffff;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            flex-wrap: wrap;
+        }
 
-    .logo {
-      flex-grow: 1;
-      display: flex;
-      align-items: center;
-    }
+        .logo img {
+            max-height: 100px;
+            width: auto;
+        }
 
-    .logo img {
-      max-height: 100px;
-      width: auto;
-    }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-    }
+        .link-azul {
+            background-color: #007bff;
+            color: #fff !important;
+            padding: 0.625rem 1.375rem;
+            border-radius: 1.5625rem;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+            display: inline-block;
+        }
 
-    .nav-links a {
-      font-weight: 500;
-      color: #333;
-      text-decoration: none;
-      font-size: 16px;
-    }
+        .link-azul:hover {
+            background-color: #0056b3;
+            color: #fff !important;
+        }
 
-    .nav-links a:hover {
-      color: #007bff;
-    }
+        .nav-links a {
+            font-weight: 500;
+            color: #333;
+            text-decoration: none;
+            font-size: 1.25rem;
+        }
 
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
+        .nav-links a:hover {
+            color: #007bff;
+        }
 
-    .menu-toggle span {
-      width: 25px;
-      height: 3px;
-      background-color: #333;
-      margin: 4px 0;
-      transition: 0.4s;
-    }
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
 
-    .banner {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      background: url('Sistemanota (1).png') no-repeat center center;
-      background-size: cover;
-      margin-top: 60px;
-    }
+        .menu-toggle span {
+            height: 3px;
+            width: 25px;
+            background: #333;
+            margin: 4px 0;
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            position: relative;
+        }
 
-    .titulo {
-      position: absolute;
-      top: 22%;
-      left: 2%;
-      font-size: 3.5rem;
-      font-weight: 700;
-      color: #ffffff;
-    }
+        .menu-toggle.active span {
+            background-color: #333;
+            transform: translateY(7px) rotate(45deg);
+        }
 
-    .descricao {
-      position: absolute;
-      top: 40%;
-      left: 5%;
-      font-size: 1.2rem;
-      font-weight: 500;
-      color: #d8d8d8;
-    }
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
 
-    .botao {
-      position: absolute;
-      top: 50%;
-      left: 5%;
-      padding: 15px 30px;
-      background-color: #00c851;
-      color: #ffffff;
-      font-size: 1.2rem;
-      font-weight: 600;
-      border: none;
-      border-radius: 12px;
-      text-decoration: none;
-      cursor: pointer;
-      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-      transition: background 0.3s ease;
-    }
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
 
-    .botao:hover {
-      background-color: #009b3e;
-    }
+        /* Banner Styles (ORIGINAL) */
+        .banner {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background: url('banner/emissaonota.png') no-repeat center center;
+            background-size: cover;
+            margin-top: 60px;
+        }
 
-    .info {
-      position: absolute;
-      top: 65%;
-      left: 5%;
-      font-size: 1rem;
-      color: #d8d8d8;
-    }
+        .titulo {
+            position: absolute;
+            top: 22%;
+            left: 2%;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #4bda13 !important;
+        }
 
-    footer {
-      background-color: #ffffff;
-      color: #333;
-      text-align: center;
-      padding: 40px 10px;
-      margin-top: 30px;
-      box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
-      font-size: 1rem;
-    }
+        .descricao {
+            position: absolute;
+            top: 40%;
+            left: 5%;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #d8d8d8;
+        }
 
-    .whatsapp-float {
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
-      z-index: 1000;
-    }
+        .botao {
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            padding: 15px 30px;
+            background-color: #00c851;
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease;
+        }
 
-    .whatsapp-float img {
-      width: 120px;
-      height: 120px;
-      transition: transform 0.3s ease;
-    }
+        .botao:hover {
+            background-color: #009b3e;
+        }
 
-    .whatsapp-float img:hover {
-      transform: scale(1.05);
-    }
+        /* Footer Styles (PADRONIZADO) */
+        footer {
+            background-color: #3f3f3f;
+            color: #ffffff;
+            padding: 40px 20px;
+            font-size: 0.8rem !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
 
-    /* Responsivo */
-    @media (max-width: 768px) {
-      .banner {
-        background: url('imagemfiscalmp.png') no-repeat center center;
-    background-size: cover;
-    min-height: 600px; /* ou 700px conforme o conteúdo */
-    height: auto;
-      }
+        .social-icons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
 
-      .titulo {
-        left: 6%;
-        top: 20%;
-        font-size: 1.4rem;
-      }
+        .social-icons a img {
+            width: 32px;
+            height: 32px;
+            filter: brightness(0) invert(1);
+            transition: transform 0.2s ease;
+        }
 
-      .descricao {
-        left: 6%;
-        top: 26%;
-        font-size: 1rem;
-      }
+        .social-icons a img:hover {
+            transform: scale(1.1);
+        }
 
-      .botao {
-        top: 42%;
-        font-size: 0.9rem;
-        padding: 12px 24px;
-      }
+        /* WhatsApp Float Button Styles (PADRONIZADO) */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px !important;
+            right: 30px !important;
+            z-index: 1000;
+        }
 
-      .info{
-        font-size: 0.7rem;
-        top: 50%;
-        text-align: center;
-        left: 7%;
-      }
+        .whatsapp-float a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
 
-      .menu-toggle {
-        display: flex;
-      }
+        .whatsapp-float .whatsapp-text {
+            display: inline-block;
+            background-color: #fff;
+            padding: 7px 10px;
+            font-size: 0.8rem;
+            font-weight: 100;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin-right: 0;
+            position: static;
+            z-index: 1;
+            color: #333;
+        }
 
-      .nav-links {
-        position: absolute;
-        top: 100%;
-        right: 0;
-        background-color: #fff;
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-        padding: 20px;
-        display: none;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      }
+        .whatsapp-float .whatsapp-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #25d366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 0;
+        }
 
-      .nav-links a {
-        padding: 10px 0;
-        width: 100%;
-        border-bottom: 1px solid #eee;
-      }
+        .whatsapp-float .whatsapp-icon img {
+            width: 40px;
+            height: 40px;
+        }
 
-      .nav-links.active {
-        display: flex;
-      }
-    }
-  </style>
+        .whatsapp-float:hover .whatsapp-icon {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-float .whatsapp-text {
+            display: none;
+        }
+
+        /* Utility Classes for Responsiveness */
+        .desktop-only {
+            display: inline-block !important;
+            text-decoration: none !important;
+            color: rgb(255, 255, 255) !important;
+        }
+
+        .mobile-only {
+            display: none !important;
+        }
+
+        /* Estilos para telas menores que 900px (Layout Mobile) */
+        @media (max-width: 899.98px) {
+
+            .desktop-only {
+            display: none !important;
+        }
+
+        .mobile-only {
+            display: inline-block !important;
+            text-decoration: none !important;
+            color: rgb(255, 255, 255) !important;
+        }
+
+            header {
+                padding: 10px 3%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                z-index: 999;
+                flex-direction: row;
+                text-align: center;
+            }
+
+            .logo {
+                margin: 0 auto;
+            }
+
+            .logo img {
+                max-height: 50px;
+                width: auto;
+                margin-left: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+                flex-direction: column;
+                cursor: pointer;
+                position: relative;
+                z-index: 1001;
+                margin-top: 0;
+            }
+
+            .menu-toggle span {
+                height: 3px;
+                width: 25px;
+                background-color: #333;
+                margin: 2px 0;
+                border-radius: 2px;
+                transition: transform 0.3s ease, opacity 0.3s ease;
+                position: relative;
+            }
+
+            .menu-toggle.active span {
+                background-color: #333;
+                transform: translateY(7px) rotate(45deg);
+            }
+
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active span:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: #fff;
+                position: relative;
+                top: auto;
+                left: auto;
+                padding: 20px;
+                box-shadow: none;
+                z-index: auto;
+                gap: 20px;
+            }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+                padding: 10px 0;
+                text-align: center;
+                color: #333;
+            }
+
+            .nav-links .link-azul {
+                margin-top: 10px;
+                width: fit-content;
+                text-align: center;
+            }
+
+            .banner {
+                margin-top: 60px;
+                height: 70vh;
+                position: relative;
+                background: url('banner/emissaonotafiscalmb (1).png') no-repeat center center;
+                background-size: cover;
+            }
+
+            .banner::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(59, 59, 59, 0.75);
+                z-index: 1;
+            }
+
+            .titulo {
+                position: absolute;
+                top: 10%;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 2.2rem !important;
+                text-align: center;
+                margin-bottom: 40px;
+                z-index: 2;
+                color: #fff;
+                line-height: 1.2 !important;
+                max-width: 90%;
+            }
+
+            .descricao {
+                position: absolute;
+                top: 39%;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 1rem;
+                text-align: center;
+                z-index: 2;
+                line-height: 1.3;
+                color: #e0e0e0;
+                width: 90%;
+            }
+
+            .botao {
+                position: absolute;
+                top: 55%;
+                left: 50%;
+                transform: translateX(-50%);
+                margin-bottom: 10px;
+                text-align: center;
+                font-size: 1.2rem;
+                z-index: 2;
+                white-space: nowrap;
+            }
+
+            .info {
+                font-size: 0.8rem;
+                top: 70%;
+                left: 50%;
+                transform: translateX(-50%);
+                text-align: center;
+                display: none;
+            }
+
+            .whatsapp-float .whatsapp-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            .whatsapp-float .whatsapp-icon img {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .whatsapp-float {
+                bottom: 10px !important;
+                right: 10px !important;
+            }
+        }
+
+        /* Estilos para a seção de conteúdo */
+        .additional-info {
+            padding: 80px 5% 40px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .additional-info h2 {
+            font-size: 2.4rem;
+            color: #29a8ff;
+            margin-bottom: 40px;
+        }
+
+        .additional-info p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Estilos para a seta de rolagem */
+        .arrow {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            margin-left: -20px;
+            width: 38px;
+            height: 55px;
+            border: 2px solid #f1f1f1;
+            border-radius: 25px;
+            cursor: pointer;
+            z-index: 2;
+            animation: bounce 2s infinite;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 10px;
+        }
+
+        .arrow::after {
+            content: '';
+            display: block;
+            width: 12px;
+            height: 12px;
+            border-bottom: 3px solid #f3f3f3;
+            border-right: 3px solid #f3f3f3;
+            transform: rotate(45deg);
+            margin-top: 6px;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(10px);
+            }
+            60% {
+                transform: translateY(5px);
+            }
+        }
+
+        /* Medium devices (tablets, 768px and up) */
+        @media (min-width: 768px) and (max-width: 991.98px) {
+            .nav-links {
+                gap: 30px;
+            }
+
+            .nav-links a {
+                font-size: 1.1rem;
+            }
+
+            .titulo {
+                font-size: 3rem;
+            }
+        }
+
+        /* Large devices (desktops, 992px and up) */
+        @media (min-width: 992px) and (max-width: 1199.98px) {
+            .nav-links {
+                gap: 40px;
+            }
+
+            .titulo {
+                font-size: 3.2rem;
+            }
+        }
+
+        /* Extra large devices (large desktops, 1200px and up) */
+        @media (min-width: 1200px) {
+            .nav-links {
+                gap: 50px;
+            }
+
+            .titulo {
+                font-size: 3.5rem;
+            }
+        }
+
+        /* Media Query para telas maiores que 1550px */
+        @media (min-width: 1550px) {
+            .titulo {
+                font-size: 4rem;
+            }
+
+            .descricao {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* Estilos para telas menores que 350px */
+        @media (max-width: 349.98px) {
+            .titulo {
+                font-size: 1.8rem !important;
+                top: 15%;
+            }
+
+            .descricao {
+                font-size: 0.9rem;
+                top: 35%;
+            }
+
+            .botao {
+                font-size: 1rem;
+                padding: 10px 20px;
+                top: 50%;
+            }
+
+            .additional-info h2 {
+                font-size: 1.6rem;
+            }
+
+            .additional-info p {
+                font-size: 1rem;
+            }
+
+            footer {
+                font-size: 0.7rem !important;
+                padding: 20px 10px;
+            }
+
+            .social-icons a img {
+                width: 24px;
+                height: 24px;
+            }
+
+            .whatsapp-float .whatsapp-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            .whatsapp-float .whatsapp-icon img {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-  <header>
-    <div class="logo">
-      <a href="home.html"><img src="logo-antiga.PNG" alt="Logo Calory"></a>
+    <header>
+        <div class="logo">
+            <a href="home.html"><img src="logo-antiga.PNG" alt="Logo Calory"></a>
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="nav-links">
+            <a href="produtos.html">Produtos</a>
+            <a href="contato.html">Contato</a>
+            <a class="link-azul desktop-only"
+                href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+solicitar+um+orçamento+para+o+meu+sistema!">Obtenha
+                o sistema</a>
+            <a class="link-azul mobile-only"
+                href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+solicitar+um+orçamento+para+o+meu+sistema!">Obtenha
+                o sistema</a>
+        </nav>
+    </header>
+
+    <div class="banner">
+        <div class="titulo">
+            <span>Quer emitir uma</span>
+            <span>Nota Fiscal?</span>
+        </div>
+        <div class="descricao">
+            Com a Calory, você emite suas notas fiscais de forma simples, <br>
+            rápida e sem complicações.
+        </div>
+        <a href="formulario.html" class="botao">Faça uma simulação</a>
+        <div class="arrow"
+            onclick="document.getElementById('conteudo-principal').scrollIntoView({ behavior: 'smooth' });"
+            tabindex="0" role="button" aria-label="Role para o conteúdo principal"></div>
     </div>
 
-    <div class="menu-toggle" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
+    <section class="additional-info" id="conteudo-principal">
+        <h2>Sobre a Emissão de Notas Fiscais</h2>
+        <p>
+            Com a Calory, você emite suas notas fiscais de forma simples, rápida e sem complicações. Nosso sistema
+            permite que você gere notas fiscais eletrônicas (NF-e) e notas fiscais de serviço (NFS-e) de maneira
+            eficiente, garantindo a conformidade com a legislação e facilitando a gestão do seu negócio.
+        </p>
+    </section>
+
+    <footer>
+        <div class="texto-footer">
+            © 2025 Calory Sistemas • contato@calory.com.br
+        </div>
+        <div class="social-icons">
+            <a class="desktop-only" href="https://www.facebook.com/calorysistemas/" target="_blank"
+                rel="noopener noreferrer" aria-label="Facebook"><img src="icon/face.png" alt="Facebook" /></a>
+            <a class="mobile-only" href="https://www.facebook.com/calorysistemas/" target="_blank"
+                rel="noopener noreferrer" aria-label="Facebook"><img src="icon/face.png" alt="Facebook" /></a>
+
+            <a class="desktop-only" href="https://www.instagram.com/calorysistemas/" target="_blank"
+                rel="noopener noreferrer" aria-label="Instagram"><img src="icon/insta.png" alt="Instagram" /></a>
+            <a class=" mobile-only" href="https://www.instagram.com/calorysistemas/" target="_blank"
+                rel="noopener noreferrer" aria-label="Instagram"><img src="icon/insta.png" alt="Instagram" /></a>
+        </div>
+    </footer>
+
+    <div class="whatsapp-float">
+        <!-- Botão para DESKTOP -->
+        <a class="desktop-only"
+            href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+tirar+algumas+dúvidas+sobre+o+sistema!">
+            <span class="whatsapp-text">Fale Conosco</span>
+            <span class="whatsapp-icon">
+                <img src="icon/whats.png" alt="WhatsApp" />
+            </span>
+        </a>
+
+        <!-- Botão para MOBILE -->
+        <a class="mobile-only"
+            href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+tirar+algumas+dúvidas+sobre+o+sistema!">
+            <span class="whatsapp-text">Fale Conosco</span>
+            <span class="whatsapp-icon">
+                <img src="icon/whats.png" alt="WhatsApp" />
+            </span>
+        </a>
     </div>
 
-    <nav class="nav-links" id="navLinks">
-      <a href="servicos.html">Serviços</a>
-      <a href="contato.html">Contato</a>
-    </nav>
-  </header>
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.nav-links');
+            const toggle = document.querySelector('.menu-toggle');
+            menu.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
 
-  <div class="banner">
-    <div class="titulo">Quer emitir uma nota<span style="color: white; padding: 2px 8px; border-radius: 5px;">Fiscal?</span></div>
-    <div class="descricao">
-      Com a Calory, você emite suas notas <br> fiscais de forma simples, rápida e sem complicações.
-    </div>
-    <a href="#contato" class="botao">Entre em contato ainda hoje</a>
-    <div class="info">Role a página para mais informações <br> sobre nosso sistema</div>
-  </div>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Adiciona a classe 'touch-device' ao html se houver suporte a touch
+            if ('ontouchstart' in document.documentElement) {
+                document.documentElement.classList.add('touch-device');
+            }
 
-  <footer id="contato">
-    © 2025 Calory Sistemas • Todos os direitos reservados • contato@calory.com.br
-  </footer>
+            // Define o layout inicial como desktop
+            document.documentElement.classList.add('desktop-layout');
 
-  <a href="https://wa.me/5599999999999" class="whatsapp-float" target="_blank" aria-label="Fale conosco no WhatsApp">
-    <img src="3049286_410201-PD391H-802-removebg-preview.png" alt="WhatsApp" />
-  </a>
+            var whatsappLinkDesktop = document.querySelector('.whatsapp-float .desktop-only');
+            var whatsappLinkMobile = document.querySelector('.whatsapp-float .mobile-only');
 
-  <script>
-    function toggleMenu() {
-      const nav = document.getElementById("navLinks");
-      nav.classList.toggle("active");
-    }
-  </script>
+            function isMobile() {
+                return /Android|iOS|iPad|iPhone|iPod/i.test(navigator.userAgent);
+            }
 
+            // Ajusta os links do WhatsApp com base no tipo de dispositivo
+            if (isMobile() && document.documentElement.classList.contains('touch-device')) {
+                whatsappLinkMobile.style.display = 'flex';
+                whatsappLinkDesktop.style.display = 'none';
+            } else {
+                whatsappLinkMobile.style.display = 'none';
+                whatsappLinkDesktop.style.display = 'flex';
+            }
+        });
+    </script>
 </body>
 </html>

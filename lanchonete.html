@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Lanchonete - Calory Sistemas</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" /> 
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
   <style>
+    /* Reset e Estilos Gerais */
     * {
-      margin: 0; padding: 0; box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
+
     body {
       font-family: 'Poppins', sans-serif;
-      background: #fff8f0;
-      color: #007bff;
-      line-height: 1.6;
+      background: #ffffff;
+      color: #333;
       scroll-behavior: smooth;
     }
+
+    /* Estilos do Header */
     header {
       width: 100%;
       padding: 10px 3%;
-      background-color: #ffffff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -28,74 +34,130 @@
       top: 0;
       left: 0;
       z-index: 1000;
+      flex-wrap: wrap;
     }
 
     .logo img {
       max-height: 100px;
-      width: auto;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
+      /* ← isso alinha verticalmente */
+      gap: 50px;
+    }
+
+    .link-azul {
+      background-color: #007bff;
+      color: #fff !important;
+      padding: 10px 22px;
+      border-radius: 25px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+      display: inline-block;
+    }
+
+    .link-azul:hover {
+      background-color: #0056b3;
+      color: #fff !important;
     }
 
     .nav-links a {
-      margin-left: 30px;
       font-weight: 500;
       color: #333;
       text-decoration: none;
-      font-size: 16px;
+      font-size: 25px;
     }
 
     .nav-links a:hover {
       color: #007bff;
     }
-    /* Banner com fundo imagem + overlay */
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      position: relative;
+      z-index: 1001;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: #333;
+      margin: 4px 0;
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      position: relative;
+    }
+
+    .menu-toggle.active span {
+      background-color: #333;
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Estilos do Banner */
     .banner-full {
       position: relative;
       height: 90vh;
-      width: 100%;
-      margin-top: 110px; /* compensar header fixo */
+      margin-top: 100px;
+      background: url('estabelecimentos/lanchonete.png') no-repeat center center/cover;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
       color: #fff;
       padding: 0 20px;
-      background: url('img/Lanchonete.png') no-repeat center center/cover;
     }
+
     .banner-overlay {
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(136, 136, 136, 0.75);
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
       z-index: 1;
     }
+
     .banner-content {
       position: relative;
       z-index: 2;
       max-width: 850px;
     }
+
     .banner-content h1 {
-      font-size: 3.5rem;
+      font-size: 2.8rem;
       font-weight: 700;
       margin-bottom: 15px;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
     }
+
     .banner-content p {
-      font-size: 1.4rem;
-      text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+      font-size: 1.2rem;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
     }
+
     .scroll-down {
-      position: relative;
-      left: 48%;
-      margin-top: 35px;
+      position: absolute;
+      right: 50%;
+      bottom: 150px;
+      transform: translateX(50%);
       width: 38px;
       height: 55px;
-      border: 2px solid white;
+      border: 2px solid #dfdfdf;
       border-radius: 25px;
-      box-sizing: border-box;
       cursor: pointer;
       z-index: 2;
       animation: bounce 2s infinite;
@@ -104,286 +166,437 @@
       align-items: flex-start;
       padding-top: 10px;
     }
+
     .scroll-down::after {
       content: '';
       display: block;
       width: 12px;
       height: 12px;
-      border-bottom: 3px solid white;
-      border-right: 3px solid white;
+      border-bottom: 3px solid #e0e0e0;
+      border-right: 3px solid #e0e0e0;
       transform: rotate(45deg);
       margin-top: 6px;
     }
+
     @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-      40% { transform: translateY(10px); }
-      60% { transform: translateY(5px); }
+
+      0%,
+      20%,
+      50%,
+      80%,
+      100% {
+        transform: translateY(0);
+      }
+
+      40% {
+        transform: translateY(10px);
+      }
+
+      60% {
+        transform: translateY(5px);
+      }
     }
+
+    /* Estilos da Main */
     main {
-      max-width: 900px;
-      margin: 60px auto 80px auto;
-      padding: 0 20px;
+      max-width: 960px;
+      margin: 60px auto;
+      padding: 0 20px 40px 20px;
     }
+
     .intro-text {
       text-align: center;
       margin-bottom: 45px;
-      font-size: 1.25rem;
-      color: #6f5640;
-      max-width: 750px;
+      font-size: 1.2rem;
+      color: #555;
+      max-width: 800px;
       margin-left: auto;
       margin-right: auto;
       font-weight: 500;
     }
 
-    /* Lista vertical de features */
-    .features-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-      padding-left: 0;
-    }
     .feature-item {
       display: flex;
+      flex-direction: column;
+      /* Alinha os itens verticalmente */
       align-items: center;
-      gap: 25px;
-      background: #fff3e0;
-      border-radius: 14px;
-      padding: 20px 25px;
-      box-shadow: 0 6px 20px rgba(67, 186, 255, 0.25);
-      cursor: pointer;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      /* Centraliza os itens horizontalmente */
+      gap: 15px;
+      /* Reduz o espaço entre os itens */
+      background: #f9f9f9;
+      padding: 20px;
+      /* Reduz o preenchimento */
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      max-width: 500px;
+      /* Reduz a largura máxima */
+      margin: 20px auto;
+      text-align: center;
+      /* Centraliza o texto */
     }
-    .feature-item:hover {
-      background: #8bc3ff;
-      box-shadow: 0 10px 30px rgba(67, 186, 255, 0.5);
+
+    .feature-image {
+      width: 80px;
+      /* Reduz o tamanho da imagem */
+      height: 80px;
+      border-radius: 10px;
+      object-fit: cover;
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
-    .feature-icon {
-      flex-shrink: 0;
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(67, 149, 255, 0.35);
-      transition: box-shadow 0.3s ease;
-      background: #fff;
+
+    .feature-text {
+      flex: 1;
+      min-width: auto;
+      /* Remove a largura mínima */
+    }
+
+    .feature-text h3 {
+      color: #007bff;
+      font-size: 1.4rem;
+      /* Reduz o tamanho da fonte */
+      margin-bottom: 5px;
+      /* Reduz o espaço abaixo do título */
+    }
+
+    .feature-text p {
+      color: #444;
+      font-size: 1rem;
+      /* Reduz o tamanho da fonte */
+    }
+
+    .botoes-container {
       display: flex;
       justify-content: center;
-      align-items: center;
-    }
-    .feature-item:hover .feature-icon {
-      box-shadow: 0 8px 25px rgba(34, 148, 255, 0.7);
-    }
-    .feature-icon img {
-      width: 60px;
-      height: 60px;
-      object-fit: contain;
-      user-select: none;
-      pointer-events: none;
-    }
-    .feature-content {
-      flex-grow: 1;
-      color: #3597ff;
-    }
-    .feature-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-    .feature-desc {
-      font-size: 1.05rem;
-      line-height: 1.4;
-      color: #5d4037;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 40px;
     }
 
-    .link-sistema {
-      margin-top: 55px;
-      text-align: center;
-    }
-    .link-sistema a {
+    .cta-button,
+    .cta-button1 {
+      padding: 12px 25px;
+      /* Reduz o preenchimento */
       background-color: #007bff;
       color: white;
-      padding: 16px 32px;
-      font-size: 1.3rem;
-      border-radius: 8px;
+      border-radius: 30px;
       text-decoration: none;
-      box-shadow: 0 8px 15px rgba(67, 202, 255, 0.6);
-      transition: background-color 0.3s ease;
-      display: inline-block;
-      font-weight: 600;
-    }
-    .link-sistema a:hover {
-      background-color: #1949e6;
+      font-weight: bold;
+      font-size: 1rem;
+      /* Reduz o tamanho da fonte */
+      transition: background 0.3s;
     }
 
+    .cta-button:hover,
+    .cta-button1:hover {
+      background-color: #0056b3;
+    }
+
+    .desktop-only {
+      display: inline-block;
+    }
+
+    .mobile-only {
+      display: none;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1000;
+    }
+
+    .whatsapp-float img {
+      width: 60px;
+      height: 60px;
+      transition: transform 0.3s ease;
+    }
+
+    .whatsapp-float img:hover {
+      transform: scale(1.25);
+    }
+
+    /* Estilos do Footer */
     footer {
       background-color: #3f3f3f;
-      color: #ffffff;
-      padding: 40px 40px 50px 40px;
-      font-size: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
     }
+
     .social-icons {
       display: flex;
-      gap: 20px;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 15px;
     }
+
     .social-icons a img {
       width: 32px;
       height: 32px;
       filter: brightness(0) invert(1);
       transition: transform 0.2s ease;
     }
+
     .social-icons a img:hover {
       transform: scale(1.1);
     }
 
-    /* Responsividade */
-    @media (max-width: 720px) {
-      .feature-item {
-        flex-direction: column;
-        text-align: center;
+    /* Media Queries para Responsividade */
+    @media (max-width: 768px) {
+      .desktop-only {
+        display: none;
       }
-      .feature-icon {
-        margin-bottom: 15px;
+
+      .mobile-only {
+        display: inline-block;
       }
-      .feature-content {
-        color: #6f4e37;
-      }
-    }
-    @media (max-width: 420px) {
+
+      /* Estilos do Header em Dispositivos Móveis */
       header {
-        flex-direction: column;
-        padding: 10px 5%;
-        gap: 10px;
+        padding: 10px 3%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 999;
       }
-      .nav-links {
-        flex-direction: column;
+
+      .logo {
+        margin: 0 auto;
+        /* Centraliza o logo */
       }
-      .nav-links a {
+
+      .logo img {
+        max-height: 50px;
+        width: auto;
         margin-left: 0;
-        margin-bottom: 10px;
-        font-size: 18px;
       }
+
+      /* Estilos do Menu Toggle */
+      .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        position: relative;
+        z-index: 1001;
+      }
+
+      .menu-toggle span {
+        height: 3px;
+        width: 25px;
+        background-color: #333;
+        margin: 4px 0;
+        border-radius: 2px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        position: relative;
+      }
+
+      .menu-toggle.active span {
+        background-color: #333;
+        transform: translateY(7px) rotate(45deg);
+      }
+
+      .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-toggle.active span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      /* Estilos dos Links de Navegação */
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #fff;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        gap: 20px;
+      }
+
+      .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        /* Garante que os itens fiquem em coluna */
+        align-items: center;
+        /* Centraliza os itens horizontalmente */
+      }
+
+      .nav-links a {
+        font-size: 1.2rem;
+        padding: 10px 0;
+        text-align: center;
+        color: #333;
+      }
+
+      /* Estilo para o botão "Obtenha o Sistema" no menu */
+      .nav-links .link-azul {
+        margin-top: 10px;
+        /* Adiciona um espaçamento acima do botão */
+        width: fit-content;
+        /* Ajusta a largura ao conteúdo */
+        text-align: center;
+        /* Centraliza o texto dentro do botão */
+      }
+
+      /* Estilos do Banner em Dispositivos Móveis */
+      .banner-full {
+        margin-top: 60px;
+        height: 60vh;
+      }
+
       .banner-content h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
       }
+
       .banner-content p {
         font-size: 1rem;
+      }
+
+      .scroll-down {
+        left: 50%;
+        /* Centraliza horizontalmente */
+        transform: translateX(-50%);
+        /* Ajusta o posicionamento */
+        bottom: 20px;
+      }
+
+      /* Ajustes para o layout vertical em telas menores */
+      main {
+        max-width: 100%;
+        /* Ocupa toda a largura */
+        padding: 0 10px 40px 10px;
+        /* Reduz o preenchimento lateral */
+      }
+
+      .feature-item {
+        max-width: 100%;
+        /* Ocupa toda a largura */
+        margin: 15px auto;
+        /* Reduz a margem vertical */
+        padding: 15px;
+        /* Reduz o preenchimento */
+      }
+
+      .feature-image {
+        width: 70px;
+        /* Reduz ainda mais o tamanho da imagem */
+        height: 70px;
+      }
+
+      .feature-text h3 {
+        font-size: 1.3rem;
+        /* Reduz um pouco o tamanho do título */
       }
     }
   </style>
 </head>
-<body>
 
+<body>
   <header>
     <div class="logo">
-      <a href="home.html"><img src="logo-antiga.PNG" alt="Logo Calory Lanchonete"></a>
+      <a href="home.html"><img src="logo-antiga.PNG" alt="Logo Calory"></a>
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
     <nav class="nav-links">
-      <a href="servicos.html">Serviços</a>
+      <a href="cardapio.html">Cardápio</a>
       <a href="contato.html">Contato</a>
+      <a class="link-azul desktop-only"
+        href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+solicitar+um+orçamento+para+o+meu+sistema!">Obtenha
+        o sistema</a>
+      <a class="link-azul mobile-only"
+        href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+solicitar+um+orçamento+para+o+meu+sistema!">Obtenha
+        o sistema</a>
     </nav>
   </header>
-
-  <section class="banner-full" role="banner" aria-label="Banner principal da lanchonete com título e descrição">
+  <section class="banner-full">
     <div class="banner-overlay"></div>
     <div class="banner-content">
-      <h1>Sistema de Gestão para Lanchonetes</h1>
-      <p>Organize seu atendimento, estoque, vendas e promoções com a plataforma ideal para lanchonetes de todos os tamanhos.</p>
+      <h1>Sistema para Lanchonetes e Restaurantes</h1>
+      <p>Controle pedidos, estoque, entregas e caixa com eficiência em um sistema ágil para seu negócio alimentar.</p>
     </div>
-    <div class="scroll-down" aria-label="Role para baixo" tabindex="0" role="button" title="Role para baixo"></div>
+    <div class="scroll-down"
+      onclick="document.getElementById('conteudo-principal').scrollIntoView({ behavior: 'smooth' });"></div>
   </section>
-
   <main id="conteudo-principal">
-    <p class="intro-text">
-      Nosso sistema foi feito especialmente para lanchonetes, com funcionalidades que facilitam o dia a dia, otimizam o atendimento e aumentam suas vendas.
-    </p>
-
-    <ul class="features-list" role="list">
-      <li class="feature-item" tabindex="0" role="listitem" aria-label="Controle de pedidos em tempo real">
-        <div class="feature-icon">
-          <img src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png" alt="Ícone de pedidos" />
-        </div>
-        <div class="feature-content">
-          <h3 class="feature-title">Controle de Pedidos em Tempo Real</h3>
-          <p class="feature-desc">Acompanhe cada pedido do cliente desde a solicitação até a entrega com atualização instantânea.</p>
-        </div>
-      </li>
-
-      <li class="feature-item" tabindex="0" role="listitem" aria-label="Gerenciamento de Estoque de Ingredientes">
-        <div class="feature-icon">
-          <img src="https://cdn-icons-png.flaticon.com/512/2921/2921822.png" alt="Ícone de estoque" />
-        </div>
-        <div class="feature-content">
-          <h3 class="feature-title">Gerenciamento de Estoque de Ingredientes</h3>
-          <p class="feature-desc">Monitore a quantidade de ingredientes e evite faltar insumos essenciais na cozinha.</p>
-        </div>
-      </li>
-
-      <li class="feature-item" tabindex="0" role="listitem" aria-label="Sistema de Fidelidade e Promoções">
-        <div class="feature-icon">
-          <img src="https://cdn-icons-png.flaticon.com/512/1143/1143662.png" alt="Ícone de fidelidade" />
-        </div>
-        <div class="feature-content">
-          <h3 class="feature-title">Sistema de Fidelidade e Promoções</h3>
-          <p class="feature-desc">Crie campanhas para clientes frequentes e ofereça descontos e brindes especiais.</p>
-        </div>
-      </li>
-
-      <li class="feature-item" tabindex="0" role="listitem" aria-label="Relatórios de Vendas e Desempenho">
-        <div class="feature-icon">
-          <img src="https://cdn-icons-png.flaticon.com/512/1593/1593643.png" alt="Ícone de relatório" />
-        </div>
-        <div class="feature-content">
-          <h3 class="feature-title">Relatórios de Vendas e Desempenho</h3>
-          <p class="feature-desc">Analise dados detalhados para identificar os produtos mais vendidos e otimizar seu negócio.</p>
-        </div>
-      </li>
-
-      <li class="feature-item" tabindex="0" role="listitem" aria-label="Integração com aplicativos de entrega">
-        <div class="feature-icon">
-          <img src="https://cdn-icons-png.flaticon.com/512/3011/3011270.png" alt="Ícone de entrega" />
-        </div>
-        <div class="feature-content">
-          <h3 class="feature-title">Integração com Aplicativos de Entrega</h3>
-          <p class="feature-desc">Gerencie pedidos e entregas diretamente com apps parceiros, agilizando seu atendimento.</p>
-        </div>
-      </li>
-    </ul>
-
-    <div class="link-sistema">
-      <a href="sistema-empresarial.html">Saiba mais sobre nosso Sistema Empresarial</a>
+    <p class="intro-text">O sistema Calory para lanchonetes foi desenvolvido para facilitar o atendimento, otimizar o
+      tempo e dar total controle sobre o seu negócio.</p>
+    <section class="feature-item">
+      <img src="estabelecimentos/lanchonete/cardapio.png" alt="Gestão de Cardápio" class="feature-image">
+      <div class="feature-text">
+        <h3>Gestão de Cardápio</h3>
+        <p>Crie, edite e organize seus pratos e lanches com fotos, preços e categorias.</p>
+      </div>
+    </section>
+    <section class="feature-item">
+      <img src="estabelecimentos/lanchonete/estoque.png" alt="Controle de Estoque" class="feature-image">
+      <div class="feature-text">
+        <h3>Controle de Estoque</h3>
+        <p>Gerencie ingredientes e insumos em tempo real com alertas de reposição.</p>
+      </div>
+    </section>
+    <section class="feature-item">
+      <img src="estabelecimentos/lanchonete/pedido.png" alt="Comandas e Pedidos" class="feature-image">
+      <div class="feature-text">
+        <h3>Comandas e Pedidos</h3>
+        <p>Organize pedidos por mesa ou balcão com controle de tempo e entrega.</p>
+      </div>
+    </section>
+    <section class="feature-item">
+      <img src="estabelecimentos/lanchonete/relatorio.png" alt="Relatórios de Vendas" class="feature-image">
+      <div class="feature-text">
+        <h3>Relatórios de Vendas</h3>
+        <p>Acompanhe os resultados diários, semanais ou mensais com relatórios simples e visuais.</p>
+      </div>
+    </section>
+    <div class="botoes-container">
+      <a href="https://web.whatsapp.com/send?phone=5544999939313&text=Ol%C3%A1%2C+quero+ter+o+melhor+sistema+empresarial+da+regi%C3%A3o%21"
+        class="cta-button1 desktop-only">Obtenha o Sistema Empresarial</a>
+      <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Ol%C3%A1%2C+quero+ter+o+melhor+sistema+empresarial+da+regi%C3%A3o%21"
+        class="cta-button1 mobile-only">Obtenha o Sistema Empresarial</a>
+      <a class="cta-button" href="sistema-empresarial.html?setor=lanchonete">Conheça o Sistema Empresarial</a>
     </div>
   </main>
-
+  <div class="whatsapp-float">
+    <a href="https://web.whatsapp.com/send?phone=5544999939313&text=Ol%C3%A1%2C+vim+pelo+site+e+queria+tirar+algumas+d%C3%BAvidas"
+      class="desktop-only" target="_blank" rel="noopener noreferrer">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp Desktop" />
+    </a>
+    <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Ol%C3%A1%2C+vim+pelo+site+e+queria+tirar+algumas+d%C3%BAvidas"
+      class="mobile-only" target="_blank" rel="noopener noreferrer">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp Mobile" />
+    </a>
+  </div>
   <footer>
-    <div>© 2025 Calory Sistemas • Todos os direitos reservados • contato@calory.com.br</div>
+    <div>© 2025 Calory Sistemas • contato@calory.com.br</div>
     <div class="social-icons">
-      <a href="https://facebook.com" target="_blank" rel="noopener">
-        <img src="img/face.png" alt="Facebook" />
-      </a>
-      <a href="https://instagram.com" target="_blank" rel="noopener">
-        <img src="img/insta.png" alt="Instagram" />
-      </a>
+      <a href="https://www.facebook.com/calorysistemas/"><img src="icon/face.png" alt="Facebook"></a>
+      <a href="https://www.instagram.com/calorysistemas/"><img src="icon/insta.png" alt="Instagram"></a>
     </div>
   </footer>
 
   <script>
-    // Ao clicar na seta, rola suavemente para o conteúdo principal
-    document.querySelector('.scroll-down').addEventListener('click', () => {
-      document.getElementById('conteudo-principal').scrollIntoView({ behavior: 'smooth' });
-    });
-    // Permitir rolar via teclado (Enter ou Espaço) para acessibilidade
-    document.querySelector('.scroll-down').addEventListener('keydown', (e) => {
-      if(e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        document.getElementById('conteudo-principal').scrollIntoView({ behavior: 'smooth' });
-      }
-    });
-  </script>
+    function toggleMenu() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.nav-links');
+      menuToggle.classList.toggle('active');
+      nav.classList.toggle('active');
 
+      // Adiciona/remove a classe 'active' para cada span dentro do menu-toggle
+      const spans = menuToggle.querySelectorAll('span');
+      spans.forEach(span => span.classList.toggle('active'));
+    }
+  </script>
 </body>
+
 </html>

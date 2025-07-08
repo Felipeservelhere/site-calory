@@ -1,700 +1,1327 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Início - Calory</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Início - Calory</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        /* Reset and General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f9f9f9;
-    }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #ffffff;
+            color: #333333;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
 
-    header {
-      width: 100%;
-      padding: 10px 3%;
-      background-color: #ffffff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-    }
+        /* Header Styles */
+        header {
+            width: 100%;
+            padding: 10px 3%;
+            background-color: #ffffff;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            flex-wrap: wrap;
+        }
 
-    .logo img {
-      max-height: 100px;
-      width: auto;
-    }
+        .logo img {
+            max-height: 100px;
+            width: auto;
+        }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-    }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
 
-    .nav-links a {
-      margin-left: 30px;
-      font-weight: 500;
-      color: #333;
-      text-decoration: none;
-      font-size: 16px;
-    }
+        .link-azul {
+            background-color: #007bff;
+            color: #fff !important;
+            padding: 10px 22px;
+            border-radius: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+            display: inline-block;
+        }
 
-    .nav-links a:hover {
-      color: #007bff;
-    }
+        .link-azul:hover {
+            background-color: #0056b3;
+            color: #fff !important;
+        }
 
-    .menu-icon {
-      display: none;
-      font-size: 28px;
-      cursor: pointer;
-      color: #333;
-    }
+        .nav-links a {
+            font-weight: 500;
+            color: #333;
+            text-decoration: none;
+            font-size: 25px;
+        }
 
-    .banner {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      background: url('bannerr (6).png') no-repeat center center;
-      background-size: cover;
-      margin-top: 100px;
-    }
+        .nav-links a:hover {
+            color: #007bff;
+        }
 
-    .titulo {
-      position: absolute;
-      top: 15%;
-      left: 5%;
-      font-size: 3.7rem;
-      font-weight: 800;
-      color: #000;
-    }
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            position: relative;
+            z-index: 1001;
+        }
 
-    .titulo span {
-      color: #ffffff;
-    }
+        .menu-toggle span {
+            height: 3px;
+            width: 25px;
+            background: #333;
+            margin: 4px 0;
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            position: relative;
+        }
 
-    .descricao {
-      position: absolute;
-      top: 32%;
-      left: 5%;
-      font-size: 1.2rem;
-      font-weight: 500;
-      color: #333;
-    }
+        /* Banner Styles */
+        .banner {
+            position: relative;
+            width: 100%;
+            height: auto;
+            background: url('banner/sistema.png') no-repeat center center;
+            background-size: cover;
+            margin-top: 60px;
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+            /* Set default text color to white */
+        }
 
-    .botao {
-      position: absolute;
-      top: 52%;
-      left: 5%;
-      padding: 15px 30px;
-      background-color: #29a8ff;
-      color: #ffffff;
-      font-size: 1.6rem;
-      font-weight: 600;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-      transition: background 0.3s ease;
-      text-decoration: none;
-      display: inline-block;
-    }
+        .titulo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #29a8ff;
+            /* Set text color to white */
+            margin-bottom: 10px;
+        }
 
-    .botao:hover {
-      background-color: #1c7ccf;
-    }
+        .titulo span {
+            color: #29a8ff;
+            /* Set text color to white */
+        }
 
-    /* Blocos abaixo do botão, originais com ícones menores */
-    .blocos-sistema-banner {
-      position: absolute;
-      top: 66%;
-      left: 2%;
-      right: 5%;
-      display: flex;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
+        .descricao {
+            font-size: 1.2rem;
+            font-weight: 500 !important;
+            color: #fff;
+            /* Set text color to white */
+            margin-bottom: 20px;
+        }
 
-    .bloco-sistema {
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 10px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
-      width: 13%;
-      min-width: 70px;
-    }
+        .botao {
+            padding: 12px 25px;
+            background-color: #29a8ff;
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 285px;
+        }
 
-    .bloco-sistema:hover {
-      transform: translateY(-5px);
-    }
+        .botao:hover {
+            background-color: #1c7ccf;
+        }
 
-    .bloco-sistema img {
-      width: 40px;
-      height: auto;
-      margin-bottom: 8px;
-      border-radius: 8px;
-    }
+        .botao:active {
+            transform: scale(0.99);
+        }
 
-    .bloco-sistema h4 {
-      font-size: 1rem;
-      color: #29a8ff;
-      margin-bottom: 6px;
-    }
+        /* System Blocks */
+        .blocos-sistema-banner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
 
-    .bloco-sistema p {
-      font-size: 0.75rem;
-      font-weight: 500;
-      color: #333;
-    }
+        .bloco-sistema {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            width: 80%;
+        }
 
-    /* Seção soluções para diversos segmentos com carrossel */
-    .solucoes-segmentos {
-      padding: 50px 10%;
-      background-color: #f8f8f8;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
+        .bloco-sistema:hover {
+            transform: translateY(-1px);
+        }
 
-    .solucoes-segmentos h2 {
-      font-size: 2.8rem;
-      margin-bottom: 40px;
-      color: #333;
-    }
+        .bloco-sistema img {
+            width: 40px;
+            height: auto;
+            margin-bottom: 8px;
+            border-radius: 8px;
+        }
 
-    .carousel-wrapper {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      padding: 0; /* Garantindo que não tenha padding que cause corte */
-    }
+        .bloco-sistema h4 {
+            font-size: 1rem;
+            color: #29a8ff;
+            margin-bottom: 6px;
+        }
 
-    .segmentos-container {
-      display: flex;
-      gap: 30px;
-      transition: transform 0.5s ease;
-      will-change: transform;
-    }
+        .bloco-sistema p {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #333;
+        }
 
-    .segmento-card {
-      background: #fff;
-      border-radius: 15px;
-      padding: 25px 20px 35px 20px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-      max-width: 300px;
-      width: 100%;
-      transition: transform 0.3s ease;
-      cursor: pointer;
-      text-align: center;
-      flex-shrink: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      min-height: 360px;
-    }
+        /* Solutions Section */
+        .solucoes-segmentos {
+            padding: 30px 5%;
+            background-color: #f8f8f8;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 0;
+        }
 
-    .segmento-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 26px rgba(0,0,0,0.2);
-    }
+        .solucoes-segmentos h2 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: #333;
+        }
 
-    .segmento-card img {
-      width: 260px;
-      height: 180px;
-      border-radius: 15px;
-      margin-bottom: 18px;
-      object-fit: cover;
-      user-select: none;
-      pointer-events: none;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
 
-    .segmento-card p {
-      font-size: 1.5rem;
-      color: #29a8ff;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
+        .segmentos-container {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.5s ease;
+            will-change: transform;
+            padding: 20px 0;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            /* Adicionado para rolagem suave no iOS */
+            scroll-snap-type: x mandatory;
+            /* Garante que os cards "snap" para a posição */
+        }
 
-    .segmento-card .descricao-segmento {
-      font-size: 1rem;
-      color: #333;
-      font-weight: 400;
-      line-height: 1.3;
-      padding: 0 10px;
-      margin-top: auto;
-    }
+        .segmento-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+            width: 100%;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: auto;
+            scroll-snap-align: start;
+        }
 
-    /* Setas do carrossel */
-    .carousel-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: rgba(75, 75, 75, 0.9);
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      border: none;
-      color: white;
-      font-size: 28px;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      transition: background-color 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      user-select: none;
-      z-index: 10;
-    }
+        .segmento-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.2);
+        }
 
-    .carousel-arrow:hover {
-      background-color: #1c7ccf;
-    }
+        .segmento-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            object-fit: cover;
+            user-select: none;
+            pointer-events: none;
+            display: block;
+        }
 
-    .arrow-left {
-      left: 20px;
-    }
+        .segmento-card p {
+            font-size: 1.2rem;
+            color: #29a8ff;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
 
-    .arrow-right {
-      right: 10px;
-    }
+        .segmento-card .descricao-segmento {
+            font-size: 0.9rem;
+            color: #333;
+            font-weight: 400;
+            line-height: 1.3;
+        }
 
-    /* Seção Por que escolher a Calory - bloco */
+        /* Carousel Arrows */
+        .carousel-arrows {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 5%;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
 
-    section.por-que-escolher {
-      padding: 50px 10%;
-      background-color: #fff;
-      text-align: center;
-    }
+        .carousel-arrow {
+            background-color: rgba(75, 75, 75, 0.9);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+        }
 
-    section.por-que-escolher h2 {
-      font-size: 2rem;
-      margin-bottom: 30px;
-    }
+        .carousel-arrow:hover {
+            background-color: #1c7ccf;
+        }
 
-    .por-que-container {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
+        /* Why Choose Us Section */
+        section.por-que-escolher {
+            padding: 30px 5%;
+            background-color: #fff;
+            text-align: center;
+        }
 
-    .por-que-item {
-      max-width: 250px;
-    }
+        section.por-que-escolher h2 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
 
-    .por-que-item img {
-      width: 50px;
-      margin-bottom: 10px;
-    }
+        .por-que-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
 
-    .por-que-item h3 {
-      color: #29a8ff;
-      margin-bottom: 5px;
-    }
+        .por-que-item {
+            max-width: 100%;
+        }
 
-    /* Seção Como funciona - bloco */
+        .por-que-item img {
+            width: 40px;
+            margin-bottom: 10px;
+        }
 
-    section.como-funciona {
-      padding: 50px 10%;
-      background: #ffffff;
-      text-align: center;
-    }
+        .por-que-item h3 {
+            color: #29a8ff;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
 
-    section.como-funciona h2 {
-      font-size: 2rem;
-      margin-bottom: 30px;
-    }
+        /* How It Works Section */
+        section.como-funciona {
+            padding: 30px 5%;
+            background: #ffffff;
+            text-align: center;
+        }
 
-    .como-container {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-    }
+        section.como-funciona h2 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
 
-    .como-item {
-      max-width: 200px;
-    }
+        .como-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
 
-    .como-item img {
-      width: 40px;
-      margin-bottom: 10px;
-    }
+        .como-item {
+            max-width: 100%;
+        }
 
-    .como-item h4 {
-      margin-bottom: 8px;
-      color: #29a8ff;
-    }
+        .como-item img {
+            width: 40px;
+            margin-bottom: 10px;
+        }
 
-    footer {
-      background-color: #3f3f3f;
-      color: #ffffff;
-      padding: 40px 40px 50px 40px;
-      font-size: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .social-icons {
-      display: flex;
-      gap: 20px;
-    }
-    .social-icons a img {
-      width: 32px;
-      height: 32px;
-      filter: brightness(0) invert(1);
-      transition: transform 0.2s ease;
-    }
-    .social-icons a img:hover {
-      transform: scale(1.1);
-    }
+        .como-item h4 {
+            margin-bottom: 8px;
+            color: #29a8ff;
+            font-size: 1.1rem;
+        }
 
-    .whatsapp-float {
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
-      z-index: 1000;
-    }
+        /* Footer Styles */
+        footer {
+            background-color: #3f3f3f;
+            color: #ffffff;
+            padding: 40px;
+            font-size: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100%;
+            margin-top: auto;
+            position: relative;
+        }
 
-    .whatsapp-float img {
-      width: 50px;
-      height: 50px;
-      transition: transform 0.3s ease;
-    }
+        .texto-footer {
+            flex: 1;
+        }
 
-    .whatsapp-float img:hover {
-      transform: scale(1.05);
-    }
+        .social-wrapper {
+            margin-left: 400px;
+            margin-top: 20px;
+            margin-right: 700px;
+        }
 
-    /* Responsividade */
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
 
-    @media (max-width: 1024px) {
-      .segmento-card img {
-        width: 220px;
-        height: 140px;
+        .social-icons a img {
+            width: 32px;
+            height: 32px;
+            filter: brightness(0) invert(1);
+            transition: transform 0.2s ease;
+        }
+
+        .social-icons a img:hover {
+            transform: scale(1.1);
+        }
+
+        /* WhatsApp Float Button Styles */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .whatsapp-float a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #fff;
+            /* Cor do texto */
+        }
+
+        .whatsapp-float .whatsapp-text {
+            background-color: #fff;
+            padding: 7px 10px;
+            font-size: 0.8rem;
+            font-weight: 100;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin-right: 0;
+            /* sem margem, porque usamos gap no flex */
+            position: static;
+            /* remove positioning */
+            z-index: 1;
+            color: #333;
+        }
+
+        .whatsapp-float .whatsapp-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #25d366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 0;
+        }
+
+        .whatsapp-float .whatsapp-icon img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .whatsapp-float:hover .whatsapp-icon {
+            transform: scale(1.1);
+        }
+
+        /* Esconde o texto inicialmente */
+        .whatsapp-float .whatsapp-text {
+            display: none;
+        }
+
+        .desktop-only {
+            display: inline-block;
+        }
+
+        .mobile-only {
+            display: none;
+        }
+
+        /* Media Queries for Larger Screens */
+        @media (min-width: 769px) {
+
+            * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f9ff;
+            color: #333;
+            padding: 100px 0px 40px;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Header Styles (PADRONIZADO) */
+        header {
+            width: 100%;
+            padding: 10px 3%;
+            background-color: #ffffff;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            flex-wrap: wrap;
+        }
+
+        .logo img {
+            max-height: 100px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .link-azul {
+            background-color: #007bff;
+            color: #fff !important;
+            padding: 10px 22px;
+            border-radius: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+            display: inline-block;
+        }
+
+        .link-azul:hover {
+            background-color: #0056b3;
+            color: #fff !important;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: #333;
+            text-decoration: none;
+            font-size: 25px;
+        }
+
+        .nav-links a:hover {
+            color: #007bff;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 2px 0;
+            transition: 0.4s;
+        }
+
+        /* Estilos para o "X" do menu toggle */
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+            .desktop-only {
+                display: inline-block;
+            }
+
+            .mobile-only {
+                display: none;
+            }
+
+            /* Banner */
+            .banner {
+                height: 70vh;
+                margin-top: 70px;
+                padding: 50px;
+                text-align: left;
+                background: url('banner/home.png') no-repeat center center;
+                background-size: cover;
+            }
+
+            .titulo {
+                font-size: 3rem;
+                margin-top: 40px;
+                margin-bottom: 40px;
+            }
+
+            .descricao {
+                font-size: 1.2rem;
+                margin-bottom: 30px;
+            }
+
+            .blocos-sistema-banner {
+                flex-direction: row;
+                justify-content: space-around;
+                margin-top: 40px;
+            }
+
+            .bloco-sistema {
+                width: 20%;
+            }
+
+            /* Solutions Section */
+            .solucoes-segmentos {
+                padding: 50px 10%;
+            }
+
+            .solucoes-segmentos h2 {
+                font-size: 2.5rem;
+                margin-bottom: 40px;
+            }
+
+            .segmentos-container {
+                gap: 30px;
+            }
+
+            .segmento-card {
+                max-width: 300px;
+                min-height: 360px;
+            }
+
+            .carousel-arrow {
+                width: 50px;
+                height: 50px;
+                font-size: 28px;
+            }
+
+            .arrow-left {
+                left: 20px;
+            }
+
+            .arrow-right {
+                right: 20px;
+            }
+
+            /* Why Choose Us Section */
+            section.por-que-escolher {
+                padding: 50px 10%;
+            }
+
+            section.por-que-escolher h2 {
+                font-size: 2rem;
+                margin-bottom: 30px;
+            }
+
+            .por-que-container {
+                flex-direction: row;
+                justify-content: center;
+                gap: 40px;
+            }
+
+            .por-que-item {
+                max-width: 250px;
+            }
+
+            /* How It Works Section */
+            section.como-funciona {
+                padding: 50px 10%;
+            }
+
+            section.como-funciona h2 {
+                font-size: 2rem;
+                margin-bottom: 30px;
+            }
+
+            .como-container {
+                flex-direction: row;
+                justify-content: space-around;
+            }
+
+            .como-item {
+                max-width: 200px;
+            }
+
+            /* Footer */
+            footer {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                text-align: left;
+                padding: 40px;
+            }
+
+            .texto-footer {
+                margin-bottom: 0;
+            }
+
+            .social-wrapper {
+                margin-top: 0;
+            }
+
+            .desktop-only {
+                display: inline-block !important;
+            }
+
+            .mobile-only {
+                display: none !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .desktop-only {
+                display: none !important;
+            }
+
+            .mobile-only {
+                display: inline-block !important;
+            }
+
+            .titulo {
+                color: white;
+            }
+
+            /* Header */
+            header {
+                padding: 10px 3%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                z-index: 999;
+            }
+
+            .logo {
+        margin: 0 auto;
       }
-      .segmento-card {
-        max-width: 230px;
-        padding: 25px 20px;
-      }
-    }
 
-    @media (max-width: 768px) {
-      .banner {
-        height: 110vh;
-        background-position: center top;
+      .logo img {
+        max-height: 50px;
+        width: auto;
+        margin-left: 0;
       }
 
-      .titulo {
-        top: 20%;
-        left: 4%;
-        font-size: 2rem;
-      }
+            /* TOTVS-like Menu Toggle */
+            .menu-toggle {
+                display: flex;
+                flex-direction: column;
+                cursor: pointer;
+                position: relative;
+                z-index: 1001;
+            }
 
-      .descricao {
-        top: 35%;
-        font-size: 1rem;
-      }
+            .menu-toggle span {
+                height: 3px;
+                width: 25px;
+                background-color: #333;
+                margin: 2px 0;
+                border-radius: 2px;
+                transition: transform 0.3s ease, opacity 0.3s ease;
+                position: relative;
+            }
 
-      .botao {
-        font-size: 1rem;
-        padding: 10px 20px;
-        top: 55%;
-      }
+            .menu-toggle.active span {
+                background-color: #333;
+                transform: translateY(7px) rotate(45deg);
+            }
 
-      .blocos-sistema-banner {
-        top: 68%;
-        flex-direction: column;
-        align-items: center;
-        width: 90%;
-        left: 5%;
-        right: 5%;
-      }
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
 
-      .bloco-sistema {
-        width: 90%;
-      }
+            .menu-toggle.active span:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
 
-      /* Carrossel responsivo: mostra 1 por vez e setas maiores */
-      .segmentos-container {
-        gap: 20px;
-      }
+            /* Expanded mobile menu */
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: #fff;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                padding: 20px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+                gap: 20px;
+            }
 
-      .segmento-card {
-        max-width: 100%;
-        width: 100%;
-        padding: 20px 15px;
-      }
+            .nav-links.active {
+                display: flex;
+            }
 
-      .segmento-card img {
-        width: 100%;
-        height: auto;
-      }
+            .nav-links a {
+                font-size: 1.2rem;
+                padding: 10px 0;
+                text-align: center;
+                color: #333;
+            }
 
-      .carousel-arrow {
-        width: 60px;
-        height: 60px;
-        font-size: 36px;
-      }
+            /* Banner */
+            .banner {
+                color: white;
+                margin-top: 80px;
+                height: 500px;
+                overflow: hidden;
+                background: url('banner/homemb (1).png') no-repeat center top;
+                background-size: cover;
+                text-align: center;
+            }
 
-      .por-que-container,
-      .como-container {
-        flex-direction: column;
-        gap: 30px;
-      }
+            .descricao {
+                font-size: 1.2rem;
+                font-weight: 800;
+            }
 
-      .por-que-item,
-      .como-item {
-        max-width: 100%;
-      }
-    }
-  </style>
+            /* Carrossel */
+            .carousel-container {
+                position: relative;
+                overflow: hidden;
+                width: 100vw;
+            }
+
+            .segmentos-container {
+                display: flex;
+                gap: 20px;
+                transition: transform 0.5s ease;
+                will-change: transform;
+                overflow-x: auto;
+                scroll-behavior: smooth;
+                -webkit-overflow-scrolling: touch;
+                /* Adicionado para rolagem suave no iOS */
+                scroll-snap-type: x mandatory;
+                /* Garante que os cards "snap" para a posição */
+            }
+
+            .segmento-card {
+                flex: 0 0 100vw;
+                max-width: 100vw;
+                scroll-snap-align: start;
+                margin: 0;
+                padding: 15px;
+                background: #fff;
+                border-radius: 10px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+                box-sizing: border-box;
+            }
+
+            .segmento-card p {
+                font-size: 1rem;
+            }
+
+            .segmento-card .descricao-segmento {
+                font-size: 0.85rem;
+            }
+
+            /* Esconde as setas do carrossel em telas menores */
+            .carousel-arrow {
+                display: none;
+            }
+
+            /* Seções gerais */
+            .solucoes-segmentos {
+                padding: 20px 3%;
+                margin-top: 20px;
+            }
+
+            .solucoes-segmentos h2 {
+                font-size: 1.5rem;
+                text-align: center;
+            }
+
+            section.por-que-escolher,
+            section.como-funciona {
+                padding: 20px 3%;
+            }
+
+            .por-que-container,
+            .como-container {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .por-que-item h3,
+            .como-item h4 {
+                font-size: 1rem;
+            }
+
+            /* Footer */
+            footer {
+                padding: 20px 3%;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .texto-footer {
+                font-size: 0.8rem;
+                margin-bottom: 10px;
+            }
+
+            .social-wrapper {
+                margin-top: 10px;
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .social-icons {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .social-icons img {
+                width: 24px;
+                height: auto;
+            }
+            .whatsapp-float .whatsapp-icon {
+            width: 60px !important;
+            height: 60px !important;
+            border-radius: 50%;
+            background-color: #25d366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 0;
+        }
+        }
+
+        /* Styles for the carousel */
+        .segmentos-container {
+            display: flex;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            /* Adicionado para rolagem suave no iOS */
+            scroll-snap-type: x mandatory;
+            /* Garante que os cards "snap" para a posição */
+            padding-bottom: 10px;
+            scrollbar-width: none;
+            /* Firefox */
+            -ms-overflow-style: none;
+            /* IE and Edge */
+        }
+
+        .segmentos-container::-webkit-scrollbar {
+            display: none;
+            /* Chrome, Safari and Opera */
+        }
+
+        .segmento-card {
+            scroll-snap-align: start;
+            flex: 0 0 80%;
+            /* Adjust as needed */
+            margin-right: 10px;
+            /* Remove overflow: hidden; */
+        }
+
+        /* Media query for larger screens */
+        @media (min-width: 769px) {
+            .segmento-card {
+                flex: 0 0 30%;
+                /* Show 3 cards on larger screens */
+            }
+        }
+
+        /* Estilos da Seta de Rolagem (Apenas para Mobile) */
+        .scroll-down {
+            position: absolute;
+            left: 47%;
+            bottom: 20px;
+            transform: translateX(50%);
+            width: 38px;
+            height: 55px;
+            border: 2px solid #c2c2c2;
+            border-radius: 25px;
+            cursor: pointer;
+            z-index: 2;
+            animation: bounce 2s infinite;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 10px;
+        }
+
+        .scroll-down::after {
+            content: '';
+            display: block;
+            width: 12px;
+            height: 12px;
+            border-bottom: 3px solid #c2c2c2;
+            border-right: 3px solid #c2c2c2;
+            transform: rotate(45deg);
+            margin-top: 6px;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(10px);
+            }
+
+            60% {
+                transform: translateY(5px);
+            }
+        }
+
+        /* Esconde a seta em telas maiores */
+        @media (min-width: 769px) {
+            .scroll-down {
+                display: none;
+            }
+        }
+
+        /* WhatsApp Float Button Styles */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .whatsapp-float a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #fff;
+            /* Cor do texto */
+        }
+
+        .whatsapp-float .whatsapp-text {
+            background-color: #fff;
+            padding: 7px 10px;
+            font-size: 0.8rem;
+            font-weight: 100;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin-right: 0;
+            /* sem margem, porque usamos gap no flex */
+            position: static;
+            /* remove positioning */
+            z-index: 1;
+            color: #333;
+        }
+
+        .whatsapp-float .whatsapp-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #25d366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 0;
+        }
+
+        .whatsapp-float .whatsapp-icon img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .whatsapp-float:hover .whatsapp-icon {
+            transform: scale(1.1);
+        }
+
+        /* Esconde o texto inicialmente */
+        .whatsapp-float .whatsapp-text {
+            display: none;
+        }
+
+        /* Adiciona um efeito sutil de gradiente ao arrastar */
+        .segmentos-container:active {
+            cursor: grabbing;
+            /* Altera o cursor para "grabbing" */
+        }
+    </style>
 </head>
+
 <body>
 
-  <header>
-    <div class="logo">
-      <a href="#"><img src="logo-antiga.png" alt="Logo Calory"></a>
+    <header>
+        <div class="logo">
+            <a href="#"><img src="logo-antiga.png" alt="Logo Calory"></a>
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="nav-links">
+            <a href="produtos.html">Produtos</a>
+            <a href="contato.html">Contato</a>
+            <a class="link-azul desktop-only"
+                href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+solicitar+um+orçamento+para+o+meu+sistema!">Obtenha
+                o sistema</a>
+            <a class="link-azul mobile-only"
+                href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+solicitar+um+orçamento+para+o+meu+sistema!">Obtenha
+                o sistema</a>
+        </nav>
+    </header>
+
+    <!-- Banner -->
+    <div class="banner">
+        <div class="titulo">Procurando por um <span>Sistema?</span></div>
+        <div class="descricao">
+            Um sistema pronto para uso, simples, rápido e eficiente,<br>
+            atingindo todas as suas expectativas. <br><br>
+        </div>
+        <a href="formulario.html" class="botao">Quero meu sistema agora!</a>
+
+        <!-- Seta de Rolagem (Apenas para Mobile) -->
+        <div class="scroll-down"
+            onclick="document.getElementById('solucoes-segmentos').scrollIntoView({ behavior: 'smooth' });"
+            tabindex="0" role="button" aria-label="Role para o conteúdo principal"></div>
     </div>
-    <div class="menu-icon" onclick="toggleMenu()">☰</div>
-    <nav class="nav-links" id="navMenu">
-      <a href="servicos.html">Serviços</a>
-      <a href="contato.html">Contato</a>
-    </nav>
-  </header>
 
-  <div class="banner">
-    <div class="titulo">Procurando por um <span>Sistema?</span></div>
-    <div class="descricao">
-      Um sistema pronto para uso, simples, rápido e eficiente, <br />
-      atingindo todas as suas expectativas. <br /><br />
-      Faça uma simulação clicando no botão abaixo
+    <!-- Seção carrossel -->
+    <section class="solucoes-segmentos" id="solucoes-segmentos" aria-label="Soluções para diversos segmentos">
+                <h2>Soluções para diversos ramos de atividade</h2>
+        <div class="carousel-container">
+            <div class="carousel-arrows">
+                <button class="carousel-arrow" aria-label="Voltar" id="btnPrev">&#8249;</button>
+                <button class="carousel-arrow" aria-label="Avançar" id="btnNext">&#8250;</button>
+            </div>
+            <div class="segmentos-container" id="carousel">
+                <a href="agropecuaria.html" class="segmento-card" tabindex="0" style="text-decoration: none;">
+                    <img src="estabelecimentos/agropecuaria.png" alt="Loja agropecuária" />
+                    <p>Lojas Agropecuárias</p>
+                    <p class="descricao-segmento">Organize seu estoque de insumos, rações e equipamentos com controle
+                        simples e
+                        eficaz.</p>
+                </a>
+                <a href="mercado.html" class="segmento-card" tabindex="0" style="text-decoration: none;">
+                    <img src="estabelecimentos/mercado.png" alt="Supermercado" />
+                    <p>Mercados</p>
+                    <p class="descricao-segmento">Soluções completas para gerenciar seu supermercado com eficiência.</p>
+                </a>
+                <a href="lojaroupa.html" class="segmento-card" tabindex="0" style="text-decoration: none;">
+                    <img src="estabelecimentos/lojaroupa.png" alt="Loja de roupas e calçados" />
+                    <p>Lojas de roupas</p>
+                    <p class="descricao-segmento">Controle de estoque e vendas pensado para moda e vestuário.</p>
+                </a>
+                <a href="lanchonete.html" class="segmento-card" tabindex="0" style="text-decoration: none;">
+                    <img src="estabelecimentos/Lanchonete.png" alt="Lanchonete" />
+                    <p>Lanchonetes e restaurantes</p>
+                    <p class="descricao-segmento">Controle fácil do seu cardápio e vendas, agilizando o atendimento.</p>
+                </a>
+                <a href="mecanico.html" class="segmento-card" tabindex="0" style="text-decoration: none;">
+                    <img src="estabelecimentos/mecanico.png" alt="Oficina Mecânica" />
+                    <p>Oficinas mecânicas</p>
+                    <p class="descricao-segmento">Gerencie serviços, peças e atendimentos com eficiência e
+                        praticidade.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="por-que-escolher">
+        <h2>Por que escolher a Calory?</h2>
+        <div class="por-que-container">
+            <div class="por-que-item">
+                <img src="icon/adaptação.png" alt="Adaptação">
+                <h3>Adaptação 100%</h3>
+                <p>O sistema se adapta ao seu negócio seja qual for ele.</p>
+            </div>
+            <div class="por-que-item">
+                <img src="icon/cadeado.png" alt="Seguro">
+                <h3>Segurança de dados</h3>
+                <p>Seus dados protegidos com backups automáticos.</p>
+            </div>
+            <div class="por-que-item">
+                <img src="icon/suporteimediato.png" alt="Suporte">
+                <h3>Suporte imediato</h3>
+                <p>Atendimento direto via WhatsApp, sem enrolação.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="como-funciona">
+        <h2>Como funciona?</h2>
+        <div class="como-container">
+            <div class="como-item">
+                <img src="icon/simule.png" alt="Passo 1">
+                <h4>1. Simule</h4>
+                <p>Preencha o formulário e solicite uma proposta.</p>
+            </div>
+            <div class="como-item">
+                <img src="icon/contrate.png" alt="Passo 2">
+                <h4>2. Contrate</h4>
+                <p>Contrate o sistema que atende a sua necessidade.</p>
+            </div>
+            <div class="como-item">
+                <img src="icon/utilize.png" alt="Passo 3">
+                <h4>3. Utilize</h4>
+                <p>Use o sistema em qualquer dispositivo.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="texto-footer">
+            © 2025 Calory Sistemas • contato@calory.com.br
+        </div>
+
+        <div class="social-wrapper">
+            <div class="social-icons">
+                <a href="https://www.facebook.com/calorysistemas/"><img src="icon/face.png" alt="Facebook" /></a>
+                <a href="https://www.instagram.com/calorysistemas/"><img src="icon/insta.png" alt="Instagram" /></a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="whatsapp-float">
+        <!-- Botão para DESKTOP -->
+        <a class="desktop-only"
+            href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+tirar+algumas+dúvidas+sobre+o+sistema!">
+            <span class="whatsapp-text">Fale Conosco</span>
+            <span class="whatsapp-icon">
+                <img src="icon/whats.png" alt="WhatsApp" />
+            </span>
+        </a>
+
+        <!-- Botão para MOBILE -->
+        <a class="mobile-only"
+            href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+tirar+algumas+dúvidas+sobre+o+sistema!">
+            <span class="whatsapp-text">Fale Conosco</span>
+            <span class="whatsapp-icon">
+                <img src="icon/whats.png" alt="WhatsApp" />
+            </span>
+        </a>
     </div>
-    <a href="formulario.html" class="botao">Quero meu sistema agora!</a>
 
-    <!-- Blocos abaixo do botão, originais com ícones menores -->
-    <div class="blocos-sistema-banner">
-      <div class="bloco-sistema">
-        <img src="img/telainicial.png" alt="Tela Inicial">
-        <h4>Tela Inicial</h4>
-        <p>Visão rápida de tudo em um só lugar.</p>
-      </div>
-      <div class="bloco-sistema">
-        <img src="img/estoque.png" alt="Estoque">
-        <h4>Estoque</h4>
-        <p>Controle prático de entradas e saídas.</p>
-      </div>
-      <div class="bloco-sistema">
-        <img src="img/financeiro.png" alt="Financeiro">
-        <h4>Financeiro</h4>
-        <p>Organize contas e acompanhe seu caixa.</p>
-      </div>
-      <div class="bloco-sistema">
-        <img src="img/suporte.png" alt="Suporte">
-        <h4>Suporte</h4>
-        <p>Atendimento rápido e eficiente sempre.</p>
-      </div>
-    </div>
-  </div>
+    <script>
+        // Menu Toggle
+        function toggleMenu() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('.nav-links');
+            menuToggle.classList.toggle('active');
+            nav.classList.toggle('active');
+            const spans = menuToggle.querySelectorAll('span');
+            spans.forEach(span => span.classList.toggle('active'));
+        }
 
-  <!-- Seção soluções para diversos segmentos com carrossel -->
-  <section class="solucoes-segmentos" aria-label="Soluções para diversos segmentos">
-    <h2>Soluções para diversos segmentos</h2>
-    <div class="carousel-wrapper">
-      <button class="carousel-arrow arrow-left" aria-label="Voltar" id="btnPrev">&#8249;</button>
-      <div class="segmentos-container" id="carousel">
-        <a href="mercado.html" class="segmento-card" tabindex="0" style="text-decoration: none;">
-  <img src="img/mercado.png" alt="Supermercado" />
-  <p>Mercados</p>
-  <p class="descricao-segmento">Soluções completas para gerenciar seu supermercado com eficiência.</p>
-</a>
-        <a href="lojaroupa.html" class="segmento-card" tabindex="0" style="text-decoration: none;">
-  <img src="img/lojaroupa.png" alt="Supermercado" />
-  <p>Lojas de roupas</p>
-  <p class="descricao-segmento">Controle de estoque e vendas pensado para moda e vestuário.</p>
-</a>
+        // Carrossel com scroll-snap e translateX
+        const btnPrev = document.getElementById('btnPrev');
+        const btnNext = document.getElementById('btnNext');
+        const carousel = document.getElementById('carousel');
+        const carouselContainer = document.querySelector('.carousel-container');
+        let isDragging = false;
+        let startX = 0;
+        let scrollLeft = 0;
 
-<a href="lanchonete.html" class="segmento-card" tabindex="0" style="text-decoration: none;">
-  <img src="img/Lanchonete.png" alt="Lanchonete" />
-  <p>Lanchonetes e restaurantes</p>
-  <p class="descricao-segmento">Controle fácil do seu cardápio e vendas, agilizando o atendimento.</p>
-</a>
+        // Function to handle dragging
+        const dragStart = (e) => {
+            isDragging = true;
+            startX = e.pageX - carousel.offsetLeft;
+            scrollLeft = carousel.scrollLeft;
+            carousel.classList.add('dragging'); // Adiciona classe para estilo de "arrastando"
+        };
 
-<a href="mecanico.html" class="segmento-card" tabindex="0" style="text-decoration: none;">
-  <img src="img/mecanico.png" alt="Oficina Mêcanica" />
-  <p>Oficinas mecânicas</p>
-  <p class="descricao-segmento">Gerencie serviços, peças e atendimentos com eficiência e praticidade.</p>
-</a>
+        const dragStop = () => {
+            isDragging = false;
+            carousel.classList.remove('dragging'); // Remove classe ao soltar
+        };
 
-<a href="agropecuaria.html" class="segmento-card" tabindex="0" style="text-decoration: none;">
-  <img src="img/agropecuaria.png" alt="Loja agropecuária" />
-  <p>Lojas Agropecuárias</p>
-  <p class="descricao-segmento">Organize seu estoque de insumos, rações e equipamentos com controle simples e eficaz.</p>
-</a>
-      </div>
-      <button class="carousel-arrow arrow-right" aria-label="Avançar" id="btnNext">&#8250;</button>
-    </div>
-  </section>
+        const dragMove = (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.pageX - carousel.offsetLeft;
+            const walk = (x - startX) * 1; // Scroll speed
+            carousel.scrollLeft = scrollLeft - walk;
+        };
 
-  <!-- Por que escolher a Calory -->
-  <section class="por-que-escolher">
-    <h2>Por que escolher a Calory?</h2>
-    <div class="por-que-container">
-      <div class="por-que-item">
-        <img src="img/adaptação.png" alt="Online">
-        <h3>Adaptação 100%</h3>
-        <p>O sistema se adapta ao seu negócio seja qual for ele.</p>
-      </div>
-      <div class="por-que-item">
-        <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Seguro">
-        <h3>Segurança de dados</h3>
-        <p>Seus dados protegidos com backups automáticos.</p>
-      </div>
-      <div class="por-que-item">
-        <img src="img/suporte 1.png" alt="Suporte">
-        <h3>Suporte imediato</h3>
-        <p>Atendimento direto via WhatsApp, sem enrolação.</p>
-      </div>
-    </div>
-  </section>
+        // Event listeners for dragging
+        carousel.addEventListener('mousedown', dragStart);
+        carousel.addEventListener('mouseup', dragStop);
+        carousel.addEventListener('mouseleave', dragStop);
+        carousel.addEventListener('mousemove', dragMove);
 
-  <!-- Como funciona -->
-  <section class="como-funciona">
-    <h2>Como funciona?</h2>
-    <div class="como-container">
-      <div class="como-item">
-        <img src="https://cdn-icons-png.flaticon.com/512/6815/6815042.png" alt="Passo 1">
-        <h4>1. Simule</h4>
-        <p>Preencha o formulário e solicite uma proposta.</p>
-      </div>
-      <div class="como-item">
-        <img src="https://cdn-icons-png.flaticon.com/512/1980/1980530.png" alt="Passo 2">
-        <h4>2. Contrate</h4>
-        <p>Contrate o sistema que atende a sua necessidade.</p>
-      </div>
-      <div class="como-item">
-        <img src="https://cdn-icons-png.flaticon.com/512/4299/4299999.png" alt="Passo 3">
-        <h4>3. Utilize</h4>
-        <p>Use o sistema em qualquer dispositivo.</p>
-      </div>
-    </div>
-  </section>
+        // Arrow click functionality
+        btnPrev.addEventListener('click', () => {
+            carousel.scrollLeft -= carouselContainer.offsetWidth * 0.8;
+        });
 
-  <footer>
-    <div>© 2025 Calory Sistemas • Todos os direitos reservados • contato@calory.com.br</div>
-    <div class="social-icons">
-      <a href="https://facebook.com" target="_blank" rel="noopener">
-        <img src="img/face.png" alt="Facebook">
-      </a>
-      <a href="https://instagram.com" target="_blank" rel="noopener">
-        <img src="img/insta.png" alt="Instagram">
-      </a>
-    </div>
-  </footer>
-
-  <div class="whatsapp-float">
-    <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer">
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
-    </a>
-  </div>
-
-  <script>
-    // Menu mobile simples
-    function toggleMenu() {
-      const nav = document.getElementById('navMenu');
-      if (nav.style.display === 'flex') {
-        nav.style.display = 'none';
-      } else {
-        nav.style.display = 'flex';
-        nav.style.flexDirection = 'column';
-      }
-    }
-
-    // Carrossel com ajuste para não cortar o último bloco
-    const btnPrev = document.getElementById('btnPrev');
-    const btnNext = document.getElementById('btnNext');
-    const carousel = document.getElementById('carousel');
-
-    let cardsVisible = 4;
-
-    function updateCardsVisible() {
-      if (window.innerWidth <= 768) {
-        cardsVisible = 1;
-      } else {
-        cardsVisible = 4;
-      }
-    }
-
-    updateCardsVisible();
-
-    window.addEventListener('resize', () => {
-      updateCardsVisible();
-      currentIndex = 0;
-      updateCarousel();
-    });
-
-    const totalCards = carousel.children.length;
-    let currentIndex = 0;
-
-    function updateCarousel() {
-      const card = carousel.children[0];
-      const style = getComputedStyle(carousel);
-      const gap = parseInt(style.gap) || 30; // pega gap do flex container
-      const cardWidth = card.offsetWidth;
-      const totalCardWidth = cardWidth + gap;
-
-      // largura total visível do container (pai do carousel)
-      const carouselWrapperWidth = carousel.parentElement.offsetWidth;
-
-      // cálculo do deslocamento máximo permitido (não deixar passar do limite)
-      // total largura cards - largura visível
-      const maxScrollX = (totalCardWidth * totalCards) - carouselWrapperWidth;
-
-      // deslocamento desejado
-      let offset = totalCardWidth * currentIndex;
-
-      // limitar o offset máximo para não ultrapassar o scroll
-      if (offset > maxScrollX) {
-        offset = maxScrollX;
-        // Ajustar currentIndex para corresponder ao offset real
-        currentIndex = Math.round(offset / totalCardWidth);
-      }
-      if (offset < 0) offset = 0;
-
-      carousel.style.transform = `translateX(-${offset}px)`;
-    }
-
-    btnPrev.addEventListener('click', () => {
-      currentIndex -= cardsVisible;
-      if (currentIndex < 0) currentIndex = 0;
-      updateCarousel();
-    });
-
-    btnNext.addEventListener('click', () => {
-      currentIndex += cardsVisible;
-      updateCarousel();
-    });
-
-    // Inicializa posição
-    updateCarousel();
-  </script>
-
+        btnNext.addEventListener('click', () => {
+            carousel.scrollLeft += carouselContainer.offsetWidth * 0.8;
+        });
+    </script>
 </body>
+
 </html>

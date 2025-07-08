@@ -7,15 +7,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      margin: 0; padding: 0; box-sizing: border-box;
     }
 
     body {
       font-family: 'Poppins', sans-serif;
       background-color: #f4f4f4;
       padding-top: 100px;
+      scroll-behavior: smooth;
     }
 
     header {
@@ -27,15 +26,9 @@
       align-items: center;
       justify-content: space-between;
       position: fixed;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       z-index: 1000;
-    }
-
-    .logo {
-      flex-grow: 1;
-      display: flex;
-      align-items: center;
+      flex-wrap: wrap;
     }
 
     .logo img {
@@ -44,19 +37,52 @@
     }
 
     .nav-links {
-      display: flex;
-      gap: 30px;
-    }
+  display: flex;
+  align-items: center; /* ← isso alinha verticalmente */
+  gap: 50px;
+}
+
+    .link-azul {
+  background-color: #007bff;
+  color: #fff !important;
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+  display: inline-block;
+}
+
+.link-azul:hover {
+  background-color: #0056b3;
+  color: #fff !important;
+}
+
 
     .nav-links a {
       font-weight: 500;
       color: #333;
       text-decoration: none;
-      font-size: 16px;
+      font-size: 25px;
     }
 
     .nav-links a:hover {
       color: #007bff;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: #333;
+      margin: 4px 0;
+      border-radius: 2px;
     }
 
     h1 {
@@ -73,10 +99,10 @@
       padding: 0 10%;
       gap: 50px;
       flex-wrap: wrap;
+      margin-bottom: 50px;
     }
 
-    .formulario,
-    .contato-info {
+    .formulario, .contato-info {
       flex: 1;
       background-color: #fff;
       padding: 30px;
@@ -90,8 +116,7 @@
       color: #333;
     }
 
-    .formulario input,
-    .formulario textarea {
+    .formulario input, .formulario textarea {
       width: 100%;
       padding: 12px;
       margin-bottom: 15px;
@@ -108,6 +133,8 @@
       border-radius: 6px;
       font-size: 1rem;
       cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
     }
 
     .formulario button:hover {
@@ -139,12 +166,49 @@
       text-decoration: underline;
     }
 
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1000;
+    }
+
+    .whatsapp-float img {
+      width: 60px;
+      height: 60px;
+      transition: transform 0.3s ease;
+    }
+
+    .whatsapp-float img:hover {
+      transform: scale(1.25);
+    }
+
     footer {
+      background-color: #3f3f3f;
+      color: #ffffff;
+      padding: 40px 20px;
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
-      padding: 20px;
-      background-color: #eee;
-      font-size: 0.9rem;
-      margin-top: 50px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .social-icons a img {
+      width: 32px;
+      height: 32px;
+      filter: brightness(0) invert(1);
+      transition: transform 0.2s ease;
+    }
+
+    .social-icons a img:hover {
+      transform: scale(1.1);
     }
 
     .thank-you-modal {
@@ -183,24 +247,53 @@
       cursor: pointer;
     }
 
-    @media (max-width: 768px) {
+    .thank-you-box button:hover {
+      background-color: #1c7ccf;
+    }
+
+    .desktop-only {
+  display: inline-block;
+}
+.mobile-only {
+  display: none;
+}
+
+  @media (max-width: 768px) {
+
+      .desktop-only {
+    display: none;
+  }
+  .mobile-only {
+    display: inline-block;
+  }
       .container {
         flex-direction: column;
         padding: 0 5%;
       }
 
       .nav-links {
-        gap: 15px;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #fff;
+        flex-direction: column;
+        width: 100%;
+        display: none;
+        padding: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
       }
 
       .nav-links a {
-        font-size: 14px;
-      }
-
-      .formulario,
-      .contato-info {
-        width: 100%;
-        padding: 20px;
+        font-size: 18px;
+        padding: 10px 0;
       }
 
       h1 {
@@ -208,12 +301,12 @@
         margin: 30px 0;
       }
 
-      body {
-        padding-top: 130px;
-      }
-
       .logo img {
         max-height: 70px;
+      }
+
+      body {
+        padding-top: 130px;
       }
     }
   </style>
@@ -222,12 +315,21 @@
 
   <header>
     <div class="logo">
-      <a href="home.html"><img src="logo.png" alt="Logo Calory"></a>
+      <a href="home.html"><img src="logo-antiga.PNG" alt="Logo Calory Agropecuária"></a>
+    </div>
+    <div class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
     <nav class="nav-links">
-      <a href="servicos.html">Serviços</a>
-      <a href="contato.html">Contato</a>
-    </nav>
+  <a href="produtos.html">Produtos</a>
+  <a href="contato.html">Contato</a>
+  <a class="link-azul desktop-only" href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+solicitar+um+orçamento+para+o+meu+sistema!">Obtenha o sistema</a>
+
+  <a class="link-azul mobile-only" href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+solicitar+um+orçamento+para+o+meu+sistema!">Obtenha o sistema</a>
+
+</nav>
   </header>
 
   <h1>Fale Conosco</h1>
@@ -251,7 +353,6 @@
     </div>
   </div>
 
-  <!-- Modal de agradecimento -->
   <div class="thank-you-modal" id="thankYouModal">
     <div class="thank-you-box">
       <h2>Obrigado!</h2>
@@ -261,21 +362,23 @@
   </div>
 
   <footer>
-    © 2025 Calory Sistemas • Todos os direitos reservados
+    <div class="texto-footer">
+      © 2025 Calory Sistemas • contato@calory.com.br
+    </div>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/calorysistemas/"><img src="icon/face.png" alt="Facebook" /></a>
+      <a href="https://www.instagram.com/calorysistemas/"><img src="icon/insta.png" alt="Instagram" /></a>
+    </div>
   </footer>
 
   <script>
     document.getElementById('contatoForm').addEventListener('submit', function(e) {
       e.preventDefault();
-
       const formData = new FormData(this);
-
       fetch(this.action, {
         method: this.method,
         body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
+        headers: { 'Accept': 'application/json' }
       })
       .then(response => {
         if (response.ok) {

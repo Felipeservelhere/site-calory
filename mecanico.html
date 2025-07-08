@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mecânica - Calory Sistemas</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" /> 
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
+    /* Reset e Estilos Gerais */
     * {
-      margin: 0; padding: 0; box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
+
     body {
       font-family: 'Poppins', sans-serif;
       background: #ffffff;
@@ -16,11 +24,13 @@
       line-height: 1.6;
       scroll-behavior: smooth;
     }
+
+    /* Header Styles */
     header {
       width: 100%;
       padding: 10px 3%;
       background-color: #ffffff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -28,30 +38,83 @@
       top: 0;
       left: 0;
       z-index: 1000;
+      flex-wrap: wrap;
     }
+
     .logo img {
       max-height: 100px;
       width: auto;
     }
+
     .nav-links {
       display: flex;
+      gap: 50px;
       align-items: center;
     }
+
+    .link-azul {
+      background-color: #007bff;
+      color: #fff !important;
+      padding: 10px 22px;
+      border-radius: 25px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+      display: inline-block;
+    }
+
+    .link-azul:hover {
+      background-color: #0056b3;
+      color: #fff !important;
+    }
+
     .nav-links a {
-      margin-left: 30px;
       font-weight: 500;
       color: #333;
       text-decoration: none;
-      font-size: 16px;
+      font-size: 25px;
     }
+
     .nav-links a:hover {
       color: #007bff;
     }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: #333;
+      margin: 4px 0;
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      position: relative;
+    }
+
+    .menu-toggle.active span {
+      background-color: #333;
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Banner Styles */
     .banner-full {
       position: relative;
       height: 90vh;
       width: 100%;
-      margin-top: 110px;
+      margin-top: 70px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -59,33 +122,42 @@
       text-align: center;
       color: #fff;
       padding: 0 20px;
-      background: url('img/mecanico.png') no-repeat center center/cover;
+      background: url('estabelecimentos/mecanico.png') no-repeat center center/cover;
     }
+
     .banner-overlay {
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       background: rgba(0, 0, 0, 0.75);
       z-index: 1;
     }
+
     .banner-content {
       position: relative;
       z-index: 2;
       max-width: 850px;
     }
+
     .banner-content h1 {
       font-size: 3.5rem;
       font-weight: 700;
       margin-bottom: 15px;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
     }
+
     .banner-content p {
       font-size: 1.4rem;
-      text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
     }
+
     .scroll-down {
-      position: relative;
-      left: 48%;
-      margin-top: 35px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 20px;
       width: 38px;
       height: 55px;
       border: 2px solid #f1f1f1;
@@ -98,6 +170,7 @@
       align-items: flex-start;
       padding-top: 10px;
     }
+
     .scroll-down::after {
       content: '';
       display: block;
@@ -108,17 +181,35 @@
       transform: rotate(45deg);
       margin-top: 6px;
     }
+
     @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-      40% { transform: translateY(10px); }
-      60% { transform: translateY(5px); }
+
+      0%,
+      20%,
+      50%,
+      80%,
+      100% {
+        transform: translateY(0);
+      }
+
+      40% {
+        transform: translateY(10px);
+      }
+
+      60% {
+        transform: translateY(5px);
+      }
     }
+
+    /* Main Content Styles */
     main {
       max-width: 960px;
       margin: 60px auto;
       padding: 0 20px 40px 20px;
       background: url('img/backgroundmecanico.png') no-repeat center center/cover;
+      position: relative;
     }
+
     .intro-text {
       text-align: center;
       margin-bottom: 45px;
@@ -129,33 +220,47 @@
       margin-right: auto;
       font-weight: 500;
     }
+
     .feature-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 30px;
     }
+
     .feature {
       background: #ffffff;
       padding: 25px;
       border-left: 5px solid #007bff;
       border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       transition: transform 0.2s ease;
     }
+
     .feature:hover {
       transform: translateY(-5px);
     }
+
     .feature h3 {
       color: #007bff;
       margin-bottom: 10px;
     }
+
     .feature p {
       color: #555;
     }
-    .cta-button {
+
+    .botoes-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin-top: 40px;
+    }
+
+    .cta-button,
+    .cta-button1 {
       display: block;
       width: fit-content;
-      margin: 40px auto 0 auto;
       padding: 15px 30px;
       background-color: #007bff;
       color: #ffffff;
@@ -166,44 +271,422 @@
       font-size: 1.1rem;
       transition: background 0.3s;
     }
-    .cta-button:hover {
+
+    .cta-button:hover,
+    .cta-button1:hover {
       background-color: #0056b3;
     }
+
+    /* WhatsApp Float Button Styles */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .whatsapp-float a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .whatsapp-float .whatsapp-text {
+      background-color: #fff;
+      padding: 7px 10px;
+      font-size: 0.8rem;
+      font-weight: 100;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      margin-right: -10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .whatsapp-float .whatsapp-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: #25d366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+      position: relative;
+      z-index: 0;
+    }
+
+    .whatsapp-float .whatsapp-icon img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .whatsapp-float:hover .whatsapp-icon {
+      transform: scale(1.1);
+    }
+
+    /* Esconde o texto inicialmente */
+    .whatsapp-float .whatsapp-text {
+      display: none;
+    }
+
+    /* Footer Styles */
     footer {
       background-color: #3f3f3f;
       color: #ffffff;
-      padding: 40px 40px 50px 40px;
+      padding: 40px 20px;
       font-size: 1rem;
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
-      flex-wrap: wrap;
+      text-align: center;
     }
+
+
+    footer {
+      background-color: #3f3f3f;
+      color: #ffffff;
+      padding: 40px 20px;
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
     .social-icons {
       display: flex;
-      gap: 20px;
+      gap: 10px;
+      margin-top: 15px;
     }
+
     .social-icons a img {
       width: 32px;
       height: 32px;
       filter: brightness(0) invert(1);
       transition: transform 0.2s ease;
     }
+
     .social-icons a img:hover {
       transform: scale(1.1);
     }
+
+    /* Utility Classes for Responsiveness */
+    .desktop-only {
+      display: inline-block;
+    }
+
+    .mobile-only {
+      display: none;
+    }
+
+    /* Media Queries for Responsiveness */
+    /* Extra small devices (phones, less than 576px) */
+    @media (max-width: 575.98px) {
+      .desktop-only {
+        display: none;
+      }
+
+      .social-wrapper {
+        margin: 20px auto;
+        /* Centraliza e reduz a margem */
+        text-align: center;
+      }
+
+      .social-icons {
+        justify-content: center;
+      }
+
+      .whatsapp-float {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+      }
+
+      .whatsapp-float a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+      }
+
+      .whatsapp-float .whatsapp-text {
+        background-color: #fff;
+        padding: 7px 10px;
+        font-size: 0.7rem;
+        font-weight: 100;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        margin-right: -10px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .whatsapp-float .whatsapp-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: #25d366;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease;
+        position: relative;
+        z-index: 0;
+      }
+
+      .whatsapp-float .whatsapp-icon img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .whatsapp-float:hover .whatsapp-icon {
+        transform: scale(1.1);
+      }
+
+      .mobile-only {
+        display: inline-block;
+      }
+
+      /* Header Styles for Mobile Devices */
+      header {
+        padding: 10px 3%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 999;
+      }
+
+      .logo {
+        margin: 0 auto;
+      }
+
+      .logo img {
+        max-height: 50px;
+        width: auto;
+        margin-left: 0;
+      }
+
+      /* Menu Toggle Styles */
+      .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        position: relative;
+        z-index: 1001;
+      }
+
+      .menu-toggle span {
+        height: 3px;
+        width: 25px;
+        background-color: #333;
+        margin: 4px 0;
+        border-radius: 2px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        position: relative;
+      }
+
+      .menu-toggle.active span {
+        background-color: #333;
+        transform: translateY(7px) rotate(45deg);
+      }
+
+      .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-toggle.active span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      /* Navigation Links Styles */
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #fff;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        gap: 20px;
+      }
+
+      .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .nav-links a {
+        font-size: 1.2rem;
+        padding: 10px 0;
+        text-align: center;
+        color: #333;
+      }
+
+      /* "Obtenha o Sistema" Button Style */
+      .nav-links .link-azul {
+        margin-top: 10px;
+        width: fit-content;
+        text-align: center;
+      }
+
+      /* Banner Styles for Mobile Devices */
+      .banner-full {
+        margin-top: 60px;
+        height: 60vh;
+      }
+
+      .banner-content h1 {
+        font-size: 2rem;
+      }
+
+      .banner-content p {
+        font-size: 1rem;
+      }
+
+      .scroll-down {
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 20px;
+      }
+
+      /* Main Content Styles for Mobile Devices */
+      main {
+        margin: 40px auto;
+        padding: 0 10px 20px 10px;
+      }
+
+      .intro-text {
+        font-size: 1rem;
+      }
+
+      .feature-list {
+        grid-template-columns: 1fr;
+      }
+
+      .feature {
+        padding: 15px;
+      }
+
+      .feature h3 {
+        font-size: 1.3rem;
+      }
+
+      .feature p {
+        font-size: 1rem;
+      }
+
+      /* Footer Styles for Mobile Devices */
+      footer {
+        padding: 30px 10px;
+      }
+
+      .texto-footer {
+        font-size: 0.9rem;
+      }
+
+      .social-icons {
+        margin-top: 10px;
+      }
+    }
+
+    /* Small devices (landscape phones, 576px and up) */
+    @media (min-width: 576px) and (max-width: 767.98px) {
+      .banner-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .feature-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Medium devices (tablets, 768px and up) */
+    @media (min-width: 768px) and (max-width: 991.98px) {
+      .nav-links {
+        gap: 30px;
+      }
+
+      .nav-links a {
+        font-size: 1.1rem;
+      }
+
+      .banner-content h1 {
+        font-size: 3rem;
+      }
+
+      main {
+        padding: 0 30px 40px 30px;
+      }
+    }
+
+    /* Large devices (desktops, 992px and up) */
+    @media (min-width: 992px) and (max-width: 1199.98px) {
+      .nav-links {
+        gap: 40px;
+      }
+
+      .banner-content h1 {
+        font-size: 3.2rem;
+      }
+    }
+
+    /* Extra large devices (large desktops, 1200px and up) */
+    @media (min-width: 1200px) {
+      .nav-links {
+        gap: 50px;
+      }
+
+      .banner-content h1 {
+        font-size: 3.5rem;
+      }
+    }
+
+    /* Media Query para telas maiores que 1550px */
+    @media (min-width: 1550px) {
+      .banner-content h1 {
+        font-size: 4rem;
+      }
+
+      .banner-content p {
+        font-size: 1.6rem;
+      }
+
+      main {
+        max-width: 1200px;
+      }
+    }
   </style>
 </head>
+
 <body>
 
   <header>
     <div class="logo">
       <a href="home.html"><img src="logo-antiga.PNG" alt="Logo Calory Mecânica"></a>
     </div>
-    <nav class="nav-links">
-      <a href="index.html">Início</a>
-      <a href="servicos.html">Serviços</a>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav class="nav-links" id="navMenu">
+      <a href="produtos.html">Produtos</a>
       <a href="contato.html">Contato</a>
+      <a class="link-azul desktop-only"
+        href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+solicitar+um+orçamento+para+o+meu+sistema!">Obtenha
+        o sistema</a>
+      <a class="link-azul mobile-only"
+        href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+solicitar+um+orçamento+para+o+meu+sistema!">Obtenha
+        o sistema</a>
     </nav>
   </header>
 
@@ -211,14 +694,18 @@
     <div class="banner-overlay"></div>
     <div class="banner-content">
       <h1>Sistema de Gestão para Oficinas Mecânicas</h1>
-      <p>Tenha controle completo de ordens de serviço, peças, agendamentos e faturamento com a plataforma ideal para sua oficina.</p>
+      <p>Tenha controle completo de ordens de serviço, peças, agendamentos e faturamento com a plataforma ideal para sua
+        oficina.</p>
     </div>
-    <div class="scroll-down" onclick="document.getElementById('conteudo-principal').scrollIntoView({ behavior: 'smooth' });"></div>
+    <div class="scroll-down"
+      onclick="document.getElementById('conteudo-principal').scrollIntoView({ behavior: 'smooth' });"></div>
   </section>
 
   <main id="conteudo-principal">
+
     <p class="intro-text">
-      O sistema Calory para oficinas mecânicas oferece ferramentas específicas para o dia a dia da sua oficina. Controle ordens de serviço, agendamentos, estoque de peças e muito mais com praticidade e segurança.
+      O sistema Calory para oficinas mecânicas oferece ferramentas específicas para o dia a dia da sua oficina. Controle
+      ordens de serviço, agendamentos, estoque de peças e muito mais com praticidade e segurança.
     </p>
     <div class="feature-list">
       <div class="feature">
@@ -235,23 +722,57 @@
       </div>
       <div class="feature">
         <h3>Relatórios Gerenciais</h3>
-        <p>Visualize o desempenho financeiro da oficina, estatísticas de serviços realizados e análise de produtividade.</p>
+        <p>Visualize o desempenho financeiro da oficina, estatísticas de serviços realizados e análise de
+          produtividade.</p>
       </div>
     </div>
-    <a class="cta-button" href="sistema-empresarial.html">Conheça o Sistema Empresarial</a>
+    <div class="botoes-container">
+      <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Ol%C3%A1,+quero+ter+o+melhor+sistema+empresarial+da+regi%C3%A3o%21"
+        class="cta-button1">Obtenha o Sistema Empresarial</a>
+      <a class="cta-button" href="sistema-empresarial.html">Conheça o Sistema Empresarial</a>
+    </div>
   </main>
 
+  <div class="whatsapp-float">
+    <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Ol%C3%A1%2C+vim+pelo+site+e+queria+tirar+algumas+d%C3%BAvidas">
+      <span class="whatsapp-text">Fale Conosco</span>
+      <span class="whatsapp-icon">
+        <img src="icon/whats.png" alt="WhatsApp" />
+      </span>
+    </a>
+  </div>
+
   <footer>
-    <div>© 2025 Calory Sistemas • Todos os direitos reservados • contato@calory.com.br</div>
-    <div class="social-icons">
-      <a href="https://facebook.com" target="_blank" rel="noopener">
-        <img src="img/face.png" alt="Facebook" />
-      </a>
-      <a href="https://instagram.com" target="_blank" rel="noopener">
-        <img src="img/insta.png" alt="Instagram" />
-      </a>
+    <div class="texto-footer">
+      © 2025 Calory Sistemas • contato@calory.com.br
+    </div>
+
+    <div class="social-wrapper">
+      <div class="social-icons">
+        <a href="https://www.facebook.com/calorysistemas/"><img src="icon/face.png" alt="Facebook" /></a>
+        <a href="https://www.instagram.com/calorysistemas/"><img src="icon/insta.png" alt="Instagram" /></a>
+      </div>
     </div>
   </footer>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const whatsappText = document.querySelector('.whatsapp-float .whatsapp-text');
+
+      // Mostra o texto após 3 segundos (3000 milissegundos)
+      setTimeout(function () {
+        whatsappText.style.display = 'inline-block'; // ou 'flex' dependendo do layout
+      }, 3000);
+    });
+
+    function toggleMenu() {
+      const menu = document.getElementById('navMenu');
+      const toggle = document.querySelector('.menu-toggle');
+      menu.classList.toggle('active');
+      toggle.classList.toggle('active');
+    }
+  </script>
+
 </body>
+
 </html>

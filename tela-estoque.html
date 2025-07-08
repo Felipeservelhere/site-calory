@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estoque - Sistema Calory</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      padding-top: 60px;
+      line-height: 1.6;
+    }
+
+    /* Header Styles */
+    header {
+      width: 100%;
+      padding: 10px 3%;
+      background-color: #ffffff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      flex-wrap: wrap;
+    }
+
+    .logo img {
+      max-height: 50px;
+      width: auto;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: #333;
+      margin: 4px 0;
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      position: relative;
+    }
+
+    .menu-toggle.active span {
+      background-color: #333;
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .link-azul {
+      background-color: #007bff;
+      color: #fff !important;
+      padding: 0.625rem 1.375rem;
+      border-radius: 1.5625rem;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+      display: inline-block;
+    }
+
+    .link-azul:hover {
+      background-color: #0056b3;
+      color: #fff !important;
+    }
+
+    .nav-links a {
+      font-weight: 500;
+      color: #333;
+      text-decoration: none;
+      font-size: 1.25rem;
+    }
+
+    .nav-links a:hover {
+      color: #007bff;
+    }
+
+    /* Main Styles */
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #007bff;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #555;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .detalhes-container {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .detalhes-linha {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .detalhes-linha img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      cursor: zoom-in;
+    }
+
+    .detalhes-linha .texto {
+      flex: 1;
+      min-width: 200px;
+      text-align: left;
+    }
+
+    .detalhes-linha h2 {
+      font-size: 1.5rem;
+      color: #007bff;
+      margin-bottom: 10px;
+    }
+
+    .detalhes-linha p {
+      font-size: 0.9rem;
+      color: #444;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    .galeria {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .galeria h2 {
+      font-size: 1.8rem;
+      color: #007bff;
+      margin-bottom: 30px;
+    }
+
+    .galeria-imagens {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1%;
+    }
+
+    .galeria-imagens a {
+      text-decoration: none;
+      color: inherit;
+      width: calc(33.33% - 20px);
+      max-width: 200px;
+      margin-bottom: 20px;
+    }
+
+    .bloco-interface {
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .bloco-interface:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .bloco-interface img {
+      width: 100%;
+      height: 120px;
+      object-fit: contain;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .bloco-interface h3 {
+      font-size: 1rem;
+      margin-bottom: 5px;
+      color: #007bff;
+    }
+
+    .bloco-interface span {
+      font-size: 0.8rem;
+      color: #777;
+    }
+
+    .botao-pedido {
+      display: inline-block;
+      padding: 15px 40px;
+      background-color: #007bff;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-top: 50px;
+      transition: background-color 0.3s ease;
+    }
+
+    .botao-pedido:hover {
+      background-color: #0056b3;
+    }
+
+    /* WhatsApp Float */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .whatsapp-float a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .whatsapp-float .whatsapp-text {
+      display: none;
+    }
+
+    .whatsapp-float .whatsapp-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #25d366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+      position: relative;
+      z-index: 0;
+    }
+
+    .whatsapp-float .whatsapp-icon img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .whatsapp-float:hover .whatsapp-icon {
+      transform: scale(1.1);
+    }
+
+    /* Footer Styles */
+    footer {
+      background-color: #3f3f3f;
+      color: #ffffff;
+      padding: 20px;
+      font-size: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .social-icons a img {
+      width: 32px;
+      height: 32px;
+      filter: brightness(0) invert(1);
+      transition: transform 0.2s ease;
+    }
+
+    .social-icons a img:hover {
+      transform: scale(1.1);
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+      transform-origin: center center;
+      transition: transform 0.3s ease;
+    }
+
+    .lightbox .close-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: #fff;
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    /* Utility Classes */
+    .desktop-only {
+      display: inline-block !important;
+    }
+
+    .mobile-only {
+      display: none !important;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 899.98px) {
+      body {
+        padding-top: 50px;
+      }
+
+      header {
+        padding: 10px 3%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                z-index: 999;
+                flex-direction: row;
+                text-align: center;
+            }
+
+      .menu-toggle {
+                display: flex;
+                flex-direction: column;
+                cursor: pointer;
+                position: relative;
+                z-index: 1001;
+                margin-top: 0;
+            }
+
+            .menu-toggle span {
+                height: 3px;
+                width: 25px;
+                background-color: #333;
+                margin: 2px 0;
+                border-radius: 2px;
+                transition: transform 0.3s ease, opacity 0.3s ease;
+                position: relative;
+            }
+
+            .menu-toggle.active span {
+                background-color: #333;
+                transform: translateY(7px) rotate(45deg);
+            }
+
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active span:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        padding: 20px;
+        gap: 20px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        font-size: 1.2rem;
+        padding: 10px 0;
+      }
+
+      .logo{
+        margin: 0 auto;
+      }
+
+      .logo img {
+        max-height: 50px;
+      }
+
+      .detalhes-linha {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .detalhes-linha img {
+        max-width: 100%;
+      }
+
+      .galeria-imagens {
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                padding-bottom: 20px;
+                gap: 2%;
+            }
+
+            .galeria-imagens a {
+                flex: 0 0 30%;
+                width: 60%;
+                margin-right: 10px;
+                scroll-snap-align: start;
+            }
+
+            .bloco-interface {
+                width: 100%;
+                padding: 5px;
+                border-radius: 8px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                text-align: center;
+            }
+
+            .bloco-interface img {
+                width: 100% !important;
+                max-height: 120px !important;
+                object-fit: contain !important;
+                margin-bottom: 5px !important;
+            }
+
+            .bloco-interface h3 {
+                font-size: 0.8rem;
+                margin-bottom: 5px;
+            }
+
+            .bloco-interface span {
+                font-size: 0.6rem;
+            }
+
+      .desktop-only {
+        display: none !important;
+      }
+
+      .mobile-only {
+        display: inline-block !important;
+      }
+    }
+
+    @media (max-width: 349.98px) {
+      .nav-links a {
+        font-size: 1rem;
+      }
+
+      .link-azul {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      p {
+        font-size: 0.8rem;
+      }
+
+      .detalhes-linha h2 {
+        font-size: 1.1rem;
+      }
+
+      .detalhes-linha p {
+        font-size: 0.7rem;
+      }
+
+      .bloco-interface h3 {
+        font-size: 0.8rem;
+      }
+
+      .bloco-interface span {
+        font-size: 0.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <a href="home.html"><img src="logo-antiga.PNG" alt="Logo Calory"></a>
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav class="nav-links">
+      <a href="produtos.html">Produtos</a>
+      <a href="sistema-empresarial.html">Sistema</a>
+      <a class="link-azul desktop-only" href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+solicitar+um+orçamento+para+o+meu+sistema!">Obtenha o sistema</a>
+      <a class="link-azul mobile-only" href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+solicitar+um+orçamento+para+o+meu+sistema!">Obtenha o sistema</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Tela de Estoque</h1>
+    <p>Gerencie produtos, preços e controle de estoque com eficiência usando a tela de estoque do Sistema Calory.</p>
+
+    <div class="detalhes-container">
+      <div class="detalhes-linha">
+        <img src="telasistemaimgs/cadastro produto.PNG" alt="Cadastro de Produto" class="zoom-img">
+        <div class="texto">
+          <h2>Cadastro de Produto</h2>
+          <p>Adicione produtos ao seu estoque com campos como descrição, categoria, unidade, código de barras, validade e mais.</p>
+        </div>
+      </div>
+
+      <div class="detalhes-linha">
+        <img src="telasistemaimgs/cadastro-preco-produto.PNG" alt="Preço e Tributação" class="zoom-img">
+        <div class="texto">
+          <h2>Preço e Tributação</h2>
+          <p>Configure o preço de venda, margem de lucro, tributos e impostos, além de promoções e controle de estoque mínimo.</p>
+        </div>
+      </div>
+
+      <div class="detalhes-linha">
+        <img src="telasistemaimgs/Estoque.PNG" alt="Controle de Estoque" class="zoom-img">
+        <div class="texto">
+          <h2>Controle de Estoque</h2>
+          <p>Monitore quantidades em tempo real, entradas e saídas, histórico de movimentações e notificações de baixo estoque.</p>
+        </div>
+      </div>
+    </div>
+
+    <section class="galeria">
+      <h2>Veja mais da Interface</h2>
+      <div class="galeria-imagens">
+        <a href="tela-inicial.html">
+          <div class="bloco-interface">
+            <img src="icon/telainicio.png" alt="Tela Inicial">
+            <h3>Tela Inicial</h3>
+            <span>Clique para saber mais</span>
+          </div>
+        </a>
+        <a href="tela-cliente.html">
+          <div class="bloco-interface">
+            <img src="icon/telaclientes.png" alt="Tela Clientes">
+            <h3>Tela de Clientes</h3>
+            <span>Clique para saber mais</span>
+          </div>
+        </a>
+        <a href="tela-documentos.html">
+          <div class="bloco-interface">
+            <img src="icon/teladocumento.png" alt="Documentos Fiscais">
+            <h3>Documentos Fiscais</h3>
+            <span>Clique para saber mais</span>
+          </div>
+        </a>
+      </div>
+
+      <div style="text-align: center;">
+        <a href="formulario.html" class="botao-pedido">Solicitar meu Sistema Agora</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="texto-footer">
+      © 2025 Calory Sistemas • contato@calory.com.br
+    </div>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/calorysistemas/"><img src="icon/face.png" alt="Facebook" /></a>
+      <a href="https://www.instagram.com/calorysistemas/"><img src="icon/insta.png" alt="Instagram" /></a>
+    </div>
+  </footer>
+
+  <div class="whatsapp-float">
+    <a class="desktop-only" href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+tirar+algumas+dúvidas+sobre+o+sistema!">
+      <span class="whatsapp-text">Fale Conosco</span>
+      <span class="whatsapp-icon">
+        <img src="icon/whats.png" alt="WhatsApp" />
+      </span>
+    </a>
+    <a class="mobile-only" href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+tirar+algumas+dúvidas+sobre+o+sistema!">
+      <span class="whatsapp-text">Fale Conosco</span>
+      <span class="whatsapp-icon">
+        <img src="icon/whats.png" alt="WhatsApp" />
+      </span>
+    </a>
+  </div>
+
+  <div class="lightbox" id="lightbox">
+    <span class="close-button" id="closeBtn">&times;</span>
+    <img src="" alt="Imagem ampliada" id="lightbox-img">
+  </div>
+
+  <script>
+    // Função para alternar o menu em dispositivos móveis
+    function toggleMenu() {
+      const menu = document.querySelector('.nav-links');
+      const toggle = document.querySelector('.menu-toggle');
+      menu.classList.toggle('active');
+      toggle.classList.toggle('active');
+    }
+
+    // Lightbox e Zoom
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.getElementById('closeBtn');
+    const zoomImgs = document.querySelectorAll('.zoom-img');
+    let isZoomed = false;
+
+    zoomImgs.forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightbox.style.display = 'flex';
+        lightboxImg.style.transform = 'scale(1)';
+        isZoomed = false;
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+      lightboxImg.src = '';
+      resetZoom();
+    });
+
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === lightbox) {
+        lightbox.style.display = 'none';
+        lightboxImg.src = '';
+        resetZoom();
+      }
+    });
+
+    function resetZoom() {
+      lightboxImg.style.transform = 'scale(1)';
+      lightboxImg.style.transformOrigin = 'center center';
+      isZoomed = false;
+      lightboxImg.removeEventListener('mousemove', handleMouseMove);
+    }
+
+    function handleMouseMove(e) {
+      const rect = lightboxImg.getBoundingClientRect();
+      const offsetX = e.clientX - rect.left;
+      const offsetY = e.clientY - rect.top;
+      const originX = (offsetX / rect.width) * 100;
+      const originY = (offsetY / rect.height) * 100;
+      lightboxImg.style.transformOrigin = `${originX}% ${originY}%`;
+    }
+
+    lightboxImg.addEventListener('click', function(e) {
+      e.stopPropagation();
+      if (!isZoomed) {
+        lightboxImg.style.transform = 'scale(2)';
+        lightboxImg.addEventListener('mousemove', handleMouseMove);
+        isZoomed = true;
+      } else {
+        resetZoom();
+      }
+    });
+
+    // Adiciona a classe 'touch-device' ao html se houver suporte a touch
+    if ('ontouchstart' in document.documentElement) {
+      document.documentElement.classList.add('touch-device');
+    }
+  </script>
+
+</body>
+</html>

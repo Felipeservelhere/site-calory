@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Serviços - Calory</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Reset e Estilos Gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f9ff;
+            color: #333;
+            padding: 100px 0px 40px;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Header Styles (PADRONIZADO) */
+        header {
+            width: 100%;
+            padding: 10px 3%;
+            background-color: #ffffff;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            flex-wrap: wrap;
+        }
+
+        .logo img {
+            max-height: 100px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .link-azul {
+            background-color: #007bff;
+            color: #fff !important;
+            padding: 10px 22px;
+            border-radius: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+            display: inline-block;
+        }
+
+        .link-azul:hover {
+            background-color: #0056b3;
+            color: #fff !important;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: #333;
+            text-decoration: none;
+            font-size: 25px;
+        }
+
+        .nav-links a:hover {
+            color: #007bff;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 2px 0;
+            transition: 0.4s;
+        }
+
+        /* Estilos para o "X" do menu toggle */
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        h1 {
+            text-align: center;
+            color: #29a8ff;
+            margin: 60px 0 20px;
+            font-weight: 700;
+        }
+
+        /* Adicionado estilo para a mensagem "Role para ver mais" */
+        .scroll-message {
+            text-align: center;
+            color: #777;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-bottom: 100px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            /* Ajustei o minmax para melhor visualização */
+            gap: 30px;
+            /* Aumentei o gap para melhor espaçamento */
+            align-items: stretch;
+            /* Garante que todos os cards tenham a mesma altura */
+        }
+
+        .card {
+            background: white;
+            padding: 25px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            color: #1c7ccf;
+        }
+
+        .card h2 {
+            color: #1c7ccf;
+            margin-bottom: 15px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        .card img {
+            display: block;
+            max-width: 100%;
+            height: 200px;
+            /* Ajustei a altura da imagem */
+            margin: 0 auto 15px;
+            border-radius: 8px;
+            object-fit: cover;
+            /* Garante que a imagem preencha o espaço sem distorcer */
+        }
+
+        .card p {
+            flex-grow: 1;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 25px;
+            color: #555;
+            text-align: center;
+        }
+
+        .card .more-info {
+            text-align: center;
+            font-weight: 600;
+            color: #29a8ff;
+            margin-top: auto;
+            font-size: 1rem;
+            user-select: none;
+            transition: color 0.3s ease;
+        }
+
+        .card:hover .more-info {
+            color: #1c7ccf;
+        }
+
+        /* WhatsApp Float Button Styles (PADRONIZADO) */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .whatsapp-float a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            /* espaço entre texto e ícone */
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .whatsapp-float .whatsapp-text {
+            display: inline-block;
+            background-color: #fff;
+            padding: 7px 10px;
+            font-size: 0.8rem;
+            font-weight: 100;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin-right: 0;
+            /* sem margem, porque usamos gap no flex */
+            position: static;
+            /* remove positioning */
+            z-index: 1;
+        }
+
+        .whatsapp-float .whatsapp-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #25d366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 0;
+        }
+
+        .whatsapp-float .whatsapp-icon img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .whatsapp-float:hover .whatsapp-icon {
+            transform: scale(1.1);
+        }
+
+        /* Esconde o texto inicialmente */
+        .whatsapp-float .whatsapp-text {
+            display: none;
+        }
+
+        footer {
+            background-color: #3f3f3f;
+            color: #ffffff;
+            padding: 40px 20px;
+            font-size: 0.8rem !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .social-icons a img {
+            width: 32px;
+            height: 32px;
+            filter: brightness(0) invert(1);
+            transition: transform 0.2s ease;
+        }
+
+        .social-icons a img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Utility Classes for Responsiveness (Mantenha como está) */
+        .desktop-only {
+            display: inline-block !important;
+            text-decoration: none !important;
+            color: rgb(255, 255, 255) !important;
+        }
+
+        .mobile-only {
+            display: none !important;
+        }
+
+        /* Esconde a mensagem em telas maiores */
+        .scroll-message {
+            display: none;
+        }
+
+        /* Estilos da Seta de Rolagem (Apenas para Mobile) */
+        .scroll-down {
+      position: absolute;
+      left: 85%;
+      transform: translateX(-50%);
+      bottom: 45%;
+      width: 38px;
+      height: 55px;
+      border: 2px solid #7c7c7c;
+      border-radius: 25px;
+      cursor: pointer;
+      z-index: 2;
+      animation: bounce 2s infinite;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 10px;
+    }
+
+    .scroll-down::after {
+      content: '';
+      display: block;
+      width: 12px;
+      height: 12px;
+      border-bottom: 3px solid #7c7c7c;
+      border-right: 3px solid #7c7c7c;
+      transform: rotate(45deg);
+      margin-top: 6px;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      20%,
+      50%,
+      80%,
+      100% {
+        transform: translateY(0);
+      }
+
+      40% {
+        transform: translateY(10px);
+      }
+
+      60% {
+        transform: translateY(5px);
+      }
+    }
+
+        /* Esconde a seta em telas maiores */
+        @media (min-width: 769px) {
+            .scroll-down {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .desktop-only {
+                display: none !important;
+            }
+
+            .mobile-only {
+                display: inline-block !important;
+            }
+
+            footer {
+                padding: 20px 3% !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+            }
+
+            .texto-footer {
+                font-size: 0.8rem;
+                margin-bottom: 10px;
+            }
+
+            .social-wrapper {
+                margin-top: 10px;
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .social-icons {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .social-icons img {
+                width: 24px;
+                height: auto;
+            }
+
+            .mobile-only {
+                display: inline-block;
+            }
+
+            .logo img {
+                max-height: 50px;
+                margin-left: 90px;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: white;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                padding: 20px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            body {
+                padding: 120px 10px 40px;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+                /* Cards em coluna única em telas menores */
+            }
+
+            /* Mostra a mensagem apenas em telas menores */
+            .scroll-message {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="home.html"><img src="logo-antiga.PNG" alt="Logo Calory Agropecuária"></a>
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="nav-links">
+            <a href="produtos.html">Produtos</a>
+            <a href="contato.html">Contato</a>
+            <a class="link-azul desktop-only"
+                href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+solicitar+um+orçamento+para+o+meu+sistema!">Obtenha
+                o sistema</a>
+            <a class="link-azul mobile-only"
+                href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+solicitar+um+orçamento+para+o+meu+sistema!">Obtenha
+                o sistema</a>
+        </nav>
+    </header>
+
+    <h1>NOSSOS PRODUTOS</h1>
+
+    <!-- Mensagem para rolar a tela -->
+    <p class="scroll-message">Role a tela para ver todos os nossos produtos!</p>
+
+    <!-- Seta de Rolagem (Apenas para Mobile) -->
+    <div class="scroll-down"
+        onclick="document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });" tabindex="0"
+        role="button" aria-label="Role para o conteúdo principal"></div>
+
+    <div class="container">
+        <a href="sistema-empresarial.html" class="card" aria-label="Saiba mais sobre Sistema Empresarial">
+            <h2>Sistema Empresarial</h2>
+            <img src="banner/produtosistemae.png" alt="Sistema Empresarial" />
+            <p>Um sistema completo para gerenciar processos internos, controle financeiro, estoque e muito mais,
+                tudo personalizado para sua empresa.</p>
+            <div class="more-info">Clique para saber mais</div>
+        </a>
+
+        <a href="emissao-nota-fiscal.html" class="card" aria-label="Saiba mais sobre Emissão de Nota Fiscal">
+            <h2>Emissão de Nota Fiscal</h2>
+            <img src="banner/produtonota.png" alt="Emissão de Nota Fiscal" />
+            <p>Facilite a emissão de notas fiscais eletrônicas com um sistema ágil, integrado e totalmente conforme
+                as exigências fiscais atuais.</p>
+            <div class="more-info">Clique para saber mais</div>
+        </a>
+
+        <a href="Sistemacertificadodigital.html" class="card"
+            aria-label="Saiba mais sobre Emissão de Certificado Digital">
+            <h2>Emissão de Certificado Digital</h2>
+            <img src="banner/produtocertifi.png" alt="Emissão de Certificado Digital" />
+            <p>Agilize a emissão e gerenciamento de certificados digitais para sua empresa com segurança e
+                praticidade.</p>
+            <div class="more-info">Clique para saber mais</div>
+        </a>
+    </div>
+
+    <div class="whatsapp-float">
+        <!-- Botão para DESKTOP -->
+        <a class="desktop-only"
+            href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+tirar+algumas+dúvidas+sobre+o+sistema!">
+            <span class="whatsapp-text">Fale Conosco</span>
+            <span class="whatsapp-icon">
+                <img src="icon/whats.png" alt="WhatsApp" />
+            </span>
+        </a>
+
+        <!-- Botão para MOBILE -->
+        <a class="mobile-only"
+            href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+tirar+algumas+dúvidas+sobre+o+sistema!">
+            <span class="whatsapp-text">Fale Conosco</span>
+            <span class="whatsapp-icon">
+                <img src="icon/whats.png" alt="WhatsApp" />
+            </span>
+        </a>
+    </div>
+
+    <footer>
+        <div class="texto-footer">
+            © 2025 Calory Sistemas • contato@calory.com.br
+        </div>
+        <div class="social-icons">
+            <a class="desktop-only" href="https://www.facebook.com/calorysistemas/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><img
+                    src="icon/face.png" alt="Facebook" /></a>
+            <a class="mobile-only" href="https://www.facebook.com/calorysistemas/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><img
+                    src="icon/face.png" alt="Facebook" /></a>
+
+            <a class="desktop-only" href="https://www.instagram.com/calorysistemas/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img
+                    src="icon/insta.png" alt="Instagram" /></a>
+            <a class=" mobile-only" href="https://www.instagram.com/calorysistemas/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img
+                    src="icon/insta.png" alt="Instagram" /></a>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.nav-links');
+            const toggle = document.querySelector('.menu-toggle');
+            menu.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+    </script>
+
+</body>
+
+</html>
