@@ -2,10 +2,13 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela de Clientes - Sistema Calory</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clientes - Sistema Calory</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         /* Reset e Estilos Gerais */
         * {
@@ -19,12 +22,11 @@
             background-color: #f9f9f9;
             color: #333;
             padding-top: 60px;
-            /* Ajuste para a altura do header fixo */
             line-height: 1.6;
         }
 
         /* Header Styles */
-        header {
+        .calory-header {
             width: 100%;
             padding: 10px 3%;
             background-color: #ffffff;
@@ -39,22 +41,51 @@
             flex-wrap: wrap;
         }
 
-        .logo img {
+        .calory-logo img {
             max-height: 50px;
             width: auto;
         }
 
-        .nav-links {
+        /* Menu Hamburguer Azul */
+        .calory-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .calory-menu-toggle span {
+            height: 3px;
+            width: 25px;
+            background: #007bff;
+            margin: 4px 0;
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .calory-menu-toggle.active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .calory-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .calory-menu-toggle.active span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .calory-nav-links {
             display: flex;
             align-items: center;
             gap: 2rem;
         }
 
-        .link-azul {
+        .calory-link-azul {
             background-color: #007bff;
             color: #fff !important;
             padding: 0.625rem 1.375rem;
-            border-radius: 1.5625rem;
+            border-radius: 0.3rem;
             font-weight: bold;
             text-decoration: none;
             font-size: 1rem;
@@ -62,177 +93,160 @@
             display: inline-block;
         }
 
-        .link-azul:hover {
+        .calory-link-azul:hover {
             background-color: #0056b3;
             color: #fff !important;
         }
 
-        .nav-links a {
+        .calory-nav-links a {
             font-weight: 500;
             color: #333;
             text-decoration: none;
             font-size: 1.25rem;
         }
 
-        .nav-links a:hover {
+        .calory-nav-links a:hover {
             color: #007bff;
         }
 
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .menu-toggle span {
-            height: 3px;
-            width: 25px;
-            background: #333;
-            margin: 4px 0;
-            border-radius: 2px;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            position: relative;
-        }
-
-        .menu-toggle.active span {
-            background-color: #333;
-            transform: translateY(7px) rotate(45deg);
-        }
-
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.active span:nth-child(3) {
-            transform: translateY(-7px) rotate(-45deg);
-        }
-
         /* Main Styles */
-        main {
+        .calory-main {
             max-width: 960px;
             margin: 0 auto;
             padding: 40px 20px;
         }
 
-        h1 {
+        .calory-main h1 {
             font-size: 2rem;
             color: #007bff;
             margin-bottom: 20px;
             text-align: center;
         }
 
-        p {
+        .calory-main p {
             font-size: 1rem;
             color: #555;
             text-align: center;
             margin-bottom: 40px;
         }
 
-        .detalhes-container {
+        .calory-detalhes-container {
             display: flex;
             flex-direction: column;
             gap: 40px;
             margin-top: 40px;
         }
 
-        .detalhes-linha {
+        .calory-detalhes-linha {
             display: flex;
             align-items: flex-start;
             gap: 20px;
             flex-wrap: wrap;
         }
 
-        .detalhes-linha img {
+        .calory-detalhes-linha img {
             width: 100%;
             max-width: 400px;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: zoom-in;
         }
 
-        .detalhes-linha .texto {
+        .calory-detalhes-linha img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .calory-detalhes-linha .calory-texto {
             flex: 1;
             min-width: 200px;
             text-align: left;
         }
 
-        .detalhes-linha h2 {
+        .calory-detalhes-linha h2 {
             font-size: 1.5rem;
             color: #007bff;
             margin-bottom: 10px;
         }
 
-        .detalhes-linha p {
+        .calory-detalhes-linha p {
             font-size: 0.9rem;
             color: #444;
             line-height: 1.6;
+            text-align: left;
         }
 
-        .galeria {
+        .calory-galeria {
             margin-top: 40px;
             text-align: center;
         }
 
-        .galeria h2 {
+        .calory-galeria h2 {
             font-size: 1.8rem;
             color: #007bff;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
-        .galeria-imagens {
+        .calory-galeria-imagens {
             display: flex;
             justify-content: center;
-            /* gap: 20px; REMOVIDO */
             flex-wrap: wrap;
-            gap: 2%;
+            gap: 1%;
         }
 
-        .galeria-imagens a {
+        .calory-galeria-imagens a {
             text-decoration: none;
             color: inherit;
             width: calc(33.33% - 20px);
             max-width: 200px;
+            margin-bottom: 20px;
         }
 
-        .bloco-interface {
+        .calory-bloco-interface {
             background-color: #fff;
             padding: 10px;
             border-radius: 12px;
             text-align: center;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                        box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
-        .bloco-interface:hover {
+        .calory-bloco-interface:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
         }
 
-        .bloco-interface img {
+        .calory-bloco-interface img {
             width: 100%;
             height: 120px;
             object-fit: contain;
             border-radius: 10px;
             margin-bottom: 10px;
+            transition: transform 0.3s ease;
         }
 
-        .bloco-interface h3 {
+        .calory-bloco-interface img:hover {
+            transform: scale(1.05);
+        }
+
+        .calory-bloco-interface h3 {
             font-size: 1rem;
             margin-bottom: 5px;
             color: #007bff;
         }
 
-        .bloco-interface span {
+        .calory-bloco-interface span {
             font-size: 0.8rem;
             color: #777;
         }
 
-        .botao-pedido {
+        .calory-botao-pedido {
             display: inline-block;
             padding: 15px 40px;
             background-color: #007bff;
@@ -245,18 +259,19 @@
             transition: background-color 0.3s ease;
         }
 
-        .botao-pedido:hover {
+        .calory-botao-pedido:hover {
             background-color: #0056b3;
         }
 
-        .whatsapp-float {
+        /* WhatsApp Float */
+        .calory-whatsapp-float {
             position: fixed;
             bottom: 20px;
             right: 20px;
             z-index: 1000;
         }
 
-        .whatsapp-float a {
+        .calory-whatsapp-float a {
             display: flex;
             align-items: center;
             gap: 8px;
@@ -265,21 +280,11 @@
             font-weight: bold;
         }
 
-        .whatsapp-float .whatsapp-text {
-            display: inline-block;
-            background-color: #fff;
-            padding: 7px 10px;
-            font-size: 0.8rem;
-            font-weight: 100;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            margin-right: 0;
-            position: static;
-            z-index: 1;
-            color: #333;
+        .calory-whatsapp-float .calory-whatsapp-text {
+            display: none;
         }
 
-        .whatsapp-float .whatsapp-icon {
+        .calory-whatsapp-float .calory-whatsapp-icon {
             width: 60px;
             height: 60px;
             border-radius: 50%;
@@ -292,21 +297,17 @@
             z-index: 0;
         }
 
-        .whatsapp-float .whatsapp-icon img {
+        .calory-whatsapp-float .calory-whatsapp-icon img {
             width: 30px;
             height: 30px;
         }
 
-        .whatsapp-float:hover .whatsapp-icon {
+        .calory-whatsapp-float:hover .calory-whatsapp-icon {
             transform: scale(1.1);
         }
 
-        .whatsapp-float .whatsapp-text {
-            display: none;
-        }
-
         /* Footer Styles */
-        footer {
+        .calory-footer {
             background-color: #3f3f3f;
             color: #ffffff;
             padding: 20px;
@@ -317,41 +318,77 @@
             text-align: center;
         }
 
-        .social-icons {
+        .calory-social-icons {
             display: flex;
             gap: 10px;
             margin-top: 15px;
         }
 
-        .social-icons a img {
+        .calory-social-icons a img {
             width: 32px;
             height: 32px;
             filter: brightness(0) invert(1);
             transition: transform 0.2s ease;
         }
 
-        .social-icons a img:hover {
+        .calory-social-icons a img:hover {
             transform: scale(1.1);
         }
 
-        /* Utility Classes for Responsiveness */
-        .desktop-only {
-            display: inline-block !important;
-            text-decoration: none !important;
-            color: rgb(255, 255, 255) !important;
+        /* Lightbox */
+        .calory-lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            cursor: zoom-in;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
         }
 
-        .mobile-only {
+        .calory-lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            transform-origin: center center;
+            transition: transform 0.3s ease;
+        }
+
+        .calory-lightbox .calory-close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            font-size: 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .calory-lightbox .calory-close-button:hover {
+            transform: rotate(90deg);
+            color: #ff6b6b;
+        }
+
+        /* Utility Classes */
+        .calory-desktop-only {
+            display: inline-block !important;
+        }
+
+        .calory-mobile-only {
             display: none !important;
         }
 
-        /* Estilos para telas menores que 900px (Layout Mobile) */
+        /* Responsive Styles */
         @media (max-width: 899.98px) {
             body {
                 padding-top: 50px;
             }
 
-            header {
+            .calory-header {
                 padding: 10px 3%;
                 display: flex;
                 align-items: center;
@@ -361,17 +398,7 @@
                 text-align: center;
             }
 
-            .logo {
-                margin: 0 auto;
-            }
-
-            .logo img {
-                max-height: 50px;
-                width: auto;
-                margin-left: 0;
-            }
-
-            .menu-toggle {
+            .calory-menu-toggle {
                 display: flex;
                 flex-direction: column;
                 cursor: pointer;
@@ -380,30 +407,30 @@
                 margin-top: 0;
             }
 
-            .menu-toggle span {
+            .calory-menu-toggle span {
                 height: 3px;
                 width: 25px;
-                background-color: #333;
+                background-color: #007bff;
                 margin: 2px 0;
                 border-radius: 2px;
                 transition: transform 0.3s ease, opacity 0.3s ease;
                 position: relative;
             }
 
-            .menu-toggle.active span {
-                background-color: #333;
+            .calory-menu-toggle.active span {
+                background-color: #056cdb;
                 transform: translateY(7px) rotate(45deg);
             }
 
-            .menu-toggle.active span:nth-child(2) {
+            .calory-menu-toggle.active span:nth-child(2) {
                 opacity: 0;
             }
 
-            .menu-toggle.active span:nth-child(3) {
+            .calory-menu-toggle.active span:nth-child(3) {
                 transform: translateY(-7px) rotate(-45deg);
             }
 
-            .nav-links {
+            .calory-nav-links {
                 display: none;
                 flex-direction: column;
                 width: 100%;
@@ -417,54 +444,73 @@
                 gap: 20px;
             }
 
-            .nav-links.active {
+            .calory-nav-links.active {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
             }
 
-            .nav-links a {
+            /* Estilo específico para o botão no mobile */
+            .calory-nav-links .calory-link-azul-mobile {
+                display: block;
+                width: 90%;
+                max-width: 300px;
+                margin: 15px auto;
+                padding: 15px 20px;
+                background-color: #007bff;
+                color: white !important;
+                border-radius: 8px;
                 font-size: 1.2rem;
-                padding: 10px 0;
                 text-align: center;
-                color: #333;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                transition: all 0.3s ease;
+            }
+            
+            .calory-nav-links .calory-link-azul-mobile:hover {
+                background-color: #0056b3;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            }
+            
+            /* Remover o estilo original do botão no mobile */
+            .calory-nav-links .calory-link-azul {
+                display: none;
             }
 
-            .nav-links .link-azul {
-                margin-top: 10px;
-                width: fit-content;
+            .calory-nav-links a {
+                display: block;
+                width: 100%;
                 text-align: center;
+                padding: 12px 0;
+                font-size: 18px;
+                font-weight: 500;
+                color: #007bff;
+                text-decoration: none;
             }
 
-            main {
-                padding: 20px;
+            /* linha abaixo de cada item, menos o último */
+            .calory-nav-links a:not(:last-child) {
+                border-bottom: 1px solid #007bff;
             }
 
-            h1 {
-                font-size: 1.8rem;
+            .calory-logo {
+                margin: 0 auto;
             }
 
-            p {
-                font-size: 1rem;
+            .calory-logo img {
+                max-height: 50px;
             }
 
-            .detalhes-container {
-                gap: 30px;
+            .calory-detalhes-linha {
+                flex-direction: column;
+                gap: 20px;
             }
 
-            .detalhes-linha {
-                gap: 10px;
-            }
-
-            .detalhes-linha img {
+            .calory-detalhes-linha img {
                 max-width: 100%;
             }
 
-            .detalhes-linha h2 {
-                font-size: 1.3rem;
-            }
-
-            .galeria-imagens {
+            .calory-galeria-imagens {
                 display: flex;
                 flex-wrap: nowrap;
                 overflow-x: auto;
@@ -473,14 +519,14 @@
                 gap: 2%;
             }
 
-            .galeria-imagens a {
+            .calory-galeria-imagens a {
                 flex: 0 0 30%;
                 width: 60%;
                 margin-right: 10px;
                 scroll-snap-align: start;
             }
 
-            .bloco-interface {
+            .calory-bloco-interface {
                 width: 100%;
                 padding: 5px;
                 border-radius: 8px;
@@ -488,363 +534,120 @@
                 text-align: center;
             }
 
-            .bloco-interface img {
+            .calory-bloco-interface img {
                 width: 100% !important;
                 max-height: 120px !important;
                 object-fit: contain !important;
                 margin-bottom: 5px !important;
             }
 
-            .bloco-interface h3 {
+            .calory-bloco-interface h3 {
                 font-size: 0.8rem;
                 margin-bottom: 5px;
             }
 
-            .bloco-interface span {
+            .calory-bloco-interface span {
                 font-size: 0.6rem;
             }
 
-            .bloco-interface {
-                width: 100%;
-                /* Ocupa toda a largura disponível */
-                padding: 5px;
-                border-radius: 8px;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-                text-align: center;
-            }
-
-            .bloco-interface img {
-                width: 100% !important;
-                /* Garante que a imagem se ajuste ao contêiner */
-                max-height: 120px !important;
-                /* Limita a altura da imagem */
-                object-fit: contain !important;
-                /* Mantém a proporção da imagem */
-                margin-bottom: 5px !important;
-            }
-
-            .bloco-interface h3 {
-                font-size: 0.8rem;
-                margin-bottom: 5px;
-            }
-
-            .bloco-interface span {
-                font-size: 0.6rem;
-            }
-
-            .desktop-only {
+            .calory-desktop-only {
                 display: none !important;
             }
 
-            .mobile-only {
+            .calory-mobile-only {
                 display: inline-block !important;
             }
-
-            .whatsapp-float {
-                bottom: 10px;
-                right: 10px;
-            }
-
-            .whatsapp-float .whatsapp-text {
-                display: none;
-            }
-
-            .whatsapp-float .whatsapp-icon {
-                width: 60px;
-                height: 60px;
-                border-radius: 50%;
-                background-color: #25d366;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                transition: transform 0.3s ease;
-                position: relative;
-                z-index: 0;
-            }
-
-            .whatsapp-float .whatsapp-icon img {
-                width: 30px;
-                height: 30px;
-            }
         }
 
-        /* Estilos para a seta de rolagem */
-        .arrow {
-            position: absolute;
-            bottom: 80px;
-            left: 50%;
-            margin-left: -20px;
-            width: 38px;
-            height: 55px;
-            border: 2px solid #f1f1f1;
-            border-radius: 25px;
-            cursor: pointer;
-            z-index: 2;
-            animation: bounce 2s infinite;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding-top: 10px;
-        }
-
-        .arrow::after {
-            content: '';
-            display: block;
-            width: 12px;
-            height: 12px;
-            border-bottom: 3px solid #f3f3f3;
-            border-right: 3px solid #f3f3f3;
-            transform: rotate(45deg);
-            margin-top: 6px;
-        }
-
-        @keyframes bounce {
-
-            0%,
-            20%,
-            50%,
-            80%,
-            100% {
-                transform: translateY(0);
-            }
-
-            40% {
-                transform: translateY(10px);
-            }
-
-            60% {
-                transform: translateY(5px);
-            }
-        }
-
-        /* Estilos para o botão do WhatsApp */
-        .whatsapp-float a {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: #fff;
-        }
-
-        .whatsapp-float .whatsapp-text {
-            background-color: #fff;
-            padding: 7px 10px;
-            font-size: 0.8rem;
-            font-weight: 100;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            margin-right: 0;
-            position: static;
-            z-index: 1;
-            color: #333;
-        }
-
-        /* Estilos para telas menores que 350px */
         @media (max-width: 349.98px) {
-            body {
-                font-size: 0.9rem;
-            }
-
-            header {
-                padding: 5px 2%;
-            }
-
-            .logo img {
-                max-height: 40px;
-            }
-
-            .nav-links a {
+            .calory-nav-links a {
                 font-size: 1rem;
             }
 
-            .link-azul {
+            .calory-link-azul {
                 padding: 0.4rem 0.8rem;
                 font-size: 0.8rem;
             }
 
-            h1 {
+            .calory-main h1 {
                 font-size: 1.6rem;
             }
 
-            p {
+            .calory-main p {
                 font-size: 0.8rem;
             }
 
-            .detalhes-linha h2 {
+            .calory-detalhes-linha h2 {
                 font-size: 1.1rem;
             }
 
-            .detalhes-linha p {
+            .calory-detalhes-linha p {
                 font-size: 0.7rem;
             }
 
-            .galeria h2 {
-                font-size: 1.4rem;
-            }
-
-            .bloco-interface h3 {
+            .calory-bloco-interface h3 {
                 font-size: 0.8rem;
             }
 
-            .bloco-interface span {
+            .calory-bloco-interface span {
                 font-size: 0.6rem;
             }
-
-            footer {
-                font-size: 0.7rem;
-                padding: 20px 10px;
-            }
-
-            .social-icons a img {
-                width: 24px;
-                height: 24px;
-            }
-
-            .whatsapp-float {
-                bottom: 20px !important;
-                right: 20px !important;
-            }
-
-            .whatsapp-float .whatsapp-text {
-                font-size: 0.7rem;
-                padding: 5px 8px;
-            }
-
-            .whatsapp-float .whatsapp-icon {
-                width: 60px;
-                height: 60px;
-            }
-
-            .whatsapp-float .whatsapp-icon img {
-                width: 30px;
-                height: 30px;
-            }
         }
-
-        /* Estilos para dispositivos touch */
-        .touch-device .desktop-only {
-            display: none !important;
-        }
-
-        .touch-device .mobile-only {
-            display: inline-block !important;
-        }
-
-        /* Estilos para o layout desktop */
-        .desktop-layout .mobile-only {
-            display: none !important;
-        }
-
-        .desktop-layout .desktop-only {
-            display: inline-block !important;
-        }
-
-        /* Estilos para o layout mobile (com touch) */
-        .touch-device .desktop-layout .mobile-only {
-            display: inline-block !important;
-        }
-
-        .touch-device .desktop-layout .desktop-only {
-            display: none !important;
-        }
-
-        /* Media Query para forçar o layout desktop em dispositivos com ponteiro fino (mouse) */
-        @media (pointer: fine) {
-            .touch-device .desktop-only {
-                display: inline-block !important;
-            }
-
-            .touch-device .mobile-only {
-                display: none !important;
-            }
-        }
-
-        /* Estilos para a visualização expandida da imagem */
-        .image-popup {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
-
-        .image-popup img {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-            cursor: grab;
-        }
-
-        .image-popup .close-button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: #fff;
-            font-size: 30px;
-            cursor: pointer;
-        }
-
-        .whatsapp-float {
-                bottom: 20px !important;
-                right: 20px !important;
-            }
     </style>
 </head>
 
 <body>
 
-    <header>
-        <div class="logo">
+    <header class="calory-header">
+        <div class="calory-logo">
             <a href="home.html"><img src="logo-antiga.PNG" alt="Logo Calory"></a>
         </div>
-        <div class="menu-toggle" onclick="toggleMenu()">
+        <div class="calory-menu-toggle" onclick="caloryToggleMenu()">
             <span></span>
             <span></span>
             <span></span>
         </div>
-        <nav class="nav-links">
+        <nav class="calory-nav-links">
+            <a href="home.html">Início</a>
             <a href="produtos.html">Produtos</a>
             <a href="sistema-empresarial.html">Sistema</a>
-            <a class="link-azul whatsapp-link"
+            <a class="calory-link-azul calory-desktop-only"
                 href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+solicitar+um+orçamento+para+o+meu+sistema!">Obtenha
                 o sistema</a>
+            <a class="calory-link-azul-mobile calory-mobile-only"
+                href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+solicitar+um+orçamento+para+o+meu+sistema!">OBTER SISTEMA AGORA</a>
         </nav>
     </header>
 
-    <main>
+    <main class="calory-main">
         <h1>Tela de Clientes</h1>
-        <p>A tela de clientes do Sistema Calory foi projetada para oferecer controle completo sobre o cadastro e gestão
-            dos seus clientes.</p>
+        <p>
+            A tela de clientes do Sistema Calory foi projetada para oferecer controle completo sobre o cadastro e gestão
+            dos seus clientes.
+        </p>
 
-        <div class="detalhes-container">
-            <div class="detalhes-linha">
-                <img src="telasistemaimgs/cadastro clientes.PNG" alt="Cadastro de Cliente" class="zoom-img"
-                    onclick="openImage('telasistemaimgs/cadastro clientes.PNG')">
-                <div class="texto">
+        <div class="calory-detalhes-container">
+            <div class="calory-detalhes-linha">
+                <img src="telasistemaimgs/clientes cadastrados.PNG" alt="Clientes Cadastrados" class="calory-zoom-img">
+                <div class="calory-texto">
+                    <h2>Clientes Cadastrados</h2>
+                    <p>Oferece uma visão geral de todos os clientes do sistema. É possível ordenar e localizar
+                        rapidamente pelo nome, telefone, CPF, endereço, entre outros filtros úteis.</p>
+                </div>
+            </div>
+
+            <div class="calory-detalhes-linha">
+                <img src="telasistemaimgs/cadastro clientes.PNG" alt="Cadastro de Clientes" class="calory-zoom-img">
+                <div class="calory-texto">
                     <h2>Cadastro Individual do Cliente</h2>
                     <p>Nesta tela, é possível preencher todos os dados pessoais e profissionais de um cliente. Há campos
                         para CPF, endereço, contatos, foto e até informações do cônjuge e local de trabalho.</p>
                 </div>
             </div>
 
-            <div class="detalhes-linha">
-                <img src="telasistemaimgs/clientes cadastrados.PNG" alt="Lista de Clientes Cadastrados"
-                    class="zoom-img" onclick="openImage('telasistemaimgs/clientes cadastrados.PNG')">
-                <div class="texto">
-                    <h2>Lista de Clientes Cadastrados</h2>
-                    <p>Oferece uma visão geral de todos os clientes do sistema. É possível ordenar e localizar
-                        rapidamente pelo nome, telefone, CPF, endereço, entre outros filtros úteis.</p>
-                </div>
-            </div>
-
-            <div class="detalhes-linha">
-                <img src="telasistemaimgs/limitecredito.PNG" alt="Tela de Limite de Crédito" class="zoom-img"
-                    onclick="openImage('telasistemaimgs/limitecredito.PNG')">
-                <div class="texto">
+            <div class="calory-detalhes-linha">
+                <img src="telasistemaimgs/Estoque.PNG" alt="Limite de Credito" class="calory-zoom-img">
+                <div class="calory-texto">
                     <h2>Gestão de Limite de Crédito</h2>
                     <p>Você pode definir o limite de crédito de cada cliente com base na renda mensal informada. O
                         sistema também permite aplicar regras administrativas para bloqueios automáticos.</p>
@@ -852,175 +655,151 @@
             </div>
         </div>
 
-        <section class="galeria">
+        <section class="calory-galeria">
             <h2>Veja mais da Interface</h2>
-            <div class="galeria-imagens">
+            <div class="calory-galeria-imagens">
                 <a href="tela-inicial.html">
-                    <div class="bloco-interface">
+                    <div class="calory-bloco-interface">
                         <img src="icon/telainicio.png" alt="Tela Inicial">
                         <h3>Tela Inicial</h3>
                         <span>Clique para saber mais</span>
                     </div>
                 </a>
                 <a href="tela-estoque.html">
-                    <div class="bloco-interface">
-                        <img src="icon/telaestoque.png" alt="Tela de Estoque">
+                    <div class="calory-bloco-interface">
+                        <img src="icon/telaestoque.png" alt="Tela Estoque">
                         <h3>Tela de Estoque</h3>
                         <span>Clique para saber mais</span>
                     </div>
                 </a>
                 <a href="tela-documentos.html">
-                    <div class="bloco-interface">
-                        <img src="icon/teladocumento.png" alt="Documentos Fiscais">
-                        <h3>Documentos Fiscais</h3>
+                    <div class="calory-bloco-interface">
+                        <img src="icon/teladocumento.png" alt="Tela Documentos">
+                        <h3>Tela de Documentos</h3>
                         <span>Clique para saber mais</span>
                     </div>
                 </a>
             </div>
 
             <div style="text-align: center;">
-                <a href="formulario.html" class="botao-pedido">Solicitar meu Sistema Agora</a>
+                <a href="formulario.html" class="calory-botao-pedido">Solicitar meu Sistema Agora</a>
             </div>
         </section>
     </main>
 
-    <footer>
-        <div class="texto-footer">
-            © 2025 Calory Sistemas • contato@calory.com.br
-        </div>
-        <div class="social-icons">
-            <a href="https://www.facebook.com/calorysistemas/" target="_blank" rel="noopener noreferrer"
-                aria-label="Facebook"><img src="icon/face.png" alt="Facebook" /></a>
-            <a href="https://www.instagram.com/calorysistemas/" target="_blank" rel="noopener noreferrer"
-                aria-label="Instagram"><img src="icon/insta.png" alt="Instagram" /></a>
-        </div>
-    </footer>
-
-    <div class="whatsapp-float">
+    <div class="calory-whatsapp-float">
         <!-- Botão para DESKTOP -->
-        <a class="desktop-only"
+        <a class="calory-desktop-only"
             href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+tirar+algumas+dúvidas+sobre+o+sistema!">
-            <span class="whatsapp-text">Fale Conosco</span>
-            <span class="whatsapp-icon">
+            <span class="calory-whatsapp-text">Fale Conosco</span>
+            <span class="calory-whatsapp-icon">
                 <img src="icon/whats.png" alt="WhatsApp" />
             </span>
         </a>
 
         <!-- Botão para MOBILE -->
-        <a class="mobile-only"
+        <a class="calory-mobile-only"
             href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+tirar+algumas+dúvidas+sobre+o+sistema!">
-            <span class="whatsapp-text">Fale Conosco</span>
-            <span class="whatsapp-icon">
+            <span class="calory-whatsapp-text">Fale Conosco</span>
+            <span class="calory-whatsapp-icon">
                 <img src="icon/whats.png" alt="WhatsApp" />
             </span>
         </a>
     </div>
 
+    <footer class="calory-footer">
+        <div class="calory-texto-footer">
+            © 2025 Calory Sistemas • contato@calory.com.br
+        </div>
+        <div class="calory-social-icons">
+            <a class="calory-desktop-only" href="https://www.facebook.com/calorysistemas/" target="_blank"
+                rel="noopener noreferrer" aria-label="Facebook"><img src="icon/face.png" alt="Facebook" /></a>
+            <a class="calory-mobile-only" href="https://www.facebook.com/calorysistemas/" target="_blank"
+                rel="noopener noreferrer" aria-label="Facebook"><img src="icon/face.png" alt="Facebook" /></a>
+
+            <a class="calory-desktop-only" href="https://www.instagram.com/calorysistemas/" target="_blank"
+                rel="noopener noreferrer" aria-label="Instagram"><img src="icon/insta.png" alt="Instagram" /></a>
+            <a class="calory-mobile-only" href="https://www.instagram.com/calorysistemas/" target="_blank"
+                rel="noopener noreferrer" aria-label="Instagram"><img src="icon/insta.png" alt="Instagram" /></a>
+        </div>
+    </footer>
+
     <!-- Popup para visualização da imagem -->
-    <div class="image-popup">
-        <span class="close-button" onclick="closeImage()">&times;</span>
-        <img src="" alt="Imagem Expandida">
+    <div class="calory-lightbox" id="calory-lightbox">
+        <span class="calory-close-button" id="calory-closeBtn">&times;</span>
+        <img src="" alt="Imagem Expandida" id="calory-lightbox-img">
     </div>
 
     <script>
-        function toggleMenu() {
-            const menu = document.querySelector('.nav-links');
-            const toggle = document.querySelector('.menu-toggle');
+        // Função para alternar o menu em dispositivos móveis
+        function caloryToggleMenu() {
+            const menu = document.querySelector('.calory-nav-links');
+            const toggle = document.querySelector('.calory-menu-toggle');
             menu.classList.toggle('active');
             toggle.classList.toggle('active');
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            // Function to detect mobile devices
-            function isMobile() {
-                return /Android|iOS|iPad|iPhone|iPod/i.test(navigator.userAgent);
+        // Lightbox e Zoom
+        const caloryLightbox = document.getElementById('calory-lightbox');
+        const caloryLightboxImg = document.getElementById('calory-lightbox-img');
+        const caloryCloseBtn = document.getElementById('calory-closeBtn');
+        const caloryZoomImgs = document.querySelectorAll('.calory-zoom-img');
+        let isZoomed = false;
+
+        caloryZoomImgs.forEach(img => {
+            img.addEventListener('click', () => {
+                caloryLightboxImg.src = img.src;
+                caloryLightbox.style.display = 'flex';
+                caloryLightboxImg.style.transform = 'scale(1)';
+                isZoomed = false;
+            });
+        });
+
+        caloryCloseBtn.addEventListener('click', () => {
+            caloryLightbox.style.display = 'none';
+            caloryLightboxImg.src = '';
+            resetZoom();
+        });
+
+        caloryLightbox.addEventListener('click', function(e) {
+            if (e.target === caloryLightbox) {
+                caloryLightbox.style.display = 'none';
+                caloryLightboxImg.src = '';
+                resetZoom();
             }
+        });
 
-            // Get the menu link
-            const menuLink = document.querySelector('.nav-links .whatsapp-link');
+        function resetZoom() {
+            caloryLightboxImg.style.transform = 'scale(1)';
+            caloryLightboxImg.style.transformOrigin = 'center center';
+            isZoomed = false;
+            caloryLightboxImg.removeEventListener('mousemove', handleMouseMove);
+        }
 
-            // Set the menu link based on device
-            if (isMobile()) {
-                menuLink.href =
-                    'https://api.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+solicitar+um+orçamento+para+o+meu+sistema!';
+        function handleMouseMove(e) {
+            const rect = caloryLightboxImg.getBoundingClientRect();
+            const offsetX = e.clientX - rect.left;
+            const offsetY = e.clientY - rect.top;
+            const originX = (offsetX / rect.width) * 100;
+            const originY = (offsetY / rect.height) * 100;
+            caloryLightboxImg.style.transformOrigin = `${originX}% ${originY}%`;
+        }
+
+        caloryLightboxImg.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (!isZoomed) {
+                caloryLightboxImg.style.transform = 'scale(2)';
+                caloryLightboxImg.addEventListener('mousemove', handleMouseMove);
+                isZoomed = true;
             } else {
-                menuLink.href =
-                    'https://web.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+solicitar+um+orçamento+para+o+meu+sistema!';
+                resetZoom();
             }
         });
 
-        function openImage(imageSrc) {
-            const popup = document.querySelector('.image-popup');
-            const popupImg = popup.querySelector('img');
-            popupImg.src = imageSrc;
-            popup.style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Impede a rolagem da página
+        // Adiciona a classe 'touch-device' ao html se houver suporte a touch
+        if ('ontouchstart' in document.documentElement) {
+            document.documentElement.classList.add('touch-device');
         }
-
-        function closeImage() {
-            const popup = document.querySelector('.image-popup');
-            popup.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restaura a rolagem da página
-        }
-
-        // Adiciona funcionalidade de arrastar e zoom
-        const popupImg = document.querySelector('.image-popup img');
-        let pos = { top: 0, left: 0, x: 0, y: 0 };
-
-        const handleGrab = function(e) {
-            popupImg.style.cursor = 'grabbing';
-            pos = {
-                left: popupImg.offsetLeft,
-                top: popupImg.offsetTop,
-                // Get the current mouse position
-                x: e.clientX,
-                y: e.clientY,
-            };
-
-            document.addEventListener('mousemove', handleMove);
-            document.addEventListener('mouseup', handleDrop);
-        };
-
-        const handleMove = function(e) {
-            // How far the mouse has been moved
-            const dx = e.clientX - pos.x;
-            const dy = e.clientY - pos.y;
-
-            // Scroll the element
-            popupImg.style.top = (pos.top + dy) + 'px';
-            popupImg.style.left = (pos.left + dx) + 'px';
-        };
-
-        const handleDrop = function() {
-            popupImg.style.cursor = 'grab';
-            document.removeEventListener('mousemove', handleMove);
-            document.removeEventListener('mouseup', handleDrop);
-        };
-
-        popupImg.addEventListener('mousedown', handleGrab);
-
-        // Implementação do zoom com a roda do mouse
-        popupImg.addEventListener('wheel', function(e) {
-            e.preventDefault();
-            const scale = e.deltaY > 0 ? 0.9 : 1.1; // Ajuste a sensibilidade do zoom
-            const currentWidth = popupImg.offsetWidth;
-            const currentHeight = popupImg.offsetHeight;
-
-            // Calcula as novas dimensões
-            const newWidth = currentWidth * scale;
-            const newHeight = currentHeight * scale;
-
-            // Define as novas dimensões
-            popupImg.style.width = newWidth + 'px';
-            popupImg.style.height = newHeight + 'px';
-
-            // Ajusta a posição para manter o ponto de zoom no centro
-            const offsetX = (currentWidth - newWidth) / 2;
-            const offsetY = (currentHeight - newHeight) / 2;
-
-            popupImg.style.left = (popupImg.offsetLeft + offsetX) + 'px';
-            popupImg.style.top = (popupImg.offsetTop + offsetY) + 'px';
-        });
     </script>
 
 </body>

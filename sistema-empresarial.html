@@ -43,42 +43,8 @@
         }
 
         .logo img {
-            max-height: 100px;
+            max-height: 50px;
             width: auto;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .link-azul {
-            background-color: #007bff;
-            color: #fff !important;
-            padding: 0.625rem 1.375rem;
-            border-radius: 1.5625rem;
-            font-weight: bold;
-            text-decoration: none;
-            font-size: 1rem;
-            transition: background 0.3s ease;
-            display: inline-block;
-        }
-
-        .link-azul:hover {
-            background-color: #0056b3;
-            color: #fff !important;
-        }
-
-        .nav-links a {
-            font-weight: 500;
-            color: #333;
-            text-decoration: none;
-            font-size: 1.25rem;
-        }
-
-        .nav-links a:hover {
-            color: #007bff;
         }
 
         .menu-toggle {
@@ -110,46 +76,91 @@
             transform: translateY(-7px) rotate(-45deg);
         }
 
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .link-azul {
+            background-color: #007bff;
+            color: #fff !important;
+            padding: 0.625rem 1.375rem;
+            border-radius: 0.3rem;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+            display: inline-block;
+        }
+
+        .link-azul:hover {
+            background-color: #0056b3;
+            color: #fff !important;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: #333;
+            text-decoration: none;
+            font-size: 1.25rem;
+        }
+
+        .nav-links a:hover {
+            color: #007bff;
+        }
+
         /* Banner Styles */
         .banner {
             position: relative;
             width: 100%;
-            height: 70vh;
-            background: url('banner/empresarial (2).png') no-repeat center center;
+            height: 80vh;
+            background: url('banner/Design\ sem\ nome\ \(4\).svg') no-repeat center center;
             background-size: cover;
-            margin-top: 60px;
+            margin-top: 80px;
+            margin-bottom: 40px;
         }
 
         .titulo {
             position: absolute;
-            top: 27%;
-            left: 5%;
-            font-size: 3.2rem;
+            top: 5%;
+            text-align: center;
+            left: 2%;
+            font-size: 5.5rem !important;
             font-weight: 700;
-            color: #29a8ff !important;
+            color: #ffffff !important;
         }
 
         .titulo span {
-            color: #29a8ff;
+            color: #ffffff;
         }
 
         .descricao {
             position: absolute;
-            top: 42%;
-            left: 5%;
-            font-size: 1.4rem;
+            top: 56%;
+            left: 6%;
+            color: white;
+            text-align: center;
+            font-size: 2.2rem !important;
+            font-weight: 500 !important;
             font-weight: 500;
-            color: #ffffff;
+        }
+
+        .descricao span{
+            color: rgb(21, 253, 21);
+            font-weight: 600;
         }
 
         .botao {
             position: absolute;
-            top: 60%;
-            left: 5%;
-            padding: 15px 30px;
-            background-color: #ffdf52;
+            top: 72%;
+            left: 35%;
+            width: 30%;
+            text-align: center;
+            padding: 15px 30px !important;
+            background-color: #29a8ff;
             color: #ffffff;
-            font-size: 1.6rem;
+            font-size: 1.9rem;
             font-weight: 600;
             border: none;
             border-radius: 10px;
@@ -160,8 +171,17 @@
         }
 
         .botao:hover {
-            background-color: #cfb340;
-            color: #5f5f5f;
+            background-color: #007bff;
+            box-shadow: 0 20px 20px rgba(0, 0, 0, 0.1);
+            color: #f5f5f5;
+        }
+
+        .info{
+            position: absolute;
+            left: 2%;
+            top: 96%;
+            font-size: 0.7rem;
+            color: #ffffff;
         }
 
         /* Footer Styles */
@@ -196,8 +216,8 @@
         /* WhatsApp Float Button Styles */
         .whatsapp-float {
             position: fixed;
-            bottom: 30px !important;
-            right: 30px !important;
+            bottom: 20px !important;
+            right: 20px !important;
             z-index: 1000;
         }
 
@@ -211,22 +231,12 @@
         }
 
         .whatsapp-float .whatsapp-text {
-            display: inline-block;
-            background-color: #fff;
-            padding: 7px 10px;
-            font-size: 0.8rem;
-            font-weight: 100;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            margin-right: 0;
-            position: static;
-            z-index: 1;
-            color: #333;
+            display: none;
         }
 
         .whatsapp-float .whatsapp-icon {
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             background-color: #25d366;
             display: flex;
@@ -238,31 +248,59 @@
         }
 
         .whatsapp-float .whatsapp-icon img {
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
         }
 
         .whatsapp-float:hover .whatsapp-icon {
             transform: scale(1.1);
         }
 
-        .whatsapp-float .whatsapp-text {
-            display: none;
-        }
-
         /* Utility Classes for Responsiveness */
-        .desktop-only {
+        .desktop-version {
             display: inline-block !important;
-            text-decoration: none !important;
-            color: rgb(255, 255, 255) !important;
         }
 
-        .mobile-only {
+        .mobile-version {
             display: none !important;
+        }
+
+        @media (max-width: 1400px) {
+            .titulo {
+                font-size: 4rem !important;
+                left: 5%;
+                top: 6%;
+                width: 90%;
+            }
+
+            .descricao {
+                font-size: 1.6rem !important;
+                top: 50%;
+                left: 5%;
+                width: 90%;
+            }
+
+            .botao {
+                top: 70% !important;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 80%;
+                font-size: 1.6rem;
+                padding: 12px 20px !important;
+            }
+
+            .info {
+                font-size: 0.6rem;
+                left: 5%;
+                top: 95%;
+            }
         }
 
         /* Estilos para telas menores que 900px (Layout Mobile) */
         @media (max-width: 899.98px) {
+            body {
+                padding-top: 50px;
+            }
 
             header {
                 padding: 10px 3%;
@@ -296,7 +334,7 @@
             .menu-toggle span {
                 height: 3px;
                 width: 25px;
-                background-color: #333;
+                background-color: #007bff;
                 margin: 2px 0;
                 border-radius: 2px;
                 transition: transform 0.3s ease, opacity 0.3s ease;
@@ -304,7 +342,7 @@
             }
 
             .menu-toggle.active span {
-                background-color: #333;
+                background-color: #056cdb;
                 transform: translateY(7px) rotate(45deg);
             }
 
@@ -344,28 +382,47 @@
             }
 
             .nav-links .link-azul {
-                margin-top: 10px;
-                width: fit-content;
+                display: block;
+                width: 90%;
+                max-width: 300px;
+                margin: 15px auto;
+                padding: 15px 20px;
+                background-color: #007bff;
+                color: white !important;
+                border-radius: 8px;
+                font-size: 1.2rem;
                 text-align: center;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                transition: all 0.3s ease;
+            }
+
+            .nav-links .link-azul-mobile:hover {
+                background-color: #0056b3;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            }
+
+            .nav-links a {
+                display: block;
+                width: 100%;
+                text-align: center;
+                padding: 12px 0;
+                font-size: 18px;
+                font-weight: 500;
+                color: #007bff;
+                text-decoration: none;
+            }
+
+            .nav-links a:not(:last-child) {
+                border-bottom: 1px solid #007bff;
             }
 
             .banner {
-                margin-top: 60px;
-                height: 70vh;
+                margin-top: 0px;
+                height: 90vh;
                 position: relative;
-                background: url('banner/empresarialmb (1).png') no-repeat center center;
+                background: url('banner/Design\ sem\ nome\ \(4\).svg') no-repeat center center;
                 background-size: cover;
-            }
-
-            .banner::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: rgba(59, 59, 59, 0.75);
-                z-index: 1;
             }
 
             .titulo {
@@ -373,47 +430,69 @@
                 top: 10%;
                 left: 50%;
                 transform: translateX(-50%);
-                font-size: 2.2rem !important;
                 text-align: center;
-                margin-bottom: 40px;
-                z-index: 2;
+                font-size: 2.4rem !important;
+                font-weight: 800;
                 color: #fff;
-                line-height: 1.2 !important;
+                line-height: 1.2;
+                width: 100vw;
+                max-width: 100%;
+                padding: 0 10px;
+                box-sizing: border-box;
+                white-space: normal;
+                text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
                 max-width: 90%;
+                padding: 0 5%;
+                line-height: 1.3;
             }
-
 
             .descricao {
                 position: absolute;
-                top: 39%;
+                top: 49%;
                 left: 50%;
                 transform: translateX(-50%);
-                font-size: 1rem;
                 text-align: center;
-                z-index: 2;
+                font-size: 1.3rem !important;
+                font-weight: 600 !important;
+                color:#ffffff;
+                line-height: 1.2;
+                width: 90vw;
+                max-width: 90%;
+                padding: 0 10px;
+                box-sizing: border-box;
+                white-space: normal;
+                max-width: 90%;
+                padding: 0 5%;
                 line-height: 1.3;
-                color: #e0e0e0;
-                width: 90%;
             }
 
             .botao {
                 position: absolute;
-                top: 55%;
+                top: 70%; 
                 left: 50%;
                 transform: translateX(-50%);
-                margin-bottom: 10px;
+                background-color: #007bff;
+                color: white;
+                font-size: 1rem;
+                font-weight: bold;
+                border-radius: 30px;
+                padding: 14px 30px;
                 text-align: center;
-                font-size: 1.2rem;
+                text-decoration: none;
                 z-index: 2;
+                width: 80%;
+                max-width: 320px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             }
 
             .info {
-                font-size: 0.8rem;
-                top: 70%;
-                left: 50%;
+                position: absolute;
+                font-size: 0.55rem;
+                top: 95%;
+                left: 59%;
+                width: 90vw;
+                max-width: 90%;
                 transform: translateX(-50%);
-                text-align: center;
-                display: none;
             }
 
             .sessao-sistema {
@@ -461,34 +540,15 @@
                 margin-top: 3px;
             }
 
-            .desktop-only {
+            .desktop-version {
                 display: none !important;
-                text-decoration: none !important;
             }
 
-            .mobile-only {
+            .mobile-version {
                 display: inline-block !important;
-                text-decoration: none !important;
-                color: rgb(255, 255, 255) !important;
             }
-            .whatsapp-float .whatsapp-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: #25d366;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.3s ease;
-            position: relative;
-            z-index: 0;
-        }
 
-        .whatsapp-float .whatsapp-icon img {
-            width: 30px;
-            height: 30px;
-        }
-        .whatsapp-float {
+            .whatsapp-float {
                 bottom: 10px !important;
                 right: 10px !important;
             }
@@ -610,7 +670,7 @@
         /* Estilos para a seta de rolagem */
         .arrow {
             position: absolute;
-            bottom: 80px;
+            bottom: 3%;
             left: 50%;
             margin-left: -20px;
             width: 38px;
@@ -638,41 +698,15 @@
         }
 
         @keyframes bounce {
-
-            0%,
-            20%,
-            50%,
-            80%,
-            100% {
+            0%, 20%, 50%, 80%, 100% {
                 transform: translateY(0);
             }
-
             40% {
                 transform: translateY(10px);
             }
-
             60% {
                 transform: translateY(5px);
             }
-        }
-
-        /* Estilos para o botão do WhatsApp */
-        .whatsapp-float {
-                bottom: 20px !important;
-                right: 20px !important;
-            }
-
-        .whatsapp-float .whatsapp-text {
-            background-color: #fff;
-            padding: 7px 10px;
-            font-size: 0.8rem;
-            font-weight: 100;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            margin-right: 0;
-            position: static;
-            z-index: 1;
-            color: #333;
         }
 
         /* Estilos para telas menores que 350px */
@@ -699,7 +733,7 @@
             }
 
             .titulo {
-                font-size: 1.8rem !important;
+                font-size: 1.83rem !important;
                 top: 15%;
             }
 
@@ -749,58 +783,25 @@
                 bottom: 20px;
                 right: 20px;
             }
-
-            .whatsapp-float .whatsapp-text {
-                font-size: 0.7rem;
-                padding: 5px 8px;
-            }
-
-            .whatsapp-float .whatsapp-icon {
-                width: 60px;
-                height: 60px;
-            }
-
-            .whatsapp-float .whatsapp-icon img {
-                width: 30px;
-                height: 30px;
-            }
         }
 
-        /* Estilos para dispositivos touch */
-        .touch-device .desktop-only {
-            display: none !important;
-        }
-
-        .touch-device .mobile-only {
-            display: inline-block !important;
-        }
-
-        /* Estilos para o layout desktop */
-        .desktop-layout .mobile-only {
-            display: none !important;
-        }
-
-        .desktop-layout .desktop-only {
-            display: inline-block !important;
-        }
-
-        /* Estilos para o layout mobile (com touch) */
-        .touch-device .desktop-layout .mobile-only {
-            display: inline-block !important;
-        }
-
-        .touch-device .desktop-layout .desktop-only {
-            display: none !important;
-        }
-
-        /* Media Query para forçar o layout desktop em dispositivos com ponteiro fino (mouse) */
-        @media (pointer: fine) {
-            .touch-device .desktop-only {
+        /* Estilos para dispositivos com cursor (desktops) */
+        @media (hover: hover) and (pointer: fine) {
+            .desktop-version {
                 display: inline-block !important;
             }
-
-            .touch-device .mobile-only {
+            .mobile-version {
                 display: none !important;
+            }
+        }
+
+        /* Estilos para dispositivos touch (tablets e smartphones) */
+        @media (hover: none) and (pointer: coarse) {
+            .desktop-version {
+                display: none !important;
+            }
+            .mobile-version {
+                display: inline-block !important;
             }
         }
     </style>
@@ -818,28 +819,31 @@
             <span></span>
         </div>
         <nav class="nav-links">
+            <a href="home.html">Início</a>
             <a href="produtos.html">Produtos</a>
             <a href="contato.html">Contato</a>
-            <a class="link-azul desktop-only"
+            <a class="link-azul desktop-version"
                 href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+solicitar+um+orçamento+para+o+meu+sistema!">Obtenha
                 o sistema</a>
-            <a class="link-azul mobile-only"
+            <a class="link-azul mobile-version"
                 href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+solicitar+um+orçamento+para+o+meu+sistema!">Obtenha
                 o sistema</a>
         </nav>
     </header>
 
     <div class="banner">
-        <div class="titulo">O <span>Sistema</span> mais completo!</div>
+        <div class="titulo">Pare de Passar <span>Raiva</span> com a Gestão da Sua Empresa</div>
         <div class="descricao">
-            Um sistema que se adapta a você e sua empresa, <br>
-            tenha controle total com a Calory.
+            Obtenha o sistema empresarial da Calory <span>AGORA</span> clicando no botão abaixo!
         </div>
-        <a href="formulario.html" class="botao">Faça uma simulação</a>
+        <a href="formulario.html" class="botao">Melhore sua gestão já!</a>
         <div class="info"></div>
         <div class="arrow"
             onclick="document.getElementById('sistema').scrollIntoView({ behavior: 'smooth' });"
             tabindex="0" role="button" aria-label="Role para o conteúdo principal"></div>
+                <div class="info">
+            Role a página para mais informações sobre nosso sistema
+        </div>
     </div>
 
     <section class="sessao-sistema" id="sistema">
@@ -873,19 +877,17 @@
     </section>
 
     <div class="whatsapp-float">
-        <!-- Botão para DESKTOP -->
-        <a class="desktop-only"
+        <!-- Botão para DESKTOP (web.whatsapp.com) -->
+        <a class="desktop-version"
             href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+tirar+algumas+dúvidas+sobre+o+sistema!">
-            <span class="whatsapp-text">Fale Conosco</span>
             <span class="whatsapp-icon">
                 <img src="icon/whats.png" alt="WhatsApp" />
             </span>
         </a>
 
-        <!-- Botão para MOBILE -->
-        <a class="mobile-only"
+        <!-- Botão para MOBILE (api.whatsapp.com) -->
+        <a class="mobile-version"
             href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+tirar+algumas+dúvidas+sobre+o+sistema!">
-            <span class="whatsapp-text">Fale Conosco</span>
             <span class="whatsapp-icon">
                 <img src="icon/whats.png" alt="WhatsApp" />
             </span>
@@ -897,14 +899,14 @@
             © 2025 Calory Sistemas • contato@calory.com.br
         </div>
         <div class="social-icons">
-            <a class="desktop-only" href="https://www.facebook.com/calorysistemas/" target="_blank"
+            <a class="desktop-version" href="https://www.facebook.com/calorysistemas/" target="_blank"
                 rel="noopener noreferrer" aria-label="Facebook"><img src="icon/face.png" alt="Facebook" /></a>
-            <a class="mobile-only" href="https://www.facebook.com/calorysistemas/" target="_blank"
+            <a class="mobile-version" href="https://www.facebook.com/calorysistemas/" target="_blank"
                 rel="noopener noreferrer" aria-label="Facebook"><img src="icon/face.png" alt="Facebook" /></a>
 
-            <a class="desktop-only" href="https://www.instagram.com/calorysistemas/" target="_blank"
+            <a class="desktop-version" href="https://www.instagram.com/calorysistemas/" target="_blank"
                 rel="noopener noreferrer" aria-label="Instagram"><img src="icon/insta.png" alt="Instagram" /></a>
-            <a class=" mobile-only" href="https://www.instagram.com/calorysistemas/" target="_blank"
+            <a class="mobile-version" href="https://www.instagram.com/calorysistemas/" target="_blank"
                 rel="noopener noreferrer" aria-label="Instagram"><img src="icon/insta.png" alt="Instagram" /></a>
         </div>
     </footer>
@@ -917,33 +919,22 @@
             toggle.classList.toggle('active');
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            // Adiciona a classe 'touch-device' ao html se houver suporte a touch
-            if ('ontouchstart' in document.documentElement) {
-                document.documentElement.classList.add('touch-device');
-            }
-
-            // Define o layout inicial como desktop
-            document.documentElement.classList.add('desktop-layout');
-
-            var whatsappLinkDesktop = document.querySelector('.whatsapp-float .desktop-only');
-            var whatsappLinkMobile = document.querySelector('.whatsapp-float .mobile-only');
-
-            function isMobile() {
-                return /Android|iOS|iPad|iPhone|iPod/i.test(navigator.userAgent);
-            }
-
-            // Ajusta os links do WhatsApp com base no tipo de dispositivo
-            if (isMobile() && document.documentElement.classList.contains('touch-device')) {
-                whatsappLinkMobile.style.display = 'flex';
-                whatsappLinkDesktop.style.display = 'none';
+        // Detecção de dispositivo com cursor (desktop) ou touch (mobile/tablet)
+        function detectInputType() {
+            // Verifica se o dispositivo tem capacidade de hover (cursor)
+            if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+                document.documentElement.classList.add('has-cursor');
+                document.documentElement.classList.remove('touch-device');
             } else {
-                whatsappLinkMobile.style.display = 'none';
-                whatsappLinkDesktop.style.display = 'flex';
+                document.documentElement.classList.add('touch-device');
+                document.documentElement.classList.remove('has-cursor');
             }
-        });
+        }
+
+        // Executa na carga e quando a janela é redimensionada
+        window.addEventListener('load', detectInputType);
+        window.addEventListener('resize', detectInputType);
     </script>
 
 </body>
-
 </html>
