@@ -26,7 +26,7 @@
             scroll-behavior: smooth;
         }
 
-        /* Header Styles (PADRONIZADO) */
+        /* Header Styles */
         header {
             width: 100%;
             padding: 10px 3%;
@@ -47,24 +47,28 @@
             width: auto;
         }
 
+        /* Menu Hamburguer */
         .menu-toggle {
             display: none;
             flex-direction: column;
             cursor: pointer;
+            position: relative;
+            z-index: 1001;
+            margin-top: 0;
         }
 
         .menu-toggle span {
             height: 3px;
             width: 25px;
-            background: #333;
-            margin: 4px 0;
+            background-color: #007bff;
+            margin: 2px 0;
             border-radius: 2px;
             transition: transform 0.3s ease, opacity 0.3s ease;
             position: relative;
         }
 
         .menu-toggle.active span {
-            background-color: #333;
+            background-color: #056cdb;
             transform: translateY(7px) rotate(45deg);
         }
 
@@ -86,7 +90,7 @@
             background-color: #007bff;
             color: #fff !important;
             padding: 0.625rem 1.375rem;
-            border-radius: 1.5625rem;
+            border-radius: 0.3rem;
             font-weight: bold;
             text-decoration: none;
             font-size: 1rem;
@@ -110,61 +114,211 @@
             color: #007bff;
         }
 
-        /* Banner Styles (ORIGINAL) */
-        .banner {
-            position: relative;
+        /* Formulário Interativo (PARA DESKTOP E MOBILE) */
+        .hero-form {
+            padding: 30px 20px;
+            margin-top: 70px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .cert-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,33,199,0.1);
             width: 100%;
-            height: 100vh;
-            background: url('banner/certificado.png') no-repeat center center;
-            background-size: cover;
-            margin-top: 60px;
+            max-width: 600px;
         }
 
-        .titulo {
-            position: absolute;
-            top: 22%;
-            left: 2%;
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: #ffffff !important;
+        .cert-card h2 {
+            color: #0021c7;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
         }
 
-        .descricao {
-            position: absolute;
-            top: 40%;
-            left: 5%;
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: #e7e7e7;
+        .cert-options {
+            display: flex;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #ddd;
         }
 
-        .botao {
-            position: absolute;
-            top: 50%;
-            left: 5%;
-            padding: 15px 30px;
-            background-color: #0021c7;
-            color: #ffffff;
-            font-size: 1.2rem;
-            font-weight: 600;
+        .cert-type {
+            flex: 1;
+            padding: 15px;
             border: none;
-            border-radius: 12px;
-            text-decoration: none;
+            background: #f5f5f5;
+            color: #555;
+            font-weight: 600;
             cursor: pointer;
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
+            font-size: 1rem;
         }
 
-        .botao:hover {
+        .cert-type.active {
+            background: #0021c7;
+            color: white;
+        }
+
+        .cert-form {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .cert-form.active {
+            display: block;
+        }
+
+        .cert-form input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .cta-button {
+            width: 100%;
+            padding: 15px;
+            background-color: #0021c7;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .cta-button:hover {
             background-color: #001ba8;
         }
 
-        /* Footer Styles (PADRONIZADO) */
+        .cert-benefits {
+            margin-top: 25px;
+        }
+
+        .cert-benefits p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: #0021c7;
+            font-weight: 500;
+        }
+
+        .cert-benefits i {
+            margin-right: 10px;
+            color: #00c851;
+            font-size: 1.2rem;
+        }
+
+        /* Seção de Informações */
+        .additional-info {
+            padding: 60px 5%;
+            background-color: #fff;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .additional-info h2 {
+            font-size: 2.2rem;
+            color: #0021c7;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .additional-info p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .documents-required {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 40px auto;
+            max-width: 800px;
+        }
+
+        .documents-required h3 {
+            color: #0021c7;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .documents-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .document-type {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .document-type h4 {
+            color: #0021c7;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #0021c7;
+            padding-bottom: 8px;
+        }
+
+        .document-type ul {
+            list-style-type: none;
+        }
+
+        .document-type li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .document-type li i {
+            color: #00c851;
+            margin-right: 8px;
+            margin-top: 3px;
+        }
+
+        .emitir-button-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .emitir-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #0021c7;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .emitir-button:hover {
+            background-color: #001ba8;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,33,199,0.2);
+        }
+
+        /* Footer */
         footer {
             background-color: #3f3f3f;
             color: #ffffff;
             padding: 40px 20px;
-            font-size: 0.8rem !important;
+            font-size: 0.8rem;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -188,25 +342,12 @@
             transform: scale(1.1);
         }
 
-        /* WhatsApp Float Button Styles (PADRONIZADO) */
+        /* WhatsApp Float Button */
         .whatsapp-float {
             position: fixed;
-            bottom: 20px !important;
-            right: 20px !important;
+            bottom: 20px;
+            right: 20px;
             z-index: 1000;
-        }
-
-        .whatsapp-float a {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-        }
-
-        .whatsapp-float .whatsapp-text {
-            display: none;
         }
 
         .whatsapp-float .whatsapp-icon {
@@ -218,8 +359,6 @@
             align-items: center;
             justify-content: center;
             transition: transform 0.3s ease;
-            position: relative;
-            z-index: 0;
         }
 
         .whatsapp-float .whatsapp-icon img {
@@ -231,97 +370,39 @@
             transform: scale(1.1);
         }
 
-        /* Utility Classes for Responsiveness */
-        .desktop-only {
-            display: inline-block !important;
-        }
+        /* Responsividade */
+        .whatsapp-desktop {
+    display: inline-block !important;
+}
+.whatsapp-mobile {
+    display: none !important;
+}
 
-        .mobile-only {
-            display: none !important;
-        }
+.botao-desktop {
+    display: inline-block !important;
+}
 
-        /* Estilos para a seção de informações adicionais */
-        .additional-info {
-            padding: 80px 5%;
-            text-align: center;
-            background-color: #fff;
-        }
+.botao-mobile {
+    display: none !important;
+}
 
-        .additional-info h2 {
-            font-size: 2.4rem;
-            color: #29a8ff;
-            margin-bottom: 40px;
-        }
+/* Em dispositivos móveis (largura até 899px), invertemos */
+@media (max-width: 899.98px) {
+    .whatsapp-desktop {
+        display: none !important;
+    }
+    .whatsapp-mobile {
+        display: inline-block !important;
+    }
 
-        .additional-info p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            color: #555;
-        }
-
-        .additional-info ul {
-            max-width: 800px;
-            margin: 0 auto 30px;
-            text-align: left;
-        }
-
-        .additional-info li {
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-            color: #555;
-        }
-
-        .additional-info li strong {
-            color: #0021c7;
-        }
-
-        /* Estilos para a seta de rolagem */
-        .arrow {
-            position: absolute;
-            bottom: 10%;
-            left: 50%;
-            margin-left: -20px;
-            width: 38px;
-            height: 55px;
-            border: 2px solid #f1f1f1;
-            border-radius: 25px;
-            cursor: pointer;
-            z-index: 2;
-            animation: bounce 2s infinite;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding-top: 10px;
-        }
-
-        .arrow::after {
-            content: '';
-            display: block;
-            width: 12px;
-            height: 12px;
-            border-bottom: 3px solid #f3f3f3;
-            border-right: 3px solid #f3f3f3;
-            transform: rotate(45deg);
-            margin-top: 6px;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(10px);
-            }
-            60% {
-                transform: translateY(5px);
-            }
-        }
-
-        /* Estilos para telas menores que 900px (Layout Mobile) */
-        @media (max-width: 899.98px) {
+    .botao-desktop {
+        display: none !important;
+    }
+    .botao-mobile {
+        display: inline-block !important;
+    }
             body {
-                padding-top: 50px;
+                padding-top: 60px;
             }
 
             header {
@@ -356,7 +437,7 @@
             .menu-toggle span {
                 height: 3px;
                 width: 25px;
-                background-color: #333;
+                background-color: #007bff;
                 margin: 2px 0;
                 border-radius: 2px;
                 transition: transform 0.3s ease, opacity 0.3s ease;
@@ -364,7 +445,7 @@
             }
 
             .menu-toggle.active span {
-                background-color: #333;
+                background-color: #056cdb;
                 transform: translateY(7px) rotate(45deg);
             }
 
@@ -404,168 +485,59 @@
             }
 
             .nav-links .link-azul {
-                margin-top: 5px;
-                padding: 10px;
-                width: fit-content;
-                text-align: center;
-            }
-
-            .banner {
-                margin-top: 0px;
-                height: 70vh;
-                position: relative;
-                background: url('banner/certificadomp.png') no-repeat center center;
-                background-size: cover;
-            }
-
-            .banner::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: rgba(0, 0, 0, 0.75);
-                z-index: 1;
-            }
-
-            .titulo {
-                position: absolute;
-                top: 15%;
-                left: 50%;
-                transform: translateX(-50%);
-                font-size: 1.8rem !important;
-                text-align: center;
-                margin-bottom: 40px;
-                z-index: 2;
-                color: #fff;
-                line-height: 1.2 !important;
-                max-width: 100%;
-            }
-
-            .titulo span {
                 display: block;
-            }
-
-            .descricao {
-                position: absolute;
-                top: 30%;
-                left: 50%;
-                transform: translateX(-50%);
-                font-size: 1rem;
-                text-align: center;
-                z-index: 2;
-                line-height: 1.3;
-                color: #e0e0e0;
                 width: 90%;
-            }
-
-            .botao {
-                position: absolute;
-                width: 80%;
-                background-color: #0021c7;
-                top: 50%;
-                left: 50%;
-                transform: translateX(-50%);
-                border-radius: 12px;
-                margin-bottom: 5px;
-                text-align: center;
+                max-width: 300px;
+                margin: 15px auto;
+                padding: 15px 20px;
+                background-color: #007bff;
+                color: white !important;
+                border-radius: 8px;
                 font-size: 1.2rem;
-                z-index: 2;
+                text-align: center;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                transition: all 0.3s ease;
             }
 
-            .additional-info {
-                padding: 40px 5%;
-            }
-
-            .additional-info h2 {
-                font-size: 1.8rem;
-                margin-bottom: 30px;
-            }
-
-            .additional-info p, .additional-info li {
-                font-size: 1rem;
-            }
-
-            .desktop-only {
-                display: none !important;
-            }
-
-            .mobile-only {
-                display: inline-block !important;
-            }
-
-            .whatsapp-float {
-                bottom: 10px !important;
-                right: 10px !important;
-            }
-        }
-
-        /* Estilos para telas menores que 350px */
-        @media (max-width: 349.98px) {
-            body {
-                font-size: 0.9rem;
-            }
-
-            header {
-                padding: 5px 2%;
-            }
-
-            .logo img {
-                max-height: 40px;
+            .nav-links .link-azul-mobile:hover {
+                background-color: #0056b3;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
             }
 
             .nav-links a {
-                font-size: 1rem;
+                display: block;
+                width: 100%;
+                text-align: center;
+                padding: 12px 0;
+                font-size: 18px;
+                font-weight: 500;
+                color: #007bff;
+                text-decoration: none;
             }
 
-            .link-azul {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.8rem;
+            .nav-links a:not(:last-child) {
+                border-bottom: 1px solid #007bff;
             }
 
-            .titulo {
-                font-size: 1.5rem !important;
-                top: 10%;
+            .hero-form {
+                padding: 20px 15px;
+                margin-top: 60px;
             }
 
-            .descricao {
-                font-size: 0.9rem;
-                top: 25%;
+            .documents-grid {
+                grid-template-columns: 1fr;
             }
+        }
 
-            .botao {
-                font-size: 1rem;
-                padding: 10px 20px;
-                top: 40%;
-            }
-
-            .additional-info h2 {
+        @media (max-width: 349.98px) {
+            .cert-card h2 {
                 font-size: 1.6rem;
             }
-
-            .additional-info p, .additional-info li {
+            
+            .cert-type {
+                padding: 12px 8px;
                 font-size: 0.9rem;
-            }
-
-            footer {
-                font-size: 0.7rem !important;
-                padding: 20px 10px;
-            }
-
-            .social-icons a img {
-                width: 24px;
-                height: 24px;
-            }
-
-            .whatsapp-float .whatsapp-icon {
-                width: 50px;
-                height: 50px;
-            }
-
-            .whatsapp-float .whatsapp-icon img {
-                width: 25px;
-                height: 25px;
             }
         }
     </style>
@@ -583,82 +555,114 @@
             <span></span>
         </div>
         <nav class="nav-links">
+            <a href="home.html">Início</a>
             <a href="produtos.html">Produtos</a>
             <a href="contato.html">Contato</a>
-            <a class="link-azul desktop-only"
-                href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+solicitar+um+orçamento+para+o+meu+sistema!">Obtenha
-                o sistema</a>
-            <a class="link-azul mobile-only"
-                href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+solicitar+um+orçamento+para+o+meu+sistema!">Obtenha
-                o sistema</a>
+            <!-- Botão azul - versão DESKTOP -->
+<a class="link-azul botao-desktop" href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+solicitar+um+orçamento+para+o+meu+sistema!">Obtenha o sistema</a>
+
+<!-- Botão azul - versão MOBILE -->
+<a class="link-azul botao-mobile" href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+solicitar+um+orçamento+para+o+meu+sistema!">Obtenha o sistema</a>
         </nav>
     </header>
 
-    <div class="banner">
-        <div class="titulo">
-            <span>Precisando de</span>
-            <span>certificado?</span>
+    <!-- Formulário Interativo (igual para desktop e mobile) -->
+    <div class="hero-form">
+        <div class="cert-card">
+            <h2>Emita seu Certificado Digital Hoje!</h2>
+            
+            <div class="cert-options">
+                <button class="cert-type active" data-type="pf">Pessoa Física</button>
+                <button class="cert-type" data-type="pj">Pessoa Jurídica</button>
+            </div>
+
+            <div class="cert-form active" id="pf-form">
+                <input type="text" placeholder="CPF" required>
+                <input type="text" placeholder="Nome completo" required>
+                <input type="email" placeholder="E-mail" required>
+                <input type="tel" placeholder="Telefone" required>
+                <button class="cta-button">Solicitar Certificado</button>
+            </div>
+
+            <div class="cert-form" id="pj-form">
+                <input type="text" placeholder="CNPJ" required>
+                <input type="text" placeholder="Nome do responsável" required>
+                <input type="email" placeholder="E-mail corporativo" required>
+                <input type="tel" placeholder="Telefone" required>
+                <button class="cta-button">Solicitar Certificado</button>
+            </div>
+
+            <div class="cert-benefits">
+                <p><i class="fas fa-check-circle"></i> Processo 100% online</p>
+                <p><i class="fas fa-check-circle"></i> Aprovação em 5 minutos após envio dos documentos</p>
+                <p><i class="fas fa-check-circle"></i> Suporte especializado</p>
+            </div>
         </div>
-        <div class="descricao">
-            Emitimos e renovamos e-CNPJ e e-CPF <br>
-            nos modelos A3 (Token) e A1 (Arquivo Digital).
-        </div>
-        <a href="formulario.html" class="botao">Entre em contato</a>
-        <div class="arrow"
-            onclick="document.getElementById('additional-info').scrollIntoView({ behavior: 'smooth' });"
-            tabindex="0" role="button" aria-label="Role para o conteúdo principal"></div>
     </div>
 
-    <section class="additional-info" id="additional-info">
-        <h2>Sobre nossos Certificados</h2>
-        <p>
-            O certificado digital garante autenticidade, integridade e validade jurídica para suas transações
-            eletrônicas.
-        </p>
-        <p>
-            Na Calory, você pode emitir ou renovar seu e-CNPJ ou e-CPF nos formatos:
-        </p>
-        <ul>
-            <li><strong>A1:</strong> Arquivo digital instalado no computador ou celular, com validade de 1 ano.</li>
-            <li><strong>A3:</strong> Token ou cartão criptográfico, com validade de até 3 anos.</li>
-        </ul>
-        <p>
-            Temos atendimento rápido, suporte completo e excelente custo-benefício!
-        </p>
+    <section class="additional-info">
+        <h2>Documentos Necessários</h2>
+        <p>Tenha em mãos os documentos necessários para agilizar seu atendimento</p>
+        
+        <div class="documents-required">
+            <h3>O que você precisa para emitir seu certificado</h3>
+            <div class="documents-grid">
+                <div class="document-type">
+                    <h4>Pessoa Física (e-CPF)</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Foto ou digital do CNH/RG</li>
+                        <li><i class="fas fa-check"></i> E-mail válido</li>
+                        <li><i class="fas fa-check"></i> Telefone para contato</li>
+                        <li><i class="fas fa-check"></i> Endereço completo com CEP</li>
+                    </ul>
+                </div>
+                <div class="document-type">
+                    <h4>Pessoa Jurídica (e-CNPJ)</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> CNPJ da empresa</li>
+                        <li><i class="fas fa-check"></i> Foto ou digital do CNH/RG do responsável</li>
+                        <li><i class="fas fa-check"></i> E-mail corporativo</li>
+                        <li><i class="fas fa-check"></i> Telefone para contato</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="emitir-button-container">
+            <a href="#formulario" class="emitir-button">Emitir Meu Certificado</a>
+        </div>
     </section>
 
-    <div class="whatsapp-float">
-        <!-- Botão para DESKTOP (web.whatsapp.com) -->
-        <a class="desktop-only"
-            href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+tirar+algumas+dúvidas+sobre+certificados+digitais!">
-            <span class="whatsapp-icon">
-                <img src="icon/whats.png" alt="WhatsApp" />
-            </span>
-        </a>
+    <!-- Botão WhatsApp para DESKTOP -->
+<div class="whatsapp-float whatsapp-desktop">
+    <a href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+tirar+algumas+dúvidas+sobre+certificados+digitais!" target="_blank" rel="noopener">
+        <span class="whatsapp-icon">
+            <img src="icon/whats.png" alt="WhatsApp Desktop" />
+        </span>
+    </a>
+</div>
 
-        <!-- Botão para MOBILE (api.whatsapp.com) -->
-        <a class="mobile-only"
-            href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+tirar+algumas+dúvidas+sobre+certificados+digitais!">
-            <span class="whatsapp-icon">
-                <img src="icon/whats.png" alt="WhatsApp" />
-            </span>
-        </a>
-    </div>
+<!-- Botão WhatsApp para MOBILE -->
+<div class="whatsapp-float whatsapp-mobile">
+    <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+tirar+algumas+dúvidas+sobre+certificados+digitais!" target="_blank" rel="noopener">
+        <span class="whatsapp-icon">
+            <img src="icon/whats.png" alt="WhatsApp Mobile" />
+        </span>
+    </a>
+</div>
+
 
     <footer>
         <div class="texto-footer">
             © 2025 Calory Sistemas • contato@calory.com.br
         </div>
         <div class="social-icons">
-            <a class="desktop-only" href="https://www.facebook.com/calorysistemas/" target="_blank"
-                rel="noopener noreferrer" aria-label="Facebook"><img src="icon/face.png" alt="Facebook" /></a>
-            <a class="mobile-only" href="https://www.facebook.com/calorysistemas/" target="_blank"
-                rel="noopener noreferrer" aria-label="Facebook"><img src="icon/face.png" alt="Facebook" /></a>
-
-            <a class="desktop-only" href="https://www.instagram.com/calorysistemas/" target="_blank"
-                rel="noopener noreferrer" aria-label="Instagram"><img src="icon/insta.png" alt="Instagram" /></a>
-            <a class="mobile-only" href="https://www.instagram.com/calorysistemas/" target="_blank"
-                rel="noopener noreferrer" aria-label="Instagram"><img src="icon/insta.png" alt="Instagram" /></a>
+            <a href="https://www.facebook.com/calorysistemas/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <img src="icon/face.png" alt="Facebook" />
+            </a>
+            <a href="https://www.instagram.com/calorysistemas/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <img src="icon/insta.png" alt="Instagram" />
+            </a>
         </div>
     </footer>
 
@@ -670,10 +674,37 @@
             toggle.classList.toggle('active');
         }
 
-        // Adiciona a classe 'touch-device' ao html se houver suporte a touch
-        if ('ontouchstart' in document.documentElement) {
-            document.documentElement.classList.add('touch-device');
-        }
+        // Alternar entre formulários PF/PJ
+        document.addEventListener('DOMContentLoaded', function() {
+            const certTypes = document.querySelectorAll('.cert-type');
+            
+            certTypes.forEach(type => {
+                type.addEventListener('click', function() {
+                    // Remove a classe active de todos os botões
+                    certTypes.forEach(t => t.classList.remove('active'));
+                    // Adiciona a classe active apenas no botão clicado
+                    this.classList.add('active');
+                    
+                    // Esconde todos os formulários
+                    document.querySelectorAll('.cert-form').forEach(form => {
+                        form.classList.remove('active');
+                    });
+                    
+                    // Mostra o formulário correspondente
+                    const formId = this.getAttribute('data-type') + '-form';
+                    document.getElementById(formId).classList.add('active');
+                });
+            });
+
+            // Botão de emitir
+            document.querySelectorAll('.cta-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    // Aqui você pode adicionar validação do formulário antes de enviar
+                    alert('Formulário enviado! Nosso atendente entrará em contato em breve.');
+                    // window.location.href = 'formulario.html';
+                });
+            });
+        });
     </script>
 
 </body>

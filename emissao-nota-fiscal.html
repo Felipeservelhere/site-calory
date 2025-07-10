@@ -120,48 +120,81 @@
             position: relative;
             width: 100%;
             height: 85vh;
-            background: url('banner/Emitirumanotafiscal.svg') no-repeat center center;
-            background-size: cover;
             margin-top: 0;
+            overflow: hidden;
+        }
+
+        .calory-video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .calory-banner-content {
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: rgba(0, 0, 0, 0.4);
         }
 
         .calory-titulo {
-            position: absolute;
-            top: 11%;
-            left: 18%;
-            font-size: 5rem !important;
+            font-size: 4rem;
             font-weight: 700;
-            color: #ffffff !important;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .calory-titulo span {
+            display: block;
         }
 
         .calory-descricao1 {
-            position: absolute;
-            top: 50%;
-            left: 31%;
-            font-size: 1.1rem;
+            font-size: 1.5rem;
             color: #fff;
             font-weight: 500;
+            max-width: 800px;
+            margin-bottom: 30px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .calory-descricao1 span {
+            font-size: 1.5rem;
+            color: #007bff;
+            font-weight: 600;
+            max-width: 800px;
+            margin-bottom: 30px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
         }
 
         .calory-botao {
-            position: absolute;
-            top: 60%;
-            left: 36%;
             padding: 15px 30px;
-            background-color: #00c851;
+            background-color: #007bff;
             color: #ffffff;
-            font-size: 2.5rem;
+            font-size: 1.5rem;
             font-weight: 600;
             border: none;
             border-radius: 12px;
             text-decoration: none;
             cursor: pointer;
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-            transition: background 0.3s ease;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
         }
 
         .calory-botao:hover {
-            background-color: #009b3e;
+            background-color: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
         }
 
         /* Footer Styles */
@@ -304,7 +337,6 @@
         }
 
         .calory-info-text {
-            margin-top: 1% !important;
             flex: 1;
             min-width: 300px;
         }
@@ -317,7 +349,7 @@
 
         .calory-info-image img {
             width: 100%;
-            max-width: 540px; /* Metade da resolução 1080 para manter proporção */
+            max-width: 540px;
             height: auto;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -376,8 +408,58 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
+        /* Estilo específico para a imagem mobile */
+        .calory-mobile-image {
+            display: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .calory-mobile-image img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid #eee;
+            margin: 0 auto;
+        }
+
+        .calory-desktop-only{
+                display: inline-block !important;
+            }
+
+            .calory-mobile-only{
+                display: none !important;
+            }
+
+            .calory-botao desktop-only{
+                display: inline-block !important;
+            }
+
+            .calory-botao mobile-only{
+                display: none !important;    
+            }
+
         /* Responsividade */
         @media (max-width: 899.98px) {
+
+            .calory-desktop-only{
+                display: none !important;
+            }
+
+            .calory-mobile-only{
+                display: inline-block !important;
+            }
+
+            .calory-botao desktop-only{
+                display: none !important;
+            }
+
+            .calory-botao mobile-only{
+                display: inline-block !important;    
+            }
+
             body {
                 padding-top: 50px;
             }
@@ -387,8 +469,46 @@
                 flex-direction: row;
             }
 
+            .calory-logo {
+                margin: 0 auto;
+            }
+
+            .calory-logo img {
+                max-height: 50px;
+                width: auto;
+                margin-left: 0;
+            }
+
             .calory-menu-toggle {
                 display: flex;
+                flex-direction: column;
+                cursor: pointer;
+                position: relative;
+                z-index: 1001;
+                margin-top: 0;
+            }
+
+            .calory-menu-toggle span {
+                height: 3px;
+                width: 25px;
+                background-color: #007bff;
+                margin: 2px 0;
+                border-radius: 2px;
+                transition: transform 0.3s ease, opacity 0.3s ease;
+                position: relative;
+            }
+
+            .calory-menu-toggle.active span {
+                background-color: #056cdb;
+                transform: translateY(7px) rotate(45deg);
+            }
+
+            .calory-menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .calory-menu-toggle.active span:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
             }
 
             .calory-nav-links {
@@ -396,22 +516,60 @@
                 flex-direction: column;
                 width: 100%;
                 background: #fff;
-                position: absolute;
-                top: 70px;
-                left: 0;
+                position: relative;
+                top: auto;
+                left: auto;
                 padding: 20px;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                box-shadow: none;
+                z-index: auto;
+                gap: 20px;
             }
 
             .calory-nav-links.active {
                 display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            /* Estilo específico para o botão no mobile */
+            .calory-nav-links .calory-link-azul-mobile {
+                display: block;
+                width: 90%;
+                max-width: 300px;
+                margin: 15px auto;
+                padding: 15px 20px;
+                background-color: #007bff;
+                color: white !important;
+                border-radius: 8px;
+                font-size: 1.2rem;
+                text-align: center;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                transition: all 0.3s ease;
+            }
+            
+            .calory-nav-links .calory-link-azul-mobile:hover {
+                background-color: #0056b3;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            }
+            
+            /* Remover o estilo original do botão no mobile */
+            .calory-nav-links .calory-link-azul {
+                display: none;
             }
 
             .calory-nav-links a {
-                padding: 12px 0;
+                display: block;
+                width: 100%;
                 text-align: center;
+                padding: 12px 0;
+                font-size: 18px;
+                font-weight: 500;
+                color: #007bff;
+                text-decoration: none;
             }
 
+            /* linha abaixo de cada item, menos o último */
             .calory-nav-links a:not(:last-child) {
                 border-bottom: 1px solid #007bff;
             }
@@ -430,31 +588,29 @@
 
             .calory-banner {
                 height: 70vh;
-                background: url('banner/baner-notafiscal-mobile.png') no-repeat center center;
+            }
+
+            .calory-video-bg {
+                display: none;
+            }
+
+            .calory-banner-content {
+                background: url('banner/Design\ sem\ nome\ \(13\).svg') no-repeat center center;
+                background-size: cover;
             }
 
             .calory-titulo {
-                top: 15%;
-                left: 50%;
-                transform: translateX(-50%);
-                font-size: 2.8rem !important;
-                text-align: center;
+                font-size: 2.2rem;
                 width: 90%;
             }
 
             .calory-descricao1 {
-                top: 59%;
-                left: 50%;
-                transform: translateX(-50%);
+                font-size: 1.1rem;
                 width: 90%;
-                text-align: center;
             }
 
             .calory-botao {
-                top: 70%;
-                left: 50%;
-                transform: translateX(-50%);
-                font-size: 1rem;
+                font-size: 1.2rem;
                 width: 80%;
                 max-width: 320px;
             }
@@ -474,20 +630,46 @@
             .calory-info-text, .calory-info-image {
                 width: 100%;
             }
+
+            .calory-mobile-image {
+                display: block;
+            }
+            
+            .calory-info-image {
+                display: none;
+            }
+
+            .calory-arrow{
+                top: 87%;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .calory-mobile-image {
+                display: none;
+            }
+            
+            .calory-info-image {
+                display: block;
+            }
         }
 
         @media (max-width: 349.98px) {
             .calory-titulo {
-                font-size: 1.8rem !important;
+                font-size: 1.8rem;
             }
 
             .calory-botao {
-                font-size: 0.9rem;
+                font-size: 1rem;
                 padding: 10px 20px;
             }
 
             .calory-additional-info p {
                 font-size: 1rem;
+            }
+
+            .calory-mobile-image img {
+                max-width: 250px;
             }
         }
     </style>
@@ -509,25 +691,34 @@
             <a href="produtos.html">Produtos</a>
             <a href="contato.html">Contato</a>
             <a class="calory-link-azul calory-desktop-only"
-                href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+solicitar+um+orçamento+para+o+meu+sistema!">Obtenha
+                href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento%20para%20o%20meu%20sistema!">Obtenha
                 o sistema</a>
             <a class="calory-link-azul-mobile calory-mobile-only"
-                href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+solicitar+um+orçamento+para+o+meu+sistema!">OBTER SISTEMA AGORA</a>
+                href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento%20para%20o%20meu%20sistema!">OBTER SISTEMA AGORA</a>
         </nav>
     </header>
 
     <div class="calory-banner">
-        <div class="calory-titulo">
-            <span>Emitir uma</span>
-            <span>Nota Fiscal?</span>
+        <video autoplay muted loop class="calory-video-bg">
+            <source src="banner/mexendocelular.webm" type="video/mp4">
+            <!-- Fallback para navegadores que não suportam vídeo -->
+            <img src="banner/mexendocelularimg.svg" alt="Emissão de Nota Fiscal">
+        </video>
+        
+        <div class="calory-banner-content">
+            <div class="calory-titulo">
+                <span>Emissão de Notas Fiscais</span>
+                <span>na Palma da Sua Mão</span>
+            </div>
+            <div class="calory-descricao1">
+                Com o <span>CSemite</span>, você emite notas de qualquer lugar, a qualquer hora
+            </div>
+            <a href="https://web.whatsapp.com/send?phone=5544999939313&text=Ol%C3%A1%2C+quero+experimentar+o+CSemite+para+emitir+minhas+notas+fiscais+pelo+celular%21" class="calory-botao desktop-only">Experimente Grátis</a>
+            <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Ol%C3%A1%2C+quero+experimentar+o+CSemite+para+emitir+minhas+notas+fiscais+pelo+celular%21" class="calory-botao mobile-only">Experimente Grátis</a>
+            <div class="calory-arrow"
+                onclick="document.getElementById('calory-additional-info').scrollIntoView({ behavior: 'smooth' });"
+                tabindex="0" role="button" aria-label="Role para o conteúdo principal"></div>
         </div>
-        <div class="calory-descricao1">
-            Clique no botão abaixo para emitir ainda hoje a sua nota fiscal
-        </div>
-        <a href="formulario.html" class="calory-botao">Emita ainda hoje!</a>
-        <div class="calory-arrow"
-            onclick="document.getElementById('calory-additional-info').scrollIntoView({ behavior: 'smooth' });"
-            tabindex="0" role="button" aria-label="Role para o conteúdo principal"></div>
     </div>
 
     <section class="calory-additional-info" id="calory-additional-info">
@@ -535,54 +726,60 @@
         
         <div class="calory-info-container">
             <div class="calory-info-text">
-               <p>
-    Com a Calory, você emite suas notas fiscais de forma simples, rápida e sem complicações. 
-    Nosso sistema foi desenvolvido para atender empresas de todos os portes, oferecendo uma plataforma intuitiva e completa.
-    Com ele, você consegue gerar <strong>notas fiscais eletrônicas (NF-e)</strong> e 
-    <strong>notas fiscais de serviço (NFS-e)</strong> com total eficiência, integrando suas operações e 
-    garantindo a conformidade com a legislação vigente.
-</p>
+                <p>
+                    Com a Calory, você emite suas notas fiscais de forma simples, rápida e sem complicações. 
+                    Nosso sistema foi desenvolvido para atender empresas de todos os portes, oferecendo uma plataforma intuitiva e completa.
+                    Com ele, você consegue gerar <strong>notas fiscais eletrônicas (NF-e)</strong> e 
+                    <strong>notas fiscais de serviço (NFS-e)</strong> com total eficiência, integrando suas operações e 
+                    garantindo a conformidade com a legislação vigente.
+                </p>
+                
+                <p>
+                    Para realizar a emissão de notas fiscais, é necessário possuir um <strong>Certificado Digital</strong>, 
+                    que assegura a autenticidade e validade jurídica dos documentos fiscais eletrônicos. 
+                    Se você ainda não tem o seu, <a href="Sistemacertificadodigital.html" style="color:#007bff; text-decoration: underline;">clique aqui</a> 
+                    e emita com a gente de forma rápida e segura.
+                </p>
 
-<p>
-    Para realizar a emissão de notas fiscais, é necessário possuir um <strong>Certificado Digital</strong>, 
-    que assegura a autenticidade e validade jurídica dos documentos fiscais eletrônicos. 
-    Se você ainda não tem o seu, <a href="Sistemacertificadodigital.html" style="color:#007bff; text-decoration: underline;">clique aqui</a> 
-    e emita com a gente de forma rápida e segura.
-</p>
-
-<p>
-    Pensando na praticidade dos nossos clientes, apresentamos o <strong>CSemite</strong>, 
-    um projeto inovador da Calory que permite a emissão de notas fiscais diretamente pelo celular. 
-    Ideal para empreendedores que estão sempre em movimento, o CSemite oferece mobilidade, agilidade e segurança, 
-    sem a necessidade de um computador.
-</p>
-
-<p>
-    E o melhor: você pode <strong>testar gratuitamente</strong> todas as funcionalidades do CSemite agora mesmo, 
-    sem compromisso. Experimente a liberdade de emitir suas notas de onde estiver!
-</p>
-
-<button class="calory-test-button">Teste Grátis o CSemite</button>
-
+                <!-- Imagem apenas para mobile - posicionada após o certificado digital -->
+                <div class="calory-mobile-image">
+                    <img src="banner/CSemite.png" alt="Demonstração do CSemite - Emissão de notas pelo celular">
+                    <p class="calory-image-caption">Interface intuitiva do CSemite</p>
+                </div>
+                
+                <p>
+                    Pensando na praticidade dos nossos clientes, apresentamos o <strong>CSemite</strong>, 
+                    um projeto inovador da Calory que permite a emissão de notas fiscais diretamente pelo celular. 
+                    Ideal para empreendedores que estão sempre em movimento, o CSemite oferece mobilidade, agilidade e segurança, 
+                    sem a necessidade de um computador.
+                </p>
+                
+                <p>
+                    E o melhor: você pode <strong>testar gratuitamente</strong> todas as funcionalidades do CSemite agora mesmo, 
+                    sem compromisso. Experimente a liberdade de emitir suas notas de onde estiver!
+                </p>
+                
+                <button class="calory-test-button">Teste Grátis o CSemite</button>
             </div>
             
+            <!-- Imagem para desktop -->
             <div class="calory-info-image">
-                <img src="banner/CSemite.png" alt="Demonstração do CSemite - Emissão de notas pelo celular" style="max-height: 960px;">
-                <p class="calory-image-caption">Imagem Ilustrativa do Aplicativo CSEmite</p>
+                <img src="banner/CSemite.png" alt="Demonstração do CSemite - Emissão de notas pelo celular">
+                <p class="calory-image-caption">Interface intuitiva do CSemite</p>
             </div>
         </div>
     </section>
 
     <div class="calory-whatsapp-float">
         <a class="calory-desktop-only"
-            href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+tirar+algumas+dúvidas+sobre+emissão+de+notas+fiscais!">
+            href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20tirar%20algumas%20dúvidas%20sobre%20emissão%20de%20notas%20fiscais!">
             <span class="calory-whatsapp-icon">
                 <img src="icon/whats.png" alt="WhatsApp" />
             </span>
         </a>
 
         <a class="calory-mobile-only"
-            href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+tirar+algumas+dúvidas+sobre+emissão+de+notas+fiscais!">
+            href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20tirar%20algumas%20dúvidas%20sobre%20emissão%20de%20notas%20fiscais!">
             <span class="calory-whatsapp-icon">
                 <img src="icon/whats.png" alt="WhatsApp" />
             </span>
