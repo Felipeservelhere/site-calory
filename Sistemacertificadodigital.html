@@ -566,7 +566,7 @@
         </nav>
     </header>
 
-    <!-- Formulário Interativo (igual para desktop e mobile) -->
+    <!-- Formulário Interativo -->
     <div class="hero-form">
         <div class="cert-card">
             <h2>Emita seu Certificado Digital Hoje!</h2>
@@ -577,19 +577,19 @@
             </div>
 
             <div class="cert-form active" id="pf-form">
-                <input type="text" placeholder="CPF" required>
-                <input type="text" placeholder="Nome completo" required>
-                <input type="email" placeholder="E-mail" required>
-                <input type="tel" placeholder="Telefone" required>
-                <button class="cta-button">Solicitar Certificado</button>
+                <input type="text" placeholder="CPF" required id="cpf">
+                <input type="text" placeholder="Nome completo" required id="nome-pf">
+                <input type="email" placeholder="E-mail" required id="email-pf">
+                <input type="tel" placeholder="Telefone" required id="telefone-pf">
+                <button class="cta-button" id="solicitar-pf">Solicitar Certificado</button>
             </div>
 
             <div class="cert-form" id="pj-form">
-                <input type="text" placeholder="CNPJ" required>
-                <input type="text" placeholder="Nome do responsável" required>
-                <input type="email" placeholder="E-mail corporativo" required>
-                <input type="tel" placeholder="Telefone" required>
-                <button class="cta-button">Solicitar Certificado</button>
+                <input type="text" placeholder="CNPJ" required id="cnpj">
+                <input type="text" placeholder="Nome do responsável" required id="nome-pj">
+                <input type="email" placeholder="E-mail corporativo" required id="email-pj">
+                <input type="tel" placeholder="Telefone" required id="telefone-pj">
+                <button class="cta-button" id="solicitar-pj">Solicitar Certificado</button>
             </div>
 
             <div class="cert-benefits">
@@ -680,30 +680,104 @@
             
             certTypes.forEach(type => {
                 type.addEventListener('click', function() {
-                    // Remove a classe active de todos os botões
                     certTypes.forEach(t => t.classList.remove('active'));
-                    // Adiciona a classe active apenas no botão clicado
                     this.classList.add('active');
                     
-                    // Esconde todos os formulários
                     document.querySelectorAll('.cert-form').forEach(form => {
                         form.classList.remove('active');
                     });
                     
-                    // Mostra o formulário correspondente
                     const formId = this.getAttribute('data-type') + '-form';
                     document.getElementById(formId).classList.add('active');
                 });
             });
 
-            // Botão de emitir
-            document.querySelectorAll('.cta-button').forEach(button => {
-                button.addEventListener('click', function() {
-                    // Aqui você pode adicionar validação do formulário antes de enviar
-                    alert('Formulário enviado! Nosso atendente entrará em contato em breve.');
-                    // window.location.href = 'formulario.html';
-                });
+            // Configuração do envio do formulário PF
+            document.getElementById('solicitar-pf').addEventListener('click', function() {
+                const formData = {
+                    type: 'PF',
+                    cpf: document.getElementById('cpf').value,
+                    nome: document.getElementById('nome-pf').value,
+                    email: document.getElementById('email-pf').value,
+                    telefone: document.getElementById('telefone-pf').value
+                };
+                
+                if (validateForm(formData)) {
+                    sendToWhatsApp(formData);
+                }
             });
+
+            // Configuração do envio do formulário PJ
+            document.getElementById('solicitar-pj').addEventListener('click', function() {
+                const formData = {
+                    type: 'PJ',
+                    cnpj: document.getElementById('cnpj').value,
+                    nome: document.getElementById('nome-pj').value,
+                    email: document.getElementById('email-pj').value,
+                    telefone: document.getElementById('telefone-pj').value
+                };
+                
+                if (validateForm(formData)) {
+                    sendToWhatsApp(formData);
+                }
+            });
+            
+            function validateForm(data) {
+                // Validação básica
+                for (const key in data) {
+                    if (!data[key]) {
+                        alert(`Por favor, preencha todos os campos`);
+                        return false;
+                    }
+                }
+                
+                // Validação simples de telefone
+                if (data.telefone.replace(/\D/g, '').length < 10) {
+                    alert('Telefone inválido');
+                    return false;
+                }
+                
+                return true;
+            }
+            
+            function sendToWhatsApp(data) {
+                // Formata o telefone
+                const telefoneFormatado = data.telefone.replace(/\D/g, '');
+                const ddd = telefoneFormatado.substring(0, 2);
+                const numero = telefoneFormatado.substring(2);
+                const telefoneWhatsApp = `55${ddd}${numero}`;
+                
+                // Monta a mensagem
+                const message = `*Nova solicitação de certificado digital (${data.type})*\n\n` +
+                               `Nome: ${data.nome}\n` +
+                               `${data.type === 'PF' ? 'CPF' : 'CNPJ'}: ${data.type === 'PF' ? data.cpf : data.cnpj}\n` +
+                               `E-mail: ${data.email}\n` +
+                               `Telefone: ${data.telefone}\n\n` +
+                               `_Estamos verificando seus dados. Em instantes, nosso bot entrará em contato para continuar._`;
+
+                // Envia via Twilio API
+                fetch('https://api.twilio.com/2010-04-01/Accounts/AC972e1964cacb845151ddb3169231cb87/Messages.json', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'Authorization': 'Basic ' + btoa('AC972e1964cacb845151ddb3169231cb87:1a524b14afcdc4ff9385d3de49a30896')
+                    },
+                    body: new URLSearchParams({
+                        'To': `whatsapp:+${telefoneWhatsApp}`,
+                        'From': 'whatsapp:+14155238886',
+                        'Body': message
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Mensagem enviada:', data.sid);
+                    alert('Mensagem enviada! Verifique seu WhatsApp.');
+                })
+                .catch(error => {
+                    console.error('Erro ao enviar:', error);
+                    alert('Erro ao enviar. Tente novamente ou contate-nos.');
+                });
+            }
         });
     </script>
 

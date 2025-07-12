@@ -88,7 +88,7 @@
       background-color: #007bff;
       color: #fff !important;
       padding: 0.625rem 1.375rem;
-      border-radius: 1.5625rem;
+      border-radius: 0.4rem;
       font-weight: bold;
       text-decoration: none;
       font-size: 1rem;
@@ -392,69 +392,109 @@
       }
 
       .calory-header {
-        padding: 10px 3%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        z-index: 999;
-        flex-direction: row;
-        text-align: center;
-      }
+                padding: 10px 3%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                z-index: 999;
+                flex-direction: row;
+                text-align: center;
+            }
 
-      .calory-menu-toggle {
-        display: flex;
-        flex-direction: column;
-        cursor: pointer;
-        position: relative;
-        z-index: 1001;
-        margin-top: 0;
-      }
+            .calory-menu-toggle {
+                display: flex;
+                flex-direction: column;
+                cursor: pointer;
+                position: relative;
+                z-index: 1001;
+                margin-top: 0;
+            }
 
-      .calory-nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background: #fff;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        padding: 20px;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        z-index: 999;
-      }
+            .calory-menu-toggle span {
+                height: 3px;
+                width: 25px;
+                background-color: #007bff;
+                margin: 2px 0;
+                border-radius: 2px;
+                transition: transform 0.3s ease, opacity 0.3s ease;
+                position: relative;
+            }
 
-      .calory-nav-links.active {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
+            .calory-menu-toggle.active span {
+                background-color: #056cdb;
+                transform: translateY(7px) rotate(45deg);
+            }
 
-      /* Estilo específico para o botão no mobile */
-      .calory-nav-links .calory-link-azul-mobile {
-        display: block;
-        width: 90%;
-        max-width: 300px;
-        margin: 15px auto;
-        padding: 15px 20px;
-        background-color: #007bff;
-        color: white !important;
-        border-radius: 8px;
-        font-size: 1.2rem;
-        text-align: center;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transition: all 0.3s ease;
-      }
-      
-      .calory-nav-links .calory-link-azul-mobile:hover {
-        background-color: #0056b3;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-      }
-      
-      /* Remover o estilo original do botão no mobile */
-      .calory-nav-links .calory-link-azul {
-        display: none;
-      }
+            .calory-menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .calory-menu-toggle.active span:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+
+            .calory-nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: #fff;
+                position: relative;
+                top: auto;
+                left: auto;
+                padding: 20px;
+                box-shadow: none;
+                z-index: auto;
+                gap: 20px;
+            }
+
+            .calory-nav-links.active {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            /* Estilo específico para o botão no mobile */
+            .calory-nav-links .calory-link-azul-mobile {
+                display: block;
+                width: 90%;
+                max-width: 300px;
+                margin: 15px auto;
+                padding: 15px 20px;
+                background-color: #007bff;
+                color: white !important;
+                border-radius: 8px;
+                font-size: 1.2rem;
+                text-align: center;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                transition: all 0.3s ease;
+            }
+            
+            .calory-nav-links .calory-link-azul-mobile:hover {
+                background-color: #0056b3;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            }
+            
+            /* Remover o estilo original do botão no mobile */
+            .calory-nav-links .calory-link-azul {
+                display: none;
+            }
+
+            .calory-nav-links a {
+                display: block;
+                width: 100%;
+                text-align: center;
+                padding: 12px 0;
+                font-size: 18px;
+                font-weight: 500;
+                color: #007bff;
+                text-decoration: none;
+            }
+
+            /* linha abaixo de cada item, menos o último */
+            .calory-nav-links a:not(:last-child) {
+                border-bottom: 1px solid #007bff;
+            }
 
       .calory-logo {
         margin: 0 auto;
@@ -648,7 +688,7 @@
   <div class="calory-whatsapp-float">
     <!-- Botão para DESKTOP -->
     <a class="calory-desktop-only"
-      href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+tirar+algumas+dúvidas+sobre+o+sistema!">
+      href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+tirar+algumas+dúvidas!">
       <span class="calory-whatsapp-text">Fale Conosco</span>
       <span class="calory-whatsapp-icon">
         <img src="icon/whats.png" alt="WhatsApp" />
@@ -657,7 +697,7 @@
 
     <!-- Botão para MOBILE -->
     <a class="calory-mobile-only"
-      href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+tirar+algumas+dúvidas+sobre+o+sistema!">
+      href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+tirar+algumas+dúvidas!">
       <span class="calory-whatsapp-text">Fale Conosco</span>
       <span class="calory-whatsapp-icon">
         <img src="icon/whats.png" alt="WhatsApp" />

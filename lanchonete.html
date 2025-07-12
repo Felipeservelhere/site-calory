@@ -3,9 +3,11 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lanchonete - Calory Sistemas</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <style>
     /* Reset e Estilos Gerais */
     * {
@@ -16,16 +18,18 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: #ffffff;
-      color: #333;
+      background-color: #f9f9f9;
+      color: #333333;
+      line-height: 1.6;
       scroll-behavior: smooth;
+      padding-top: 60px;
     }
 
-    /* Estilos do Header */
-    header {
+    /* Header Styles */
+    .calory-header {
       width: 100%;
       padding: 10px 3%;
-      background: #fff;
+      background-color: #ffffff;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       display: flex;
       align-items: center;
@@ -37,22 +41,55 @@
       flex-wrap: wrap;
     }
 
-    .logo img {
-      max-height: 100px;
+    .calory-logo img {
+      max-height: 50px;
+      width: auto;
     }
 
-    .nav-links {
+    /* Menu Hamburguer Azul */
+    .calory-menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      position: relative;
+      z-index: 1001;
+      margin-top: 0;
+    }
+
+    .calory-menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background-color: #007bff;
+      margin: 2px 0;
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      position: relative;
+    }
+
+    .calory-menu-toggle.active span {
+      background-color: #056cdb;
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .calory-menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .calory-menu-toggle.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .calory-nav-links {
       display: flex;
       align-items: center;
-      /* ← isso alinha verticalmente */
-      gap: 50px;
+      gap: 2rem;
     }
 
-    .link-azul {
+    .calory-link-azul {
       background-color: #007bff;
       color: #fff !important;
-      padding: 10px 22px;
-      border-radius: 25px;
+      padding: 0.625rem 1.375rem;
+      border-radius: 0.3rem;
       font-weight: bold;
       text-decoration: none;
       font-size: 1rem;
@@ -60,68 +97,53 @@
       display: inline-block;
     }
 
-    .link-azul:hover {
+    .calory-link-azul:hover {
       background-color: #0056b3;
+      transform: scale(1.02);
       color: #fff !important;
     }
 
-    .nav-links a {
+    .calory-link-azul1 {
+      background-color: #007bff;
+      color: #fff !important;
+      padding: 1.625rem 1.975rem;
+      border-radius: 0.3rem;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1.6rem;
+      transition: background 0.3s ease;
+      display: inline-block;
+    }
+
+    .calory-link-azul1:hover {
+      background-color: #0056b3;
+      transform: scale(1.02);
+      color: #fff !important;
+    }
+
+    .calory-nav-links a {
       font-weight: 500;
       color: #333;
       text-decoration: none;
-      font-size: 25px;
+      font-size: 1.25rem;
     }
 
-    .nav-links a:hover {
+    .calory-nav-links a:hover {
       color: #007bff;
     }
 
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
+    /* Banner Styles */
+    .calory-banner-full {
       position: relative;
-      z-index: 1001;
+      height: 85vh;
+      width: 100%;
+      margin-top: 0;
+      overflow: hidden;
+      background: url('estabelecimentos/lanchonete.svg') no-repeat center center;
+      background-size: cover;
     }
 
-    .menu-toggle span {
-      height: 3px;
-      width: 25px;
-      background: #333;
-      margin: 4px 0;
-      border-radius: 2px;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      position: relative;
-    }
-
-    .menu-toggle.active span {
-      background-color: #333;
-      transform: translateY(7px) rotate(45deg);
-    }
-
-    .menu-toggle.active span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .menu-toggle.active span:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg);
-    }
-
-    /* Estilos do Banner */
-    .banner-full {
-      position: relative;
-      height: 90vh;
-      margin-top: 100px;
-      background: url('estabelecimentos/lanchonete.png') no-repeat center center/cover;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: #fff;
-      padding: 0 20px;
-    }
-
-    .banner-overlay {
+    .calory-banner-overlay {
       position: absolute;
       top: 0;
       left: 0;
@@ -131,80 +153,86 @@
       z-index: 1;
     }
 
-    .banner-content {
+    .calory-banner-content {
       position: relative;
       z-index: 2;
-      max-width: 850px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
     }
 
-    .banner-content h1 {
-      font-size: 2.8rem;
+    .calory-banner-content h1 {
+      font-size: 3rem;
       font-weight: 700;
-      margin-bottom: 15px;
-      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+      color: #ffffff;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+      line-height: 1.2;
     }
 
-    .banner-content p {
-      font-size: 1.2rem;
-      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    .calory-banner-content p {
+      font-size: 1.5rem;
+      color: #fff;
+      font-weight: 500;
+      max-width: 800px;
+      margin-bottom: 30px;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.5);
     }
 
-    .scroll-down {
+    /* Seta de rolagem */
+    .calory-arrow {
       position: absolute;
-      right: 50%;
-      bottom: 150px;
-      transform: translateX(50%);
+      bottom: 10%;
+      left: 50%;
+      margin-left: -20px;
       width: 38px;
       height: 55px;
-      border: 2px solid #dfdfdf;
+      border: 2px solid #f1f1f1;
       border-radius: 25px;
       cursor: pointer;
       z-index: 2;
-      animation: bounce 2s infinite;
+      animation: calory-bounce 2s infinite;
       display: flex;
       justify-content: center;
       align-items: flex-start;
       padding-top: 10px;
     }
 
-    .scroll-down::after {
+    .calory-arrow::after {
       content: '';
       display: block;
       width: 12px;
       height: 12px;
-      border-bottom: 3px solid #e0e0e0;
-      border-right: 3px solid #e0e0e0;
+      border-bottom: 3px solid #f3f3f3;
+      border-right: 3px solid #f3f3f3;
       transform: rotate(45deg);
       margin-top: 6px;
     }
 
-    @keyframes bounce {
-
-      0%,
-      20%,
-      50%,
-      80%,
-      100% {
+    @keyframes calory-bounce {
+      0%, 20%, 50%, 80%, 100% {
         transform: translateY(0);
       }
-
       40% {
         transform: translateY(10px);
       }
-
       60% {
         transform: translateY(5px);
       }
     }
 
-    /* Estilos da Main */
-    main {
-      max-width: 960px;
+    /* Main Content Styles */
+    .calory-main {
+      max-width: 1200px;
       margin: 60px auto;
       padding: 0 20px 40px 20px;
     }
 
-    .intro-text {
+    .calory-intro-text {
       text-align: center;
       margin-bottom: 45px;
       font-size: 1.2rem;
@@ -215,388 +243,499 @@
       font-weight: 500;
     }
 
-    .feature-item {
-      display: flex;
-      flex-direction: column;
-      /* Alinha os itens verticalmente */
-      align-items: center;
-      /* Centraliza os itens horizontalmente */
-      gap: 15px;
-      /* Reduz o espaço entre os itens */
-      background: #f9f9f9;
-      padding: 20px;
-      /* Reduz o preenchimento */
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-      max-width: 500px;
-      /* Reduz a largura máxima */
-      margin: 20px auto;
-      text-align: center;
-      /* Centraliza o texto */
+    /* Feature Grid - Padrão aplicado */
+    .calory-features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
     }
 
-    .feature-image {
-      width: 80px;
-      /* Reduz o tamanho da imagem */
-      height: 80px;
-      border-radius: 10px;
+    .calory-feature-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .calory-feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .feature-image-container {
+      height: 180px;
+      overflow: hidden;
+    }
+
+    .feature-image-container img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      background-color: #ffffff;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.5s ease;
     }
 
-    .feature-text {
-      flex: 1;
-      min-width: auto;
-      /* Remove a largura mínima */
+    .calory-feature-card:hover .feature-image-container img {
+      transform: scale(1.05);
     }
 
-    .feature-text h3 {
+    .feature-content {
+      padding: 25px;
+    }
+
+    .feature-content h3 {
       color: #007bff;
       font-size: 1.4rem;
-      /* Reduz o tamanho da fonte */
-      margin-bottom: 5px;
-      /* Reduz o espaço abaixo do título */
+      margin-bottom: 15px;
     }
 
-    .feature-text p {
-      color: #444;
-      font-size: 1rem;
-      /* Reduz o tamanho da fonte */
+    .feature-content p {
+      color: #666;
+      margin-bottom: 15px;
     }
 
-    .botoes-container {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 40px;
-    }
-
-    .cta-button,
-    .cta-button1 {
-      padding: 12px 25px;
-      /* Reduz o preenchimento */
-      background-color: #007bff;
+    /* CTA Section - Padrão aplicado */
+    .calory-cta-section {
+      text-align: center;
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      padding: 60px 20px;
+      border-radius: 12px;
       color: white;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1rem;
-      /* Reduz o tamanho da fonte */
-      transition: background 0.3s;
+      margin-bottom: 60px;
     }
 
-    .cta-button:hover,
-    .cta-button1:hover {
-      background-color: #0056b3;
+    .calory-cta-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
     }
 
-    .desktop-only {
+    .calory-cta-section p {
+      max-width: 700px;
+      margin: 0 auto 30px;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .calory-cta-button {
       display: inline-block;
+      background: white;
+      color: #007bff;
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-weight: 700;
+      text-decoration: none !important;
+      transition: all 0.3s ease;
     }
 
-    .mobile-only {
-      display: none;
+    .calory-cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
 
-    .whatsapp-float {
+    /* WhatsApp Float Button */
+    .calory-whatsapp-float {
       position: fixed;
-      bottom: 30px;
-      right: 30px;
+      bottom: 20px !important;
+      right: 20px !important;
       z-index: 1000;
     }
 
-    .whatsapp-float img {
+    .calory-whatsapp-float a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .calory-whatsapp-float .calory-whatsapp-text {
+      display: none;
+    }
+
+    .calory-whatsapp-float .calory-whatsapp-icon {
       width: 60px;
       height: 60px;
+      border-radius: 50%;
+      background-color: #25d366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transition: transform 0.3s ease;
+      position: relative;
+      z-index: 0;
     }
 
-    .whatsapp-float img:hover {
-      transform: scale(1.25);
+    .calory-whatsapp-float .calory-whatsapp-icon img {
+      width: 30px;
+      height: 30px;
     }
 
-    /* Estilos do Footer */
-    footer {
+    .calory-whatsapp-float:hover .calory-whatsapp-icon {
+      transform: scale(1.1);
+    }
+
+    /* Footer Styles */
+    .calory-footer {
       background-color: #3f3f3f;
-      color: white;
+      color: #ffffff;
       padding: 40px 20px;
+      font-size: 0.8rem !important;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
     }
 
-    .social-icons {
+    .calory-social-icons {
       display: flex;
       gap: 10px;
-      justify-content: center;
       margin-top: 15px;
     }
 
-    .social-icons a img {
+    .calory-social-icons a img {
       width: 32px;
       height: 32px;
       filter: brightness(0) invert(1);
       transition: transform 0.2s ease;
     }
 
-    .social-icons a img:hover {
+    .calory-social-icons a img:hover {
       transform: scale(1.1);
     }
 
-    /* Media Queries para Responsividade */
-    @media (max-width: 768px) {
-      .desktop-only {
-        display: none;
+    .calory-desktop-only {
+      display: inline-block !important;
+    }
+
+    .calory-mobile-only {
+      display: none !important;
+    }
+
+    /* Responsividade */
+    @media (max-width: 899.98px) {
+      .calory-desktop-only {
+        display: none !important;
       }
 
-      .mobile-only {
-        display: inline-block;
+      .calory-mobile-only {
+        display: inline-block !important;
       }
 
-      /* Estilos do Header em Dispositivos Móveis */
-      header {
+      body {
+        padding-top: 50px;
+      }
+
+      .calory-header {
         padding: 10px 3%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        z-index: 999;
+        flex-direction: row;
       }
 
-      .logo {
+      .calory-logo {
         margin: 0 auto;
-        /* Centraliza o logo */
       }
 
-      .logo img {
+      .calory-logo img {
         max-height: 50px;
         width: auto;
         margin-left: 0;
       }
 
-      /* Estilos do Menu Toggle */
-      .menu-toggle {
+      .calory-menu-toggle {
         display: flex;
-        flex-direction: column;
-        cursor: pointer;
-        position: relative;
-        z-index: 1001;
       }
 
-      .menu-toggle span {
-        height: 3px;
-        width: 25px;
-        background-color: #333;
-        margin: 4px 0;
-        border-radius: 2px;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-        position: relative;
-      }
-
-      .menu-toggle.active span {
-        background-color: #333;
-        transform: translateY(7px) rotate(45deg);
-      }
-
-      .menu-toggle.active span:nth-child(2) {
-        opacity: 0;
-      }
-
-      .menu-toggle.active span:nth-child(3) {
-        transform: translateY(-7px) rotate(-45deg);
-      }
-
-      /* Estilos dos Links de Navegação */
-      .nav-links {
+      .calory-nav-links {
         display: none;
         flex-direction: column;
         width: 100%;
         background: #fff;
-        position: absolute;
-        top: 60px;
-        left: 0;
+        position: relative;
+        top: auto;
+        left: auto;
         padding: 20px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
+        box-shadow: none;
+        z-index: auto;
         gap: 20px;
       }
 
-      .nav-links.active {
+      .calory-nav-links.active {
         display: flex;
         flex-direction: column;
-        /* Garante que os itens fiquem em coluna */
         align-items: center;
-        /* Centraliza os itens horizontalmente */
       }
 
-      .nav-links a {
+      .calory-nav-links .calory-link-azul-mobile {
+        display: block;
+        width: 90%;
+        max-width: 300px;
+        margin: 15px auto;
+        padding: 15px 20px;
+        background-color: #007bff;
+        color: white !important;
+        border-radius: 8px;
         font-size: 1.2rem;
-        padding: 10px 0;
         text-align: center;
-        color: #333;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+      }
+      
+      .calory-nav-links .calory-link-azul-mobile:hover {
+        background-color: #0056b3;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      }
+      
+      .calory-nav-links .calory-link-azul {
+        display: none;
       }
 
-      /* Estilo para o botão "Obtenha o Sistema" no menu */
-      .nav-links .link-azul {
-        margin-top: 10px;
-        /* Adiciona um espaçamento acima do botão */
-        width: fit-content;
-        /* Ajusta a largura ao conteúdo */
+      .calory-nav-links a {
+        display: block;
+        width: 100%;
         text-align: center;
-        /* Centraliza o texto dentro do botão */
+        padding: 12px 0;
+        font-size: 18px;
+        font-weight: 500;
+        color: #007bff;
+        text-decoration: none;
       }
 
-      /* Estilos do Banner em Dispositivos Móveis */
-      .banner-full {
-        margin-top: 60px;
-        height: 60vh;
+      .calory-nav-links a:not(:last-child) {
+        border-bottom: 1px solid #007bff;
       }
 
-      .banner-content h1 {
-        font-size: 2rem;
+      .calory-link-azul1 {
+        background-color: #007bff;
+        color: #fff !important;
+        padding: 1rem 1rem;
+        border-radius: 0.3rem;
+        font-weight: bold;
+        margin-bottom: 20%;
+        text-decoration: none;
+        font-size: 1.2rem;
+        transition: background 0.3s ease;
+        display: inline-block;
       }
 
-      .banner-content p {
+      .calory-banner-full {
+        height: 70vh;
+      }
+
+      .calory-banner-content h1 {
+        font-size: 2.2rem;
+        width: 90%;
+      }
+
+      .calory-banner-content p {
+        font-size: 1.1rem;
+        width: 90%;
+      }
+
+      .calory-features-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .calory-cta-section {
+        padding: 40px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .calory-banner-content h1 {
+        font-size: 1.8rem;
+      }
+
+      .calory-banner-content p {
         font-size: 1rem;
       }
 
-      .scroll-down {
-        left: 50%;
-        /* Centraliza horizontalmente */
-        transform: translateX(-50%);
-        /* Ajusta o posicionamento */
-        bottom: 20px;
-      }
-
-      /* Ajustes para o layout vertical em telas menores */
-      main {
-        max-width: 100%;
-        /* Ocupa toda a largura */
-        padding: 0 10px 40px 10px;
-        /* Reduz o preenchimento lateral */
-      }
-
-      .feature-item {
-        max-width: 100%;
-        /* Ocupa toda a largura */
-        margin: 15px auto;
-        /* Reduz a margem vertical */
-        padding: 15px;
-        /* Reduz o preenchimento */
-      }
-
-      .feature-image {
-        width: 70px;
-        /* Reduz ainda mais o tamanho da imagem */
-        height: 70px;
-      }
-
-      .feature-text h3 {
-        font-size: 1.3rem;
-        /* Reduz um pouco o tamanho do título */
+      .calory-cta-section h2 {
+        font-size: 1.5rem;
       }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="logo">
+
+  <header class="calory-header">
+    <div class="calory-logo">
       <a href="home.html"><img src="logo-antiga.PNG" alt="Logo Calory"></a>
     </div>
-    <div class="menu-toggle" onclick="toggleMenu()">
+    <div class="calory-menu-toggle" onclick="caloryToggleMenu()">
       <span></span>
       <span></span>
       <span></span>
     </div>
-    <nav class="nav-links">
-      <a href="cardapio.html">Cardápio</a>
+    <nav class="calory-nav-links">
+      <a href="home.html">Início</a>
+      <a href="produtos.html">Produtos</a>
       <a href="contato.html">Contato</a>
-      <a class="link-azul desktop-only"
-        href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+solicitar+um+orçamento+para+o+meu+sistema!">Obtenha
+      <a class="calory-link-azul calory-desktop-only"
+        href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento%20para%20o%20meu%20sistema!">Obtenha
         o sistema</a>
-      <a class="link-azul mobile-only"
-        href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+solicitar+um+orçamento+para+o+meu+sistema!">Obtenha
-        o sistema</a>
+      <a class="calory-link-azul-mobile calory-mobile-only"
+        href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento%20para%20o%20meu%20sistema!">OBTER SISTEMA AGORA</a>
     </nav>
   </header>
-  <section class="banner-full">
-    <div class="banner-overlay"></div>
-    <div class="banner-content">
+
+  <section class="calory-banner-full" role="banner" aria-label="Banner principal para lanchonetes">
+    <div class="calory-banner-overlay"></div>
+    <div class="calory-banner-content">
       <h1>Sistema para Lanchonetes e Restaurantes</h1>
       <p>Controle pedidos, estoque, entregas e caixa com eficiência em um sistema ágil para seu negócio alimentar.</p>
+      <a href="#features" class="calory-link-azul1" style="text-decoration: none;">Conheça os recursos</a>
     </div>
-    <div class="scroll-down"
-      onclick="document.getElementById('conteudo-principal').scrollIntoView({ behavior: 'smooth' });"></div>
+    <div class="calory-arrow" onclick="document.getElementById('features').scrollIntoView({ behavior: 'smooth' });"
+      tabindex="0" role="button" aria-label="Role para o conteúdo principal"></div>
   </section>
-  <main id="conteudo-principal">
-    <p class="intro-text">O sistema Calory para lanchonetes foi desenvolvido para facilitar o atendimento, otimizar o
-      tempo e dar total controle sobre o seu negócio.</p>
-    <section class="feature-item">
-      <img src="estabelecimentos/lanchonete/cardapio.png" alt="Gestão de Cardápio" class="feature-image">
-      <div class="feature-text">
-        <h3>Gestão de Cardápio</h3>
-        <p>Crie, edite e organize seus pratos e lanches com fotos, preços e categorias.</p>
+
+  <main class="calory-main" id="features">
+    <h2 class="calory-intro-text">
+      O sistema Calory para lanchonetes foi desenvolvido para facilitar o atendimento, otimizar o
+      tempo e dar total controle sobre o seu negócio.
+    </h2>
+    
+    <div class="calory-features-grid">
+      <div class="calory-feature-card">
+        <div class="feature-image-container">
+          <img src="estabelecimentos/lanchonete/cardapio.svg" alt="Gestão de Cardápio">
+        </div>
+        <div class="feature-content">
+          <h3>Gestão de Cardápio</h3>
+          <p>Crie, edite e organize seus pratos e lanches com fotos, preços e categorias.</p>
+        </div>
       </div>
-    </section>
-    <section class="feature-item">
-      <img src="estabelecimentos/lanchonete/estoque.png" alt="Controle de Estoque" class="feature-image">
-      <div class="feature-text">
-        <h3>Controle de Estoque</h3>
-        <p>Gerencie ingredientes e insumos em tempo real com alertas de reposição.</p>
+      
+      <div class="calory-feature-card">
+        <div class="feature-image-container">
+          <img src="estabelecimentos/lanchonete/estoque.svg" alt="Controle de Estoque">
+        </div>
+        <div class="feature-content">
+          <h3>Controle de Estoque</h3>
+          <p>Gerencie ingredientes e insumos em tempo real com alertas de reposição.</p>
+        </div>
       </div>
-    </section>
-    <section class="feature-item">
-      <img src="estabelecimentos/lanchonete/pedido.png" alt="Comandas e Pedidos" class="feature-image">
-      <div class="feature-text">
-        <h3>Comandas e Pedidos</h3>
-        <p>Organize pedidos por mesa ou balcão com controle de tempo e entrega.</p>
+      
+      <div class="calory-feature-card">
+        <div class="feature-image-container">
+          <img src="estabelecimentos/lanchonete/comanda.svg" alt="Comandas e Pedidos">
+        </div>
+        <div class="feature-content">
+          <h3>Comandas e Pedidos</h3>
+          <p>Organize pedidos por mesa ou balcão com controle de tempo e entrega.</p>
+        </div>
       </div>
-    </section>
-    <section class="feature-item">
-      <img src="estabelecimentos/lanchonete/relatorio.png" alt="Relatórios de Vendas" class="feature-image">
-      <div class="feature-text">
-        <h3>Relatórios de Vendas</h3>
-        <p>Acompanhe os resultados diários, semanais ou mensais com relatórios simples e visuais.</p>
+      
+      <div class="calory-feature-card">
+        <div class="feature-image-container">
+          <img src="estabelecimentos/lanchonete/relatorio.svg" alt="Relatórios de Vendas">
+        </div>
+        <div class="feature-content">
+          <h3>Relatórios de Vendas</h3>
+          <p>Acompanhe os resultados diários, semanais ou mensais com relatórios simples e visuais.</p>
+        </div>
       </div>
-    </section>
-    <div class="botoes-container">
-      <a href="https://web.whatsapp.com/send?phone=5544999939313&text=Ol%C3%A1%2C+quero+ter+o+melhor+sistema+empresarial+da+regi%C3%A3o%21"
-        class="cta-button1 desktop-only">Obtenha o Sistema Empresarial</a>
-      <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Ol%C3%A1%2C+quero+ter+o+melhor+sistema+empresarial+da+regi%C3%A3o%21"
-        class="cta-button1 mobile-only">Obtenha o Sistema Empresarial</a>
-      <a class="cta-button" href="sistema-empresarial.html?setor=lanchonete">Conheça o Sistema Empresarial</a>
+      
+      <div class="calory-feature-card">
+        <div class="feature-image-container">
+          <img src="estabelecimentos/lanchonete/delivery.svg" alt="Controle de Delivery">
+        </div>
+        <div class="feature-content">
+          <h3>Controle de Delivery</h3>
+          <p>Gerencie pedidos de entrega com rastreamento e histórico de clientes.</p>
+        </div>
+      </div>
+      
+      <div class="calory-feature-card">
+        <div class="feature-image-container">
+          <img src="estabelecimentos/lanchonete/financeira.svg" alt="Gestão Financeira">
+        </div>
+        <div class="feature-content">
+          <h3>Gestão Financeira</h3>
+          <p>Controle de caixa, contas a pagar e fluxo de caixa integrado.</p>
+        </div>
+      </div>
     </div>
+
+    <section class="calory-cta-section">
+      <h2>Pronto para revolucionar sua lanchonete?</h2>
+      <p>Nosso sistema foi desenvolvido especialmente para estabelecimentos alimentícios, com todas as funcionalidades que você precisa em um só lugar.</p>
+      <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+        <div>
+          <a class="calory-cta-button calory-desktop-only"
+            href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20o%20sistema%20para%20Lanchonetes%20e%20restaurantes!">Fale com um especialista!</a>
+          <a class="calory-cta-button calory-mobile-only"
+            href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20o%20sistema%20para%20Lanchonetes%20e%20restaurantes!">Fale com um especialista!</a>
+        </div>
+        <div>
+          <a class="calory-cta-button" href="sistema-empresarial.html?setor=lanchonete">Conheça mais o Sistema</a>
+        </div>
+      </div>
+    </section>
   </main>
-  <div class="whatsapp-float">
-    <a href="https://web.whatsapp.com/send?phone=5544999939313&text=Ol%C3%A1%2C+vim+pelo+site+e+queria+tirar+algumas+d%C3%BAvidas"
-      class="desktop-only" target="_blank" rel="noopener noreferrer">
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp Desktop" />
+
+  <div class="calory-whatsapp-float">
+    <!-- Botão para Desktop (web.whatsapp) -->
+    <a class="calory-desktop-only"
+      href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20tirar%20algumas%20dúvidas!">
+      <span class="calory-whatsapp-icon">
+        <img src="icon/whats.svg" alt="WhatsApp" />
+      </span>
     </a>
-    <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Ol%C3%A1%2C+vim+pelo+site+e+queria+tirar+algumas+d%C3%BAvidas"
-      class="mobile-only" target="_blank" rel="noopener noreferrer">
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp Mobile" />
+
+    <!-- Botão para Mobile (api.whatsapp) -->
+    <a class="calory-mobile-only"
+      href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20tirar%20algumas%20dúvidas!">
+      <span class="calory-whatsapp-icon">
+        <img src="icon/whats.svg" alt="WhatsApp" />
+      </span>
     </a>
   </div>
-  <footer>
-    <div>© 2025 Calory Sistemas • contato@calory.com.br</div>
-    <div class="social-icons">
-      <a href="https://www.facebook.com/calorysistemas/"><img src="icon/face.png" alt="Facebook"></a>
-      <a href="https://www.instagram.com/calorysistemas/"><img src="icon/insta.png" alt="Instagram"></a>
+
+  <footer class="calory-footer">
+    <div class="calory-texto-footer">
+      © 2025 Calory Sistemas • contato@calory.com.br
+    </div>
+    <div class="calory-social-icons">
+      <a href="https://www.facebook.com/calorysistemas/" target="_blank" rel="noopener noreferrer">
+        <img src="icon/face.svg" alt="Facebook" />
+      </a>
+      <a href="https://www.instagram.com/calorysistemas/" target="_blank" rel="noopener noreferrer">
+        <img src="icon/insta.svg" alt="Instagram" />
+      </a>
     </div>
   </footer>
 
   <script>
-    function toggleMenu() {
-      const menuToggle = document.querySelector('.menu-toggle');
-      const nav = document.querySelector('.nav-links');
-      menuToggle.classList.toggle('active');
-      nav.classList.toggle('active');
-
-      // Adiciona/remove a classe 'active' para cada span dentro do menu-toggle
-      const spans = menuToggle.querySelectorAll('span');
-      spans.forEach(span => span.classList.toggle('active'));
+    function caloryToggleMenu() {
+      const menu = document.querySelector('.calory-nav-links');
+      const toggle = document.querySelector('.calory-menu-toggle');
+      menu.classList.toggle('active');
+      toggle.classList.toggle('active');
     }
+
+    // Fecha o menu ao clicar em um link (mobile)
+    document.querySelectorAll('.calory-nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 899.98) {
+          caloryToggleMenu();
+        }
+      });
+    });
+
+    // Smooth scrolling para links âncora
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
   </script>
 </body>
-
 </html>

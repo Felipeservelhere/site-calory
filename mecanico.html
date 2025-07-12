@@ -3,12 +3,11 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mecânica - Calory Sistemas</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <style>
     /* Reset e Estilos Gerais */
     * {
@@ -19,14 +18,15 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: #ffffff;
+      background-color: #f9f9f9;
       color: #333333;
       line-height: 1.6;
       scroll-behavior: smooth;
+      padding-top: 60px;
     }
 
     /* Header Styles */
-    header {
+    .calory-header {
       width: 100%;
       padding: 10px 3%;
       background-color: #ffffff;
@@ -41,22 +41,55 @@
       flex-wrap: wrap;
     }
 
-    .logo img {
-      max-height: 100px;
+    .calory-logo img {
+      max-height: 50px;
       width: auto;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 50px;
-      align-items: center;
+    /* Menu Hamburguer Azul */
+    .calory-menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      position: relative;
+      z-index: 1001;
+      margin-top: 0;
     }
 
-    .link-azul {
+    .calory-menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background-color: #007bff;
+      margin: 2px 0;
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      position: relative;
+    }
+
+    .calory-menu-toggle.active span {
+      background-color: #056cdb;
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .calory-menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .calory-menu-toggle.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .calory-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .calory-link-azul {
       background-color: #007bff;
       color: #fff !important;
-      padding: 10px 22px;
-      border-radius: 25px;
+      padding: 0.625rem 1.375rem;
+      border-radius: 0.3rem;
       font-weight: bold;
       text-decoration: none;
       font-size: 1rem;
@@ -64,153 +97,142 @@
       display: inline-block;
     }
 
-    .link-azul:hover {
+    .calory-link-azul:hover {
       background-color: #0056b3;
+      transform: scale(1.02);
       color: #fff !important;
     }
 
-    .nav-links a {
+    .calory-link-azul1{
+      background-color: #007bff;
+      color: #fff !important;
+      padding: 1.625rem 1.975rem;
+      border-radius: 0.3rem;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1.6rem;
+      transition: background 0.3s ease;
+      display: inline-block;
+    }
+
+    .calory-link-azul1:hover {
+      background-color: #0056b3;
+      transform: scale(1.02);
+      color: #fff !important;
+    }
+
+    .calory-nav-links a {
       font-weight: 500;
       color: #333;
       text-decoration: none;
-      font-size: 25px;
+      font-size: 1.25rem;
     }
 
-    .nav-links a:hover {
+    .calory-nav-links a:hover {
       color: #007bff;
     }
 
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
-
-    .menu-toggle span {
-      height: 3px;
-      width: 25px;
-      background: #333;
-      margin: 4px 0;
-      border-radius: 2px;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      position: relative;
-    }
-
-    .menu-toggle.active span {
-      background-color: #333;
-      transform: translateY(7px) rotate(45deg);
-    }
-
-    .menu-toggle.active span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .menu-toggle.active span:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg);
-    }
-
     /* Banner Styles */
-    .banner-full {
+    .calory-banner-full {
       position: relative;
-      height: 90vh;
+      height: 85vh;
       width: 100%;
-      margin-top: 70px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: #fff;
-      padding: 0 20px;
-      background: url('estabelecimentos/mecanico.png') no-repeat center center/cover;
+      margin-top: 0;
+      overflow: hidden;
+      background: url('estabelecimentos/mecanico.svg') no-repeat center center;
+      background-size: cover;
     }
 
-    .banner-overlay {
+    .calory-banner-overlay {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(0, 0, 0, 0.75);
+      background: rgba(0, 0, 0, 0.7);
       z-index: 1;
     }
 
-    .banner-content {
+    .calory-banner-content {
       position: relative;
       z-index: 2;
-      max-width: 850px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
     }
 
-    .banner-content h1 {
-      font-size: 3.5rem;
+    .calory-banner-content h1 {
+      font-size: 3rem;
       font-weight: 700;
-      margin-bottom: 15px;
-      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+      color: #ffffff;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+      line-height: 1.2;
     }
 
-    .banner-content p {
-      font-size: 1.4rem;
-      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    .calory-banner-content p {
+      font-size: 1.5rem;
+      color: #fff;
+      font-weight: 500;
+      max-width: 800px;
+      margin-bottom: 30px;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.5);
     }
 
-    .scroll-down {
+    /* Seta de rolagem */
+    .calory-arrow {
       position: absolute;
+      bottom: 10%;
       left: 50%;
-      transform: translateX(-50%);
-      bottom: 20px;
+      margin-left: -20px;
       width: 38px;
       height: 55px;
       border: 2px solid #f1f1f1;
       border-radius: 25px;
       cursor: pointer;
       z-index: 2;
-      animation: bounce 2s infinite;
+      animation: calory-bounce 2s infinite;
       display: flex;
       justify-content: center;
       align-items: flex-start;
       padding-top: 10px;
     }
 
-    .scroll-down::after {
+    .calory-arrow::after {
       content: '';
       display: block;
       width: 12px;
       height: 12px;
       border-bottom: 3px solid #f3f3f3;
-      border-right: 3px solid #fcfcfc;
+      border-right: 3px solid #f3f3f3;
       transform: rotate(45deg);
       margin-top: 6px;
     }
 
-    @keyframes bounce {
-
-      0%,
-      20%,
-      50%,
-      80%,
-      100% {
+    @keyframes calory-bounce {
+      0%, 20%, 50%, 80%, 100% {
         transform: translateY(0);
       }
-
       40% {
         transform: translateY(10px);
       }
-
       60% {
         transform: translateY(5px);
       }
     }
 
     /* Main Content Styles */
-    main {
-      max-width: 960px;
+    .calory-main {
+      max-width: 1200px;
       margin: 60px auto;
       padding: 0 20px 40px 20px;
-      background: url('img/backgroundmecanico.png') no-repeat center center/cover;
-      position: relative;
     }
 
-    .intro-text {
+    .calory-intro-text {
       text-align: center;
       margin-bottom: 45px;
       font-size: 1.2rem;
@@ -221,93 +243,120 @@
       font-weight: 500;
     }
 
-    .feature-list {
+    /* Feature Grid - Padrão aplicado */
+    .calory-features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px;
+      margin-bottom: 60px;
     }
 
-    .feature {
-      background: #ffffff;
+    .calory-feature-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .calory-feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .feature-image-container {
+      height: 180px;
+      overflow: hidden;
+    }
+
+    .feature-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .calory-feature-card:hover .feature-image-container img {
+      transform: scale(1.05);
+    }
+
+    .feature-content {
       padding: 25px;
-      border-left: 5px solid #007bff;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s ease;
     }
 
-    .feature:hover {
-      transform: translateY(-5px);
-    }
-
-    .feature h3 {
+    .feature-content h3 {
       color: #007bff;
-      margin-bottom: 10px;
+      font-size: 1.4rem;
+      margin-bottom: 15px;
     }
 
-    .feature p {
-      color: #555;
+    .feature-content p {
+      color: #666;
+      margin-bottom: 15px;
     }
 
-    .botoes-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
-      margin-top: 40px;
+    /* CTA Section - Padrão aplicado */
+    .calory-cta-section {
+      text-align: center;
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      padding: 60px 20px;
+      border-radius: 12px;
+      color: white;
+      margin-bottom: 60px;
     }
 
-    .cta-button,
-    .cta-button1 {
-      display: block;
-      width: fit-content;
-      padding: 15px 30px;
-      background-color: #007bff;
-      color: #ffffff;
-      font-weight: bold;
-      border: none;
-      border-radius: 30px;
-      text-decoration: none;
+    .calory-cta-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .calory-cta-section p {
+      max-width: 700px;
+      margin: 0 auto 30px;
       font-size: 1.1rem;
-      transition: background 0.3s;
+      opacity: 0.9;
     }
 
-    .cta-button:hover,
-    .cta-button1:hover {
-      background-color: #0056b3;
+    .calory-cta-button {
+      display: inline-block;
+      background: white;
+      color: #007bff;
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-weight: 700;
+      text-decoration: none !important;
+      transition: all 0.3s ease;
     }
 
-    /* WhatsApp Float Button Styles */
-    .whatsapp-float {
+    .calory-cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* WhatsApp Float Button */
+    .calory-whatsapp-float {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
+      bottom: 20px !important;
+      right: 20px !important;
       z-index: 1000;
     }
 
-    .whatsapp-float a {
+    .calory-whatsapp-float a {
       display: flex;
       align-items: center;
+      gap: 8px;
       text-decoration: none;
       color: #333;
       font-weight: bold;
     }
 
-    .whatsapp-float .whatsapp-text {
-      background-color: #fff;
-      padding: 7px 10px;
-      font-size: 0.8rem;
-      font-weight: 100;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      margin-right: -10px;
-      position: relative;
-      z-index: 1;
+    .calory-whatsapp-float .calory-whatsapp-text {
+      display: none;
     }
 
-    .whatsapp-float .whatsapp-icon {
-      width: 80px;
-      height: 80px;
+    .calory-whatsapp-float .calory-whatsapp-icon {
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
       background-color: #25d366;
       display: flex;
@@ -318,350 +367,194 @@
       z-index: 0;
     }
 
-    .whatsapp-float .whatsapp-icon img {
-      width: 40px;
-      height: 40px;
+    .calory-whatsapp-float .calory-whatsapp-icon img {
+      width: 30px;
+      height: 30px;
     }
 
-    .whatsapp-float:hover .whatsapp-icon {
+    .calory-whatsapp-float:hover .calory-whatsapp-icon {
       transform: scale(1.1);
     }
 
-    /* Esconde o texto inicialmente */
-    .whatsapp-float .whatsapp-text {
-      display: none;
-    }
-
     /* Footer Styles */
-    footer {
+    .calory-footer {
       background-color: #3f3f3f;
       color: #ffffff;
       padding: 40px 20px;
-      font-size: 1rem;
+      font-size: 0.8rem !important;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
     }
 
-
-    footer {
-      background-color: #3f3f3f;
-      color: #ffffff;
-      padding: 40px 20px;
-      font-size: 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .social-icons {
+    .calory-social-icons {
       display: flex;
       gap: 10px;
       margin-top: 15px;
     }
 
-    .social-icons a img {
+    .calory-social-icons a img {
       width: 32px;
       height: 32px;
       filter: brightness(0) invert(1);
       transition: transform 0.2s ease;
     }
 
-    .social-icons a img:hover {
+    .calory-social-icons a img:hover {
       transform: scale(1.1);
     }
 
-    /* Utility Classes for Responsiveness */
-    .desktop-only {
-      display: inline-block;
-    }
-
-    .mobile-only {
-      display: none;
-    }
-
-    /* Media Queries for Responsiveness */
-    /* Extra small devices (phones, less than 576px) */
-    @media (max-width: 575.98px) {
-      .desktop-only {
-        display: none;
+    .calory-desktop-only {
+        display: inline-block !important;
       }
 
-      .social-wrapper {
-        margin: 20px auto;
-        /* Centraliza e reduz a margem */
-        text-align: center;
+      .calory-mobile-only {
+        display: none !important;
       }
 
-      .social-icons {
-        justify-content: center;
+
+    /* Responsividade */
+    @media (max-width: 899.98px) {
+      .calory-desktop-only {
+        display: none !important;
       }
 
-      .whatsapp-float {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 1000;
+      .calory-mobile-only {
+        display: inline-block !important;
       }
 
-      .whatsapp-float a {
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        color: #333;
-        font-weight: bold;
+      body {
+        padding-top: 50px;
       }
 
-      .whatsapp-float .whatsapp-text {
-        background-color: #fff;
-        padding: 7px 10px;
-        font-size: 0.7rem;
-        font-weight: 100;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        margin-right: -10px;
-        position: relative;
-        z-index: 1;
-      }
-
-      .whatsapp-float .whatsapp-icon {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        background-color: #25d366;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: transform 0.3s ease;
-        position: relative;
-        z-index: 0;
-      }
-
-      .whatsapp-float .whatsapp-icon img {
-        width: 40px;
-        height: 40px;
-      }
-
-      .whatsapp-float:hover .whatsapp-icon {
-        transform: scale(1.1);
-      }
-
-      .mobile-only {
-        display: inline-block;
-      }
-
-      /* Header Styles for Mobile Devices */
-      header {
+      .calory-header {
         padding: 10px 3%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        z-index: 999;
+        flex-direction: row;
       }
 
-      .logo {
+      .calory-logo {
         margin: 0 auto;
       }
 
-      .logo img {
+      .calory-logo img {
         max-height: 50px;
         width: auto;
         margin-left: 0;
       }
 
-      /* Menu Toggle Styles */
-      .menu-toggle {
+      .calory-menu-toggle {
         display: flex;
-        flex-direction: column;
-        cursor: pointer;
-        position: relative;
-        z-index: 1001;
       }
 
-      .menu-toggle span {
-        height: 3px;
-        width: 25px;
-        background-color: #333;
-        margin: 4px 0;
-        border-radius: 2px;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-        position: relative;
-      }
-
-      .menu-toggle.active span {
-        background-color: #333;
-        transform: translateY(7px) rotate(45deg);
-      }
-
-      .menu-toggle.active span:nth-child(2) {
-        opacity: 0;
-      }
-
-      .menu-toggle.active span:nth-child(3) {
-        transform: translateY(-7px) rotate(-45deg);
-      }
-
-      /* Navigation Links Styles */
-      .nav-links {
+      .calory-nav-links {
         display: none;
         flex-direction: column;
         width: 100%;
         background: #fff;
-        position: absolute;
-        top: 60px;
-        left: 0;
+        position: relative;
+        top: auto;
+        left: auto;
         padding: 20px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
+        box-shadow: none;
+        z-index: auto;
         gap: 20px;
       }
 
-      .nav-links.active {
+      .calory-nav-links.active {
         display: flex;
         flex-direction: column;
         align-items: center;
       }
 
-      .nav-links a {
+      .calory-nav-links .calory-link-azul-mobile {
+        display: block;
+        width: 90%;
+        max-width: 300px;
+        margin: 15px auto;
+        padding: 15px 20px;
+        background-color: #007bff;
+        color: white !important;
+        border-radius: 8px;
         font-size: 1.2rem;
-        padding: 10px 0;
         text-align: center;
-        color: #333;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+      }
+      
+      .calory-nav-links .calory-link-azul-mobile:hover {
+        background-color: #0056b3;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      }
+      
+      .calory-nav-links .calory-link-azul {
+        display: none;
       }
 
-      /* "Obtenha o Sistema" Button Style */
-      .nav-links .link-azul {
-        margin-top: 10px;
-        width: fit-content;
+      .calory-nav-links a {
+        display: block;
+        width: 100%;
         text-align: center;
+        padding: 12px 0;
+        font-size: 18px;
+        font-weight: 500;
+        color: #007bff;
+        text-decoration: none;
       }
 
-      /* Banner Styles for Mobile Devices */
-      .banner-full {
-        margin-top: 60px;
-        height: 60vh;
+      .calory-nav-links a:not(:last-child) {
+        border-bottom: 1px solid #007bff;
       }
 
-      .banner-content h1 {
-        font-size: 2rem;
-      }
-
-      .banner-content p {
-        font-size: 1rem;
-      }
-
-      .scroll-down {
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: 20px;
-      }
-
-      /* Main Content Styles for Mobile Devices */
-      main {
-        margin: 40px auto;
-        padding: 0 10px 20px 10px;
-      }
-
-      .intro-text {
-        font-size: 1rem;
-      }
-
-      .feature-list {
-        grid-template-columns: 1fr;
-      }
-
-      .feature {
-        padding: 15px;
-      }
-
-      .feature h3 {
-        font-size: 1.3rem;
-      }
-
-      .feature p {
-        font-size: 1rem;
-      }
-
-      /* Footer Styles for Mobile Devices */
-      footer {
-        padding: 30px 10px;
-      }
-
-      .texto-footer {
-        font-size: 0.9rem;
-      }
-
-      .social-icons {
-        margin-top: 10px;
-      }
+      .calory-link-azul1{
+      background-color: #007bff;
+      color: #fff !important;
+      padding: 1rem 1rem;
+      border-radius: 0.3rem;
+      font-weight: bold;
+      margin-bottom: 20%;
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: background 0.3s ease;
+      display: inline-block;
     }
 
-    /* Small devices (landscape phones, 576px and up) */
-    @media (min-width: 576px) and (max-width: 767.98px) {
-      .banner-content h1 {
-        font-size: 2.5rem;
+      .calory-banner-full {
+        height: 70vh;
       }
 
-      .feature-list {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    /* Medium devices (tablets, 768px and up) */
-    @media (min-width: 768px) and (max-width: 991.98px) {
-      .nav-links {
-        gap: 30px;
+      .calory-banner-content h1 {
+        font-size: 2.2rem;
+        width: 90%;
       }
 
-      .nav-links a {
+      .calory-banner-content p {
         font-size: 1.1rem;
+        width: 90%;
       }
 
-      .banner-content h1 {
-        font-size: 3rem;
+      .calory-features-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
       }
 
-      main {
-        padding: 0 30px 40px 30px;
-      }
-    }
-
-    /* Large devices (desktops, 992px and up) */
-    @media (min-width: 992px) and (max-width: 1199.98px) {
-      .nav-links {
-        gap: 40px;
-      }
-
-      .banner-content h1 {
-        font-size: 3.2rem;
+      .calory-cta-section {
+        padding: 40px 20px;
       }
     }
 
-    /* Extra large devices (large desktops, 1200px and up) */
-    @media (min-width: 1200px) {
-      .nav-links {
-        gap: 50px;
+    @media (max-width: 480px) {
+      .calory-banner-content h1 {
+        font-size: 1.8rem;
       }
 
-      .banner-content h1 {
-        font-size: 3.5rem;
-      }
-    }
-
-    /* Media Query para telas maiores que 1550px */
-    @media (min-width: 1550px) {
-      .banner-content h1 {
-        font-size: 4rem;
+      .calory-banner-content p {
+        font-size: 1rem;
       }
 
-      .banner-content p {
-        font-size: 1.6rem;
-      }
-
-      main {
-        max-width: 1200px;
+      .calory-cta-section h2 {
+        font-size: 1.5rem;
       }
     }
   </style>
@@ -669,110 +562,180 @@
 
 <body>
 
-  <header>
-    <div class="logo">
-      <a href="home.html"><img src="logo-antiga.PNG" alt="Logo Calory Mecânica"></a>
+  <header class="calory-header">
+    <div class="calory-logo">
+      <a href="home.html"><img src="logo-antiga.PNG" alt="Logo Calory"></a>
     </div>
-    <div class="menu-toggle" onclick="toggleMenu()">
+    <div class="calory-menu-toggle" onclick="caloryToggleMenu()">
       <span></span>
       <span></span>
       <span></span>
     </div>
-    <nav class="nav-links" id="navMenu">
+    <nav class="calory-nav-links">
       <a href="produtos.html">Produtos</a>
       <a href="contato.html">Contato</a>
-      <a class="link-azul desktop-only"
-        href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+solicitar+um+orçamento+para+o+meu+sistema!">Obtenha
+      <a class="calory-link-azul calory-desktop-only"
+        href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento%20para%20o%20meu%20sistema!">Obtenha
         o sistema</a>
-      <a class="link-azul mobile-only"
-        href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,+vim+pelo+site+e+gostaria+de+solicitar+um+orçamento+para+o+meu+sistema!">Obtenha
-        o sistema</a>
+      <a class="calory-link-azul-mobile calory-mobile-only"
+        href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento%20para%20o%20meu%20sistema!">OBTER SISTEMA AGORA</a>
     </nav>
   </header>
 
-  <section class="banner-full" role="banner" aria-label="Banner principal da mecânica com título e descrição">
-    <div class="banner-overlay"></div>
-    <div class="banner-content">
+  <section class="calory-banner-full" role="banner" aria-label="Banner principal para oficinas mecânicas">
+    <div class="calory-banner-overlay"></div>
+    <div class="calory-banner-content">
       <h1>Sistema de Gestão para Oficinas Mecânicas</h1>
-      <p>Tenha controle completo de ordens de serviço, peças, agendamentos e faturamento com a plataforma ideal para sua
-        oficina.</p>
+      <p>Tenha controle completo de ordens de serviço, peças, agendamentos e faturamento com a plataforma ideal para sua oficina.</p>
+      <a href="#features" class="calory-link-azul1" style="text-decoration: none;">Conheça os recursos</a>
     </div>
-    <div class="scroll-down"
-      onclick="document.getElementById('conteudo-principal').scrollIntoView({ behavior: 'smooth' });"></div>
+    <div class="calory-arrow" onclick="document.getElementById('features').scrollIntoView({ behavior: 'smooth' });"
+      tabindex="0" role="button" aria-label="Role para o conteúdo principal"></div>
   </section>
 
-  <main id="conteudo-principal">
+  <main class="calory-main" id="features">
+    <h2 class="calory-intro-text">
+      O sistema Calory para oficinas mecânicas oferece ferramentas específicas para o dia a dia da sua oficina
+    </h2>
+    
+    <div class="calory-features-grid">
+      <div class="calory-feature-card">
+        <div class="feature-image-container">
+          <img src="estabelecimentos/mecanico/ordem.svg" alt="Ordem de Serviço Digital">
+        </div>
+        <div class="feature-content">
+          <h3>Ordem de Serviço Digital</h3>
+          <p>Crie, edite e acompanhe ordens de serviço de forma digital e organizada, com histórico de cada atendimento.</p>
+        </div>
+      </div>
+      
+      <div class="calory-feature-card">
+        <div class="feature-image-container">
+          <img src="estabelecimentos/mecanico/estoque.svg" alt="Controle de Peças e Estoque">
+        </div>
+        <div class="feature-content">
+          <h3>Controle de Peças e Estoque</h3>
+          <p>Monitore entradas e saídas de peças, reposições e movimentações com alertas de baixo estoque.</p>
+        </div>
+      </div>
+      
+      <div class="calory-feature-card">
+        <div class="feature-image-container">
+          <img src="estabelecimentos/mecanico/agendamento.svg" alt="Agendamento Inteligente">
+        </div>
+        <div class="feature-content">
+          <h3>Agendamento Inteligente</h3>
+          <p>Evite conflitos de horários e organize seus atendimentos com um sistema de agendamento prático.</p>
+        </div>
+      </div>
+      
+      <div class="calory-feature-card">
+        <div class="feature-image-container">
+          <img src="estabelecimentos/mecanico/relatorios.svg" alt="Relatórios Gerenciais">
+        </div>
+        <div class="feature-content">
+          <h3>Relatórios Gerenciais</h3>
+          <p>Visualize o desempenho financeiro da oficina, estatísticas de serviços realizados e análise de produtividade.</p>
+        </div>
+      </div>
+      
+      <div class="calory-feature-card">
+        <div class="feature-image-container">
+          <img src="estabelecimentos/mecanico/financeira.svg" alt="Gestão Financeira">
+        </div>
+        <div class="feature-content">
+          <h3>Gestão Financeira</h3>
+          <p>Controle de caixa, contas a pagar e receber, fluxo de caixa e relatórios financeiros completos.</p>
+        </div>
+      </div>
+      
+      <div class="calory-feature-card">
+        <div class="feature-image-container">
+          <img src="estabelecimentos/mecanico/cliente.svg" alt="Histórico de Clientes">
+        </div>
+        <div class="feature-content">
+          <h3>Histórico de Clientes</h3>
+          <p>Registre e consulte o histórico completo de serviços realizados para cada cliente e veículo.</p>
+        </div>
+      </div>
+    </div>
 
-    <p class="intro-text">
-      O sistema Calory para oficinas mecânicas oferece ferramentas específicas para o dia a dia da sua oficina. Controle
-      ordens de serviço, agendamentos, estoque de peças e muito mais com praticidade e segurança.
-    </p>
-    <div class="feature-list">
-      <div class="feature">
-        <h3>Ordem de Serviço Digital</h3>
-        <p>Crie, edite e acompanhe ordens de serviço de forma digital e organizada, com histórico de cada atendimento.</p>
+    <section class="calory-cta-section">
+      <h2>Pronto para transformar a gestão da sua oficina?</h2>
+      <p>Nosso sistema foi desenvolvido especialmente para atender as necessidades de oficinas mecânicas, com todas as funcionalidades que você precisa em um só lugar.</p>
+      <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+        <div>
+          <a class="calory-cta-button calory-desktop-only"
+            href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20informações%20sobre%20o%20sistema%20para%20oficinas%20mecânicas!">Fale com um especialista!</a>
+          <a class="calory-cta-button calory-mobile-only"
+            href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20informações%20sobre%20o%20sistema%20para%20oficinas%20mecânicas!">Fale com um especialista!</a>
+        </div>
+        <div>
+          <a class="calory-cta-button" href="sistema-empresarial.html?setor=mecanica">Conheça mais o Sistema</a>
+        </div>
       </div>
-      <div class="feature">
-        <h3>Controle de Peças e Estoque</h3>
-        <p>Monitore entradas e saídas de peças, reposições e movimentações com alertas de baixo estoque.</p>
-      </div>
-      <div class="feature">
-        <h3>Agendamento Inteligente</h3>
-        <p>Evite conflitos de horários e organize seus atendimentos com um sistema de agendamento prático.</p>
-      </div>
-      <div class="feature">
-        <h3>Relatórios Gerenciais</h3>
-        <p>Visualize o desempenho financeiro da oficina, estatísticas de serviços realizados e análise de
-          produtividade.</p>
-      </div>
-    </div>
-    <div class="botoes-container">
-      <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Ol%C3%A1,+quero+ter+o+melhor+sistema+empresarial+da+regi%C3%A3o%21"
-        class="cta-button1">Obtenha o Sistema Empresarial</a>
-      <a class="cta-button" href="sistema-empresarial.html">Conheça o Sistema Empresarial</a>
-    </div>
+    </section>
+    
   </main>
 
-  <div class="whatsapp-float">
-    <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Ol%C3%A1%2C+vim+pelo+site+e+queria+tirar+algumas+d%C3%BAvidas">
-      <span class="whatsapp-text">Fale Conosco</span>
-      <span class="whatsapp-icon">
+  <div class="calory-whatsapp-float">
+    <!-- Botão para Desktop (web.whatsapp) -->
+    <a class="calory-desktop-only"
+      href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20tirar%20algumas%20dúvidas!">
+      <span class="calory-whatsapp-icon">
+        <img src="icon/whats.png" alt="WhatsApp" />
+      </span>
+    </a>
+
+    <!-- Botão para Mobile (api.whatsapp) -->
+    <a class="calory-mobile-only"
+      href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20tirar%20algumas%20dúvidas!">
+      <span class="calory-whatsapp-icon">
         <img src="icon/whats.png" alt="WhatsApp" />
       </span>
     </a>
   </div>
 
-  <footer>
-    <div class="texto-footer">
+  <footer class="calory-footer">
+    <div class="calory-texto-footer">
       © 2025 Calory Sistemas • contato@calory.com.br
     </div>
-
-    <div class="social-wrapper">
-      <div class="social-icons">
-        <a href="https://www.facebook.com/calorysistemas/"><img src="icon/face.png" alt="Facebook" /></a>
-        <a href="https://www.instagram.com/calorysistemas/"><img src="icon/insta.png" alt="Instagram" /></a>
-      </div>
+    <div class="calory-social-icons">
+      <a href="https://www.facebook.com/calorysistemas/" target="_blank" rel="noopener noreferrer">
+        <img src="icon/face.png" alt="Facebook" />
+      </a>
+      <a href="https://www.instagram.com/calorysistemas/" target="_blank" rel="noopener noreferrer">
+        <img src="icon/insta.png" alt="Instagram" />
+      </a>
     </div>
   </footer>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const whatsappText = document.querySelector('.whatsapp-float .whatsapp-text');
-
-      // Mostra o texto após 3 segundos (3000 milissegundos)
-      setTimeout(function () {
-        whatsappText.style.display = 'inline-block'; // ou 'flex' dependendo do layout
-      }, 3000);
-    });
-
-    function toggleMenu() {
-      const menu = document.getElementById('navMenu');
-      const toggle = document.querySelector('.menu-toggle');
+    function caloryToggleMenu() {
+      const menu = document.querySelector('.calory-nav-links');
+      const toggle = document.querySelector('.calory-menu-toggle');
       menu.classList.toggle('active');
       toggle.classList.toggle('active');
     }
+
+    // Fecha o menu ao clicar em um link (mobile)
+    document.querySelectorAll('.calory-nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 899.98) {
+          caloryToggleMenu();
+        }
+      });
+    });
+
+    // Smooth scrolling para links âncora
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
   </script>
-
 </body>
-
 </html>
