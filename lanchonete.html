@@ -22,85 +22,202 @@
       color: #333333;
       line-height: 1.6;
       scroll-behavior: smooth;
-      padding-top: 60px;
+      padding-top: 80px;
     }
 
-    /* Header Styles */
+    /* Header com Efeito de Vidro (Glassmorphism) */
     .calory-header {
       width: 100%;
-      padding: 10px 3%;
-      background-color: #ffffff;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      padding: 15px 5%;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
       position: fixed;
       top: 0;
       left: 0;
       z-index: 1000;
-      flex-wrap: wrap;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .calory-header.scrolled {
+      padding: 10px 5%;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .calory-logo {
+      display: flex;
+      align-items: center;
     }
 
     .calory-logo img {
-      max-height: 70px;
-      width: auto;
+      height: 50px;
+      transition: height 0.3s ease;
     }
 
-    /* Menu Hamburguer Azul */
+    .calory-header.scrolled .calory-logo img {
+      height: 40px;
+    }
+
+    .logo-text {
+      margin-left: 10px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #007bff;
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      .logo-text {
+        display: block;
+      }
+    }
+
+    /* Menu Hamburguer Moderno */
     .calory-menu-toggle {
       display: none;
-      flex-direction: column;
-      cursor: pointer;
+      width: 30px;
+      height: 25px;
       position: relative;
+      cursor: pointer;
       z-index: 1001;
-      margin-top: 0;
+      background: none;
+      border: none;
+      padding: 0;
     }
 
     .calory-menu-toggle span {
+      display: block;
+      position: absolute;
       height: 3px;
-      width: 25px;
-      background-color: #007bff;
-      margin: 2px 0;
-      border-radius: 2px;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      position: relative;
+      width: 100%;
+      background: #007bff;
+      border-radius: 3px;
+      opacity: 1;
+      left: 0;
+      transform: rotate(0deg);
+      transition: .25s ease-in-out;
     }
 
-    .calory-menu-toggle.active span {
-      background-color: #056cdb;
-      transform: translateY(7px) rotate(45deg);
+    .calory-menu-toggle span:nth-child(1) {
+      top: 0px;
+    }
+
+    .calory-menu-toggle span:nth-child(2), 
+    .calory-menu-toggle span:nth-child(3) {
+      top: 10px;
+    }
+
+    .calory-menu-toggle span:nth-child(4) {
+      top: 20px;
+    }
+
+    .calory-menu-toggle.active span:nth-child(1) {
+      top: 10px;
+      width: 0%;
+      left: 50%;
     }
 
     .calory-menu-toggle.active span:nth-child(2) {
-      opacity: 0;
+      transform: rotate(45deg);
     }
 
     .calory-menu-toggle.active span:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg);
+      transform: rotate(-45deg);
     }
 
+    .calory-menu-toggle.active span:nth-child(4) {
+      top: 10px;
+      width: 0%;
+      left: 50%;
+    }
+
+    /* Navegação */
     .calory-nav-links {
       display: flex;
       align-items: center;
-      gap: 2rem;
+      gap: 1.5rem;
+    }
+
+    .calory-nav-links a {
+      font-weight: 600;
+      color: #333;
+      text-decoration: none;
+      font-size: 1rem;
+      position: relative;
+      padding: 8px 0;
+      transition: color 0.3s ease;
+    }
+
+    .calory-nav-links a:not(.calory-link-azul):hover {
+      color: #007bff;
+    }
+
+    .calory-nav-links a:not(.calory-link-azul)::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #007bff;
+      transition: width 0.3s ease;
     }
 
     .calory-link-azul {
-      background-color: #007bff;
+      background: linear-gradient(135deg, #007bff, #00bfff);
       color: #fff !important;
-      padding: 0.625rem 1.375rem;
-      border-radius: 0.3rem;
-      font-weight: bold;
+      padding: 12px 25px;
+      border-radius: 50px;
+      font-weight: 600;
       text-decoration: none;
-      font-size: 1rem;
-      transition: background 0.3s ease;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .calory-link-azul i {
+      margin-right: 10px;
+      transition: transform 0.3s ease;
     }
 
     .calory-link-azul:hover {
-      background-color: #0056b3;
-      transform: scale(1.02);
-      color: #fff !important;
+      background: linear-gradient(135deg, #0069d9, #0095ff);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+    }
+
+    .calory-link-azul:hover i {
+      transform: translateX(5px);
+    }
+
+    .calory-link-azul::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      right: -20px;
+      bottom: -20px;
+      background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .calory-link-azul:hover::before {
+      opacity: 0.4;
     }
 
     .calory-link-azul1 {
@@ -140,15 +257,44 @@
       color: #fff !important;
     }
 
-    .calory-nav-links a {
-      font-weight: 500;
-      color: #333;
+    /* Versão Mobile do Botão */
+    .calory-link-azul-mobile {
+      background: linear-gradient(135deg, #007bff, #00bfff);
+      color: white !important;
+      padding: 15px 25px;
+      border-radius: 50px;
+      font-weight: 600;
       text-decoration: none;
-      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 280px;
+      margin: 15px auto;
+      box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+      transition: all 0.3s ease;
     }
 
-    .calory-nav-links a:hover {
-      color: #007bff;
+    .calory-link-azul-mobile i {
+      margin-right: 10px;
+    }
+
+    .calory-link-azul-mobile:hover {
+      background: linear-gradient(135deg, #0069d9, #0095ff);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+    }
+
+    .calory-nav-links a:not(.calory-link-azul):hover::after {
+      width: 100%;
+    }
+
+    .calory-desktop-only {
+      display: inline-block !important;
+    }
+
+    .calory-mobile-only {
+      display: none !important;
     }
 
     /* Banner Styles */
@@ -424,14 +570,6 @@
       transform: scale(1.1);
     }
 
-    .calory-desktop-only {
-      display: inline-block !important;
-    }
-
-    .calory-mobile-only {
-      display: none !important;
-    }
-
     /* Responsividade */
     @media (max-width: 899.98px) {
       .calory-desktop-only {
@@ -443,101 +581,54 @@
       }
 
       body {
-        padding-top: 50px;
+        padding-top: 70px;
       }
-
+      
       .calory-header {
-        padding: 10px 3%;
-        flex-direction: row;
+        padding: 10px 5%;
       }
-
-      .calory-logo {
-        margin: 0 auto;
-      }
-
-      .calory-logo img {
-        max-height: 50px;
-        width: auto;
-        margin-left: 0;
-      }
-
+      
       .calory-menu-toggle {
         display: flex;
       }
-
+      
       .calory-nav-links {
-        display: none;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
         flex-direction: column;
-        width: 100%;
-        background: #fff;
-        position: relative;
-        top: auto;
-        left: auto;
-        padding: 20px;
-        box-shadow: none;
-        z-index: auto;
-        gap: 20px;
+        padding: 80px 30px 30px;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease;
       }
-
+      
       .calory-nav-links.active {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .calory-nav-links .calory-link-azul-mobile {
-        display: block;
-        width: 90%;
-        max-width: 300px;
-        margin: 15px auto;
-        padding: 15px 20px;
-        background-color: #007bff;
-        color: white !important;
-        border-radius: 8px;
-        font-size: 1.2rem;
-        text-align: center;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transition: all 0.3s ease;
+        right: 0;
       }
       
-      .calory-nav-links .calory-link-azul-mobile:hover {
-        background-color: #0056b3;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      .calory-nav-links a {
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        width: 100%;
       }
       
-      .calory-nav-links .calory-link-azul {
+      .calory-nav-links a:not(:last-child) {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+      
+      .calory-link-azul {
         display: none;
       }
-
-      .calory-nav-links a {
-        display: block;
-        width: 100%;
-        text-align: center;
-        padding: 12px 0;
-        font-size: 18px;
-        font-weight: 500;
-        color: #007bff;
-        text-decoration: none;
+      
+      .calory-link-azul-mobile {
+        display: flex !important;
       }
-
-      .calory-nav-links a:not(:last-child) {
-        border-bottom: 1px solid #007bff;
-      }
-
-      .calory-link-azul1 {
-        background-color: #007bff;
-        color: #fff !important;
-        padding: 1rem 1rem;
-        border-radius: 0.3rem;
-        font-weight: bold;
-        margin-bottom: 20%;
-        text-decoration: none;
-        font-size: 1.2rem;
-        transition: background 0.3s ease;
-        display: inline-block;
-      }
-
+      
       .calory-banner-full {
         height: 70vh;
       }
@@ -560,6 +651,12 @@
       .calory-cta-section {
         padding: 40px 20px;
       }
+
+      .calory-link-azul1 {
+        padding: 1rem 1rem;
+        font-size: 1.2rem;
+        margin-bottom: 20%;
+      }
     }
 
     @media (max-width: 480px) {
@@ -581,24 +678,33 @@
 <body>
 
   <header class="calory-header">
-    <div class="calory-logo">
-      <a href="home.html"><img src="logo-antiga.PNG" alt="Logo Calory"></a>
+    <div class="header-container">
+      <div class="calory-logo">
+        <a href="home.html">
+          <img src="calory png.png" alt="Logo Calory">
+        </a>
+      </div>
+      
+      <button class="calory-menu-toggle" onclick="caloryToggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <nav class="calory-nav-links">
+        <a href="home.html">Início</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="contato.html">Contato</a>
+        <a class="calory-link-azul calory-desktop-only"
+          href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento%20para%20o%20meu%20sistema!">
+          <i class="fas fa-rocket"></i> Obtenha o sistema
+        </a>
+        <a class="calory-link-azul-mobile calory-mobile-only"
+          href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento%20para%20o%20meu%20sistema!">
+          <i class="fas fa-rocket"></i> OBTER SISTEMA AGORA
+        </a>
+      </nav>
     </div>
-    <div class="calory-menu-toggle" onclick="caloryToggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <nav class="calory-nav-links">
-      <a href="home.html">Início</a>
-      <a href="produtos.html">Produtos</a>
-      <a href="contato.html">Contato</a>
-      <a class="calory-link-azul calory-desktop-only"
-        href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento%20para%20o%20meu%20sistema!">Obtenha
-        o sistema</a>
-      <a class="calory-link-azul-mobile calory-mobile-only"
-        href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento%20para%20o%20meu%20sistema!">OBTER SISTEMA AGORA</a>
-    </nav>
   </header>
 
   <section class="calory-banner-full" role="banner" aria-label="Banner principal para lanchonetes">
@@ -730,6 +836,7 @@
   </footer>
 
   <script>
+    // Menu Mobile
     function caloryToggleMenu() {
       const menu = document.querySelector('.calory-nav-links');
       const toggle = document.querySelector('.calory-menu-toggle');
@@ -754,6 +861,16 @@
           behavior: 'smooth'
         });
       });
+    });
+
+    // Efeito de scroll no header
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('.calory-header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
     });
   </script>
 </body>
