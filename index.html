@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Início - Calory Sistemas</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="styleshome.min.css">
+</head>
+
+<body>
+  <header class="calory-header">
+    <div class="header-container">
+      <div class="calory-logo">
+        <a href="index.html">
+          <img src="calory png.png" alt="Logo Calory">
+        </a>
+      </div>
+      
+      <button class="calory-menu-toggle" onclick="caloryToggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <nav class="calory-nav-links">
+        <a href="index.html">Início</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="contato.html">Contato</a>
+        <a class="calory-link-azul calory-desktop-only"
+          href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento%20para%20o%20meu%20sistema!">
+          <i class="fas fa-rocket"></i> Obtenha o sistema
+        </a>
+        <a class="calory-link-azul calory-mobile-only"
+          href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento%20para%20o%20meu%20sistema!">
+          <i class="fas fa-rocket"></i> OBTER SISTEMA AGORA
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Banner Carousel -->
+  <!-- Corrigindo o fechamento das tags no Banner Carousel -->
+<div class="calory-banner-carousel">
+  <button class="calory-carousel-arrow left" onclick="prevBannerSlide()">❮</button>
+  <button class="calory-carousel-arrow right" onclick="nextBannerSlide()">❯</button>
+  
+  <div class="calory-banner-track" id="bannerTrack">
+    <!-- Slide 1 - CSEMP -->
+    <div class="calory-banner-slide">
+      <picture>
+        <source media="(max-width: 767px)" srcset="banner/CSEMPMB\ \(5\).svg">
+        <img src="banner/BANNERCSEMP.svg" alt="Sistema para Mercados">
+      </picture>
+      <div class="calory-banner-overlay"></div>
+      <div class="calory-banner-content">
+        <a href="#features" class="calory-link-azul1" style="text-decoration: none;">Conheça os recursos</a>
+      </div>
+    </div>
+    
+    <!-- Slide 2 - CSBAR -->
+    <div class="calory-banner-slide">
+      <picture>
+        <source media="(max-width: 767px)" srcset="BANNER/CSBARMB (11).svg">
+        <img src="banner/CSBARPRINCIPAL.webp" alt="Sistema para Restaurantes">
+      </picture>
+      <div class="calory-banner-overlay1"></div>
+      <div class="calory-banner-content">
+        <a href="https://csbar.com.br/comece-agora" class="calory-link-azul2" style="text-decoration: none;">Teste Agora</a>
+      </div>
+    </div>
+    
+    <!-- Slide 3 - CSEMITE -->
+    <div class="calory-banner-slide">
+      <picture>
+        <source media="(max-width: 767px)" srcset="banner/CSEMITEMB\ \(16\).svg">
+        <img src="banner/CSEMITEPRINCIPAL.svg" alt="Gestão Financeira">
+      </picture>
+      <div class="calory-banner-overlay2"></div>
+      <div class="calory-banner-content">
+        <a href="emissao-nota-fiscal.html" class="calory-link-azul3" style="text-decoration: none;">Saiba Mais</a>
+      </div>
+    </div>
+  </div> <!-- Fechamento do calory-banner-track -->
+  
+  <div class="calory-banner-nav" id="bannerNav">
+    <div class="calory-banner-dot active" onclick="goToBannerSlide(0)"></div>
+    <div class="calory-banner-dot" onclick="goToBannerSlide(1)"></div>
+    <div class="calory-banner-dot" onclick="goToBannerSlide(2)"></div>
+  </div>
+  
+  <div class="calory-arrow" onclick="document.getElementById('features').scrollIntoView({ behavior: 'smooth' });"
+    tabindex="0" role="button" aria-label="Role para o conteúdo principal"></div>
+</div> <!-- Fechamento do calory-banner-carousel -->
+    <!-- Soluções para diversos ramos de atividade -->
+    <section class="calory-segmentos-section">
+      <h2>Soluções para diversos ramos de atividade</h2>
+      <div class="calory-segmentos-container">
+        <div class="calory-segmentos-carousel">
+          <button class="calory-carousel-arrow1 left" onclick="prevSegmento()">❮</button>
+          <button class="calory-carousel-arrow1 right" onclick="nextSegmento()">❯</button>
+          
+          <div class="calory-segmentos-track" id="segmentosTrack">
+            <!-- Segmento 1 -->
+            <a href="mercado.html" class="calory-segmento-card">
+              <div class="calory-segmento-img">
+                <img src="estabelecimentos/mercado.webp" alt="Mercados">
+              </div>
+              <div class="calory-segmento-content">
+                <h3>Mercados</h3>
+                <p>Controle completo de estoque e vendas <br> <br> Clique para saber mais</p>
+              </div>
+            </a>
+            
+            <!-- Segmento 2 -->
+            <a href="lanchonete.html" class="calory-segmento-card">
+              <div class="calory-segmento-img">
+                <img src="estabelecimentos/lanchonete.webp" alt="Restaurantes">
+              </div>
+              <div class="calory-segmento-content">
+                <h3>Restaurantes</h3>
+                <p>Gestão de cardápios e comandas<br> <br> Clique para saber mais</p>
+              </div>
+            </a>
+            
+            <!-- Segmento 3 -->
+            <a href="agropecuaria.html" class="calory-segmento-card">
+              <div class="calory-segmento-img">
+                <img src="estabelecimentos/agropecuaria.webp" alt="Agropecuária">
+              </div>
+              <div class="calory-segmento-content">
+                <h3>Agropecuária</h3>
+                <p>Controle de insumos e produtos agrícolas<br> <br> Clique para saber mais</p>
+              </div>
+            </a>
+            
+            <!-- Segmento 4 -->
+            <a href="lojaroupa.html" class="calory-segmento-card">
+              <div class="calory-segmento-img">
+                <img src="estabelecimentos/lojaroupa.webp" alt="Varejo">
+              </div>
+              <div class="calory-segmento-content">
+                <h3>Lojas de Roupa e calçados</h3>
+                <p>Gerencie suas peças<br> <br> Clique para saber mais</p>
+              </div>
+            </a>
+            
+            <!-- Segmento 5 -->
+            <a href="mecanico.html" class="calory-segmento-card">
+              <div class="calory-segmento-img">
+                <img src="estabelecimentos/mecanico.webp" alt="Oficinas">
+              </div>
+              <div class="calory-segmento-content">
+                <h3>Oficinas Mecânicas</h3>
+                <p>Gestão de serviços e peças<br> <br> Clique para saber mais</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Por que escolher a Calory -->
+    <section class="por-que-escolher">
+      <h2>Por que escolher a Calory?</h2>
+      <div class="por-que-container">
+        <div class="por-que-item">
+          <img src="https://cdn-icons-png.flaticon.com/256/5635/5635966.png" alt="Online">
+          <h3>Adaptação 100%</h3>
+          <p>O sistema se adapta ao seu negócio seja qual for ele.</p>
+        </div>
+        <div class="por-que-item">
+          <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Seguro">
+          <h3>Segurança de dados</h3>
+          <p>Seus dados protegidos com backups automáticos.</p>
+        </div>
+        <div class="por-que-item">
+          <img src="icon/logo-headset.svg" alt="Suporte">
+          <h3>Suporte imediato</h3>
+          <p>Atendimento direto via WhatsApp, sem enrolação.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Como funciona -->
+    <section class="como-funciona">
+      <h2>Como funciona?</h2>
+      <div class="como-container">
+        <div class="como-item">
+          <img src="https://cdn-icons-png.flaticon.com/512/6815/6815042.png" alt="Passo 1">
+          <h4>1. Simule</h4>
+          <p>Clique no botão OBTER SISTEMA.</p>
+        </div>
+        <div class="como-item">
+          <img src="https://cdn-icons-png.flaticon.com/512/1980/1980530.png" alt="Passo 2">
+          <h4>2. Contrate</h4>
+          <p>Contrate o sistema que atende a sua necessidade.</p>
+        </div>
+        <div class="como-item">
+          <img src="https://cdn-icons-png.flaticon.com/512/4299/4299999.png" alt="Passo 3">
+          <h4>3. Utilize</h4>
+          <p>Tenha controle total da sua empresa.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="calory-whatsapp-float">
+    <!-- Botão para Desktop (web.whatsapp) -->
+    <a class="calory-desktop-only"
+      href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20tirar%20algumas%20dúvidas!">
+      <span class="calory-whatsapp-icon">
+        <img src="icon/whats.png" alt="WhatsApp" />
+      </span>
+    </a>
+
+    <!-- Botão para Mobile (api.whatsapp) -->
+    <a class="calory-mobile-only"
+      href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20tirar%20algumas%20dúvidas!">
+      <span class="calory-whatsapp-icon">
+        <img src="icon/whats.png" alt="WhatsApp" />
+      </span>
+    </a>
+  </div>
+
+  <footer class="calory-footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="calory branco png (1).png" alt="Calory Sistemas" class="footer-logo-img">
+        <p>Soluções tecnológicas para as empresas. Inovação e qualidade para o seu negócio.</p>
+      </div>
+      
+      <div class="footer-links">
+        <h3>Links Rápidos</h3>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="produtos.html">Produtos</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-links">
+        <h3>Produtos</h3>
+        <ul>
+          <li><a href="sistema-empresarial.html">Sistema de Gestão</a></li>
+          <li><a href="tela-estoque.html">Controle de Estoque</a></li>
+          <li><a href="emissao-nota-fiscal.html">Emissão de nota fiscal</a></li>
+          <li><a href="Sistemacertificadodigital.html">Certificado Digital</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-social">
+        <h3>Redes Sociais</h3>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/calorysistemas/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/calorysistemas/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/company/calory-sistema" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <p style="margin-top: 20px;">Siga-nos para ficar por dentro das novidades!</p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2023 Calory Sistemas. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    function caloryToggleMenu(){document.querySelector('.calory-nav-links').classList.toggle('active'),document.querySelector('.calory-menu-toggle').classList.toggle('active')}let bannerCurrentSlide=0,bannerTrack=document.getElementById('bannerTrack'),bannerDots=document.querySelectorAll('.calory-banner-dot'),bannerTotalSlides=3;function goToBannerSlide(e){bannerCurrentSlide=e,bannerTrack.style.transform=`translateX(-${bannerCurrentSlide*100}%)`,bannerDots.forEach((t,a)=>{t.classList.toggle('active',a===bannerCurrentSlide)})}function nextBannerSlide(){bannerCurrentSlide=(bannerCurrentSlide+1)%bannerTotalSlides,goToBannerSlide(bannerCurrentSlide)}function prevBannerSlide(){bannerCurrentSlide=(bannerCurrentSlide-1+bannerTotalSlides)%bannerTotalSlides,goToBannerSlide(bannerCurrentSlide)}let bannerInterval=setInterval(nextBannerSlide,25e3);document.addEventListener('DOMContentLoaded',function(){bannerInterval||(bannerInterval=setInterval(nextBannerSlide,25e3))});let currentSegmentoIndex=0,segmentosTrack=document.getElementById('segmentosTrack'),segmentoCards=document.querySelectorAll('.calory-segmento-card'),totalSegmentos=segmentoCards.length,cardWidth=320;function updateCarousel(){currentSegmentoIndex=Math.max(0,Math.min(currentSegmentoIndex,totalSegmentos-getVisibleCards()));const e=-currentSegmentoIndex*cardWidth;segmentosTrack.style.transform=`translateX(${e}px)`}function getVisibleCards(){return window.innerWidth<768?1:window.innerWidth<992?2:3}function nextSegmento(){currentSegmentoIndex<totalSegmentos-getVisibleCards()&&(currentSegmentoIndex++,updateCarousel())}function prevSegmento(){currentSegmentoIndex>0&&(currentSegmentoIndex--,updateCarousel())}updateCarousel(),window.addEventListener('resize',updateCarousel),document.querySelectorAll('.calory-nav-links a').forEach(e=>{e.addEventListener('click',()=>{window.innerWidth<=899.98&&caloryToggleMenu()})}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener('click',function(e){e.preventDefault(),document.querySelector(this.getAttribute('href')).scrollIntoView({behavior:"smooth"})})}),window.addEventListener('scroll',function(){const e=document.querySelector('.calory-header');window.scrollY>50?e.classList.add('scrolled'):e.classList.remove('scrolled')});
+  </script>
+</body>
+</html>
