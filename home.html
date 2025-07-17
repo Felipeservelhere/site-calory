@@ -11,1070 +11,11 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  <style>
-    /* Reset e Estilos Gerais */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f9f9f9;
-      color: #333333;
-      line-height: 1.6;
-      scroll-behavior: smooth;
-      padding-top: 80px;
-    }
-
-    /* Header com Efeito de Vidro (Glassmorphism) */
-    .calory-header {
-      width: 100%;
-      padding: 15px 5%;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-      transition: all 0.3s ease;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
-    .calory-header.scrolled {
-      padding: 10px 5%;
-      background: rgba(255, 255, 255, 0.95);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .header-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .calory-logo {
-      display: flex;
-      align-items: center;
-    }
-
-    .calory-logo img {
-      height: 50px;
-      transition: height 0.3s ease;
-    }
-
-    .calory-header.scrolled .calory-logo img {
-      height: 40px;
-    }
-
-    .logo-text {
-      margin-left: 10px;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #007bff;
-      display: none;
-    }
-
-    @media (min-width: 768px) {
-      .logo-text {
-        display: block;
-      }
-    }
-
-    /* Menu Hamburguer Moderno */
-    .calory-menu-toggle {
-      display: none;
-      width: 30px;
-      height: 25px;
-      position: relative;
-      cursor: pointer;
-      z-index: 1001;
-      background: none;
-      border: none;
-      padding: 0;
-    }
-
-    .calory-menu-toggle span {
-      display: block;
-      position: absolute;
-      height: 3px;
-      width: 100%;
-      background: #007bff;
-      border-radius: 3px;
-      opacity: 1;
-      left: 0;
-      transform: rotate(0deg);
-      transition: .25s ease-in-out;
-    }
-
-    .calory-menu-toggle span:nth-child(1) {
-      top: 0px;
-    }
-
-    .calory-menu-toggle span:nth-child(2), 
-    .calory-menu-toggle span:nth-child(3) {
-      top: 10px;
-    }
-
-    .calory-menu-toggle span:nth-child(4) {
-      top: 20px;
-    }
-
-    .calory-menu-toggle.active span:nth-child(1) {
-      top: 10px;
-      width: 0%;
-      left: 50%;
-    }
-
-    .calory-menu-toggle.active span:nth-child(2) {
-      transform: rotate(45deg);
-    }
-
-    .calory-menu-toggle.active span:nth-child(3) {
-      transform: rotate(-45deg);
-    }
-
-    .calory-menu-toggle.active span:nth-child(4) {
-      top: 10px;
-      width: 0%;
-      left: 50%;
-    }
-
-    /* Navegação */
-    .calory-nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    .calory-nav-links a {
-      font-weight: 600;
-      color: #333;
-      text-decoration: none;
-      font-size: 1rem;
-      position: relative;
-      padding: 8px 0;
-      transition: color 0.3s ease;
-    }
-
-    .calory-nav-links a:not(.calory-link-azul):hover {
-      color: #007bff;
-    }
-
-    .calory-nav-links a:not(.calory-link-azul)::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background-color: #007bff;
-      transition: width 0.3s ease;
-    }
-
-    .calory-link-azul {
-      background-color: #007bff;
-      color: #fff !important;
-      padding: 0.625rem 1.375rem;
-      border-radius: 0.3rem;
-      font-weight: bold;
-      text-decoration: none;
-      font-size: 1rem;
-      transition: background 0.3s ease;
-      display: inline-block;
-    }
-
-    .calory-link-azul:hover {
-      background-color: #0056b3;
-      transform: scale(1.02);
-      color: #fff !important;
-    }
-
-    .calory-link-azul1 {
-      background-color: #007bff;
-      color: #fff !important;
-      padding: 1.625rem 1.975rem;
-      border-radius: 0.3rem;
-      margin-top: 13%;
-      font-weight: bold;
-      text-decoration: none;
-      font-size: 1.6rem;
-      transition: background 0.3s ease;
-      display: inline-block;
-    }
-
-    .calory-link-azul1:hover {
-      background-color: #0056b3;
-      transform: scale(1.02);
-      color: #fff !important;
-    }
-
-    .calory-link-azul2 {
-      background-color: #ff8c00;
-      color: #fff !important;
-      padding: 1.625rem 1.975rem;
-      border-radius: 0.3rem;
-      font-weight: bold;
-      text-decoration: none;
-      font-size: 1.6rem;
-      transition: background 0.3s ease;
-      display: inline-block;
-    }
-
-    .calory-link-azul2:hover {
-      background-color: #e67e00;
-      transform: scale(1.02);
-      color: #fff !important;
-    }
-
-    .calory-link-azul3 {
-      background-color: #28a745;
-      color: #fff !important;
-      padding: 1.625rem 1.975rem;
-      border-radius: 0.3rem;
-      font-weight: bold;
-      text-decoration: none;
-      font-size: 1.6rem;
-      transition: background 0.3s ease;
-      display: inline-block;
-    }
-
-    .calory-link-azul3:hover {
-      background-color: #218838;
-      transform: scale(1.02);
-      color: #fff !important;
-    }
-
-    .calory-nav-links a:not(.calory-link-azul):hover::after {
-      width: 100%;
-    }
-
-    /* Botão CTA com Foguete */
-    .calory-link-azul {
-      background: linear-gradient(135deg, #007bff, #00bfff);
-      color: #fff !important;
-      padding: 12px 25px;
-      border-radius: 50px;
-      font-weight: 600;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .calory-link-azul i {
-      margin-right: 10px;
-      transition: transform 0.3s ease;
-    }
-
-    .calory-link-azul:hover {
-      background: linear-gradient(135deg, #0069d9, #0095ff);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
-    }
-
-    .calory-link-azul:hover i {
-      transform: translateX(5px);
-    }
-
-    /* Efeito de partículas no hover */
-    .calory-link-azul::before {
-      content: '';
-      position: absolute;
-      top: -20px;
-      left: -20px;
-      right: -20px;
-      bottom: -20px;
-      background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .calory-link-azul:hover::before {
-      opacity: 0.4;
-    }
-
-    /* Versão Mobile do Botão */
-    .calory-link-azul-mobile {
-      background: linear-gradient(135deg, #007bff, #00bfff);
-      color: white !important;
-      padding: 15px 25px;
-      border-radius: 50px;
-      font-weight: 600;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      max-width: 280px;
-      margin: 15px auto;
-      box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
-      transition: all 0.3s ease;
-    }
-
-    .calory-link-azul-mobile i {
-      margin-right: 10px;
-    }
-
-    .calory-link-azul-mobile:hover {
-      background: linear-gradient(135deg, #0069d9, #0095ff);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
-    }
-
-    /* Banner Carousel Styles */
-    .calory-banner-carousel {
-      position: relative;
-      height: 85vh;
-      width: 100%;
-      margin-top: 0;
-      overflow: hidden;
-    }
-
-    .calory-banner-track {
-      display: flex;
-      height: 100%;
-      transition: transform 0.5s ease;
-    }
-
-    .calory-banner-slide {
-      min-width: 100%;
-      position: relative;
-    }
-
-    .calory-banner-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .calory-banner-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15), rgba(22, 98, 184, 0.3));
-      z-index: 1;
-    }
-
-    .calory-banner-overlay1 {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.35), rgba(184, 146, 22, 0.3));
-      z-index: 1;
-    }
-
-    .calory-banner-overlay2 {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15), rgba(40, 167, 69, 0.3));
-      z-index: 1;
-    }
-
-    .calory-banner-overlay2 h1 {
-      color: #8ffca7; 
-      font-size: 6.5rem; 
-      margin-bottom: 14%;
-    }
-
-    .calory-banner-content {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
-      padding: 0 20px;
-      z-index: 2;
-    }
-
-    .calory-banner-content h1 {
-      font-size: 3.1rem;
-      font-weight: 700;
-      margin-bottom: 5%;
-      color:#ffffff;
-      text-shadow: 0 2px 4px rgba(158, 158, 158, 0.6);
-      line-height: 1.2;
-    }
-
-    .calory-csbar-content h1 {
-      font-size: 3.4rem;
-      font-weight: 700;
-      margin-bottom: 5px;
-      color:#ff8c00;
-      text-shadow: 0 2px 4px rgba(158, 158, 158, 0.6);
-      line-height: 1.2;
-    }
-
-    .calory-csemite-content h1 {
-      font-size: 3.4rem;
-      font-weight: 700;
-      margin-bottom: 10%;
-      color:#ff8c00;
-      text-shadow: 0 2px 4px rgba(158, 158, 158, 0.6);
-      line-height: 1.2;
-    }
-
-    .calory-banner-content h2 {
-      font-size: 2rem !important;
-      font-weight: 700;
-      margin-bottom: 5px;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
-      line-height: 1.2;
-    }
-
-    .calory-banner-content span {
-      font-size: 1.4rem !important;
-      font-weight: 500;
-      margin-bottom: 10px;
-      line-height: 1.2;
-      color: #f1f1f1;
-    }
-
-    .calory-banner-content p {
-      font-size: 1.9rem;
-      font-weight: 500;
-      max-width: 800px;
-      margin-bottom: 30px;
-    }
-
-    .calory-banner-nav {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 10px;
-      z-index: 3;
-    }
-
-    .calory-banner-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background-color: rgba(255,255,255,0.5);
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .calory-banner-dot.active {
-      background-color: white;
-    }
-
-    /* Seta de rolagem */
-    .calory-arrow {
-      position: absolute;
-      bottom: 10%;
-      left: 50%;
-      margin-left: -20px;
-      width: 38px;
-      height: 55px;
-      border: 2px solid #f1f1f1;
-      border-radius: 25px;
-      cursor: pointer;
-      z-index: 3;
-      animation: calory-bounce 2s infinite;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding-top: 10px;
-    }
-
-    .calory-arrow::after {
-      content: '';
-      display: block;
-      width: 12px;
-      height: 12px;
-      border-bottom: 3px solid #f3f3f3;
-      border-right: 3px solid #f3f3f3;
-      transform: rotate(45deg);
-      margin-top: 6px;
-    }
-
-    @keyframes calory-bounce {
-      0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-      }
-      40% {
-        transform: translateY(10px);
-      }
-      60% {
-        transform: translateY(5px);
-      }
-    }
-
-    /* Estilos para as setas dos carrosseis */
-    .calory-carousel-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 40px;
-      height: 40px;
-      background-color: rgba(255, 255, 255, 0.7);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 10;
-      transition: all 0.3s ease;
-      border: none;
-      color: #007bff;
-      font-size: 1.2rem;
-    }
-
-    .calory-carousel-arrow:hover {
-      background-color: rgba(255, 255, 255, 0.9);
-      transform: translateY(-50%) scale(1.1);
-    }
-
-    .calory-carousel-arrow.left {
-      left: 15px;
-    }
-
-    .calory-carousel-arrow.right {
-      right: 15px;
-    }
-
-    /* Ajuste para setas do banner */
-    .calory-banner-arrow {
-      background-color: rgba(0, 0, 0, 0.5);
-      color: white;
-    }
-
-    .calory-banner-arrow:hover {
-      background-color: rgba(0, 0, 0, 0.7);
-    }
-
-    /* Main Content Styles */
-    .calory-main {
-      max-width: 1200px;
-      margin: 60px auto;
-      padding: 0 20px 40px 20px;
-    }
-
-    /* Seção soluções para diversos segmentos com carrossel */
-    .calory-segmentos-section {
-      padding: 60px 0;
-      text-align: center;
-    }
-
-    .calory-segmentos-section h2 {
-      font-size: 2rem;
-      color: #007bff;
-      margin-bottom: 40px;
-    }
-
-    .calory-segmentos-container {
-      position: relative;
-      max-width: 1200px;
-      margin: 0 auto;
-      overflow: hidden;
-      padding: 0 50px;
-    }
-
-    .calory-segmentos-carousel {
-      position: relative;
-      width: 100%;
-    }
-
-    .calory-segmentos-track {
-      display: flex;
-      transition: transform 0.5s ease;
-      padding: 20px 0;
-      gap: 20px;
-      width: max-content;
-    }
-
-    .calory-segmento-card {
-      min-width: 300px;
-      max-width: 300px;
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      text-decoration: none;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      flex-shrink: 0;
-    }
-
-    .calory-carousel-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 40px;
-      height: 40px;
-      background-color: rgba(255, 255, 255, 0.9);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 10;
-      transition: all 0.3s ease;
-      border: none;
-      color: #007bff;
-      font-size: 1.2rem;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
-
-    .calory-carousel-arrow:hover {
-      background-color: white;
-      transform: translateY(-50%) scale(1.1);
-    }
-
-    .calory-carousel-arrow.left {
-      left: 0;
-    }
-
-    .calory-carousel-arrow.right {
-      right: 0;
-    }
-
-    .calory-carousel-arrow1 {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 40px;
-      height: 40px;
-      background-color: rgba(255, 255, 255, 0.9);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 10;
-      transition: all 0.3s ease;
-      border: none;
-      color: #007bff;
-      font-size: 1.2rem;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
-
-    .calory-carousel-arrow1:hover {
-      background-color: white;
-      transform: translateY(-50%) scale(1.1);
-    }
-
-    .calory-carousel-arrow1.left {
-      left: 0;
-    }
-
-    .calory-carousel-arrow1.right {
-      right: 0;
-    }
-
-    .calory-segmento-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-    }
-
-    .calory-segmento-img {
-      height: 160px;
-      width: auto;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .calory-segmento-img::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background-color: #007bff;
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
-    }
-
-    .calory-segmento-card:hover .calory-segmento-img::after {
-      transform: scaleX(1);
-    }
-
-    .calory-segmento-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-
-    .calory-segmento-card:hover .calory-segmento-img img {
-      transform: scale(1.05);
-    }
-
-    .calory-segmento-content {
-      padding: 25px;
-    }
-
-    .calory-segmento-content h3 {
-      color: #007bff;
-      font-size: 1.4rem;
-      margin-bottom: 10px;
-      text-decoration: none !important;
-    }
-
-    .calory-segmento-content p {
-      color: #666;
-      text-decoration: none !important;
-    }
-
-    /* Por que escolher a Calory */
-    .por-que-escolher {
-      padding: 50px 10%;
-      background-color: #fff;
-      text-align: center;
-      margin: 60px 0;
-    }
-
-    .por-que-escolher h2 {
-      font-size: 2rem;
-      margin-bottom: 30px;
-    }
-
-    .por-que-container {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-
-    .por-que-item {
-      max-width: 250px;
-    }
-
-    .por-que-item img {
-      width: 50px;
-      margin-bottom: 10px;
-    }
-
-    .por-que-item h3 {
-      color: #29a8ff;
-      margin-bottom: 5px;
-    }
-
-    /* Como funciona */
-    .como-funciona {
-      padding: 50px 10%;
-      background: #ffffff;
-      text-align: center;
-      margin: 60px 0;
-    }
-
-    .como-funciona h2 {
-      font-size: 2rem;
-      margin-bottom: 30px;
-    }
-
-    .como-container {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-    }
-
-    .como-item {
-      max-width: 200px;
-    }
-
-    .como-item img {
-      width: 40px;
-      margin-bottom: 10px;
-    }
-
-    .como-item h4 {
-      margin-bottom: 8px;
-      color: #29a8ff;
-    }
-
-    /* WhatsApp Float Button */
-    .calory-whatsapp-float {
-      position: fixed;
-      bottom: 20px !important;
-      right: 20px !important;
-      z-index: 1000;
-    }
-
-    .calory-whatsapp-float a {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-    }
-
-    .calory-whatsapp-float .calory-whatsapp-text {
-      display: none;
-    }
-
-    .calory-whatsapp-float .calory-whatsapp-icon {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background-color: #25d366;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.3s ease;
-      position: relative;
-      z-index: 0;
-    }
-
-    .calory-whatsapp-float .calory-whatsapp-icon img {
-      width: 30px;
-      height: 30px;
-    }
-
-    .calory-whatsapp-float:hover .calory-whatsapp-icon {
-      transform: scale(1.1);
-    }
-
-    /* Footer Styles */
-    .calory-footer {
-      background-color: #3f3f3f;
-      color: #ffffff;
-      padding: 40px 20px;
-      font-size: 0.8rem !important;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .calory-social-icons {
-      display: flex;
-      gap: 10px;
-      margin-top: 15px;
-    }
-
-    .calory-social-icons a img {
-      width: 32px;
-      height: 32px;
-      filter: brightness(0) invert(1);
-      transition: transform 0.2s ease;
-    }
-
-    .calory-social-icons a img:hover {
-      transform: scale(1.1);
-    }
-
-    .calory-desktop-only {
-      display: inline-block !important;
-    }
-
-    .calory-mobile-only {
-      display: none !important;
-    }
-
-    /* Responsividade */
-    @media (max-width: 899.98px) {
-
-      .calory-desktop-only {
-      display: none !important;
-    }
-
-    .calory-mobile-only {
-      display: inline-block !important;
-    }
-
-      body {
-        padding-top: 70px;
-      }
-      
-      .calory-header {
-        padding: 10px 5%;
-      }
-      
-      .calory-menu-toggle {
-        display: flex;
-      }
-      
-      .calory-nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 280px;
-        height: 100vh;
-        background-color: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        flex-direction: column;
-        padding: 80px 30px 30px;
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-        transition: right 0.3s ease;
-      }
-      
-      .calory-nav-links.active {
-        right: 0;
-      }
-      
-      .calory-nav-links a {
-        padding: 15px 0;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        width: 100%;
-      }
-      
-      .calory-nav-links a:not(:last-child) {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-      }
-      
-      .calory-link-azul {
-      background-color: #007bff;
-      color: #fff !important;
-      padding: 0.625rem 1.375rem;
-      border-radius: 0.3rem;
-      font-weight: bold;
-      text-decoration: none;
-      font-size: 1rem;
-      transition: background 0.3s ease;
-      display: inline-block;
-    }
-
-    .calory-link-azul:hover {
-      background-color: #0056b3;
-      transform: scale(1.02);
-      color: #fff !important;
-    }
-
-    .calory-link-azul1 {
-      background-color: #007bff;
-      color: #fff !important;
-      padding: 1.625rem 1.975rem;
-      border-radius: 0.3rem;
-      margin-top: 13%;
-      font-weight: bold;
-      text-decoration: none;
-      font-size: 1.6rem;
-      transition: background 0.3s ease;
-      display: inline-block;
-    }
-
-    .calory-link-azul1:hover {
-      background-color: #0056b3;
-      transform: scale(1.02);
-      color: #fff !important;
-    }
-      .calory-banner-carousel {
-        height: 70vh;
-      }
-
-      .calory-banner-content h1 {
-        font-size: 2.6rem !important;
-        top: 30% !important;
-        margin-bottom: 20% !important;
-        width: 90%;
-      }
-
-      .calory-banner-content p {
-        font-size: 0.3rem;
-        width: 90%;
-      }
-
-      /* Estilos específicos para o carrossel em mobile */
-      .calory-segmentos-container {
-        right: 7%;
-        position: relative;
-        max-width: 1200px;
-        margin: 0 auto;
-        overflow: hidden;
-        padding: 0 50px;
-      }
-      
-      .calory-segmentos-track {
-        gap: 15px !important;
-        padding: 10px 0 !important;
-      }
-      
-      .calory-segmento-card {
-        min-width: 280px !important;
-        max-width: 280px !important;
-        margin: 0 5px !important;
-      }
-      
-      .calory-carousel-arrow {
-        background-color: rgba(255,255,255,0.9) !important;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.2) !important;
-      }
-      
-      .calory-carousel-arrow1.left {
-        left: 5px !important;
-        width: 20%;
-        height: 20%;
-      }
-      
-      .calory-carousel-arrow1.right {
-        right: -50px !important;
-        width: 20%;
-        height: 20%;
-      }
-
-      .por-que-container,
-      .como-container {
-        flex-direction: column;
-        gap: 30px;
-      }
-
-      .por-que-item,
-      .como-item {
-        max-width: 100%;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .calory-carousel-arrow {
-        width: 30px;
-        height: 30px;
-        font-size: 1rem;
-      }
-      
-      .calory-carousel-arrow.left {
-        left: 5px;
-      }
-      
-      .calory-carousel-arrow.right {
-        right: 5px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .calory-banner-content h1 {
-        font-size: 1.8rem;
-      }
-
-      .calory-banner-content p {
-        font-size: 1rem;
-      }
-
-      .calory-cta-section h2 {
-        font-size: 1.5rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="styleshome.min.css">
 </head>
 
 <body>
-
   <header class="calory-header">
     <div class="header-container">
       <div class="calory-logo">
@@ -1097,7 +38,7 @@
           href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento%20para%20o%20meu%20sistema!">
           <i class="fas fa-rocket"></i> Obtenha o sistema
         </a>
-        <a class="calory-link-azul-mobile calory-mobile-only"
+        <a class="calory-link-azul calory-mobile-only"
           href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento%20para%20o%20meu%20sistema!">
           <i class="fas fa-rocket"></i> OBTER SISTEMA AGORA
         </a>
@@ -1106,54 +47,58 @@
   </header>
 
   <!-- Banner Carousel -->
-  <div class="calory-banner-carousel">
-    <button class="calory-carousel-arrow calory-banner-arrow left" onclick="prevBannerSlide()">❮</button>
-    <button class="calory-carousel-arrow calory-banner-arrow right" onclick="nextBannerSlide()">❯</button>
-    
-    <div class="calory-banner-track" id="bannerTrack">
-      <!-- Slide 1 -->
-      <div class="calory-banner-slide">
+  <!-- Corrigindo o fechamento das tags no Banner Carousel -->
+<div class="calory-banner-carousel">
+  <button class="calory-carousel-arrow left" onclick="prevBannerSlide()">❮</button>
+  <button class="calory-carousel-arrow right" onclick="nextBannerSlide()">❯</button>
+  
+  <div class="calory-banner-track" id="bannerTrack">
+    <!-- Slide 1 - CSEMP -->
+    <div class="calory-banner-slide">
+      <picture>
+        <source media="(max-width: 767px)" srcset="banner/CSEMPMB\ \(5\).svg">
         <img src="banner/BANNERCSEMP.svg" alt="Sistema para Mercados">
-        <div class="calory-banner-overlay"></div>
-        <div class="calory-banner-content">
-          <a href="#features" class="calory-link-azul1" style="text-decoration: none; margin-top: 21%;">Conheça os recursos</a>
-        </div>
-      </div>
-      
-      <!-- Slide 2 -->
-      <div class="calory-banner-slide">
-        <img src="banner/officialhom (3).svg" alt="Sistema para Restaurantes">
-        <div class="calory-banner-overlay1"></div>
-        <div class="calory-banner-content">
-          <h1 style="color: #ff8c00; margin-bottom: 16%;">EM BREVE
-          </h1>
-          
-          <a href="https://csbar.com.br/comece-agora" class="calory-link-azul2" style="text-decoration: none;">Saiba mais</a>
-        </div>
-      </div>
-      
-      <!-- Slide 3 - Novo Banner Adicionado -->
-      <div class="calory-banner-slide">
-        <img src="banner/BANNERCSEMITE.svg" alt="Gestão Financeira">
-        <div class="calory-banner-overlay2"></div>
-        <div class="calory-banner-content">
-          <h1 style="margin-bottom: 15%;">EM BREVE</h1>
-          <a href="emissao-nota-fiscal.html" class="calory-link-azul3" style="text-decoration: none;">Saiba Mais</a>
-        </div>
+      </picture>
+      <div class="calory-banner-overlay"></div>
+      <div class="calory-banner-content">
+        <a href="#features" class="calory-link-azul1" style="text-decoration: none;">Conheça os recursos</a>
       </div>
     </div>
     
-    <div class="calory-banner-nav" id="bannerNav">
-      <div class="calory-banner-dot active" onclick="goToBannerSlide(0)"></div>
-      <div class="calory-banner-dot" onclick="goToBannerSlide(1)"></div>
-      <div class="calory-banner-dot" onclick="goToBannerSlide(2)"></div>
+    <!-- Slide 2 - CSBAR -->
+    <div class="calory-banner-slide">
+      <picture>
+        <source media="(max-width: 767px)" srcset="BANNER/CSBARMB (11).svg">
+        <img src="banner/CSBARPRINCIPAL.svg" alt="Sistema para Restaurantes">
+      </picture>
+      <div class="calory-banner-overlay1"></div>
+      <div class="calory-banner-content">
+        <a href="https://csbar.com.br/comece-agora" class="calory-link-azul2" style="text-decoration: none;">Teste Agora</a>
+      </div>
     </div>
     
-    <div class="calory-arrow" onclick="document.getElementById('features').scrollIntoView({ behavior: 'smooth' });"
-      tabindex="0" role="button" aria-label="Role para o conteúdo principal"></div>
+    <!-- Slide 3 - CSEMITE -->
+    <div class="calory-banner-slide">
+      <picture>
+        <source media="(max-width: 767px)" srcset="banner/CSEMITEMB\ \(16\).svg">
+        <img src="banner/CSEMITEPRINCIPAL.svg" alt="Gestão Financeira">
+      </picture>
+      <div class="calory-banner-overlay2"></div>
+      <div class="calory-banner-content">
+        <a href="emissao-nota-fiscal.html" class="calory-link-azul3" style="text-decoration: none;">Saiba Mais</a>
+      </div>
+    </div>
+  </div> <!-- Fechamento do calory-banner-track -->
+  
+  <div class="calory-banner-nav" id="bannerNav">
+    <div class="calory-banner-dot active" onclick="goToBannerSlide(0)"></div>
+    <div class="calory-banner-dot" onclick="goToBannerSlide(1)"></div>
+    <div class="calory-banner-dot" onclick="goToBannerSlide(2)"></div>
   </div>
-
-  <main class="calory-main" id="features">
+  
+  <div class="calory-arrow" onclick="document.getElementById('features').scrollIntoView({ behavior: 'smooth' });"
+    tabindex="0" role="button" aria-label="Role para o conteúdo principal"></div>
+</div> <!-- Fechamento do calory-banner-carousel -->
     <!-- Soluções para diversos ramos de atividade -->
     <section class="calory-segmentos-section">
       <h2>Soluções para diversos ramos de atividade</h2>
@@ -1272,7 +217,7 @@
     <a class="calory-desktop-only"
       href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20tirar%20algumas%20dúvidas!">
       <span class="calory-whatsapp-icon">
-        <img src="icon/whats.svg" alt="WhatsApp" />
+        <img src="icon/whats.png" alt="WhatsApp" />
       </span>
     </a>
 
@@ -1280,141 +225,55 @@
     <a class="calory-mobile-only"
       href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20tirar%20algumas%20dúvidas!">
       <span class="calory-whatsapp-icon">
-        <img src="icon/whats.svg" alt="WhatsApp" />
+        <img src="icon/whats.png" alt="WhatsApp" />
       </span>
     </a>
   </div>
 
   <footer class="calory-footer">
-    <div class="calory-texto-footer">
-      © 2025 Calory Sistemas • contato@calory.com.br
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="calory branco png (1).png" alt="Calory Sistemas" class="footer-logo-img">
+        <p>Soluções tecnológicas para as empresas. Inovação e qualidade para o seu negócio.</p>
+      </div>
+      
+      <div class="footer-links">
+        <h3>Links Rápidos</h3>
+        <ul>
+          <li><a href="home.html">Início</a></li>
+          <li><a href="produtos.html">Produtos</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-links">
+        <h3>Produtos</h3>
+        <ul>
+          <li><a href="sistema-empresarial.html">Sistema de Gestão</a></li>
+          <li><a href="tela-estoque.html">Controle de Estoque</a></li>
+          <li><a href="emissao-nota-fiscal.html">Emissão de nota fiscal</a></li>
+          <li><a href="Sistemacertificadodigital.html">Certificado Digital</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-social">
+        <h3>Redes Sociais</h3>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/calorysistemas/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/calorysistemas/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/company/calory-sistema" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <p style="margin-top: 20px;">Siga-nos para ficar por dentro das novidades!</p>
+      </div>
     </div>
-    <div class="calory-social-icons">
-      <a href="https://www.facebook.com/calorysistemas/" target="_blank" rel="noopener noreferrer">
-        <img src="icon/face.png" alt="Facebook" />
-      </a>
-      <a href="https://www.instagram.com/calorysistemas/" target="_blank" rel="noopener noreferrer">
-        <img src="icon/insta.png" alt="Instagram" />
-      </a>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2023 Calory Sistemas. Todos os direitos reservados.</p>
     </div>
   </footer>
 
   <script>
-    // Menu Mobile
-    function caloryToggleMenu() {
-      const menu = document.querySelector('.calory-nav-links');
-      const toggle = document.querySelector('.calory-menu-toggle');
-      menu.classList.toggle('active');
-      toggle.classList.toggle('active');
-    }
-
-    // Banner Carousel
-    let bannerCurrentSlide = 0;
-    const bannerTrack = document.getElementById('bannerTrack');
-    const bannerDots = document.querySelectorAll('.calory-banner-dot');
-    const bannerTotalSlides = 3;
-    
-    function goToBannerSlide(index) {
-      bannerCurrentSlide = index;
-      bannerTrack.style.transform = `translateX(-${bannerCurrentSlide * 100}%)`;
-      
-      bannerDots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === bannerCurrentSlide);
-      });
-    }
-    
-    function nextBannerSlide() {
-      bannerCurrentSlide = (bannerCurrentSlide + 1) % bannerTotalSlides;
-      goToBannerSlide(bannerCurrentSlide);
-    }
-    
-    function prevBannerSlide() {
-      bannerCurrentSlide = (bannerCurrentSlide - 1 + bannerTotalSlides) % bannerTotalSlides;
-      goToBannerSlide(bannerCurrentSlide);
-    }
-    
-   // Auto-rotate banner - Inicia automaticamente com intervalo de 25 segundos
-let bannerInterval = setInterval(nextBannerSlide, 25000); // 25000ms = 25 segundos
-
-// Inicia o carrossel automaticamente quando a página carrega
-document.addEventListener('DOMContentLoaded', function() {
-  if (!bannerInterval) {
-    bannerInterval = setInterval(nextBannerSlide, 25000);
-  }
-});
-
-
-    // Carrossel de Segmentos
-    let currentSegmentoIndex = 0;
-    const segmentosTrack = document.getElementById('segmentosTrack');
-    const segmentoCards = document.querySelectorAll('.calory-segmento-card');
-    const totalSegmentos = segmentoCards.length;
-    const cardWidth = 320; // Largura fixa do card (300px + 20px de gap)
-
-    function updateCarousel() {
-      // Limita o índice atual para não ultrapassar os limites
-      currentSegmentoIndex = Math.max(0, Math.min(currentSegmentoIndex, totalSegmentos - getVisibleCards()));
-      
-      // Calcula o deslocamento
-      const offset = -currentSegmentoIndex * cardWidth;
-      segmentosTrack.style.transform = `translateX(${offset}px)`;
-    }
-
-    function getVisibleCards() {
-      // Retorna quantos cartões são visíveis de acordo com a largura da tela
-      if (window.innerWidth < 768) return 1;
-      if (window.innerWidth < 992) return 2;
-      return 3;
-    }
-
-    function nextSegmento() {
-      if (currentSegmentoIndex < totalSegmentos - getVisibleCards()) {
-        currentSegmentoIndex++;
-        updateCarousel();
-      }
-    }
-
-    function prevSegmento() {
-      if (currentSegmentoIndex > 0) {
-        currentSegmentoIndex--;
-        updateCarousel();
-      }
-    }
-
-    // Inicializa o carrossel
-    updateCarousel();
-
-    // Atualiza no redimensionamento da tela
-    window.addEventListener('resize', updateCarousel);
-
-    // Fecha o menu ao clicar em um link (mobile)
-    document.querySelectorAll('.calory-nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth <= 899.98) {
-          caloryToggleMenu();
-        }
-      });
-    });
-
-    // Smooth scrolling para links âncora
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
-    });
-
-    // Efeito de scroll no header
-    window.addEventListener('scroll', function() {
-      const header = document.querySelector('.calory-header');
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
+    function caloryToggleMenu(){document.querySelector('.calory-nav-links').classList.toggle('active'),document.querySelector('.calory-menu-toggle').classList.toggle('active')}let bannerCurrentSlide=0,bannerTrack=document.getElementById('bannerTrack'),bannerDots=document.querySelectorAll('.calory-banner-dot'),bannerTotalSlides=3;function goToBannerSlide(e){bannerCurrentSlide=e,bannerTrack.style.transform=`translateX(-${bannerCurrentSlide*100}%)`,bannerDots.forEach((t,a)=>{t.classList.toggle('active',a===bannerCurrentSlide)})}function nextBannerSlide(){bannerCurrentSlide=(bannerCurrentSlide+1)%bannerTotalSlides,goToBannerSlide(bannerCurrentSlide)}function prevBannerSlide(){bannerCurrentSlide=(bannerCurrentSlide-1+bannerTotalSlides)%bannerTotalSlides,goToBannerSlide(bannerCurrentSlide)}let bannerInterval=setInterval(nextBannerSlide,25e3);document.addEventListener('DOMContentLoaded',function(){bannerInterval||(bannerInterval=setInterval(nextBannerSlide,25e3))});let currentSegmentoIndex=0,segmentosTrack=document.getElementById('segmentosTrack'),segmentoCards=document.querySelectorAll('.calory-segmento-card'),totalSegmentos=segmentoCards.length,cardWidth=320;function updateCarousel(){currentSegmentoIndex=Math.max(0,Math.min(currentSegmentoIndex,totalSegmentos-getVisibleCards()));const e=-currentSegmentoIndex*cardWidth;segmentosTrack.style.transform=`translateX(${e}px)`}function getVisibleCards(){return window.innerWidth<768?1:window.innerWidth<992?2:3}function nextSegmento(){currentSegmentoIndex<totalSegmentos-getVisibleCards()&&(currentSegmentoIndex++,updateCarousel())}function prevSegmento(){currentSegmentoIndex>0&&(currentSegmentoIndex--,updateCarousel())}updateCarousel(),window.addEventListener('resize',updateCarousel),document.querySelectorAll('.calory-nav-links a').forEach(e=>{e.addEventListener('click',()=>{window.innerWidth<=899.98&&caloryToggleMenu()})}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener('click',function(e){e.preventDefault(),document.querySelector(this.getAttribute('href')).scrollIntoView({behavior:"smooth"})})}),window.addEventListener('scroll',function(){const e=document.querySelector('.calory-header');window.scrollY>50?e.classList.add('scrolled'):e.classList.remove('scrolled')});
   </script>
 </body>
 </html>
