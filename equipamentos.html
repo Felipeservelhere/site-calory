@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Equipamentos de Informática - Calory Sistemas</title>
+    <meta name="description" content="Compre os melhores equipamentos de informática: teclados, mouses, impressoras, computadores e muito mais.">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="stylesagro.min.css">
+    <style>
+        /* Estilos específicos para a página de equipamentos */
+        .equipamentos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 40px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .equipamento-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .equipamento-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .equipamento-image {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+
+        .equipamento-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .equipamento-content h3 {
+            color: #1c7ccf;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .whatsapp-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #25d366;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-button:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+        }
+
+        .whatsapp-button i {
+            margin-right: 8px;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 2.8rem;
+            color: #29a8ff;
+            margin: 60px 0 40px;
+            font-weight: 700;
+        }
+
+        /* Classes para controle de exibição */
+        .calory-desktop-only {
+            display: inline-flex !important;
+        }
+        .calory-mobile-only {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .equipamentos-container {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 899.98px) {
+            .calory-desktop-only {
+                display: none !important;
+            }
+            .calory-mobile-only {
+                display: inline-flex !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="calory-header">
+        <div class="header-container">
+            <div class="calory-logo">
+                <a href="/">
+                    <img src="calory png.png" alt="Logo Calory">
+                </a>
+            </div>
+            
+            <button class="calory-menu-toggle" onclick="caloryToggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <nav class="calory-nav-links">
+                <a href="/">Início</a>
+                <a href="/produtos">Produtos</a>
+                <a href="/equipamentos">Equipamentos</a>
+                <a href="/contato">Contato</a>
+                <a class="calory-link-azul calory-desktop-only"
+                  href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento%20para%20o%20meu%20sistema!">
+                  <i class="fas fa-rocket"></i> Obtenha o sistema
+                </a>
+                <a class="calory-link-azul-mobile calory-mobile-only"
+                  href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento%20para%20o%20meu%20sistema!">
+                  <i class="fas fa-rocket"></i> OBTER SISTEMA AGORA
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1 class="page-title">Equipamentos de Informática</h1>
+
+        <div class="equipamentos-container">
+            <!-- Teclados -->
+            <div class="equipamento-card">
+                <img src="equipamentos/teclado.avif" alt="Teclado" class="equipamento-image">
+                <div class="equipamento-content">
+                    <h3>Teclado Com/Sem Fio</h3>
+                    <a href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20um%20teclado,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-desktop-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20um%20teclado,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-mobile-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mouses -->
+            <div class="equipamento-card">
+                <img src="equipamentos/mouse.avif" alt="Mouse" class="equipamento-image">
+                <div class="equipamento-content">
+                    <h3>Mouse Com/Sem Fio</h3>
+                    <a href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20um%20mouse,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-desktop-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20um%20mouse,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-mobile-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                </div>
+            </div>
+
+            <!-- Leitor de Código de Barras -->
+            <div class="equipamento-card">
+                <img src="equipamentos/leitorcodigodebarras.jpg" alt="Leitor de Código de Barras" class="equipamento-image">
+                <div class="equipamento-content">
+                    <h3>Leitor de Código de Barras</h3>
+                    <a href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20um%20leitor%20de%20código%20de%20barras,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-desktop-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20um%20leitor%20de%20código%20de%20barras,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-mobile-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                </div>
+            </div>
+
+            <!-- Toner -->
+            <div class="equipamento-card">
+                <img src="equipamentos/toner.jpg" alt="Toner para Impressora" class="equipamento-image">
+                <div class="equipamento-content">
+                    <h3>Toner para Impressoras</h3>
+                    <a href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20toner%20para%20impressora,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-desktop-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20toner%20para%20impressora,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-mobile-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                </div>
+            </div>
+
+            <!-- Tinta -->
+            <div class="equipamento-card">
+                <img src="equipamentos/tinta-impressora.jpg" alt="Tinta para Impressora" class="equipamento-image">
+                <div class="equipamento-content">
+                    <h3>Tinta para Impressoras</h3>
+                    <a href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20tinta%20para%20impressora,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-desktop-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20tinta%20para%20impressora,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-mobile-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                </div>
+            </div>
+
+            <!-- SSD -->
+            <div class="equipamento-card">
+                <img src="equipamentos/ssd.jpg" alt="SSD" class="equipamento-image">
+                <div class="equipamento-content">
+                    <h3>SSD para Desktop/Notebook</h3>
+                    <a href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20um%20SSD,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-desktop-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20um%20SSD,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-mobile-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hub USB -->
+            <div class="equipamento-card">
+                <img src="equipamentos/hub-usb.jpg" alt="Hub USB" class="equipamento-image">
+                <div class="equipamento-content">
+                    <h3>Hub USB</h3>
+                    <a href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20um%20Hub%20USB,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-desktop-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20um%20Hub%20USB,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-mobile-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                </div>
+            </div>
+
+            <!-- Cabo HDMI -->
+            <div class="equipamento-card">
+                <img src="equipamentos/hdmi.jpg" alt="Cabo HDMI" class="equipamento-image">
+                <div class="equipamento-content">
+                    <h3>Cabo HDMI</h3>
+                    <a href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20um%20cabo%20HDMI,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-desktop-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20um%20cabo%20HDMI,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-mobile-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                </div>
+            </div>
+
+            <!-- Cabo VGA -->
+            <div class="equipamento-card">
+                <img src="equipamentos/vga.jpg" alt="Cabo VGA" class="equipamento-image">
+                <div class="equipamento-content">
+                    <h3>Cabo VGA</h3>
+                    <a href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20um%20cabo%20VGA,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-desktop-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20um%20cabo%20VGA,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-mobile-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                </div>
+            </div>
+
+            <!-- Memória RAM -->
+            <div class="equipamento-card">
+                <img src="equipamentos/ram.jpg" alt="Memória RAM" class="equipamento-image">
+                <div class="equipamento-content">
+                    <h3>Memória RAM</h3>
+                    <a href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20memória%20RAM,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-desktop-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20memória%20RAM,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-mobile-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                </div>
+            </div>
+
+            <!-- Computadores -->
+            <div class="equipamento-card">
+                <img src="equipamentos/computador.jpg" alt="Computador" class="equipamento-image">
+                <div class="equipamento-content">
+                    <h3>Computadores</h3>
+                    <a href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20um%20computador,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-desktop-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20um%20computador,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-mobile-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                </div>
+            </div>
+
+            <!-- Nobreak -->
+            <div class="equipamento-card">
+                <img src="equipamentos/nobreak.jpg" alt="Nobreak" class="equipamento-image">
+                <div class="equipamento-content">
+                    <h3>Nobreak</h3>
+                    <a href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20um%20nobreak,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-desktop-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20um%20nobreak,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-mobile-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                </div>
+            </div>
+
+            <!-- Monitor -->
+            <div class="equipamento-card">
+                <img src="equipamentos/monitor.jpg" alt="Monitor" class="equipamento-image">
+                <div class="equipamento-content">
+                    <h3>Monitor</h3>
+                    <a href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20um%20monitor,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-desktop-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20um%20monitor,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-mobile-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                </div>
+            </div>
+
+            <!-- Impressoras -->
+            <div class="equipamento-card">
+                <img src="equipamentos/impressora.jpg" alt="Impressora" class="equipamento-image">
+                <div class="equipamento-content">
+                    <h3>Impressoras</h3>
+                    <a href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20uma%20impressora,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-desktop-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20uma%20impressora,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-mobile-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                </div>
+            </div>
+
+            <!-- Ribbons -->
+            <div class="equipamento-card">
+                <img src="equipamentos/ribbon.png" alt="Ribbon" class="equipamento-image">
+                <div class="equipamento-content">
+                    <h3>Ribbons</h3>
+                    <a href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20ribbon,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-desktop-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20ribbon,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-mobile-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                </div>
+            </div>
+
+            <!-- Impressora Térmica -->
+            <div class="equipamento-card">
+                <img src="equipamentos/bobina.jpg" alt="Bobina de Impressora" class="equipamento-image">
+                <div class="equipamento-content">
+                    <h3>Impressora Térmica</h3>
+                    <a href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20Impressora%20térmica,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-desktop-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20Impressora%20térmica,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-mobile-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                </div>
+            </div>
+
+            <!-- Bobina de Impressora -->
+            <div class="equipamento-card">
+                <img src="equipamentos/bobina (1).jpg" alt="Bobina de Impressora" class="equipamento-image">
+                <div class="equipamento-content">
+                    <h3>Bobina de Impressora</h3>
+                    <a href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20bobina%20de%20impressora,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-desktop-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20bobina%20de%20impressora,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-mobile-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                </div>
+            </div>
+
+            <!-- Etiqueta de Código de Barras -->
+            <div class="equipamento-card">
+                <img src="equipamentos/etiqueta-barras.jpg" alt="Etiqueta de Código de Barras" class="equipamento-image">
+                <div class="equipamento-content">
+                    <h3>Etiqueta de Código de Barras</h3>
+                    <a href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20etiquetas%20de%20código%20de%20barras,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-desktop-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20etiquetas%20de%20código%20de%20barras,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-mobile-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                </div>
+            </div>
+
+            <!-- Etiqueta de Gôndola -->
+            <div class="equipamento-card">
+                <img src="equipamentos/etiqueta-gondola.png" alt="Etiqueta de Gôndola" class="equipamento-image">
+                <div class="equipamento-content">
+                    <h3>Etiqueta de Gôndola</h3>
+                    <a href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20etiquetas%20de%20gôndola,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-desktop-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20etiquetas%20de%20gôndola,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-mobile-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                </div>
+            </div>
+
+            <!-- Suprimentos de Informática -->
+            <div class="equipamento-card">
+                <img src="equipamentos/suprimentos.png" alt="Suprimentos de Informática" class="equipamento-image">
+                <div class="equipamento-content">
+                    <h3>Suprimentos de Informática</h3>
+                    <a href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20suprimentos%20de%20informática,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-desktop-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20comprar%20suprimentos%20de%20informática,%20quais%20opções%20vocês%20oferecem?" class="whatsapp-button calory-mobile-only">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Botão Flutuante WhatsApp -->
+    <div class="calory-whatsapp-float">
+        <!-- Versão Desktop -->
+        <a class="calory-desktop-only" href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20os%20equipamentos">
+            <span class="calory-whatsapp-icon">
+                <img src="icon/whats.png" alt="WhatsApp">
+            </span>
+        </a>
+        
+        <!-- Versão Mobile -->
+        <a class="calory-mobile-only" href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20os%20equipamentos">
+            <span class="calory-whatsapp-icon">
+                <img src="icon/whats.png" alt="WhatsApp">
+            </span>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="calory-footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="calory branco png (1).png" alt="Calory Sistemas" class="footer-logo-img">
+                <p>Soluções tecnológicas completas para o seu negócio.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="/">Início</a></li>
+                    <li><a href="/produtos">Produtos</a></li>
+                    <li><a href="/equipamentos">Equipamentos</a></li>
+                    <li><a href="/contato">Contato</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Produtos</h3>
+                <ul>
+                    <li><a href="/csemp">Sistema de Gestão</a></li>
+                    <li><a href="/estoque">Controle de Estoque</a></li>
+                    <li><a href="/csemite">Emissão de nota fiscal</a></li>
+                    <li><a href="/CertificadoDigital">Certificado Digital</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-social">
+                <h3>Redes Sociais</h3>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/calorysistemas/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/calorysistemas/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/calory-sistema" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <p>Entre em contato pelas nossas redes</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 Calory Sistemas. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Menu Mobile
+        function caloryToggleMenu() {
+            const menu = document.querySelector(".calory-nav-links");
+            const toggle = document.querySelector(".calory-menu-toggle");
+            menu.classList.toggle("active");
+            toggle.classList.toggle("active");
+        }
+
+        // Fecha o menu ao clicar em um link (mobile)
+        document.querySelectorAll(".calory-nav-links a").forEach(link => {
+            link.addEventListener("click", () => {
+                if (window.innerWidth <= 899.98) {
+                    caloryToggleMenu();
+                }
+            });
+        });
+
+        // Efeito de scroll no header
+        window.addEventListener("scroll", function() {
+            const header = document.querySelector(".calory-header");
+            if (window.scrollY > 50) {
+                header.classList.add("scrolled");
+            } else {
+                header.classList.remove("scrolled");
+            }
+        });
+    </script>
+
+</body>
+</html>

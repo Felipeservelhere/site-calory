@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Produtos - Calory</title>
+    <title>Produtos - Calory Sistemas</title>
+    <meta name="description" content="Conheça nossos produtos: sistemas de gestão empresarial, emissão de notas fiscais, certificados digitais e equipamentos para sua empresa.">
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -265,7 +266,7 @@
         /* Main Content Styles */
         main {
             padding: 60px 5% 60px;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
@@ -279,8 +280,8 @@
 
         .services-container {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
         }
 
         .service-card {
@@ -300,26 +301,27 @@
 
         .card-image {
             width: 100%;
-            height: 220px;
+            height: 200px;
             object-fit: cover;
         }
 
         .card-content {
-            padding: 25px;
+            padding: 20px;
         }
 
         .card-content h2 {
             color: #1c7ccf;
             margin-bottom: 15px;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             text-align: center;
         }
 
         .card-content p {
             color: #555;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-align: center;
-            font-size: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
         }
 
         .card-button {
@@ -327,146 +329,154 @@
             text-align: center;
             background-color: #29a8ff;
             color: white;
-            padding: 12px 20px;
+            padding: 10px 15px;
             border-radius: 25px;
             font-weight: 600;
             transition: background-color 0.3s ease;
-            margin-top: 20px;
+            margin-top: 15px;
+            font-size: 0.9rem;
         }
 
         .service-card:hover .card-button {
             background-color: #1c7ccf;
         }
 
-       .calory-whatsapp-float {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      z-index: 1000;
-    }
+        .calory-whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
 
-    .calory-whatsapp-float a {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-    }
+        .calory-whatsapp-float a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
 
-    .calory-whatsapp-float .calory-whatsapp-icon {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background-color: #25d366;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.3s ease;
-      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-    }
+        .calory-whatsapp-float .calory-whatsapp-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #25d366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
 
-    .calory-whatsapp-float .calory-whatsapp-icon img {
-      width: 30px;
-      height: 30px;
-    }
+        .calory-whatsapp-float .calory-whatsapp-icon img {
+            width: 30px;
+            height: 30px;
+        }
 
-    .calory-whatsapp-float:hover .calory-whatsapp-icon {
-      transform: scale(1.1);
-    }
+        .calory-whatsapp-float:hover .calory-whatsapp-icon {
+            transform: scale(1.1);
+        }
 
-    /* Footer */
-    .calory-footer {
-      background-color: #2c3e50;
-      color: #ffffff;
-      padding: 60px 5% 30px;
-      font-size: 0.9rem;
-    }
+        /* Footer */
+        .calory-footer {
+            background-color: #2c3e50;
+            color: #ffffff;
+            padding: 60px 5% 30px;
+            font-size: 0.9rem;
+        }
 
-    .footer-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 30px;
-    }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
 
-    .footer-logo img {
-      height: 50px;
-      margin-bottom: 20px;
-    }
+        .footer-logo img {
+            height: 50px;
+            margin-bottom: 20px;
+        }
 
-    .footer-logo p {
-      margin-bottom: 20px;
-      line-height: 1.6;
-    }
+        .footer-logo p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
 
-    .footer-links h3 {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-      color: #fff;
-    }
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
 
-    .footer-links ul {
-      list-style: none;
-    }
+        .footer-links ul {
+            list-style: none;
+        }
 
-    .footer-links li {
-      margin-bottom: 10px;
-    }
+        .footer-links li {
+            margin-bottom: 10px;
+        }
 
-    .footer-links a {
-      color: #ecf0f1;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
+        .footer-links a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
 
-    .footer-links a:hover {
-      color: #007bff;
-    }
+        .footer-links a:hover {
+            color: #007bff;
+        }
 
-    .footer-social h3 {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-      color: #fff;
-    }
+        .footer-social h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
 
-    .footer-social .social-icons {
-      display: flex;
-      gap: 15px;
-    }
+        .footer-social .social-icons {
+            display: flex;
+            gap: 15px;
+        }
 
-    .footer-social .social-icons a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      color: white;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
-    }
+        .footer-social .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
 
-    .footer-social .social-icons a:hover {
-      background: #007bff;
-      transform: translateY(-3px);
-    }
+        .footer-social .social-icons a:hover {
+            background: #007bff;
+            transform: translateY(-3px);
+        }
 
-    .footer-bottom {
-      text-align: center;
-      padding-top: 30px;
-      margin-top: 30px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-    .calory-mobile-only{
-        display: none !important;
-      }
+        .calory-mobile-only{
+            display: none !important;
+        }
 
-      .calory-desktop-only{
-        display: inline-block !important;
-      }
+        .calory-desktop-only{
+            display: inline-block !important;
+        }
+
         /* Responsividade */
+        @media (max-width: 1300px) {
+            .services-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
         @media (max-width: 1024px) {
             .services-container {
                 grid-template-columns: repeat(2, 1fr);
@@ -535,10 +545,17 @@
                 font-size: 2.2rem;
                 margin-bottom: 40px;
             }
+        }
 
+        @media (max-width: 768px) {
             .services-container {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .page-title {
+                font-size: 2rem;
             }
         }
 
@@ -547,17 +564,17 @@
                 font-size: 1.8rem;
             }
             
-            .whatsapp-float {
-                bottom: 15px;
-                right: 15px;
+            .calory-whatsapp-float {
+                bottom: 20px;
+                right: 20px;
             }
             
-            .whatsapp-float a {
+            .calory-whatsapp-float .calory-whatsapp-icon {
                 width: 50px;
                 height: 50px;
             }
             
-            .whatsapp-float img {
+            .calory-whatsapp-float .calory-whatsapp-icon img {
                 width: 25px;
                 height: 25px;
             }
@@ -612,7 +629,7 @@
             </a>
 
             <a href="/csemite" class="service-card" aria-label="Emissão de Nota Fiscal">
-                <img src="banner/produtonota.png" alt="Emissão de Nota Fiscal" class="card-image">
+                <img src="banner/csemitedentro.png" alt="Emissão de Nota Fiscal" class="card-image">
                 <div class="card-content">
                     <h2>CSEMITE</h2>
                     <p>Facilite a emissão de notas fiscais eletrônicas com um sistema ágil, integrado e totalmente conforme
@@ -630,68 +647,78 @@
                     <span class="card-button">Saiba Mais</span>
                 </div>
             </a>
+
+            <a href="/equipamentos" class="service-card" aria-label="Equipamentos de Informática">
+                <img src="banner/equipamentosdentro.png" alt="Equipamentos de Informática" class="card-image">
+                <div class="card-content">
+                    <h2>Equipamentos de Informática</h2>
+                    <p>Computadores, notebooks, impressoras, mouses, teclados e todos os periféricos de alta qualidade para equipar sua empresa.</p>
+                    <span class="card-button">Saiba Mais</span>
+                </div>
+            </a>
         </div>
     </main>
 
     <div class="calory-whatsapp-float">
-    <!-- Botão para Desktop (web.whatsapp) -->
-    <a class="calory-desktop-only"
-      href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20tirar%20algumas%20dúvidas!">
-      <span class="calory-whatsapp-icon">
-        <img src="icon/whats.png" alt="WhatsApp" />
-      </span>
-    </a>
+        <!-- Botão para Desktop (web.whatsapp) -->
+        <a class="calory-desktop-only"
+          href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20tirar%20algumas%20dúvidas!">
+          <span class="calory-whatsapp-icon">
+            <img src="icon/whats.png" alt="WhatsApp" />
+          </span>
+        </a>
 
-    <!-- Botão para Mobile (api.whatsapp) -->
-    <a class="calory-mobile-only"
-      href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20tirar%20algumas%20dúvidas!">
-      <span class="calory-whatsapp-icon">
-        <img src="icon/whats.png" alt="WhatsApp" />
-      </span>
-    </a>
-  </div>
+        <!-- Botão para Mobile (api.whatsapp) -->
+        <a class="calory-mobile-only"
+          href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20tirar%20algumas%20dúvidas!">
+          <span class="calory-whatsapp-icon">
+            <img src="icon/whats.png" alt="WhatsApp" />
+          </span>
+        </a>
+    </div>
 
-  <footer class="calory-footer">
-    <div class="footer-container">
-      <div class="footer-logo">
-        <img src="calory branco png (1).png" alt="Calory Sistemas" class="footer-logo-img">
-        <p>Soluções tecnológicas para as empresas. Inovação e qualidade para o seu negócio.</p>
-      </div>
-      
-      <div class="footer-links">
-        <h3>Links Rápidos</h3>
-        <ul>
-          <li><a href="/">Início</a></li>
-          <li><a href="/produtos">Produtos</a></li>
-          <li><a href="/contato">Contato</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-links">
-        <h3>Produtos</h3>
-        <ul>
-          <li><a href="/csemp">Sistema de Gestão</a></li>
-          <li><a href="/estoque">Controle de Estoque</a></li>
-          <li><a href="/csemite">Emissão de nota fiscal</a></li>
-          <li><a href="/CertificadoDigital">Certificado Digital</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-social">
-        <h3>Redes Sociais</h3>
-        <div class="social-icons">
-          <a href="https://www.facebook.com/calorysistemas/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://www.instagram.com/calorysistemas/" target="_blank"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.linkedin.com/company/calory-sistema" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    <footer class="calory-footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="calory branco png (1).png" alt="Calory Sistemas" class="footer-logo-img">
+                <p>Soluções tecnológicas para as empresas. Inovação e qualidade para o seu negócio.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="/">Início</a></li>
+                    <li><a href="/produtos">Produtos</a></li>
+                    <li><a href="/contato">Contato</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Produtos</h3>
+                <ul>
+                    <li><a href="/csemp">Sistema de Gestão</a></li>
+                    <li><a href="/estoque">Controle de Estoque</a></li>
+                    <li><a href="/csemite">Emissão de nota fiscal</a></li>
+                    <li><a href="/CertificadoDigital">Certificado Digital</a></li>
+                    <li><a href="/equipamentos">Equipamentos de Informática</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-social">
+                <h3>Redes Sociais</h3>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/calorysistemas/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/calorysistemas/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/calory-sistema" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <p style="margin-top: 20px;">Siga-nos para ficar por dentro das novidades!</p>
+            </div>
         </div>
-        <p style="margin-top: 20px;">Siga-nos para ficar por dentro das novidades!</p>
-      </div>
-    </div>
-    
-    <div class="footer-bottom">
-      <p>&copy; 2023 Calory Sistemas. Todos os direitos reservados.</p>
-    </div>
-  </footer>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 Calory Sistemas. Todos os direitos reservados.</p>
+        </div>
+    </footer>
 
     <script>
         // Menu Mobile
