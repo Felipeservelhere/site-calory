@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Produtos - Calory</title>
+    <title>Certificado Digital - Calory</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -27,7 +27,7 @@
             padding-top: 80px;
         }
 
-        /* Header com Efeito de Vidro (Glassmorphism) */
+        /* Header com Efeito de Vidro (Glassmorphism) - NOVO PADRÃO */
         .calory-header {
             width: 100%;
             padding: 15px 5%;
@@ -69,20 +69,6 @@
 
         .calory-header.scrolled .calory-logo img {
             height: 40px;
-        }
-
-        .logo-text {
-            margin-left: 10px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #007bff;
-            display: none;
-        }
-
-        @media (min-width: 768px) {
-            .logo-text {
-                display: block;
-            }
         }
 
         /* Menu Hamburguer Moderno */
@@ -262,83 +248,206 @@
             box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
         }
 
-        /* Main Content Styles */
-        main {
-            padding: 60px 5% 60px;
+        /* Formulário Interativo (PARA DESKTOP E MOBILE) */
+        .hero-form {
+            padding: 30px 20px;
+            margin-top: 70px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .cert-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,33,199,0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .cert-card h2 {
+            color: #0021c7;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .cert-options {
+            display: flex;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #ddd;
+        }
+
+        .cert-type {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            background: #f5f5f5;
+            color: #555;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .cert-type.active {
+            background: #0021c7;
+            color: white;
+        }
+
+        .cert-form {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .cert-form.active {
+            display: block;
+        }
+
+        .cert-form input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .cta-button {
+            width: 100%;
+            padding: 15px;
+            background-color: #0021c7;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .cta-button:hover {
+            background-color: #001ba8;
+        }
+
+        .cert-benefits {
+            margin-top: 25px;
+        }
+
+        .cert-benefits p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: #0021c7;
+            font-weight: 500;
+        }
+
+        .cert-benefits i {
+            margin-right: 10px;
+            color: #00c851;
+            font-size: 1.2rem;
+        }
+
+        /* Seção de Informações */
+        .additional-info {
+            padding: 60px 5%;
+            background-color: #fff;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .page-title {
-            text-align: center;
-            font-size: 2.8rem;
-            color: #29a8ff;
-            margin-bottom: 60px;
-            font-weight: 700;
-        }
-
-        .services-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .service-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .card-image {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-        }
-
-        .card-content {
-            padding: 25px;
-        }
-
-        .card-content h2 {
-            color: #1c7ccf;
-            margin-bottom: 15px;
-            font-size: 1.5rem;
+        .additional-info h2 {
+            font-size: 2.2rem;
+            color: #0021c7;
+            margin-bottom: 30px;
             text-align: center;
         }
 
-        .card-content p {
+        .additional-info p {
+            font-size: 1.1rem;
+            line-height: 1.8;
             color: #555;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .documents-required {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 40px auto;
+            max-width: 800px;
+        }
+
+        .documents-required h3 {
+            color: #0021c7;
             margin-bottom: 20px;
             text-align: center;
-            font-size: 1rem;
         }
 
-        .card-button {
-            display: block;
+        .documents-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .document-type {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .document-type h4 {
+            color: #0021c7;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #0021c7;
+            padding-bottom: 8px;
+        }
+
+        .document-type ul {
+            list-style-type: none;
+        }
+
+        .document-type li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .document-type li i {
+            color: #00c851;
+            margin-right: 8px;
+            margin-top: 3px;
+        }
+
+        .emitir-button-container {
             text-align: center;
-            background-color: #29a8ff;
+            margin-top: 30px;
+        }
+
+        .emitir-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #0021c7;
             color: white;
-            padding: 12px 20px;
-            border-radius: 25px;
+            border-radius: 8px;
+            text-decoration: none;
             font-weight: 600;
-            transition: background-color 0.3s ease;
-            margin-top: 20px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
         }
 
-        .service-card:hover .card-button {
-            background-color: #1c7ccf;
+        .emitir-button:hover {
+            background-color: #001ba8;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,33,199,0.2);
         }
 
-       .calory-whatsapp-float {
+        .calory-whatsapp-float {
       position: fixed;
       bottom: 30px;
       right: 30px;
@@ -466,13 +575,8 @@
       .calory-desktop-only{
         display: inline-block !important;
       }
-        /* Responsividade */
-        @media (max-width: 1024px) {
-            .services-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
 
+        /* Responsividade */
         @media (max-width: 899.98px) {
             .calory-desktop-only {
                 display: none !important;
@@ -530,21 +634,25 @@
             .calory-link-azul-mobile {
                 display: flex !important;
             }
-            
-            .page-title {
-                font-size: 2.2rem;
-                margin-bottom: 40px;
+
+            .hero-form {
+                padding: 20px 15px;
+                margin-top: 60px;
             }
 
-            .services-container {
+            .documents-grid {
                 grid-template-columns: 1fr;
-                gap: 30px;
             }
         }
 
         @media (max-width: 480px) {
-            .page-title {
-                font-size: 1.8rem;
+            .cert-card h2 {
+                font-size: 1.6rem;
+            }
+            
+            .cert-type {
+                padding: 12px 8px;
+                font-size: 0.9rem;
             }
             
             .whatsapp-float {
@@ -597,41 +705,69 @@
         </div>
     </header>
 
-    <main>
-        <h1 class="page-title">Nossos Produtos</h1>
+    <!-- Formulário Interativo -->
+    <div class="hero-form">
+        <div class="cert-card">
+            <h2>Emita seu Certificado Digital Hoje!</h2>
+            
+            <div class="cert-options">
+                <button class="cert-type active" data-type="pf">Pessoa Física</button>
+                <button class="cert-type" data-type="pj">Pessoa Jurídica</button>
+            </div>
 
-        <div class="services-container">
-            <a href="/csemp" class="service-card" aria-label="Sistema Empresarial">
-                <img src="banner/produtosistemae.png" alt="Sistema Empresarial" class="card-image">
-                <div class="card-content">
-                    <h2>CSEMP</h2>
-                    <p>Um sistema completo para gerenciar processos internos, controle financeiro, estoque e muito mais,
-                        tudo personalizado para sua empresa.</p>
-                    <span class="card-button">Saiba Mais</span>
-                </div>
-            </a>
+            <div class="cert-form active" id="pf-form">
+                <input type="text" placeholder="CPF" required id="cpf">
+                <input type="text" placeholder="Nome completo" required id="nome-pf">
+                <input type="email" placeholder="E-mail" required id="email-pf">
+                <input type="tel" placeholder="Whatsapp" required id="telefone-pf">
+                <button class="cta-button" id="solicitar-pf">Avançar</button>
+            </div>
 
-            <a href="/csemite" class="service-card" aria-label="Emissão de Nota Fiscal">
-                <img src="banner/produtonota.png" alt="Emissão de Nota Fiscal" class="card-image">
-                <div class="card-content">
-                    <h2>CSEMITE</h2>
-                    <p>Facilite a emissão de notas fiscais eletrônicas com um sistema ágil, integrado e totalmente conforme
-                        as exigências fiscais atuais.</p>
-                    <span class="card-button">Saiba Mais</span>
-                </div>
-            </a>
+            <div class="cert-form" id="pj-form">
+                <input type="text" placeholder="CNPJ" required id="cnpj">
+                <input type="text" placeholder="Nome do responsável" required id="nome-pj">
+                <input type="email" placeholder="E-mail corporativo" required id="email-pj">
+                <input type="tel" placeholder="Whatsapp" required id="telefone-pj">
+                <button class="cta-button" id="solicitar-pj">Avançar</button>
+            </div>
 
-            <a href="/CertificadoDigital" class="service-card" aria-label="Certificado Digital">
-                <img src="banner/CERTIFICADODIGITLPRODUTOS.svg" alt="Certificado Digital" class="card-image">
-                <div class="card-content">
-                    <h2>Certificado Digital</h2>
-                    <p>Agilize a emissão e gerenciamento de certificados digitais para sua empresa com segurança e
-                        praticidade.</p>
-                    <span class="card-button">Saiba Mais</span>
-                </div>
-            </a>
+            <div class="cert-benefits">
+                <p><i class="fas fa-check-circle"></i> Processo 100% online</p>
+                <p><i class="fas fa-check-circle"></i> Aprovação em 5 minutos após envio dos documentos</p>
+                <p><i class="fas fa-check-circle"></i> Suporte especializado</p>
+            </div>
         </div>
-    </main>
+    </div>
+
+    <section class="additional-info">
+        <h2>Documentos Necessários</h2>
+        <p>Tenha em mãos os documentos necessários para agilizar seu atendimento</p>
+        
+        <div class="documents-required">
+            <h3>O que você precisa para emitir seu certificado</h3>
+            <div class="documents-grid">
+                <div class="document-type">
+                    <h4>Pessoa Física (e-CPF)</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Foto ou digital do CNH/RG</li>
+                        <li><i class="fas fa-check"></i> E-mail válido</li>
+                        <li><i class="fas fa-check"></i> Telefone para contato</li>
+                        <li><i class="fas fa-check"></i> Endereço completo com CEP</li>
+                    </ul>
+                </div>
+                <div class="document-type">
+                    <h4>Pessoa Jurídica (e-CNPJ)</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> CNPJ da empresa</li>
+                        <li><i class="fas fa-check"></i> Foto ou digital do CNH/RG do responsável</li>
+                        <li><i class="fas fa-check"></i> E-mail corporativo</li>
+                        <li><i class="fas fa-check"></i> Telefone para contato</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </section>
 
     <div class="calory-whatsapp-float">
     <!-- Botão para Desktop (web.whatsapp) -->
@@ -721,11 +857,104 @@
             }
         });
 
-        // Adiciona a classe 'touch-device' ao html se houver suporte a touch
-        if ('ontouchstart' in document.documentElement) {
-            document.documentElement.classList.add('touch-device');
-        }
-    </script>
+        // Alternar entre formulários PF/PJ
+        document.addEventListener('DOMContentLoaded', function() {
+            const certTypes = document.querySelectorAll('.cert-type');
+            
+            certTypes.forEach(type => {
+                type.addEventListener('click', function() {
+                    certTypes.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    document.querySelectorAll('.cert-form').forEach(form => {
+                        form.classList.remove('active');
+                    });
+                    
+                    const formId = this.getAttribute('data-type') + '-form';
+                    document.getElementById(formId).classList.add('active');
+                });
+            });
 
+            // Configuração do envio do formulário PF
+            document.getElementById('solicitar-pf').addEventListener('click', function() {
+                const formData = {
+                    type: 'PF',
+                    cpf: document.getElementById('cpf').value,
+                    nome: document.getElementById('nome-pf').value,
+                    email: document.getElementById('email-pf').value,
+                    telefone: document.getElementById('telefone-pf').value
+                };
+                
+                if (validateForm(formData)) {
+                    sendToWhatsApp(formData);
+                }
+            });
+
+            // Configuração do envio do formulário PJ
+            document.getElementById('solicitar-pj').addEventListener('click', function() {
+                const formData = {
+                    type: 'PJ',
+                    cnpj: document.getElementById('cnpj').value,
+                    nome: document.getElementById('nome-pj').value,
+                    email: document.getElementById('email-pj').value,
+                    telefone: document.getElementById('telefone-pj').value
+                };
+                
+                if (validateForm(formData)) {
+                    sendToWhatsApp(formData);
+                }
+            });
+            
+            function validateForm(data) {
+                // Validação básica
+                for (const key in data) {
+                    if (!data[key]) {
+                        alert(`Por favor, preencha todos os campos`);
+                        return false;
+                    }
+                }
+                
+                // Validação simples de telefone
+                if (data.telefone.replace(/\D/g, '').length < 10) {
+                    alert('Telefone inválido');
+                    return false;
+                }
+                
+                return true;
+            }
+            
+            function sendToWhatsApp(data) {
+                const telefoneWhatsApp = '5544999939313'; // Seu número de WhatsApp
+                
+                // Monta a mensagem no formato solicitado
+                let message = `Olá, queria emitir um certificado digital A1, os meus dados iniciais são:\n\n`;
+                
+                if (data.type === 'PF') {
+                    message += `*Tipo:* Pessoa Física (e-CPF)\n`;
+                    message += `*CPF:* ${data.cpf}\n`;
+                } else {
+                    message += `*Tipo:* Pessoa Jurídica (e-CNPJ)\n`;
+                    message += `*CNPJ:* ${data.cnpj}\n`;
+                }
+                
+                message += `*Nome completo:* ${data.nome}\n`;
+                message += `*E-mail:* ${data.email}\n`;
+                message += `*Telefone:* ${data.telefone}\n\n`;
+                message += `Por favor, me informe os próximos passos!`;
+
+                // Codifica a mensagem para URL
+                const encodedMessage = encodeURIComponent(message);
+                
+                // Verifica se é mobile ou desktop para usar o link apropriado
+                const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                const whatsappLink = isMobile 
+                    ? `https://api.whatsapp.com/send?phone=${telefoneWhatsApp}&text=${encodedMessage}`
+                    : `https://web.whatsapp.com/send?phone=${telefoneWhatsApp}&text=${encodedMessage}`;
+                
+                // Abre o WhatsApp em uma nova aba
+                window.open(whatsappLink, '_blank');
+            }
+        });
+    </script>
 </body>
 </html>

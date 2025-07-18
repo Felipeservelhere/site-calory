@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Produtos - Calory</title>
+    <title>Sistema empresarial - Calory</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -27,7 +27,7 @@
             padding-top: 80px;
         }
 
-        /* Header com Efeito de Vidro (Glassmorphism) */
+        /* Header com Efeito de Vidro (Glassmorphism) - NOVO PADRÃO */
         .calory-header {
             width: 100%;
             padding: 15px 5%;
@@ -69,20 +69,6 @@
 
         .calory-header.scrolled .calory-logo img {
             height: 40px;
-        }
-
-        .logo-text {
-            margin-left: 10px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #007bff;
-            display: none;
-        }
-
-        @media (min-width: 768px) {
-            .logo-text {
-                display: block;
-            }
         }
 
         /* Menu Hamburguer Moderno */
@@ -262,83 +248,89 @@
             box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
         }
 
-        /* Main Content Styles */
-        main {
-            padding: 60px 5% 60px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .page-title {
-            text-align: center;
-            font-size: 2.8rem;
-            color: #29a8ff;
-            margin-bottom: 60px;
-            font-weight: 700;
-        }
-
-        .services-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .service-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .card-image {
+        /* Banner Styles */
+        .calory-banner {
+            position: relative;
             width: 100%;
-            height: 220px;
+            height: 85vh;
+            margin-top: 0;
+            overflow: hidden;
+        }
+
+        .calory-video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
+            z-index: -1;
         }
 
-        .card-content {
-            padding: 25px;
-        }
-
-        .card-content h2 {
-            color: #1c7ccf;
-            margin-bottom: 15px;
-            font-size: 1.5rem;
+        .calory-banner-content {
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            padding: 0 20px;
+            background: rgba(0, 0, 0, 0.4);
         }
 
-        .card-content p {
-            color: #555;
+        .calory-titulo {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
             margin-bottom: 20px;
-            text-align: center;
-            font-size: 1rem;
+            line-height: 1.2;
         }
 
-        .card-button {
+        .calory-titulo span {
             display: block;
-            text-align: center;
-            background-color: #29a8ff;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 25px;
+        }
+
+        .calory-descricao {
+            font-size: 1.5rem;
+            color: #fff;
+            font-weight: 500;
+            max-width: 800px;
+            margin-bottom: 30px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .calory-descricao span {
+            font-size: 1.5rem;
+            color: #007bff;
             font-weight: 600;
-            transition: background-color 0.3s ease;
-            margin-top: 20px;
+            max-width: 800px;
+            margin-bottom: 30px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
         }
 
-        .service-card:hover .card-button {
-            background-color: #1c7ccf;
+        .calory-botao {
+            padding: 15px 30px;
+            background-color: #007bff;
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
         }
 
-       .calory-whatsapp-float {
+        .calory-botao:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .calory-whatsapp-float {
       position: fixed;
       bottom: 30px;
       right: 30px;
@@ -466,13 +458,116 @@
       .calory-desktop-only{
         display: inline-block !important;
       }
-        /* Responsividade */
-        @media (max-width: 1024px) {
-            .services-container {
-                grid-template-columns: repeat(2, 1fr);
+
+        /* Seção de Funcionalidades */
+        .calory-sessao-sistema {
+            padding: 80px 5%;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .calory-sessao-sistema h2 {
+            font-size: 2.4rem;
+            color: #007bff;
+            margin-bottom: 40px;
+        }
+
+        .calory-container-bloco {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .calory-bloco {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 280px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .calory-bloco:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+        }
+
+        .calory-bloco img {
+            width: 96px;
+            height: 96px;
+            margin-bottom: 15px;
+        }
+
+        .calory-bloco h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #007bff;
+        }
+
+        .calory-bloco p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .calory-bloco::after {
+            content: "Clique para saber mais";
+            font-size: 0.85rem;
+            color: #aaa;
+            display: block;
+            margin-top: 8px;
+        }
+
+        /* Seta de rolagem */
+        .calory-arrow {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            margin-left: -20px;
+            width: 38px;
+            height: 55px;
+            border: 2px solid #f1f1f1;
+            border-radius: 25px;
+            cursor: pointer;
+            z-index: 2;
+            animation: calory-bounce 2s infinite;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 10px;
+        }
+
+        .calory-arrow::after {
+            content: '';
+            display: block;
+            width: 12px;
+            height: 12px;
+            border-bottom: 3px solid #f3f3f3;
+            border-right: 3px solid #f3f3f3;
+            transform: rotate(45deg);
+            margin-top: 6px;
+        }
+
+        @keyframes calory-bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(10px);
+            }
+            60% {
+                transform: translateY(5px);
             }
         }
 
+        /* Responsividade */
         @media (max-width: 899.98px) {
             .calory-desktop-only {
                 display: none !important;
@@ -531,33 +626,91 @@
                 display: flex !important;
             }
             
-            .page-title {
-                font-size: 2.2rem;
-                margin-bottom: 40px;
+            .calory-banner {
+                height: 70vh;
             }
 
-            .services-container {
-                grid-template-columns: 1fr;
-                gap: 30px;
+            .calory-video-bg {
+                display: none;
+            }
+
+            .calory-banner-content {
+                background: url('banner/fundoempresa.jpg') no-repeat center center;
+                background-size: cover;
+            }
+
+            .calory-titulo {
+                font-size: 2.2rem;
+                width: 90%;
+            }
+
+            .calory-descricao {
+                font-size: 1.1rem;
+                width: 90%;
+            }
+
+            .calory-botao {
+                font-size: 1.2rem;
+                width: 80%;
+                max-width: 320px;
+            }
+
+            .calory-sessao-sistema {
+                padding: 40px 5%;
+            }
+
+            .calory-sessao-sistema h2 {
+                font-size: 1.8rem;
+            }
+
+            .calory-container-bloco {
+                gap: 20px;
+            }
+
+            .calory-bloco {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .calory-arrow{
+                top: 87%;
             }
         }
 
         @media (max-width: 480px) {
-            .page-title {
+            .calory-titulo {
                 font-size: 1.8rem;
             }
+
+            .calory-botao {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+
+            .calory-bloco {
+                padding: 15px;
+            }
+
+            .calory-bloco img {
+                width: 60px;
+                height: 60px;
+            }
+
+            .calory-bloco h3 {
+                font-size: 1.2rem;
+            }
             
-            .whatsapp-float {
+            .calory-whatsapp-float {
                 bottom: 15px;
                 right: 15px;
             }
             
-            .whatsapp-float a {
+            .calory-whatsapp-float a {
                 width: 50px;
                 height: 50px;
             }
             
-            .whatsapp-float img {
+            .calory-whatsapp-float img {
                 width: 25px;
                 height: 25px;
             }
@@ -597,41 +750,57 @@
         </div>
     </header>
 
-    <main>
-        <h1 class="page-title">Nossos Produtos</h1>
+    <div class="calory-banner">
+        <video autoplay muted loop class="calory-video-bg">
+            <source src="banner/sistemaempresarial.webm" type="video/mp4">
+            <!-- Fallback para navegadores que não suportam vídeo -->
+            <img src="banner/fundoempresa.jpg" alt="Sistema Empresarial">
+        </video>
+        
+        <div class="calory-banner-content">
+            <h1 class="calory-titulo">
+                <span>Transforme sua gestão</span>
+                <span>com um clique</span>
+            </h1>
+            <p class="calory-descricao">Controle estoque, clientes e documentos em <span>um só lugar</span></p>
+            <!-- Botão para Desktop (web.whatsapp) -->
+            <a href="https://web.whatsapp.com/send?phone=5544999939313&text=Olá,%20gostaria%20de%20fazer%20um%20orçamento%20para%20o%20sistema%20empresarial!" class="calory-botao calory-desktop-only">Fazer Orçamento</a>
+            <!-- Botão para Mobile (api.whatsapp) -->
+            <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20gostaria%20de%20fazer%20um%20orçamento%20para%20o%20sistema%20empresarial!" class="calory-botao calory-mobile-only">Fazer Orçamento</a>
+            
+            <div class="calory-arrow" onclick="document.getElementById('calory-sistema').scrollIntoView({ behavior: 'smooth' });"></div>
+        </div>
+    </div>
 
-        <div class="services-container">
-            <a href="/csemp" class="service-card" aria-label="Sistema Empresarial">
-                <img src="banner/produtosistemae.png" alt="Sistema Empresarial" class="card-image">
-                <div class="card-content">
-                    <h2>CSEMP</h2>
-                    <p>Um sistema completo para gerenciar processos internos, controle financeiro, estoque e muito mais,
-                        tudo personalizado para sua empresa.</p>
-                    <span class="card-button">Saiba Mais</span>
-                </div>
+    <section class="calory-sessao-sistema" id="calory-sistema">
+        <h2>Funcionalidades do Sistema</h2>
+
+        <div class="calory-container-bloco">
+            <a href="/Inicio" class="calory-bloco">
+                <img src="icon/logo-inicio-tela.svg" alt="Tela Inicial">
+                <h3>Tela Inicial</h3>
+                <p>Dashboard com indicadores de desempenho e atalhos rápidos.</p>
             </a>
 
-            <a href="/csemite" class="service-card" aria-label="Emissão de Nota Fiscal">
-                <img src="banner/produtonota.png" alt="Emissão de Nota Fiscal" class="card-image">
-                <div class="card-content">
-                    <h2>CSEMITE</h2>
-                    <p>Facilite a emissão de notas fiscais eletrônicas com um sistema ágil, integrado e totalmente conforme
-                        as exigências fiscais atuais.</p>
-                    <span class="card-button">Saiba Mais</span>
-                </div>
+            <a href="/estoque" class="calory-bloco">
+                <img src="icon/logo-estoque-tela.svg" alt="Controle de Estoque">
+                <h3>Estoque</h3>
+                <p>Gerencie entradas, saídas e relatórios do seu estoque.</p>
             </a>
 
-            <a href="/CertificadoDigital" class="service-card" aria-label="Certificado Digital">
-                <img src="banner/CERTIFICADODIGITLPRODUTOS.svg" alt="Certificado Digital" class="card-image">
-                <div class="card-content">
-                    <h2>Certificado Digital</h2>
-                    <p>Agilize a emissão e gerenciamento de certificados digitais para sua empresa com segurança e
-                        praticidade.</p>
-                    <span class="card-button">Saiba Mais</span>
-                </div>
+            <a href="/Cliente" class="calory-bloco">
+                <img src="icon/logo-cliente-tela.svg" alt="Gestão de Clientes">
+                <h3>Clientes</h3>
+                <p>Cadastro, histórico de vendas e integração com WhatsApp.</p>
+            </a>
+
+            <a href="/Documentos" class="calory-bloco">
+                <img src="icon/logo-documentos-tela.svg" alt="Documentos Fiscais">
+                <h3>Documentos Fiscais</h3>
+                <p>Emissão de NFe, CTe e MDFe de forma prática e rápida.</p>
             </a>
         </div>
-    </main>
+    </section>
 
     <div class="calory-whatsapp-float">
     <!-- Botão para Desktop (web.whatsapp) -->
@@ -726,6 +895,5 @@
             document.documentElement.classList.add('touch-device');
         }
     </script>
-
 </body>
 </html>
