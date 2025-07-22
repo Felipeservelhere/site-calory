@@ -14,1110 +14,1137 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="styleshome.min.css">
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17383219009"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-17383219009');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17383219009"></script>
   <script>
-    (function(h,o,t,j,a,r){
-      h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-      h._hjSettings={hjid:6470325,hjsv:6};
-      a=o.getElementsByTagName('head')[0];
-      r=o.createElement('script');r.async=1;
-      r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-      a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17383219009');
   </script>
+  <style>
+    /* Reset e Estilos Gerais */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      padding-top: 80px;
+    }
+
+    /* Header */
+    .calory-header {
+      width: 100%;
+      padding: 15px 5%;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .calory-header.scrolled {
+      padding: 10px 5%;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .calory-logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .calory-logo img {
+      height: 50px;
+      transition: height 0.3s ease;
+    }
+
+    .calory-header.scrolled .calory-logo img {
+      height: 40px;
+    }
+
+    /* Menu Mobile */
+    .calory-menu-toggle {
+      display: none;
+      width: 30px;
+      height: 25px;
+      position: relative;
+      cursor: pointer;
+      z-index: 1001;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    .calory-menu-toggle span {
+      display: block;
+      position: absolute;
+      height: 3px;
+      width: 100%;
+      background: #007bff;
+      border-radius: 3px;
+      opacity: 1;
+      left: 0;
+      transform: rotate(0deg);
+      transition: .25s ease-in-out;
+    }
+
+    .calory-menu-toggle span:nth-child(1) {
+      top: 0px;
+    }
+
+    .calory-menu-toggle span:nth-child(2),
+    .calory-menu-toggle span:nth-child(3) {
+      top: 10px;
+    }
+
+    .calory-menu-toggle span:nth-child(4) {
+      top: 20px;
+    }
+
+    .calory-menu-toggle.active span:nth-child(1) {
+      top: 10px;
+      width: 0%;
+      left: 50%;
+    }
+
+    .calory-menu-toggle.active span:nth-child(2) {
+      transform: rotate(45deg);
+    }
+
+    .calory-menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg);
+    }
+
+    .calory-menu-toggle.active span:nth-child(4) {
+      top: 10px;
+      width: 0%;
+      left: 50%;
+    }
+
+    /* Navegação */
+    .calory-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .calory-nav-links a {
+      font-weight: 600;
+      color: #333;
+      text-decoration: none;
+      font-size: 1rem;
+      position: relative;
+      padding: 8px 0;
+      transition: color 0.3s ease;
+    }
+
+    .calory-nav-links a:not(.calory-link-azul):hover {
+      color: #007bff;
+    }
+
+    .calory-nav-links a:not(.calory-link-azul)::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #007bff;
+      transition: width 0.3s ease;
+    }
+
+    .calory-nav-links a:not(.calory-link-azul):hover::after {
+      width: 100%;
+    }
+
+    .calory-link-azul {
+      background: linear-gradient(135deg, #007bff, #00bfff);
+      color: #fff !important;
+      padding: 12px 25px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .calory-link-azul i {
+      margin-right: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .calory-link-azul:hover {
+      background: linear-gradient(135deg, #0069d9, #0095ff);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+    }
+
+    .calory-link-azul:hover i {
+      transform: translateX(5px);
+    }
+
+    .calory-link-azul::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      right: -20px;
+      bottom: -20px;
+      background: radial-gradient(circle, rgba(255,255,255,0.8) 0, rgba(255,255,255,0) 70%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .calory-link-azul:hover::before {
+      opacity: 0.4;
+    }
+
+    .calory-link-azul-mobile {
+      background: linear-gradient(135deg, #007bff, #00bfff);
+      color: white !important;
+      padding: 15px 25px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 280px;
+      margin: 15px auto;
+      box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .calory-link-azul-mobile i {
+      margin-right: 10px;
+    }
+
+    .calory-link-azul-mobile:hover {
+      background: linear-gradient(135deg, #0069d9, #0095ff);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+    }
+
+    /* Banner Carousel */
+    .calory-banner-carousel {
+      position: relative;
+      height: 85vh;
+      width: 100%;
+      margin-top: 0;
+      overflow: hidden;
+    }
+
+    .calory-banner-track {
+      display: flex;
+      height: 100%;
+      transition: transform 0.5s ease;
+    }
+
+    .calory-banner-slide {
+      min-width: 100%;
+      position: relative;
+    }
+
+    .calory-banner-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .calory-banner-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.15), rgba(22,98,184,0.3));
+      z-index: 1;
+    }
+
+    .calory-banner-overlay1 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.35), rgba(184,146,22,0.3));
+      z-index: 1;
+    }
+
+    .calory-banner-overlay2 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.15), rgba(40,167,69,0.3));
+      z-index: 1;
+    }
+
+    .calory-banner-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      padding: 0 20px;
+      z-index: 2;
+    }
+
+    .calory-banner-content h1 {
+      font-size: 3.1rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #fff;
+      text-shadow: 0 2px 4px rgba(158,158,158,0.6);
+      line-height: 1.2;
+    }
+
+    .calory-banner-content p {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 30px;
+      max-width: 800px;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+
+    /* Botões CTA Melhorados */
+    .calory-cta-button {
+      display: inline-flex;
+      align-items: center;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: white !important;
+      text-decoration: none;
+      margin-top: 1%;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .calory-cta-button1 {
+      display: inline-flex;
+      align-items: center;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: white !important;
+      text-decoration: none;
+      margin-top: 13%;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .calory-cta-button i {
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+
+    .calory-cta-button1 i {
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+    
+
+    .calory-cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+
+    .calory-cta-button1:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+
+    .calory-cta-button::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: rgba(255,255,255,0.1);
+      transform: rotate(45deg);
+      transition: all 0.3s ease;
+    }
+
+    .calory-cta-button1::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: rgba(255,255,255,0.1);
+      transform: rotate(45deg);
+      transition: all 0.3s ease;
+    }
+
+    .calory-cta-button:hover::after {
+      left: 100%;
+    }
+
+    .calory-cta-button1:hover::after {
+      left: 100%;
+    }
+
+    /* Formulário de Orçamento - Modificado para iniciar minimizado */
+    .calory-form-section {
+      background: #f8f9fa;
+      padding: 20px 5%;
+      text-align: center;
+      transition: all 0.3s ease;
+      max-height: 100px;
+      overflow: hidden;
+    }
+
+    .calory-form-section.expanded {
+      max-height: 1000px;
+      padding: 60px 5%;
+    }
+
+    .calory-form-toggle {
+      background: linear-gradient(135deg, #007bff, #00bfff);
+      color: white;
+      border: none;
+      padding: 10px 80px;
+      font-size: 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      margin: 10px auto;
+      display: block;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,123,255,0.2);
+    }
+
+    .calory-form-toggle:hover {
+      background: linear-gradient(135deg, #0069d9, #0095ff);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0,123,255,0.3);
+    }
+
+    .calory-form-toggle i {
+      margin-left: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .calory-form-section.expanded .calory-form-toggle i {
+      transform: rotate(180deg);
+    }
+
+    .form-container {
+      max-width: 600px;
+      margin: 20px auto 0;
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .calory-form-section.expanded .form-container {
+      opacity: 1;
+    }
+
+    .calory-form-section h2 {
+      color: #007bff;
+      margin-bottom: 15px;
+      font-size: 2rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .calory-form-section.expanded h2 {
+      opacity: 1;
+    }
+
+    .calory-form-section p {
+      color: #666;
+      margin-bottom: 30px;
+      font-size: 1.1rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .calory-form-section.expanded p {
+      opacity: 1;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+    }
+
+    .calory-form-button {
+      background: linear-gradient(135deg, #007bff, #00bfff);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .calory-form-button:hover {
+      background: linear-gradient(135deg, #0069d9, #0095ff);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,123,255,0.3);
+    }
+
+    /* Seção de Segmentos */
+    .calory-segmentos-section {
+      padding: 60px 0;
+      text-align: center;
+    }
+
+    .calory-segmentos-section h2 {
+      font-size: 2rem;
+      color: #007bff;
+      margin-bottom: 40px;
+    }
+
+    .calory-segmentos-container {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      overflow: hidden;
+      padding: 0 50px;
+    }
+
+    .calory-segmentos-carousel {
+      position: relative;
+      width: 100%;
+    }
+
+    .calory-segmentos-track {
+      display: flex;
+      transition: transform 0.5s ease;
+      padding: 20px 0;
+      gap: 20px;
+      width: max-content;
+    }
+
+    .calory-segmento-card {
+      min-width: 300px;
+      max-width: 300px;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .calory-segmento-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    }
+
+    .calory-segmento-img {
+      height: 160px;
+      width: auto;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .calory-segmento-img::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: #007bff;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .calory-segmento-card:hover .calory-segmento-img::after {
+      transform: scaleX(1);
+    }
+
+    .calory-segmento-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .calory-segmento-card:hover .calory-segmento-img img {
+      transform: scale(1.05);
+    }
+
+    .calory-segmento-content {
+      padding: 25px;
+    }
+
+    .calory-segmento-content h3 {
+      color: #007bff;
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      text-decoration: none !important;
+    }
+
+    .calory-segmento-content p {
+      color: #666;
+      text-decoration: none !important;
+    }
+
+    /* Seções de Benefícios */
+    .por-que-escolher {
+      padding: 50px 10%;
+      background-color: #fff;
+      text-align: center;
+      margin: 60px 0;
+    }
+
+    .por-que-escolher h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+
+    .por-que-container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .por-que-item {
+      max-width: 250px;
+    }
+
+    .por-que-item img {
+      width: 50px;
+      margin-bottom: 10px;
+    }
+
+    .por-que-item h3 {
+      color: #29a8ff;
+      margin-bottom: 5px;
+    }
+
+    .como-funciona {
+      padding: 50px 10%;
+      background: #fff;
+      text-align: center;
+      margin: 60px 0;
+    }
+
+    .como-funciona h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+
+    .como-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    .como-item {
+      max-width: 200px;
+    }
+
+    .como-item img {
+      width: 40px;
+      margin-bottom: 10px;
+    }
+
+    .como-item h4 {
+      margin-bottom: 8px;
+      color: #29a8ff;
+    }
+
+    /* Botão do WhatsApp */
+    .calory-whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1000;
+    }
+
+    .calory-whatsapp-float a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .calory-whatsapp-float .calory-whatsapp-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #25d366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+      box-shadow: 0 4px 15px rgba(37,211,102,0.3);
+    }
+
+    .calory-whatsapp-float .calory-whatsapp-icon img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .calory-whatsapp-float:hover .calory-whatsapp-icon {
+      transform: scale(1.1);
+    }
+
+    /* Footer */
+    .calory-footer {
+      background-color: #2c3e50;
+      color: #fff;
+      padding: 60px 5% 30px;
+      font-size: 0.9rem;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+    }
+
+    .footer-logo img {
+      height: 50px;
+      margin-bottom: 20px;
+    }
+
+    .footer-logo p {
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .footer-links h3 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: #ecf0f1;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #007bff;
+    }
+
+    .footer-social h3 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .footer-social .social-icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .footer-social .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      color: #fff;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+
+    .footer-social .social-icons a:hover {
+      background: #007bff;
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      margin-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Responsividade */
+    @media (max-width: 1199.98px) {
+      .calory-banner-content h1 {
+        font-size: 2.5rem;
+      }
+      
+      .calory-banner-content p {
+        font-size: 1.3rem;
+      }
+      
+      .calory-cta-button {
+        padding: 12px 25px;
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 899.98px) {
+  .calory-desktop-only {
+    display: none !important;
+  }
+  
+  .calory-mobile-only {
+    display: inline-block !important;
+  }
+  
+  body {
+    padding-top: 70px;
+  }
+  
+  .calory-header {
+    padding: 10px 5%;
+  }
+  
+  .calory-menu-toggle {
+    display: flex;
+  }
+  
+  .calory-nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background-color: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    flex-direction: column;
+    padding: 80px 30px 30px;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    transition: right 0.3s ease;
+  }
+  
+  .calory-nav-links.active {
+    right: 0;
+  }
+  
+  .calory-nav-links a {
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    width: 100%;
+  }
+  
+  .calory-nav-links a:not(:last-child) {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  
+  .calory-banner-carousel {
+    height: 60vh;
+  }
+  
+  .calory-banner-content h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+  
+  .calory-banner-content p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+  
+  .calory-cta-button {
+    padding: 12px 25px;
+    font-size: 1rem;
+    margin-top: 30% !important;
+    z-index: 3;
+    position: relative;
+  }
+
+  .calory-cta-button1 {
+    padding: 12px 25px;
+    font-size: 1rem;
+    margin-top: 30% !important;
+    z-index: 3;
+    position: relative;
+  }
+  
+  .calory-carousel-arrow {
+    z-index: 2;
+  }
+  
+  .calory-form-section h2 {
+    font-size: 1.8rem;
+  }
+  
+  .form-container {
+    padding: 25px 20px;
+  }
+  
+  .calory-segmentos-container {
+    padding: 0 30px;
+  }
+  
+  .calory-segmento-card {
+    min-width: 260px;
+  }
+}
+
+    @media (max-width: 767.98px) {
+      .calory-desktop-only {
+        display: none !important;
+      }
+      
+      .calory-mobile-only {
+        display: inline-block !important;
+      }
+      
+      body {
+        padding-top: 70px;
+      }
+      
+      .calory-header {
+        padding: 10px 5%;
+      }
+      
+      .calory-menu-toggle {
+        display: flex;
+      }
+      
+      .calory-nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background-color: rgba(255,255,255,0.95);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        flex-direction: column;
+        padding: 80px 30px 30px;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        transition: right 0.3s ease;
+      }
+      
+      .calory-nav-links.active {
+        right: 0;
+      }
+      
+      .calory-nav-links a {
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        width: 100%;
+      }
+      
+      .calory-nav-links a:not(:last-child) {
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+      }
+      
+      .calory-banner-carousel {
+        height: 60vh;
+      }
+      
+      .calory-banner-content h1 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+      }
+      
+      .calory-banner-content p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+      }
+      
+      .calory-cta-button {
+        padding: 10px 20px;
+        font-size: 1rem;
+      }
+
+      .calory-cta-button1 {
+        padding: 16px 16px;
+        margin-top: 35% !important;
+        font-size: 0.9rem;
+      }
+      
+      .calory-form-section h2 {
+        font-size: 1.8rem;
+      }
+      
+      .form-container {
+        padding: 25px 20px;
+      }
+      
+      .calory-segmentos-container {
+        padding: 0 30px;
+      }
+      
+      .calory-segmento-card {
+        min-width: 260px;
+      }
+    }
+
+    @media (max-width: 575.98px) {
+      .calory-banner-carousel {
+        height: 55vh;
+      }
+      
+      .calory-banner-content h1 {
+        font-size: 1.6rem;
+      }
+      
+      .calory-nav-links {
+        width: 250px;
+      }
+      
+      .calory-segmentos-container {
+        padding: 0 20px;
+      }
+      
+      .calory-segmento-card {
+        min-width: 240px;
+      }
+      
+      .por-que-container, .como-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+      }
+      
+      .por-que-item, .como-item {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 414px) {
+      .calory-banner-carousel {
+        height: 50vh;
+      }
+      
+      .calory-banner-content h1 {
+        font-size: 1.5rem;
+      }
+      
+      .calory-cta-button {
+        padding: 8px 16px;
+        margin-top: 35% !important;
+        font-size: 0.9rem;
+      }
+
+      .calory-cta-button1 {
+        padding: 16px 16px;
+        margin-top: 35% !important;
+        font-size: 0.9rem;
+      }
+      
+      .calory-whatsapp-float .calory-whatsapp-icon {
+        width: 50px;
+        height: 50px;
+      }
+      
+      .calory-whatsapp-float .calory-whatsapp-icon img {
+        width: 25px;
+        height: 25px;
+      }
+    }
+
+    @media (max-width: 320px) {
+      .calory-banner-carousel {
+        height: 45vh;
+      }
+      
+      .calory-banner-content h1 {
+        font-size: 1.4rem;
+      }
+      
+      .calory-cta-button {
+        padding: 7px 14px;
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (max-height: 500px) and (orientation: landscape) {
+      .calory-banner-carousel {
+        height: 100vh;
+      }
+      
+      .calory-banner-content h1 {
+        font-size: 2rem;
+        margin-bottom: 5%;
+      }
+      
+      .calory-banner-content p {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
 </head>
-
-<style>
-  *{
-margin:0;
-padding:0;
-box-sizing:border-box
-}
-
-body{
-font-family:'Poppins',sans-serif;
-background-color:#f9f9f9;
-color:#333;
-line-height:1.6;
-scroll-behavior:smooth;
-padding-top:80px
-}
-
-.calory-header{
-width:100%;
-padding:15px 5%;
-background:rgba(255,255,255,.85);
-backdrop-filter:blur(12px);
--webkit-backdrop-filter:blur(12px);
-box-shadow:0 4px 30px rgba(0,0,0,.1);
-position:fixed;
-top:0;
-left:0;
-z-index:1000;
-transition:all .3s ease;
-border-bottom:1px solid rgba(255,255,255,.3)
-}
-
-.calory-header.scrolled{
-padding:10px 5%;
-background:rgba(255,255,255,.95);
-box-shadow:0 4px 20px rgba(0,0,0,.1)
-}
-
-.header-container{
-max-width:1200px;
-margin:0 auto;
-display:flex;
-justify-content:space-between;
-align-items:center
-}
-
-.calory-logo{
-display:flex;
-align-items:center
-}
-
-.calory-logo img{
-height:50px;
-transition:height .3s ease
-}
-
-.calory-header.scrolled .calory-logo img{
-height:40px
-}
-
-.logo-text{
-margin-left:10px;
-font-size:1.5rem;
-font-weight:700;
-color:#007bff;
-display:none
-}
-
-@media (min-width:768px){
-.logo-text{
-display:block
-}
-}
-
-.calory-menu-toggle{
-display:none;
-width:30px;
-height:25px;
-position:relative;
-cursor:pointer;
-z-index:1001;
-background:0 0;
-border:none;
-padding:0
-}
-
-.calory-menu-toggle span{
-display:block;
-position:absolute;
-height:3px;
-width:100%;
-background:#007bff;
-border-radius:3px;
-opacity:1;
-left:0;
-transform:rotate(0);
-transition:.25s ease-in-out
-}
-
-.calory-menu-toggle span:nth-child(1){
-top:0
-}
-
-.calory-menu-toggle span:nth-child(2),.calory-menu-toggle span:nth-child(3){
-top:10px
-}
-
-.calory-menu-toggle span:nth-child(4){
-top:20px
-}
-
-.calory-menu-toggle.active span:nth-child(1){
-top:10px;
-width:0;
-left:50%
-}
-
-.calory-menu-toggle.active span:nth-child(2){
-transform:rotate(45deg)
-}
-
-.calory-menu-toggle.active span:nth-child(3){
-transform:rotate(-45deg)
-}
-
-.calory-menu-toggle.active span:nth-child(4){
-top:10px;
-width:0;
-left:50%
-}
-
-.calory-nav-links{
-display:flex;
-align-items:center;
-gap:1.5rem
-}
-
-.calory-nav-links a{
-font-weight:600;
-color:#333;
-text-decoration:none;
-font-size:1rem;
-position:relative;
-padding:8px 0;
-transition:color .3s ease
-}
-
-.calory-nav-links a:not(.calory-link-azul):hover{
-color:#007bff
-}
-
-.calory-nav-links a:not(.calory-link-azul)::after{
-content:'';
-position:absolute;
-width:0;
-height:2px;
-bottom:0;
-left:0;
-background-color:#007bff;
-transition:width .3s ease
-}
-
-.calory-link-azul{
-background-color:#007bff;
-color:#fff!important;
-padding:.625rem 1.375rem;
-border-radius:.3rem;
-font-weight:700;
-text-decoration:none;
-font-size:1rem;
-transition:background .3s ease;
-display:inline-block
-}
-
-.calory-link-azul:hover{
-background-color:#0056b3;
-transform:scale(1.02);
-color:#fff!important
-}
-
-.calory-link-azul1{
-background-color:#007bff;
-color:#fff!important;
-padding:1.625rem 1.975rem;
-border-radius:.3rem;
-margin-top:13%;
-font-weight:700;
-text-decoration:none;
-font-size:1.6rem;
-transition:background .3s ease;
-display:inline-block
-}
-
-.calory-link-azul1:hover{
-background-color:#0056b3;
-transform:scale(1.02);
-color:#fff!important
-}
-
-.calory-link-azul2{
-background-color:#ff8c00;
-color:#fff!important;
-padding:1.625rem 1.975rem;
-border-radius:.3rem;
-font-weight:700;
-text-decoration:none;
-font-size:1.6rem;
-transition:background .3s ease;
-display:inline-block
-}
-
-.calory-link-azul2:hover{
-background-color:#e67e00;
-transform:scale(1.02);
-color:#fff!important
-}
-
-.calory-link-azul3{
-background-color:#28a745;
-color:#fff!important;
-padding:1.625rem 1.975rem;
-border-radius:.3rem;
-font-weight:700;
-text-decoration:none;
-font-size:1.6rem;
-transition:background .3s ease;
-display:inline-block
-}
-
-.calory-link-azul3:hover{
-background-color:#218838;
-transform:scale(1.02);
-color:#fff!important
-}
-
-.calory-nav-links a:not(.calory-link-azul):hover::after{
-width:100%
-}
-
-.calory-link-azul{
-background:linear-gradient(135deg,#007bff,#00bfff);
-color:#fff!important;
-padding:12px 25px;
-border-radius:50px;
-font-weight:600;
-text-decoration:none;
-display:inline-flex;
-align-items:center;
-transition:all .3s ease;
-box-shadow:0 4px 15px rgba(0,123,255,.3);
-position:relative;
-overflow:hidden
-}
-
-.calory-link-azul i{
-margin-right:10px;
-transition:transform .3s ease
-}
-
-.calory-link-azul:hover{
-background:linear-gradient(135deg,#0069d9,#0095ff);
-transform:translateY(-2px);
-box-shadow:0 6px 20px rgba(0,123,255,.4)
-}
-
-.calory-link-azul:hover i{
-transform:translateX(5px)
-}
-
-.calory-link-azul::before{
-content:'';
-position:absolute;
-top:-20px;
-left:-20px;
-right:-20px;
-bottom:-20px;
-background:radial-gradient(circle,rgba(255,255,255,.8) 0,rgba(255,255,255,0) 70%);
-opacity:0;
-transition:opacity .3s ease
-}
-
-.calory-link-azul:hover::before{
-opacity:.4
-}
-
-.calory-link-azul-mobile{
-background:linear-gradient(135deg,#007bff,#00bfff);
-color:#fff!important;
-padding:15px 25px;
-border-radius:50px;
-font-weight:600;
-text-decoration:none;
-display:flex;
-align-items:center;
-justify-content:center;
-width:100%;
-max-width:280px;
-margin:15px auto;
-box-shadow:0 4px 15px rgba(0,123,255,.3);
-transition:all .3s ease
-}
-
-.calory-link-azul-mobile i{
-margin-right:10px
-}
-
-.calory-link-azul-mobile:hover{
-background:linear-gradient(135deg,#0069d9,#0095ff);
-transform:translateY(-2px);
-box-shadow:0 6px 20px rgba(0,123,255,.4)
-}
-
-.calory-banner-carousel{
-position:relative;
-height:85vh;
-width:100%;
-margin-top:0;
-overflow:hidden
-}
-
-.calory-banner-track{
-display:flex;
-height:100%;
-transition:transform .5s ease
-}
-
-.calory-banner-slide{
-min-width:100%;
-position:relative
-}
-
-.calory-banner-slide img{
-width:100%;
-height:100%;
-object-fit:cover
-}
-
-.calory-banner-overlay{
-position:absolute;
-top:0;
-left:0;
-right:0;
-bottom:0;
-background:linear-gradient(to bottom,rgba(255,255,255,.15),rgba(22,98,184,.3));
-z-index:1
-}
-
-.calory-banner-overlay1{
-position:absolute;
-top:0;
-left:0;
-right:0;
-bottom:0;
-background:linear-gradient(to bottom,rgba(255,255,255,.35),rgba(184,146,22,.3));
-z-index:1
-}
-
-.calory-banner-overlay2{
-position:absolute;
-top:0;
-left:0;
-right:0;
-bottom:0;
-background:linear-gradient(to bottom,rgba(255,255,255,.15),rgba(40,167,69,.3));
-z-index:1
-}
-
-.calory-banner-overlay2 h1{
-color:#8ffca7;
-font-size:6.5rem;
-margin-bottom:14%
-}
-
-.calory-banner-content{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-color:#fff;
-padding:0 20px;
-z-index:2
-}
-
-.calory-banner-content h1{
-font-size:3.1rem;
-font-weight:700;
-margin-bottom:5%;
-color:#fff;
-text-shadow:0 2px 4px rgba(158,158,158,.6);
-line-height:1.2
-}
-
-.calory-csbar-content h1{
-font-size:3.4rem;
-font-weight:700;
-margin-bottom:5px;
-color:#ff8c00;
-text-shadow:0 2px 4px rgba(158,158,158,.6);
-line-height:1.2
-}
-
-.calory-csemite-content h1{
-font-size:3.4rem;
-font-weight:700;
-margin-bottom:10%;
-color:#ff8c00;
-text-shadow:0 2px 4px rgba(158,158,158,.6);
-line-height:1.2
-}
-
-.calory-banner-content h2{
-font-size:2rem!important;
-font-weight:700;
-margin-bottom:5px;
-text-shadow:0 2px 4px rgba(0,0,0,.6);
-line-height:1.2
-}
-
-.calory-banner-content span{
-font-size:1.4rem!important;
-font-weight:500;
-margin-bottom:10px;
-line-height:1.2;
-color:#f1f1f1
-}
-
-.calory-banner-content p{
-font-size:1.9rem;
-font-weight:500;
-max-width:800px;
-margin-bottom:30px
-}
-
-.calory-banner-nav{
-position:absolute;
-bottom:30px;
-left:50%;
-transform:translateX(-50%);
-display:flex;
-gap:10px;
-z-index:3
-}
-
-.calory-banner-dot{
-width:12px;
-height:12px;
-border-radius:50%;
-background-color:rgba(255,255,255,.5);
-cursor:pointer;
-transition:background-color .3s ease
-}
-
-.calory-banner-dot.active{
-background-color:#fff
-}
-
-.calory-arrow{
-position:absolute;
-bottom:10%;
-left:50%;
-margin-left:-20px;
-width:38px;
-height:55px;
-border:2px solid #f1f1f1;
-border-radius:25px;
-cursor:pointer;
-z-index:3;
-animation:calory-bounce 2s infinite;
-display:flex;
-justify-content:center;
-align-items:flex-start;
-padding-top:10px
-}
-
-.calory-arrow::after{
-content:'';
-display:block;
-width:12px;
-height:12px;
-border-bottom:3px solid #f3f3f3;
-border-right:3px solid #f3f3f3;
-transform:rotate(45deg);
-margin-top:6px
-}
-
-@keyframes calory-bounce{
-0%,20%,50%,80%,100%{
-transform:translateY(0)
-}
-40%{
-transform:translateY(10px)
-}
-60%{
-transform:translateY(5px)
-}
-}
-
-.calory-carousel-arrow{
-position:absolute;
-top:50%;
-transform:translateY(-50%);
-width:40px;
-height:40px;
-background-color:rgba(255,255,255,.7);
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-cursor:pointer;
-z-index:10;
-transition:all .3s ease;
-border:none;
-color:#007bff;
-font-size:1.2rem
-}
-
-.calory-carousel-arrow:hover{
-background-color:rgba(255,255,255,.9);
-transform:translateY(-50%) scale(1.1)
-}
-
-.calory-carousel-arrow.left{
-left:15px
-}
-
-.calory-carousel-arrow.right{
-right:15px
-}
-
-.calory-banner-arrow{
-background-color:rgba(0,0,0,.5);
-color:#fff
-}
-
-.calory-banner-arrow:hover{
-background-color:rgba(0,0,0,.7)
-}
-
-.calory-main{
-max-width:1200px;
-margin:60px auto;
-padding:0 20px 40px
-}
-
-.calory-segmentos-section{
-padding:60px 0;
-text-align:center
-}
-
-.calory-segmentos-section h2{
-font-size:2rem;
-color:#007bff;
-margin-bottom:40px
-}
-
-.calory-segmentos-container{
-position:relative;
-max-width:1200px;
-margin:0 auto;
-overflow:hidden;
-padding:0 50px
-}
-
-.calory-segmentos-carousel{
-position:relative;
-width:100%
-}
-
-.calory-segmentos-track{
-display:flex;
-transition:transform .5s ease;
-padding:20px 0;
-gap:20px;
-width:max-content
-}
-
-.calory-segmento-card{
-min-width:300px;
-max-width:300px;
-background:#fff;
-border-radius:12px;
-overflow:hidden;
-text-decoration:none;
-box-shadow:0 5px 15px rgba(0,0,0,.08);
-transition:transform .3s ease,box-shadow .3s ease;
-flex-shrink:0
-}
-
-.calory-carousel-arrow{
-position:absolute;
-top:50%;
-transform:translateY(-50%);
-width:40px;
-height:40px;
-background-color:rgba(255,255,255,.9);
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-cursor:pointer;
-z-index:10;
-transition:all .3s ease;
-border:none;
-color:#007bff;
-font-size:1.2rem;
-box-shadow:0 2px 5px rgba(0,0,0,.2)
-}
-
-.calory-carousel-arrow:hover{
-background-color:#fff;
-transform:translateY(-50%) scale(1.1)
-}
-
-.calory-carousel-arrow.left{
-left:0
-}
-
-.calory-carousel-arrow.right{
-right:0
-}
-
-.calory-carousel-arrow1{
-position:absolute;
-top:50%;
-transform:translateY(-50%);
-width:40px;
-height:40px;
-background-color:rgba(255,255,255,.9);
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-cursor:pointer;
-z-index:10;
-transition:all .3s ease;
-border:none;
-color:#007bff;
-font-size:1.2rem;
-box-shadow:0 2px 5px rgba(0,0,0,.2)
-}
-
-.calory-carousel-arrow1:hover{
-background-color:#fff;
-transform:translateY(-50%) scale(1.1)
-}
-
-.calory-carousel-arrow1.left{
-left:0
-}
-
-.calory-carousel-arrow1.right{
-right:0
-}
-
-.calory-segmento-card:hover{
-transform:translateY(-5px);
-box-shadow:0 10px 25px rgba(0,0,0,.12)
-}
-
-.calory-segmento-img{
-height:160px;
-width:auto;
-overflow:hidden;
-position:relative
-}
-
-.calory-segmento-img::after{
-content:'';
-position:absolute;
-bottom:0;
-left:0;
-right:0;
-height:3px;
-background-color:#007bff;
-transform:scaleX(0);
-transition:transform .3s ease
-}
-
-.calory-segmento-card:hover .calory-segmento-img::after{
-transform:scaleX(1)
-}
-
-.calory-segmento-img img{
-width:100%;
-height:100%;
-object-fit:cover;
-transition:transform .5s ease
-}
-
-.calory-segmento-card:hover .calory-segmento-img img{
-transform:scale(1.05)
-}
-
-.calory-segmento-content{
-padding:25px
-}
-
-.calory-segmento-content h3{
-color:#007bff;
-font-size:1.4rem;
-margin-bottom:10px;
-text-decoration:none!important
-}
-
-.calory-segmento-content p{
-color:#666;
-text-decoration:none!important
-}
-
-.por-que-escolher{
-padding:50px 10%;
-background-color:#fff;
-text-align:center;
-margin:60px 0
-}
-
-.por-que-escolher h2{
-font-size:2rem;
-margin-bottom:30px
-}
-
-.por-que-container{
-display:flex;
-justify-content:center;
-gap:40px;
-flex-wrap:wrap
-}
-
-.por-que-item{
-max-width:250px
-}
-
-.por-que-item img{
-width:50px;
-margin-bottom:10px
-}
-
-.por-que-item h3{
-color:#29a8ff;
-margin-bottom:5px
-}
-
-.como-funciona{
-padding:50px 10%;
-background:#fff;
-text-align:center;
-margin:60px 0
-}
-
-.como-funciona h2{
-font-size:2rem;
-margin-bottom:30px
-}
-
-.como-container{
-display:flex;
-justify-content:space-around;
-flex-wrap:wrap
-}
-
-.como-item{
-max-width:200px
-}
-
-.como-item img{
-width:40px;
-margin-bottom:10px
-}
-
-.como-item h4{
-margin-bottom:8px;
-color:#29a8ff
-}
-
-.calory-whatsapp-float{
-position:fixed;
-bottom:30px;
-right:30px;
-z-index:1000
-}
-
-.calory-whatsapp-float a{
-display:flex;
-align-items:center;
-gap:8px;
-text-decoration:none
-}
-
-.calory-whatsapp-float .calory-whatsapp-icon{
-width:60px;
-height:60px;
-border-radius:50%;
-background-color:#25d366;
-display:flex;
-align-items:center;
-justify-content:center;
-transition:transform .3s ease;
-box-shadow:0 4px 15px rgba(37,211,102,.3)
-}
-
-.calory-whatsapp-float .calory-whatsapp-icon img{
-width:30px;
-height:30px
-}
-
-.calory-whatsapp-float:hover .calory-whatsapp-icon{
-transform:scale(1.1)
-}
-
-.calory-footer{
-background-color:#2c3e50;
-color:#fff;
-padding:60px 5% 30px;
-font-size:.9rem
-}
-
-.footer-container{
-max-width:1200px;
-margin:0 auto;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:30px
-}
-
-.footer-logo img{
-height:50px;
-margin-bottom:20px
-}
-
-.footer-logo p{
-margin-bottom:20px;
-line-height:1.6
-}
-
-.footer-links h3{
-font-size:1.2rem;
-margin-bottom:20px;
-color:#fff
-}
-
-.footer-links ul{
-list-style:none
-}
-
-.footer-links li{
-margin-bottom:10px
-}
-
-.footer-links a{
-color:#ecf0f1;
-text-decoration:none;
-transition:color .3s ease
-}
-
-.footer-links a:hover{
-color:#007bff
-}
-
-.footer-social h3{
-font-size:1.2rem;
-margin-bottom:20px;
-color:#fff
-}
-
-.footer-social .social-icons{
-display:flex;
-gap:15px
-}
-
-.footer-social .social-icons a{
-display:flex;
-align-items:center;
-justify-content:center;
-width:40px;
-height:40px;
-background:rgba(255,255,255,.1);
-border-radius:50%;
-color:#fff;
-font-size:1.1rem;
-transition:all .3s ease
-}
-
-.footer-social .social-icons a:hover{
-background:#007bff;
-transform:translateY(-3px)
-}
-
-.footer-bottom{
-text-align:center;
-padding-top:30px;
-margin-top:30px;
-border-top:1px solid rgba(255,255,255,.1)
-}
-
-.calory-mobile-only{
-display:none!important
-}
-
-.calory-desktop-only{
-display:inline-block!important
-}
-
-@media (min-width:900px){
-.calory-banner-slide:nth-child(1) .calory-banner-content{
-padding-top:8%
-}
-.calory-banner-slide:nth-child(2) .calory-banner-content{
-padding-top:20%
-}
-.calory-banner-slide:nth-child(3) .calory-banner-content{
-padding-top:20%
-}
-}
-
-@media (max-width:1199.98px){
-.calory-header{
-padding:15px 5%
-}
-.calory-banner-content h1{
-font-size:3rem
-}
-}
-
-@media (max-width:991.98px){
-.calory-banner-content h1{
-font-size:2.5rem
-}
-.calory-link-azul1,.calory-link-azul2,.calory-link-azul3{
-padding:.8rem 1.5rem;
-font-size:1.1rem
-}
-}
-
-@media (max-width:899.98px){
-.calory-desktop-only{
-display:none!important
-}
-.calory-mobile-only{
-display:inline-block!important
-}
-body{
-padding-top:70px
-}
-.calory-header{
-padding:10px 5%
-}
-.calory-menu-toggle{
-display:flex
-}
-.calory-nav-links{
-position:fixed;
-top:0;
-right:-100%;
-width:280px;
-height:100vh;
-background-color:rgba(255,255,255,.95);
-backdrop-filter:blur(12px);
--webkit-backdrop-filter:blur(12px);
-flex-direction:column;
-padding:80px 30px 30px;
-box-shadow:-5px 0 15px rgba(0,0,0,.1);
-transition:right .3s ease
-}
-.calory-nav-links.active{
-right:0
-}
-.calory-nav-links a{
-padding:15px 0;
-border-bottom:1px solid rgba(0,0,0,.1);
-width:100%
-}
-.calory-nav-links a:not(:last-child){
-border-bottom:1px solid rgba(0,0,0,.1)
-}
-.calory-banner-carousel{
-height:70vh
-}
-.calory-banner-content h1{
-font-size:2.5rem;
-margin-bottom:15%
-}
-.calory-link-azul1,.calory-link-azul2,.calory-link-azul3{
-margin-top:25%
-}
-}
-
-@media (max-width:767.98px){
-.calory-banner-carousel{
-height:60vh
-}
-.calory-banner-slide img{
-width:100%;
-height:100%;
-object-fit:cover;
-object-position:center
-}
-.calory-banner-slide:nth-child(1) img{
-content:url('banner/CSEMPMB.svg')
-}
-.calory-banner-slide:nth-child(2) img{
-content:url('banner/CSBARMB.jpg')
-}
-.calory-banner-slide:nth-child(3) img{
-content:url('banner/CSEMITEMB.jpg')
-}
-.calory-banner-content h1{
-font-size:2rem;
-margin-bottom:10%
-}
-.calory-link-azul1,.calory-link-azul2,.calory-link-azul3{
-padding:.8rem 1.5rem;
-font-size:1rem;
-margin-top:40%
-}
-.calory-carousel-arrow{
-width:40px;
-height:40px;
-font-size:1.2rem
-}
-}
-
-@media (max-width:575.98px){
-.calory-banner-carousel{
-height:55vh
-}
-.calory-banner-content h1{
-font-size:1.8rem;
-margin-bottom:8%
-}
-.calory-link-azul1,.calory-link-azul2,.calory-link-azul3{
-padding:.7rem 1.3rem;
-font-size:.9rem;
-margin-top:23%
-}
-.calory-nav-links{
-width:250px
-}
-}
-
-@media (max-width:414px){
-.calory-banner-carousel{
-height:50vh
-}
-.calory-banner-content h1{
-font-size:1.6rem
-}
-.calory-link-azul1,.calory-link-azul2,.calory-link-azul3{
-margin-top:42%
-}
-}
-
-@media (max-width:320px){
-.calory-banner-carousel{
-height:45vh
-}
-.calory-banner-content h1{
-font-size:1.4rem
-}
-.calory-link-azul1,.calory-link-azul2,.calory-link-azul3{
-padding:.6rem 1rem;
-font-size:.8rem;
-margin-top:55%
-}
-}
-
-@media (max-height:500px) and (orientation:landscape){
-.calory-banner-carousel{
-height:100vh
-}
-.calory-banner-content h1{
-font-size:2rem;
-margin-bottom:5%
-}
-.calory-link-azul1,.calory-link-azul2,.calory-link-azul3{
-margin-top:5%
-}
-}
-</style>
 
 <body>
   <header class="calory-header">
@@ -1151,171 +1178,229 @@ margin-top:5%
   </header>
 
   <!-- Banner Carousel -->
-  <!-- Corrigindo o fechamento das tags no Banner Carousel -->
-<div class="calory-banner-carousel">
-  <button class="calory-carousel-arrow left" onclick="prevBannerSlide()">❮</button>
-  <button class="calory-carousel-arrow right" onclick="nextBannerSlide()">❯</button>
-  
-  <div class="calory-banner-track" id="bannerTrack">
-    <!-- Slide 1 - CSEMP -->
-    <div class="calory-banner-slide">
-      <picture>
-        <source media="(max-width: 767px)" srcset="banner/CSEMPMB.svg">
-        <img src="banner/BANNERCSEMP.svg" alt="Sistema para Mercados">
-      </picture>
-      <div class="calory-banner-overlay"></div>
-      <div class="calory-banner-content">
-        <a href="#calory-segmentos-section" class="calory-link-azul1" style="text-decoration: none;">Conheça os recursos</a>
+  <div class="calory-banner-carousel">
+    <button class="calory-carousel-arrow left" onclick="prevBannerSlide()">❮</button>
+    <button class="calory-carousel-arrow right" onclick="nextBannerSlide()">❯</button>
+    
+    <div class="calory-banner-track" id="bannerTrack">
+      <!-- Slide 1 - CSEMP -->
+      <div class="calory-banner-slide">
+        <picture>
+          <source media="(max-width: 767px)" srcset="banner/CSEMPMB.svg">
+          <img src="banner/BANNERCSEMP.svg" alt="Sistema para Mercados">
+        </picture>
+        <div class="calory-banner-overlay"></div>
+        <div class="calory-banner-content">
+          <a href="#form-orcamento" class="calory-cta-button1" style="background-color: #007bff;" onclick="expandFormSection()">
+            <i class="fas fa-chart-line"></i> SOLICITE SEU ORÇAMENTO
+          </a>
+        </div>
+      </div>
+      
+      <!-- Slide 2 - CSBAR -->
+      <div class="calory-banner-slide">
+        <picture>
+          <source media="(max-width: 767px)" srcset="banner/CSBARMB.jpg">
+          <img src="banner/Design sem nome (25).png" alt="Sistema para Restaurantes">
+        </picture>
+        <div class="calory-banner-overlay1"></div>
+        <div class="calory-banner-content">
+          <a href="#form-orcamento" class="calory-cta-button" style="background-color: #ff8c00;" onclick="expandFormSection()">
+            <i class="fas fa-utensils"></i> SAIBA MAIS
+          </a>
+        </div>
+      </div>
+      
+      <!-- Slide 3 - CSEMITE -->
+      <div class="calory-banner-slide">
+        <picture>
+          <source media="(max-width: 767px)" srcset="banner/CSEMITEMB.jpg">
+          <img src="banner/CSEMITEHOME.jpg" alt="Gestão Financeira">
+        </picture>
+        <div class="calory-banner-overlay2"></div>
+        <div class="calory-banner-content">
+          <a href="#form-orcamento" class="calory-cta-button" style="background-color: #28a745;" onclick="expandFormSection()">
+            <i class="fas fa-file-invoice-dollar"></i> FALE COM UM CONSULTOR
+          </a>
+        </div>
       </div>
     </div>
     
-    <!-- Slide 2 - CSBAR -->
-    <div class="calory-banner-slide">
-      <picture>
-  <source media="(max-width: 767px)" srcset="banner/CSBARMB.jpg">
-  <img src="banner/CSBARPRINCIPAL.webp" alt="Sistema para Restaurantes" 
-       onerror="console.error('Failed to load banner image', this.src)">
-</picture>
-      <div class="calory-banner-overlay1"></div>
-      <div class="calory-banner-content">
-        <a href="https://csbar.com.br/comece-agora" class="calory-link-azul2" style="text-decoration: none;">Teste Agora</a>
-      </div>
+    <div class="calory-banner-nav" id="bannerNav">
+      <div class="calory-banner-dot active" onclick="goToBannerSlide(0)"></div>
+      <div class="calory-banner-dot" onclick="goToBannerSlide(1)"></div>
+      <div class="calory-banner-dot" onclick="goToBannerSlide(2)"></div>
     </div>
     
-    <!-- Slide 3 - CSEMITE -->
-    <div class="calory-banner-slide">
-      <picture>
-        <source media="(max-width: 767px)" srcset="banner/CSEMITEMB.jpg">
-        <img src="banner/CSEMITEPRINCIPAL.svg" alt="Gestão Financeira">
-      </picture>
-      <div class="calory-banner-overlay2"></div>
-      <div class="calory-banner-content">
-        <a href="/csemite" class="calory-link-azul3" style="text-decoration: none;">Saiba Mais</a>
-      </div>
-    </div>
-  </div> <!-- Fechamento do calory-banner-track -->
-  
-  <div id="calory-segmentos-section" class="calory-banner-nav" id="bannerNav">
-    <div class="calory-banner-dot active" onclick="goToBannerSlide(0)"></div>
-    <div class="calory-banner-dot" onclick="goToBannerSlide(1)"></div>
-    <div class="calory-banner-dot" onclick="goToBannerSlide(2)"></div>
+    <div class="calory-arrow" onclick="document.getElementById('form-orcamento').scrollIntoView({ behavior: 'smooth' });"
+      tabindex="0" role="button" aria-label="Role para o conteúdo principal"></div>
   </div>
-  
-  <div class="calory-arrow" onclick="document.getElementById('features').scrollIntoView({ behavior: 'smooth' });"
-    tabindex="0" role="button" aria-label="Role para o conteúdo principal"></div>
-</div> <!-- Fechamento do calory-banner-carousel -->
-    <!-- Soluções para diversos ramos de atividade -->
-    <section class="calory-segmentos-section">
-      <h2>Soluções para diversos ramos de atividade</h2>
-      <div class="calory-segmentos-container">
-        <div class="calory-segmentos-carousel">
-          <button class="calory-carousel-arrow1 left" onclick="prevSegmento()">❮</button>
-          <button class="calory-carousel-arrow1 right" onclick="nextSegmento()">❯</button>
+
+  <!-- Formulário de Orçamento - Modificado para iniciar minimizado -->
+  <section id="form-orcamento" class="calory-form-section">
+    <button class="calory-form-toggle" onclick="toggleFormSection()">
+      Solicitar Orçamento <i class="fas fa-chevron-down"></i>
+    </button>
+    
+    <div class="form-container">
+      <h2>Receba seu orçamento personalizado</h2>
+      <p>Preencha os dados abaixo e nosso consultor entrará em contato em até 15 minutos</p>
+      
+      <form id="orcamentoForm" action="https://formsubmit.co/comercialcalory@gmail.com" method="POST">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://calory.com.br/obrigado">
+        
+        <div class="form-group">
+          <input type="text" name="nome" placeholder="Seu nome completo" required>
+        </div>
+        
+        <div class="form-group">
+          <input type="tel" name="telefone" placeholder="WhatsApp com DDD" required>
+        </div>
+        
+        <div class="form-group">
+          <input type="email" name="email" placeholder="Seu melhor e-mail" required>
+        </div>
+        
+        <div class="form-group">
+          <select name="segmento" required>
+            <option value="" disabled selected>Qual seu segmento?</option>
+            <option value="Mercado/Supermercado">Mercado/Supermercado</option>
+            <option value="Restaurante/Lanchonete">Restaurante/Lanchonete</option>
+            <option value="Varejo/Loja">Varejo/Loja</option>
+            <option value="Serviços">Serviços</option>
+            <option value="Outros">Outros</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <select name="sistema_interesse" required>
+            <option value="" disabled selected>Qual sistema tem interesse?</option>
+            <option value="CSEMP - Gestão Completa">CSEMP - Gestão Completa</option>
+            <option value="CSBAR - Para bares/restaurantes">CSBAR - Para bares/restaurantes</option>
+            <option value="CSEMITE - Notas fiscais">CSEMITE - Notas fiscais</option>
+            <option value="Não sei, preciso de ajuda">Não sei, preciso de ajuda</option>
+          </select>
+        </div>
+        
+        <button type="submit" class="calory-form-button">
+          <i class="fas fa-paper-plane"></i> ENVIAR SOLICITAÇÃO
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Soluções para diversos ramos de atividade -->
+  <section class="calory-segmentos-section">
+    <h2>Soluções para diversos ramos de atividade</h2>
+    <div class="calory-segmentos-container">
+      <div class="calory-segmentos-carousel">
+        <button class="calory-carousel-arrow1 left" onclick="prevSegmento()">❮</button>
+        <button class="calory-carousel-arrow1 right" onclick="nextSegmento()">❯</button>
+        
+        <div class="calory-segmentos-track" id="segmentosTrack">
+          <!-- Segmento 1 -->
+          <a href="/mercados" class="calory-segmento-card">
+            <div class="calory-segmento-img">
+              <img src="estabelecimentos/mercado.webp" alt="Mercados">
+            </div>
+            <div class="calory-segmento-content">
+              <h3>Mercados</h3>
+              <p>Controle completo de estoque e vendas <br> <br> Clique para saber mais</p>
+            </div>
+          </a>
           
-          <div class="calory-segmentos-track" id="segmentosTrack">
-            <!-- Segmento 1 -->
-            <a href="/mercados" class="calory-segmento-card">
-              <div class="calory-segmento-img">
-                <img src="estabelecimentos/mercado.webp" alt="Mercados">
-              </div>
-              <div class="calory-segmento-content">
-                <h3>Mercados</h3>
-                <p>Controle completo de estoque e vendas <br> <br> Clique para saber mais</p>
-              </div>
-            </a>
-            
-            <!-- Segmento 2 -->
-            <a href="/lanchonete" class="calory-segmento-card">
-              <div class="calory-segmento-img">
-                <img src="estabelecimentos/lanchonete.webp" alt="Restaurantes">
-              </div>
-              <div class="calory-segmento-content">
-                <h3>Restaurantes e Lanchonetes</h3>
-                <p>Gestão de cardápios e comandas<br> <br> Clique para saber mais</p>
-              </div>
-            </a>
-            
-            <!-- Segmento 3 -->
-            <a href="/agropecuaria" class="calory-segmento-card">
-              <div class="calory-segmento-img">
-                <img src="estabelecimentos/agropecuaria.webp" alt="Agropecuária">
-              </div>
-              <div class="calory-segmento-content">
-                <h3>Agropecuária</h3>
-                <p>Controle de insumos e produtos agrícolas<br> <br> Clique para saber mais</p>
-              </div>
-            </a>
-            
-            <!-- Segmento 4 -->
-            <a href="/lojaderoupas" class="calory-segmento-card">
-              <div class="calory-segmento-img">
-                <img src="estabelecimentos/lojaroupa.webp" alt="Varejo">
-              </div>
-              <div class="calory-segmento-content">
-                <h3>Lojas de Roupa e calçados</h3>
-                <p>Gerencie suas peças<br> <br> Clique para saber mais</p>
-              </div>
-            </a>
-            
-            <!-- Segmento 5 -->
-            <a href="/mecanico" class="calory-segmento-card">
-              <div class="calory-segmento-img">
-                <img src="estabelecimentos/mecanico.webp" alt="Oficinas">
-              </div>
-              <div class="calory-segmento-content">
-                <h3>Oficinas Mecânicas</h3>
-                <p>Gestão de serviços e peças<br> <br> Clique para saber mais</p>
-              </div>
-            </a>
-          </div>
+          <!-- Segmento 2 -->
+          <a href="/lanchonete" class="calory-segmento-card">
+            <div class="calory-segmento-img">
+              <img src="estabelecimentos/lanchonete.webp" alt="Restaurantes">
+            </div>
+            <div class="calory-segmento-content">
+              <h3>Restaurantes e Lanchonetes</h3>
+              <p>Gestão de cardápios e comandas<br> <br> Clique para saber mais</p>
+            </div>
+          </a>
+          
+          <!-- Segmento 3 -->
+          <a href="/agropecuaria" class="calory-segmento-card">
+            <div class="calory-segmento-img">
+              <img src="estabelecimentos/agropecuaria.webp" alt="Agropecuária">
+            </div>
+            <div class="calory-segmento-content">
+              <h3>Agropecuária</h3>
+              <p>Controle de insumos e produtos agrícolas<br> <br> Clique para saber mais</p>
+            </div>
+          </a>
+          
+          <!-- Segmento 4 -->
+          <a href="/lojaderoupas" class="calory-segmento-card">
+            <div class="calory-segmento-img">
+              <img src="estabelecimentos/lojaroupa.webp" alt="Varejo">
+            </div>
+            <div class="calory-segmento-content">
+              <h3>Lojas de Roupa e calçados</h3>
+              <p>Gerencie suas peças<br> <br> Clique para saber mais</p>
+            </div>
+          </a>
+          
+          <!-- Segmento 5 -->
+          <a href="/mecanico" class="calory-segmento-card">
+            <div class="calory-segmento-img">
+              <img src="estabelecimentos/mecanico.webp" alt="Oficinas">
+            </div>
+            <div class="calory-segmento-content">
+              <h3>Oficinas Mecânicas</h3>
+              <p>Gestão de serviços e peças<br> <br> Clique para saber mais</p>
+            </div>
+          </a>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Por que escolher a Calory -->
-    <section class="por-que-escolher">
-      <h2>Por que escolher a Calory?</h2>
-      <div class="por-que-container">
-        <div class="por-que-item">
-          <img src="https://cdn-icons-png.flaticon.com/256/5635/5635966.png" alt="Online">
-          <h3>Adaptação 100%</h3>
-          <p>O sistema se adapta ao seu negócio seja qual for ele.</p>
-        </div>
-        <div class="por-que-item">
-          <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Seguro">
-          <h3>Segurança de dados</h3>
-          <p>Seus dados protegidos com backups automáticos.</p>
-        </div>
-        <div class="por-que-item">
-          <img src="icon/logo-headset.svg" alt="Suporte">
-          <h3>Suporte imediato</h3>
-          <p>Atendimento direto via WhatsApp, sem enrolação.</p>
-        </div>
+  <!-- Por que escolher a Calory -->
+  <section class="por-que-escolher">
+    <h2>Por que escolher a Calory?</h2>
+    <div class="por-que-container">
+      <div class="por-que-item">
+        <img src="https://cdn-icons-png.flaticon.com/256/5635/5635966.png" alt="Online">
+        <h3>Adaptação 100%</h3>
+        <p>O sistema se adapta ao seu negócio seja qual for ele.</p>
       </div>
-    </section>
+      <div class="por-que-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Seguro">
+        <h3>Segurança de dados</h3>
+        <p>Seus dados protegidos com backups automáticos.</p>
+      </div>
+      <div class="por-que-item">
+        <img src="icon/logo-headset.svg" alt="Suporte">
+        <h3>Suporte imediato</h3>
+        <p>Atendimento direto via WhatsApp, sem enrolação.</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Como funciona -->
-    <section class="como-funciona">
-      <h2>Como funciona?</h2>
-      <div class="como-container">
-        <div class="como-item">
-          <img src="https://cdn-icons-png.flaticon.com/512/6815/6815042.png" alt="Passo 1">
-          <h4>1. Simule</h4>
-          <p>Clique no botão OBTER SISTEMA.</p>
-        </div>
-        <div class="como-item">
-          <img src="https://cdn-icons-png.flaticon.com/512/1980/1980530.png" alt="Passo 2">
-          <h4>2. Contrate</h4>
-          <p>Contrate o sistema que atende a sua necessidade.</p>
-        </div>
-        <div class="como-item">
-          <img src="https://cdn-icons-png.flaticon.com/512/4299/4299999.png" alt="Passo 3">
-          <h4>3. Utilize</h4>
-          <p>Tenha controle total da sua empresa.</p>
-        </div>
+  <!-- Como funciona -->
+  <section class="como-funciona">
+    <h2>Como funciona?</h2>
+    <div class="como-container">
+      <div class="como-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/6815/6815042.png" alt="Passo 1">
+        <h4>1. Simule</h4>
+        <p>Clique no botão OBTER SISTEMA.</p>
       </div>
-    </section>
-  </main>
+      <div class="como-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/1980/1980530.png" alt="Passo 2">
+        <h4>2. Contrate</h4>
+        <p>Contrate o sistema que atende a sua necessidade.</p>
+      </div>
+      <div class="como-item">
+        <img src="https://cdn-icons-png.flaticon.com/512/4299/4299999.png" alt="Passo 3">
+        <h4>3. Utilize</h4>
+        <p>Tenha controle total da sua empresa.</p>
+      </div>
+    </div>
+  </section>
 
   <div class="calory-whatsapp-float">
     <!-- Botão para Desktop (web.whatsapp) -->
@@ -1378,7 +1463,216 @@ margin-top:5%
   </footer>
 
   <script>
-    function caloryToggleMenu(){document.querySelector('.calory-nav-links').classList.toggle('active'),document.querySelector('.calory-menu-toggle').classList.toggle('active')}let bannerCurrentSlide=0,bannerTrack=document.getElementById('bannerTrack'),bannerDots=document.querySelectorAll('.calory-banner-dot'),bannerTotalSlides=3,bannerInterval;function goToBannerSlide(e){bannerCurrentSlide=e,bannerTrack.style.transform=`translateX(-${bannerCurrentSlide*100}%)`,bannerDots.forEach((t,a)=>{t.classList.toggle('active',a===bannerCurrentSlide)})}function nextBannerSlide(){bannerCurrentSlide=(bannerCurrentSlide+1)%bannerTotalSlides,goToBannerSlide(bannerCurrentSlide)}function prevBannerSlide(){bannerCurrentSlide=(bannerCurrentSlide-1+bannerTotalSlides)%bannerTotalSlides,goToBannerSlide(bannerCurrentSlide)}let currentSegmentoIndex=0,segmentosTrack=document.getElementById('segmentosTrack'),segmentoCards=document.querySelectorAll('.calory-segmento-card'),totalSegmentos=segmentoCards.length,cardWidth=320;function updateCarousel(){currentSegmentoIndex=Math.max(0,Math.min(currentSegmentoIndex,totalSegmentos-getVisibleCards()));const e=-currentSegmentoIndex*cardWidth;segmentosTrack.style.transform=`translateX(${e}px)`}function getVisibleCards(){return window.innerWidth<768?1:window.innerWidth<992?2:3}function nextSegmento(){currentSegmentoIndex<totalSegmentos-getVisibleCards()&&(currentSegmentoIndex++,updateCarousel())}function prevSegmento(){currentSegmentoIndex>0&&(currentSegmentoIndex--,updateCarousel())}document.addEventListener('DOMContentLoaded',function(){bannerInterval=setInterval(nextBannerSlide,25e3),updateCarousel(),window.addEventListener('resize',updateCarousel)}),document.querySelectorAll('.calory-nav-links a').forEach(e=>{e.addEventListener('click',()=>{window.innerWidth<=899.98&&caloryToggleMenu()})}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener('click',function(e){e.preventDefault(),document.querySelector(this.getAttribute('href')).scrollIntoView({behavior:"smooth"})})}),window.addEventListener('scroll',function(){const e=document.querySelector('.calory-header');window.scrollY>50?e.classList.add('scrolled'):e.classList.remove('scrolled')});let bannerStartX=0,bannerIsDragging=!1,segmentoStartX=0,segmentoIsDragging=!1;bannerTrack.addEventListener('touchstart',e=>{bannerStartX=e.touches[0].clientX,bannerIsDragging=!0,clearInterval(bannerInterval)}),bannerTrack.addEventListener('touchmove',e=>{if(bannerIsDragging){const t=e.touches[0].clientX,a=bannerStartX-t;Math.abs(a)>50&&(a>0?nextBannerSlide():prevBannerSlide(),bannerIsDragging=!1)}}),bannerTrack.addEventListener('touchend',()=>{bannerIsDragging=!1,bannerInterval=setInterval(nextBannerSlide,25e3)}),bannerTrack.addEventListener('mousedown',e=>{bannerStartX=e.clientX,bannerIsDragging=!0,clearInterval(bannerInterval),e.preventDefault()}),bannerTrack.addEventListener('mousemove',e=>{if(bannerIsDragging){const t=e.clientX,a=bannerStartX-t;Math.abs(a)>50&&(a>0?nextBannerSlide():prevBannerSlide(),bannerIsDragging=!1)}}),bannerTrack.addEventListener('mouseup',()=>{bannerIsDragging=!1,bannerInterval=setInterval(nextBannerSlide,25e3)}),bannerTrack.addEventListener('mouseleave',()=>{bannerIsDragging=!1}),segmentosTrack.addEventListener('touchstart',e=>{segmentoStartX=e.touches[0].clientX,segmentoIsDragging=!0}),segmentosTrack.addEventListener('touchmove',e=>{if(segmentoIsDragging){const t=e.touches[0].clientX,a=segmentoStartX-t;Math.abs(a)>50&&(a>0?nextSegmento():prevSegmento(),segmentoIsDragging=!1)}}),segmentosTrack.addEventListener('touchend',()=>{segmentoIsDragging=!1}),segmentosTrack.addEventListener('mousedown',e=>{segmentoStartX=e.clientX,segmentoIsDragging=!0,e.preventDefault()}),segmentosTrack.addEventListener('mousemove',e=>{if(segmentoIsDragging){const t=e.clientX,a=segmentoStartX-t;Math.abs(a)>50&&(a>0?nextSegmento():prevSegmento(),segmentoIsDragging=!1)}}),segmentosTrack.addEventListener('mouseup',()=>{segmentoIsDragging=!1}),segmentosTrack.addEventListener('mouseleave',()=>{segmentoIsDragging=!1});
+    // Menu Mobile
+    function caloryToggleMenu() {
+      const menu = document.querySelector('.calory-nav-links');
+      const toggle = document.querySelector('.calory-menu-toggle');
+      menu.classList.toggle('active');
+      toggle.classList.toggle('active');
+    }
+
+    // Carrossel de Banner
+    let bannerCurrentSlide = 0;
+    const bannerTrack = document.getElementById('bannerTrack');
+    const bannerDots = document.querySelectorAll('.calory-banner-dot');
+    const bannerTotalSlides = 3;
+    let bannerInterval;
+
+    function goToBannerSlide(index) {
+      bannerCurrentSlide = index;
+      bannerTrack.style.transform = `translateX(-${bannerCurrentSlide * 100}%)`;
+      
+      // Atualiza os dots de navegação
+      bannerDots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === bannerCurrentSlide);
+      });
+    }
+
+    function nextBannerSlide() {
+      bannerCurrentSlide = (bannerCurrentSlide + 1) % bannerTotalSlides;
+      goToBannerSlide(bannerCurrentSlide);
+    }
+
+    function prevBannerSlide() {
+      bannerCurrentSlide = (bannerCurrentSlide - 1 + bannerTotalSlides) % bannerTotalSlides;
+      goToBannerSlide(bannerCurrentSlide);
+    }
+
+    // Carrossel de Segmentos
+    let currentSegmentoIndex = 0;
+    const segmentosTrack = document.getElementById('segmentosTrack');
+    const segmentoCards = document.querySelectorAll('.calory-segmento-card');
+    const totalSegmentos = segmentoCards.length;
+    const cardWidth = 320;
+
+    function updateCarousel() {
+      // Limita o índice para não ultrapassar o número de cards
+      currentSegmentoIndex = Math.max(0, Math.min(currentSegmentoIndex, totalSegmentos - getVisibleCards()));
+      
+      const offset = -currentSegmentoIndex * cardWidth;
+      segmentosTrack.style.transform = `translateX(${offset}px)`;
+    }
+
+    function getVisibleCards() {
+      if (window.innerWidth < 768) return 1;
+      if (window.innerWidth < 992) return 2;
+      return 3;
+    }
+
+    function nextSegmento() {
+      if (currentSegmentoIndex < totalSegmentos - getVisibleCards()) {
+        currentSegmentoIndex++;
+        updateCarousel();
+      }
+    }
+
+    function prevSegmento() {
+      if (currentSegmentoIndex > 0) {
+        currentSegmentoIndex--;
+        updateCarousel();
+      }
+    }
+
+    // Funções para o formulário minimizado/expandido
+    function toggleFormSection() {
+      const formSection = document.querySelector('.calory-form-section');
+      formSection.classList.toggle('expanded');
+      
+      // Se estiver expandindo, rola suavemente para o formulário
+      if (formSection.classList.contains('expanded')) {
+        formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+    
+    function expandFormSection() {
+      const formSection = document.querySelector('.calory-form-section');
+      if (!formSection.classList.contains('expanded')) {
+        formSection.classList.add('expanded');
+        formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+
+    // Inicialização
+    document.addEventListener('DOMContentLoaded', function() {
+      // Configura o carrossel automático
+      bannerInterval = setInterval(nextBannerSlide, 25000);
+      
+      // Atualiza o carrossel de segmentos
+      updateCarousel();
+      
+      // Atualiza quando a janela é redimensionada
+      window.addEventListener('resize', updateCarousel);
+    });
+
+    // Fecha o menu ao clicar em um link (mobile)
+    document.querySelectorAll('.calory-nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 899.98) {
+          caloryToggleMenu();
+        }
+      });
+    });
+
+    // Suaviza o scroll para âncoras
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Efeito de scroll no header
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('.calory-header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Validação do formulário
+    document.getElementById('orcamentoForm').addEventListener('submit', function(e) {
+      const tel = document.querySelector('input[name="telefone"]').value;
+      if (!/^[0-9]{10,11}$/.test(tel)) {
+        e.preventDefault();
+        alert('Por favor, insira um WhatsApp válido com DDD');
+        return false;
+      }
+      
+      // Envia evento para o Google Analytics
+      gtag('event', 'form_submit', {
+        'event_category': 'lead',
+        'event_label': 'orcamento_form'
+      });
+    });
+
+    // Máscara para telefone
+    document.querySelector('input[name="telefone"]').addEventListener('input', function(e) {
+      this.value = this.value.replace(/\D/g, '').substring(0, 11);
+    });
+
+    // Drag para o carrossel de banner
+    let bannerStartX = 0;
+    let bannerIsDragging = false;
+
+    bannerTrack.addEventListener('touchstart', e => {
+      bannerStartX = e.touches[0].clientX;
+      bannerIsDragging = true;
+      clearInterval(bannerInterval);
+    });
+
+    bannerTrack.addEventListener('touchmove', e => {
+      if (bannerIsDragging) {
+        const currentX = e.touches[0].clientX;
+        const diff = bannerStartX - currentX;
+        
+        if (Math.abs(diff) > 50) {
+          if (diff > 0) {
+            nextBannerSlide();
+          } else {
+            prevBannerSlide();
+          }
+          bannerIsDragging = false;
+        }
+      }
+    });
+
+    bannerTrack.addEventListener('touchend', () => {
+      bannerIsDragging = false;
+      bannerInterval = setInterval(nextBannerSlide, 25000);
+    });
+
+    // Drag para o carrossel de segmentos
+    let segmentoStartX = 0;
+    let segmentoIsDragging = false;
+
+    segmentosTrack.addEventListener('touchstart', e => {
+      segmentoStartX = e.touches[0].clientX;
+      segmentoIsDragging = true;
+    });
+
+    segmentosTrack.addEventListener('touchmove', e => {
+      if (segmentoIsDragging) {
+        const currentX = e.touches[0].clientX;
+        const diff = segmentoStartX - currentX;
+        
+        if (Math.abs(diff) > 50) {
+          if (diff > 0) {
+            nextSegmento();
+          } else {
+            prevSegmento();
+          }
+          segmentoIsDragging = false;
+        }
+      }
+    });
+
+    segmentosTrack.addEventListener('touchend', () => {
+      segmentoIsDragging = false;
+    });
   </script>
 </body>
 </html>

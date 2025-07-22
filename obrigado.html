@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Obrigado - Calory Sistemas</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .calory-header {
+      width: 100%;
+      padding: 15px 5%;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .calory-logo img {
+      height: 40px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: #2c3e50;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #007bff;
+    }
+
+    .thank-you-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 20px 80px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .thank-you-icon {
+      font-size: 5rem;
+      color: #28a745;
+      margin-bottom: 30px;
+      animation: bounce 1s ease infinite alternate;
+    }
+
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to { transform: translateY(-15px); }
+    }
+
+    .thank-you-title {
+      font-size: 2.5rem;
+      color: #007bff;
+      margin-bottom: 20px;
+    }
+
+    .thank-you-message {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      color: #555;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .whatsapp-button {
+      display: inline-flex;
+      align-items: center;
+      background-color: #25d366;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      background-color: #2c3e50;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .whatsapp-button i,
+    .back-button i {
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+
+    .whatsapp-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+      background-color: #128C7E;
+    }
+
+    .back-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      background-color: #1a252f;
+    }
+
+    .next-steps {
+      margin-top: 40px;
+      text-align: left;
+      width: 100%;
+      max-width: 500px;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .next-steps h3 {
+      color: #007bff;
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+      text-align: center;
+    }
+
+    .next-steps ol {
+      padding-left: 20px;
+    }
+
+    .next-steps li {
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    /* Footer */
+    .calory-footer {
+      background-color: #2c3e50;
+      color: #fff;
+      padding: 60px 5% 30px;
+      font-size: 0.9rem;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+    }
+
+    .footer-logo img {
+      height: 50px;
+      margin-bottom: 20px;
+    }
+
+    .footer-logo p {
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .footer-links h3 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: #ecf0f1;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #007bff;
+    }
+
+    .footer-social h3 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .footer-social .social-icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .footer-social .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      color: #fff;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+
+    .footer-social .social-icons a:hover {
+      background: #007bff;
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      margin-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    @media (max-width: 768px) {
+      .thank-you-container {
+        padding: 100px 20px 60px;
+      }
+      
+      .thank-you-title {
+        font-size: 2rem;
+      }
+      
+      .thank-you-message {
+        font-size: 1rem;
+      }
+      
+      .whatsapp-button,
+      .back-button {
+        padding: 12px 25px;
+        font-size: 1rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .thank-you-title {
+        font-size: 1.8rem;
+      }
+      
+      .thank-you-icon {
+        font-size: 4rem;
+      }
+
+      .button-group {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .whatsapp-button,
+      .back-button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="calory-header">
+    <div class="header-container">
+      <div class="calory-logo">
+        <a href="/">
+          <img src="calory png.png" alt="Logo Calory">
+        </a>
+      </div>
+      <nav class="nav-links">
+        <a href="/">Início</a>
+        <a href="/sobre">Sobre Nós</a>
+        <a href="/solucoes">Soluções</a>
+        <a href="/contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="thank-you-container">
+    <div class="thank-you-icon">
+      <i class="fas fa-check-circle"></i>
+    </div>
+    
+    <h1 class="thank-you-title">Recebemos sua solicitação!</h1>
+    
+    <p class="thank-you-message">
+      Obrigado por entrar em contato com a Calory Sistemas. Nossa equipe já está analisando sua solicitação e entrará em contato em até 15 minutos pelo WhatsApp informado.
+    </p>
+    
+    <div class="button-group">
+      <a href="https://api.whatsapp.com/send?phone=5544999939313&text=Olá,%20acabei%20de%20enviar%20uma%20solicitação%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20o%20sistema." class="whatsapp-button">
+        <i class="fab fa-whatsapp"></i> FALAR COM CONSULTOR
+      </a>
+      <a href="/" class="back-button">
+        <i class="fas fa-arrow-left"></i> VOLTAR AO SITE
+      </a>
+    </div>
+    
+    <div class="next-steps">
+      <h3>Próximos passos:</h3>
+      <ol>
+        <li>Nossa equipe entrará em contato pelo WhatsApp</li>
+        <li>Vamos entender melhor suas necessidades</li>
+        <li>Apresentaremos a solução ideal para seu negócio</li>
+        <li>Configuraremos seu sistema personalizado</li>
+      </ol>
+    </div>
+  </main>
+
+  <footer class="calory-footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="calory branco png (1).png" alt="Calory Sistemas" class="footer-logo-img">
+        <p>Soluções tecnológicas para as empresas. Inovação e qualidade para o seu negócio.</p>
+      </div>
+      
+      <div class="footer-links">
+        <h3>Links Rápidos</h3>
+        <ul>
+          <li><a href="/">Início</a></li>
+          <li><a href="/produtos">Produtos</a></li>
+          <li><a href="/contato">Contato</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-links">
+        <h3>Produtos</h3>
+        <ul>
+          <li><a href="/csemp">Sistema de Gestão</a></li>
+          <li><a href="/estoque">Controle de Estoque</a></li>
+          <li><a href="/csemite">Emissão de nota fiscal</a></li>
+          <li><a href="/CertificadoDigital">Certificado Digital</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-social">
+        <h3>Redes Sociais</h3>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/calorysistemas/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/calorysistemas/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/company/calory-sistema" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <p style="margin-top: 20px;">Siga-nos para ficar por dentro das novidades!</p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2023 Calory Sistemas. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Envia evento de conversão para o Google Ads
+    gtag('event', 'conversion', {
+      'send_to': 'AW-17383219009/AbC1-DefGhiJKlMnoPqrS',
+      'value': 1.0,
+      'currency': 'BRL',
+      'transaction_id': ''
+    });
+
+    // Envia evento para o Google Analytics
+    gtag('event', 'thank_you_page', {
+      'event_category': 'conversion',
+      'event_label': 'form_submission'
+    });
+  </script>
+</body>
+</html>
