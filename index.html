@@ -653,6 +653,46 @@
       text-decoration: none !important;
     }
 
+    /* Seção de Vídeo */
+    .calory-video-section {
+      padding: 60px 5%;
+      background: #f8f9fa;
+      text-align: center;
+    }
+    
+    .calory-video-container {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      padding-bottom: 56.25%; /* Proporção 16:9 */
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+    
+    .calory-video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    .calory-video-section h2 {
+      font-size: 2.2rem;
+      color: #007bff;
+      margin-bottom: 20px;
+    }
+    
+    .calory-video-section p {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+
     /* Seções de Benefícios */
     .por-que-escolher {
       padding: 50px 10%;
@@ -1246,7 +1286,7 @@
       <div class="calory-banner-dot" onclick="goToBannerSlide(2)"></div>
     </div>
     
-    <div class="calory-arrow" onclick="document.getElementById('form-orcamento').scrollIntoView({ behavior: 'smooth' });"
+    <div class="calory-arrow" onclick="document.getElementById('form-orcamento').scrollIntoView({ behavior: 'smooth', block: 'center' });"
       tabindex="0" role="button" aria-label="Role para o conteúdo principal"></div>
   </div>
 
@@ -1391,6 +1431,25 @@
         <h3>Suporte imediato</h3>
         <p>Atendimento direto via WhatsApp, sem enrolação.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- Seção de Vídeo Demonstração -->
+  <section class="calory-video-section">
+    <div class="container">
+      <h2>Veja o CSEMP em ação</h2>
+      <p>Assista a esta demonstração rápida e descubra como nosso sistema pode transformar a gestão do seu negócio:</p>
+      
+      <div class="calory-video-container">
+        <iframe src="https://www.youtube.com/embed/Uw3EgubvVbo?rel=0&modestbranding=1" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen></iframe>
+      </div>
+      
+      <a href="#form-orcamento" class="calory-cta-button" style="margin-top: 30px; background-color: #007bff;" onclick="expandFormSection()">
+        <i class="fas fa-play-circle"></i> TESTE GRÁTIS POR 30 DIAS
+      </a>
     </div>
   </section>
 
@@ -1597,6 +1656,44 @@
       return false;
     }
   }
+
+  // Controle do Vídeo
+  document.addEventListener('DOMContentLoaded', function() {
+    // Pausar vídeo quando sair da seção
+    const videoSection = document.querySelector('.calory-video-section');
+    const videoIframe = document.querySelector('.calory-video-container iframe');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting && videoIframe) {
+          // Envia comando para pausar o vídeo
+          videoIframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        }
+      });
+    }, {threshold: 0.5});
+    
+    if (videoSection) {
+      observer.observe(videoSection);
+    }
+    
+    // Otimização para carregamento tardio do vídeo
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const iframe = entry.target.querySelector('iframe');
+          if (iframe && !iframe.src.includes('autoplay=1')) {
+            iframe.src += '&autoplay=1&mute=1';
+          }
+          videoObserver.unobserve(entry.target);
+        }
+      });
+    }, {rootMargin: '200px'});
+    
+    const videoContainer = document.querySelector('.calory-video-container');
+    if (videoContainer) {
+      videoObserver.observe(videoContainer);
+    }
+  });
 
   // Inicialização
   document.addEventListener('DOMContentLoaded', function () {
