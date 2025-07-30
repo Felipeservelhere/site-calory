@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cardápio Digital - Lariel Petiscaria</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      position: relative;
+    }
+
+    .header-container {
+      width: 100%;
+      padding: 15px 5%;
+      background: rgba(0, 0, 0, 0.85);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 165, 0, 0.3);
+    }
+
+    .logos-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .restaurant-logo {
+      height: 50px;
+    }
+
+    .devider {
+      width: 1px;
+      height: 30px;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .calory-logo {
+      height: 25px;
+      opacity: 0.9;
+      transition: all 0.3s ease;
+    }
+
+    .calory-logo:hover {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    .developed-by {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.7);
+      text-align: right;
+      margin-right: 10px;
+    }
+
+    .developed-by strong {
+      color: #FFA500;
+      font-weight: 500;
+    }
+
+    .spacer {
+      height: 80px;
+    }
+
+    .cardapio {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px 10px;
+    }
+
+    .cardapio img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 140, 0, 0.3);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #111;
+      color: #aaa;
+      font-size: 14px;
+      border-top: 1px solid rgba(255, 165, 0, 0.2);
+    }
+
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      height: 30px;
+      opacity: 0.8;
+    }
+
+    .footer-text {
+      text-align: right;
+    }
+
+    .footer-text a {
+      color: #FFA500;
+      text-decoration: none;
+      margin: 0 5px;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .footer-text a:hover {
+      color: #FF8C00;
+      text-decoration: underline;
+    }
+
+    .footer-text a i {
+      font-size: 0.9em;
+    }
+
+    .fab.fa-whatsapp {
+      color: #25D366;
+    }
+
+    .desktop-only {
+      display: inline-flex !important;
+    }
+
+    .mobile-only {
+      display: none !important;
+    }
+
+    /* Botão flutuante de WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 999;
+      transform: translateZ(0);
+    }
+
+    .whatsapp-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+      transition: all 0.3s ease;
+      animation: pulse 2s infinite;
+      text-decoration: none;
+      position: relative;
+    }
+
+    .whatsapp-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+    }
+
+    .whatsapp-button img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .whatsapp-tooltip {
+      position: absolute;
+      right: 70px;
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 14px;
+      opacity: 1;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @media (max-width: 768px) {
+      .desktop-only {
+        display: none !important;
+      }
+      
+      .mobile-only {
+        display: inline-flex !important;
+      }
+      
+      .header-container {
+        flex-direction: column;
+        padding: 10px 5%;
+      }
+      
+      .logos-container {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+      
+      .developed-by {
+        text-align: center;
+        margin: 5px 0 0;
+      }
+      
+      .restaurant-logo {
+        height: 40px;
+      }
+      
+      .calory-logo {
+        height: 20px;
+      }
+      
+      .spacer {
+        height: 120px;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .footer-text {
+        text-align: center;
+      }
+      
+      .whatsapp-float {
+    bottom: 8%;
+    right: 4%;
+  }
+  
+  .whatsapp-button {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .whatsapp-button img {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .whatsapp-tooltip {
+    right: 60px; /* Posiciona à esquerda do botão */
+    bottom: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    left: auto;
+    white-space: nowrap;
+    font-size: 12px;
+    background: rgba(0,0,0,0.9);
+    padding: 6px 12px;
+    border-radius: 15px;
+  }
+  
+  /* Garante que o rodapé fique acima se necessário */
+  footer {
+    position: relative;
+    z-index: 100;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <!-- Header com ambas logos -->
+  <header class="header-container">
+    <div class="logos-container">
+      <img src="cardapio-lariel/Design_sem_nome__26_-removebg-preview.png" alt="Lariel Petiscaria" class="restaurant-logo">
+      <div class="devider"></div>
+      <a href="https://calory.com.br" target="_blank">
+        <img src="calory branco png (1).png" alt="Desenvolvido por Calory" class="calory-logo">
+      </a>
+    </div>
+    
+    <div class="developed-by">
+      Cardápio digital desenvolvido por <strong>Calory Sistemas</strong>
+    </div>
+  </header>
+
+  <div class="spacer"></div>
+
+  <!-- Conteúdo do cardápio -->
+  <div class="cardapio">
+    <img src="cardapio-lariel/1.png" alt="Capa Cardápio Lariel Petiscaria" />
+    <img src="cardapio-lariel/2.png" alt="Menu - Hambúgueres" />
+    <img src="cardapio-lariel/3.png" alt="Menu - Porções Tradicionais" />
+    <img src="cardapio-lariel/4.png" alt="Menu - Porções Premium" />
+    <img src="cardapio-lariel/5.png" alt="Menu - Bebidas e Drinks" />
+    <img src="cardapio-lariel/6.png" alt="Capa Final Lariel Petiscaria">
+  </div>
+
+  <!-- Botão flutuante de WhatsApp para pedidos -->
+  <div class="whatsapp-float">
+    <!-- Versão para Desktop (web.whatsapp.com) -->
+    <a href="https://web.whatsapp.com/send?phone=5544999299071&text=Olá%20Lariel%20Petiscaria,%20gostaria%20de%20fazer%20um%20pedido!" 
+       class="whatsapp-button desktop-only">
+      <img src="icon/whats.png" alt="WhatsApp">
+      <span class="whatsapp-tooltip">Faça seu pedido!</span>
+    </a>
+    
+    <!-- Versão para Mobile (api.whatsapp.com) -->
+    <a href="https://api.whatsapp.com/send?phone=5544999299071&text=Olá%20Lariel%20Petiscaria,%20gostaria%20de%20fazer%20um%20pedido!" 
+       class="whatsapp-button mobile-only">
+      <img src="icon/whats.png" alt="WhatsApp">
+      <span class="whatsapp-tooltip">Faça seu pedido!</span>
+    </a>
+  </div>
+
+  <!-- Rodapé -->
+  <footer>
+    <div class="footer-content">
+      <a href="https://calory.com.br" target="_blank">
+        <img src="calory branco png (1).png" alt="Calory Sistemas" class="footer-logo">
+      </a>
+      <div class="footer-text">
+        Soluções tecnológicas para empresas<br>
+        <a href="https://calory.com.br" target="_blank"><i class="fa-solid fa-globe"></i> calory.com.br</a> | 
+        <a href="https://web.whatsapp.com/send?phone=5544999270531&text=Olá%20vim%20por%20um%20cardápio%20digital%20de%20vocês%20e%20queria%20mais%20informações%20sobre" target="_blank" class="desktop-only"><i class="fab fa-whatsapp"></i> Whatsapp</a> | 
+        <a href="https://api.whatsapp.com/send?phone=5544999270531&text=Olá%20vim%20por%20um%20cardápio%20digital%20de%20vocês%20e%20queria%20mais%20informações%20sobre" target="_blank" class="mobile-only"><i class="fab fa-whatsapp"></i> Whatsapp</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
