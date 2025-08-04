@@ -2,7 +2,7 @@
 $pageTitle = "Produtos - Calory Sistemas";
 
 // Conexão com o banco de dados
-$conn = new mysqli("177.107.115.204:3059", "root", "@@rOOt@cAlOry@1967@@", "calory_felipe", "33060");
+$conn = new mysqli("177.107.115.204", "root", "@@rOOt@cAlOry@1967@@", "calory_felipe", "30590");
 if ($conn->connect_error) {
     die("Erro de conexão: " . $conn->connect_error);
 }

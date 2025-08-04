@@ -1,12 +1,12 @@
 <?php
-$servername = "177.107.115.204:3059";
+$servername = "177.107.115.204";
 $username = "root";
 $password = "@@rOOt@cAlOry@1967@@";
 $dbname = "calory_felipe";
-$port = 33060;
+$port = 30590;
 
-// Conexão com o banco de dados
-$conn = new mysqli($servername, $username, $password, $dbname);
+
+$conn = new mysqli($servername, $username, $password, $dbname, $port);
 if ($conn->connect_error) {
     die("Erro na conexão: " . $conn->connect_error);
 }
